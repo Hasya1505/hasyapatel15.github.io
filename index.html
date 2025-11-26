@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasya Patel | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+<header>
+    <nav class="nav">
+        <div class="logo">HASYA PATEL</div> 
+        <ul>
+            <li><a href="#about" class="nav-link active">About</a></li>
+            <li><a href="#academics" class="nav-link">Academics</a></li>
+             <li><a href="#journey" class="nav-link">Journey</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+             <li><a href="#courses" class="nav-link">ourses</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="wrapper">
+
+    <section class="hero" id="about">
+        <div class="hero-left">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                5th Sem • Computer Engineering • LDRP ITR
+            </div>
+            <h1>Hello, I'm <span>Hasya&nbsp;Patel</span></h1>
+            <p class="hero-subtitle">
+                Aspiring Data Scientist • Machine Learning Enthusiast • Computer Engineering Student
+            </p>
+            <p class="hero-text">
+                I am a 5th semester Computer Engineering student at LDRP - ITR, driven by a strong passion for Data Science, Machine Learning, and AI Development. I possess a structured learning background, starting with C/C++ fundamentals, progressing through Java, and specializing in Python for data analysis and ML model building. I actively seek practical projects and collaborations to evolve into a proficient AI Engineer.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    Contact Me
+                    <span>✉️</span>
+                </a>
+                <a href="img\Hasya Patel Resume.pdf" target="_blank" class="btn btn-outline" onclick="if(this.href.includes('your_cv_link.pdf')) { alert('Please replace \'your_cv_link.pdf\' with your actual CV link!'); return false; }">
+                    Download CV
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-card">
+                <img src="WhatsApp Image 2025-11-25 at 18.12.25_0cefe6b0.jpg" alt="Hasya Patel" class="avatar-img">
+                
+                <div class=" ">
+                    <h2>Hasya Patel</h2>
+                    <span>Computer Engineering Student @ LDRP ITR</span>
+
+                    <div class="mini-stats">
+                        <div class="mini-stat">
+                            <div class="mini-label">Avg. SPI</div>
+                            <div class="mini-value" id="avg-spi-value">--</div> 
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-label">Semesters</div>
+                            <div class="mini-value">1st–4th</div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-label">Focus</div>
+                            <div class="mini-value">Data Science , AI , ML</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><br><br>
+    
+    <hr class="section-divider">
+
+    <section id="academics">
+        <h2 class="section-title">Academic Performance</h2>
+        <p class="section-subtitle">Semester-wise SPI and chronological record</p>
+
+        <div class="card">
+            <table class="grades-table">
+                <thead>
+                <tr>
+                    <th>Semester</th>
+                    <th>SPI</th>
+                    <th>Duration</th>
+                    <th>Remark</th>
+                    <th>Result</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1st Sem</td>
+                    <td>7.48/10</td>
+                    <td>July 2023 – Dec 2023</td>
+                    <td>Strong foundational grades, particularly in core Programming Logic.</td>
+                    <td><a href="img\SEM1.jpg" class="cert-link" onclick="alert('')">View Result Photo</a></td>
+                </tr>
+                <tr>
+                    <td>2nd Sem</td>
+                    <td>7.52/10</td>
+                    <td>Jan 2024 – Jun 2024</td>
+                    <td>Consistent performance while managing initial exposure to web technologies.</td>
+                    <td><a href="img\SEM2.jpg" class="cert-link" onclick="alert('')">View Result Photo</a></td>
+                </tr>
+                <tr>
+                    <td>3rd Sem</td>
+                    <td>7.50/10</td>
+                    <td>Jul 2024 – Dec 2024</td>
+                    <td>Stable grades during transition into core data structures and OOP (Java).</td>
+                    <td><a href="img\SEM3.jpg" class="cert-link" onclick="alert('')">View Result Photo</a></td>
+                </tr>
+                <tr class="highlight">
+                    <td>4th Sem</td>
+                    <td>7.88/10</td>
+                    <td>Jan 2025 – Jun 2025</td>
+                    <td>Achieved highest SPI, validating focus on Python and Data Science skills. 🎯</td>
+                    <td><a href="img\SEM4.jpg" class="cert-link" onclick="alert('')">View Result Photo</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p class="cgpa-row" style="color: rgb(67, 110, 209); font-size:25px">
+                Overall Average SPI (1st–4th sem): <span id="cgpa-value"  style="color: rgb(19, 201, 19); font-weight: 950;">--</span>
+                </p>
+        </div>
+        
+        </section><br><br>
+    
+    <hr class="section-divider">
+    
+<section id="journey">
+        <h2 class="section-title">Development Journey & Milestones</h2>
+        <p class="section-subtitle">A chronological record of my technical growth and specialized skill acquisition</p>
+
+        <div class="card timeline-card">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-label">○ Step 1</div>
+                    <div class="timeline-title"><b>C, C++</b> – Built strong programming fundamentals and problem-solving skills.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">○ Step 2</div>
+                    <div class="timeline-title"><b>Web Development Basics</b> – Learnt HTML, CSS and JavaScript to understand how websites work.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">○ Step 3</div>
+                    <div class="timeline-title"><b>Java &amp; Advanced Java</b> – Moved into object-oriented programming and backend concepts.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">○ Step 4</div>
+                    <div class="timeline-title"><b>Python &amp; Advanced Python</b> – Focused on clean coding, data handling and automation.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">○ Step 5</div>
+                    <div class="timeline-title"><b>Data Science</b> – Worked with Pandas, NumPy, Matplotlib and Seaborn for analysis and visualization.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">○ Step 6</div>
+                    <div class="timeline-title"><b>Machine Learning &amp; AI</b> – Practiced supervised &amp; unsupervised learning, regression, classification and started AI learning.</div>
+                </div>
+            </div>
+        </div>
+    </section><br><br>
+
+    <hr class="section-divider">
+
+    <section id="skills">
+        <h2 class="section-title">Skills &amp; Technologies</h2>
+        <p class="section-subtitle">Programming, web interfaces, data science, and machine learning stack</p>
+
+        <div class="card">
+            <div class="skills-grid">
+                
+                <div class="skill-card">
+                    <div class="skill-title"><b>🔷Programming Languages</b></div>
+                    <small class="skill-sub">Core coding skills and object-oriented fundamentals</small>
+                    <div class="skill-tags">
+                        <span class="skill-tag"> 1.C</span><br>
+                        <span class="skill-tag">2.C++ (OOP)</span><br>
+                        <span class="skill-tag">3.Java (Core & Adv.)</span><br>
+                        <span class="skill-tag">4.Python (Core & Adv.)</span><br>
+                        <span class="skill-tag">5.SQL</span><br>
+                    </div>
+                    </div>
+
+                <div class="skill-card">
+                    <div class="skill-title"><b>🔷Web Development Basics</b></div>
+                    <small class="skill-sub">Fundamental knowledge for interface design and interactivity</small>
+                    <div class="skill-tags">
+                        <span class="skill-tag">1.HTML5</span><br>
+                        <span class="skill-tag">2.CSS3</span><br>
+                        <span class="skill-tag">3.JavaScript (ES6)</span><br>
+                    </div>
+                    </div>
+
+                <div class="skill-card">
+                    <div class="skill-title"><b>🔷Data Science Libraries</b></div>
+                    <small class="skill-sub">Python ecosystem for analysis, manipulation, and visualization</small>
+                    <div class="skill-tags">
+                        <span class="skill-tag">1.Pandas (Advanced)</span><br>
+                        <span class="skill-tag">2.NumPy (Vectorization)</span><br>
+                        <span class="skill-tag">3.Matplotlib</span><br>
+                        <span class="skill-tag">4.Seaborn (Statistical Viz.)</span><br>
+                        <span class="skill-tag">5.Jupyter/Colab</span><br>
+                        <span class="skill-tag">6.Data Cleaning</span><br>
+                    </div>
+                    </div>
+
+                <div class="skill-card">
+                    <div class="skill-title"><b>🔷Machine Learning & Artifical Intelligence</b></div>
+                    <small class="skill-sub">Core concepts, algorithms, and practical implementation</small>
+
+                    <div class="ml-tags">
+                        <span class="skill-tag">1.Supervised Learning</span><br>
+                        <span class="skill-tag">2.Unsupervised Learning</span><br>
+                        <span class="skill-tag">3.Linear/Logistic Regression</span><br>
+                        <span class="skill-tag">4.Classification (e.g., KNN, Trees)</span><br>
+                        <span class="skill-tag">5.Clustering (K-Means)</span><br>
+                        <span class="skill-tag">6.Model Evaluation</span><br>
+                        <span class="skill-tag">7.Scikit-learn</span><br>
+                    </div>
+                    </div>
+            </div>
+            
+            </div>
+    </section><br><br>
+    
+    <hr class="section-divider">
+
+
+    <section id="projects">
+        <h2 class="section-title">Key Projects & Hands-on Work</h2>
+        <p class="section-subtitle">Highlights of practical application demonstrating competency across the entire technological stack</p>
+
+        <div class="card">
+            <h3 style="font-size: 1.7rem; margin-bottom: 1rem;">Core Programming Applications</h3>
+            <ul class="project-list">
+                <li class="project-item">
+                    <b>C/C++ Projects:</b> Basic Console Applications
+                    <ul style="list-style-type:disc;">
+                        <li style="list-style-type: none;">Simple Calculator program in C/C++.</li>
+                        <li style="list-style-type: none;">Other basic codes covering concepts like loops, arrays, and functions.</li>
+                    </ul>
+                </li>
+                <li class="project-item">
+                    <b>Core Java Projects:</b> Object-Oriented Programming Practice
+                    <ul>
+                        <li style="list-style-type: none;">Small Core Java codes demonstrating OOP principles (classes, inheritance, polymorphism).</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <div class="card">
+            <h3 style="font-size: 1.7rem; margin-bottom: 1rem;">Web, Data Science, and Machine Learning</h3>
+            <ul class="project-list">
+                <li class="project-item">
+                    <b>Web Development Projects:</b> Frontend Practice
+                    <ul>
+                        <li style="list-style-type: none;">College Webpage clone(frontend-only structure).<br><p>Link :-<a href="">View Project Live Demo</a></p></li>
+                        <li style="list-style-type: none;">Basic E-commerce Website template (frontend-only structure).<br><p>Link :-<a href="">View Project Live Demo</a></p></li>
+                    </ul>
+                </li>
+                <li class="project-item">
+                    <b>Data Science Project:</b> Exploratory Data Analysis (EDA)
+                    <ul>
+                        <li  style="list-style-type: none;">Completed a Comprehensive EDA project using Pandas and NumPy, visualized with Matplotlib and Seaborn.<br><p>Link :-<a href="">View Project Live Demo</a></p></li>
+                    </ul>
+                </li>
+                <li class="project-item">
+                    <b>Machine Learning Project:</b> Recommendation System
+                    <ul>
+                        <li style="list-style-type: none;">Built a Movie Recommendation System using ML techniques.<br><p>Link :-<a href="">View Project Live Demo</a></p></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section><br><br>
+    
+    <hr class="section-divider">
+    
+    <section id="courses">
+        <h2 class="section-title">Courses &amp; Practical Exposure</h2>
+        <p class="section-subtitle">Structured external learning and hands-on job simulation certificates</p>
+
+        <div class="card">
+            <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Foundational & Core Courses</h3>
+            <div class="course-list">
+                <div class="course-card">
+                    <div class="course-title"><b>C &amp; C++ Programming</b></div>
+                    <div class="course-meta">• Shivam Classes <br> • Duration: Jun.2023 –  Aug.2023</div>
+                    <p class="course-extra">
+                       • Intensive coaching focused on building strong logic, problem-solving structures, and understanding pointers and memory management in C/C++.
+                    </p>
+                    <a href="img\Shivam.jpg" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-title"><b>Python & Advance Pyhton  </b></div>
+                    <div class="course-meta">• Desier Infotech Classes, Gandhinagar<br> • Duration: Feb.2025 – April.2025</div>
+                    <p class="course-extra">
+                        • In-person training to master Python's advanced features, including decorators, generators, and object-oriented programming in Python.
+                    </p>
+                    <a href="img\DesierInfo.jpg" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+            </div>
+            
+            <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 1rem;">Data Science & AI Specialization</h3>
+            <div class="course-list">
+                <div class="course-card">
+                    <div class="course-title"><b>Python for Data Science Specialization</b></div>
+                    <div class="course-meta">• IIT Madras NPTEL <br> •  Result 68% <br> • Duration: Jan.2025 – Feb.2025 (4 Week Courses)</div>
+                    <p class="course-extra">
+                       • A rigorous online certification focusing on the practical application of Python libraries (Pandas, NumPy) for data manipulation and analysis.
+                    </p>
+                    <a href="img\NPTEL.jpg" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-title"><b>Data Science Job Simulation</b></div>
+                    <div class="course-meta">• Deloitte (Forage Virtual Simulation)<br> • Duration: July 2025</div>
+                    <p class="course-extra">
+                       • Simulated real-world corporate data science challenges, focusing on data cleaning, generating actionable insights, and technical reporting.
+                    </p>
+                    <a href="img\Deloitte.jpg" class="cert-link" target="_blank" >View Certificate</a>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-title"><b>Generative AI Webinar & Concepts</b></div>
+                    <div class="course-meta">• OutSkill • Generative AI <br> • Duration: Sep.2025</div>
+                    <p class="course-extra">
+                        • Explored the architecture and societal impact of Generative AI models. Focused on prompt engineering and the future of AI development.
+                    </p>
+                    <a href="img\OutSkill.jpg" class="cert-link" target="_blank">View Certificate</a>
+                </div>
+            </div>
+        </div>
+    </section><br><br>
+    
+    <hr class="section-divider">
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">I am open to internship opportunities, project collaborations, and networking. Let's connect!</p>
+
+        <div class="card">
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-details">
+                        <h3 class="contact-heading">Contact Information</h3>
+                        <div class="contact-row">
+                            <span>Full Name:</span> Hasya Patel
+                        </div>
+                        <div class="contact-row">
+                            <span>Institution:</span> LDRP ITR College, Computer Engineering Department
+                        </div>
+                        <div class="contact-row">
+                            <span>Academic Status:</span> 5th Semester
+                        </div>
+                        <div class="contact-row">
+                            <span>Primary Location:</span> Gandhinagar, Gujarat, India
+                        </div>
+                        <div class="contact-row">
+                            <span>Email Address:</span>
+                            <a href="mailto:youremail@example.com" class="accent-link">
+                                studyfor1505@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links-container">
+                        <h3 class="contact-heading">Connect with me Online</h3>
+                        <div class="social-links-list">
+                            <a href="https://www.linkedin.com/in/hasya-patel-667b5629b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-link">
+                                <span style="font-size: 1.2em;"></span> LinkedIn (Professional Network)
+                            </a><br>
+                            <a href="https://github.com/" target="_blank" class="social-link">
+                                <span style="font-size: 1.2em;"></span> GitHub (Code Portfolio)
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p class="contact-note" style="margin-top: 2rem;">
+                       
+                    </p>
+                </div>
+
+                 <div class="part2">
+                <h3>Contact With Me </h3>
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="268917ce-3ada-4e6c-b4ea-2034eee66208">
+                    <p>Name: <input type="text" name="name" required></p>
+                    <p>Email: <input type="email" name="email" required></p>
+                    <p>Contact Number: <input type="number" name="contact" required></p>
+                    <p>Your Message: <textarea name="message" required></textarea></p>
+                    <button type="submit" style="border-radius: 5px; background-color: aquamarine; font-size: 25px;">Submit</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </section><br><br>
+
+    <footer>
+        © <span id="year"></span> Hasya Patel • Portfolio • Built with HTML, CSS &amp; JavaScript
+    </footer>
+</div>
+
+<button id="scrollTopBtn" title="Back to top">↑ Top</button>
+
+<script src="script.js"></script>
+</body>
+</html>
