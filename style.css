@@ -1,6 +1,3 @@
-/* modern_portfolio_styles.css — Crisp Light Theme (FINAL)
-   Applied to Hasya Patel portfolio HTML
-*/
 
 :root{
   --bg-900: #fcfcff;
@@ -19,7 +16,7 @@
   --radius: 1rem;
 }
 
-/* --- Reset / Base --- */
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-family:Inter, 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif}
 html,body{height:100%}
@@ -38,7 +35,7 @@ a{color:var(--accent);text-decoration:none}
 
 .wrapper{max-width:1180px;margin:0 auto;padding:2.25rem 1.25rem 6rem}
 
-/* --- Header / Nav --- */
+
 header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.9);backdrop-filter: blur(6px);border-bottom:1px solid var(--border);box-shadow:0 6px 18px rgba(15,23,36,0.03)}
 
 .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem}
@@ -161,11 +158,6 @@ footer{margin-top:2.5rem;text-align:center;color:var(--muted);padding:1rem 0}
 .text-muted{color:var(--muted)}
 .row{display:flex;gap:.6rem;align-items:center}
 
-/* ---------------------------
-   Responsive & Enhanced Header Additions
-   — Append to the end of modern_portfolio_styles.css
-   (Does not change existing rules; only adds overrides)
-   --------------------------- */
 
 /* prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -244,8 +236,6 @@ footer{margin-top:2.5rem;text-align:center;color:var(--muted);padding:1rem 0}
   .timeline-item{gap:.5rem}
 }
 
-/* Improved header visual polish (sticky + depth on scroll)
-   Requires no JS — just CSS. Adds stronger shadow and subtle border on smaller screens */
 header{
   transition: box-shadow .18s ease, background .18s ease, border-color .18s ease;
 }
@@ -297,12 +287,7 @@ header{
   :root { --shadow: 0 6px 18px rgba(15,23,36,0.08); }
 }
 
-/* ---------------------------
-   Responsive Submit Button Add-on
-   For .part2 button
-   --------------------------- */
 
-/* Default improvements */
 .part2 button {
   width: 70%;
   max-width: 380px;
@@ -355,6 +340,139 @@ header{
     max-width: 260px;
   }
 }
+
+.academic-section{ 
+  display:block;
+  margin-top:1.25rem;
+  gap:1rem;
+}
+.academic-section .section-title{ letter-spacing:0.4px; margin-bottom:.25rem; }
+.academic-section .section-subtitle{ font-size:0.98rem; color:var(--muted); margin-bottom:1rem; }
+
+/* Grades table transformed into card-like rows on small screens */
+.grades-table{ background:transparent; border-radius:12px; overflow:hidden; box-shadow:none; }
+.grades-table th{ background:transparent; position:relative; padding-top:.9rem; padding-bottom:.9rem; }
+.grades-table td{ padding:.9rem .75rem; vertical-align:middle; }
+
+/* Make each row visually separated and card-like on narrow screens */
+@media (max-width:720px){
+  .grades-table, .grades-table tbody, .grades-table tr{ display:block; width:100%; }
+  .grades-table tr{ background:linear-gradient(180deg, var(--card), var(--bg-900)); border-radius:12px; margin-bottom:.7rem; padding:.75rem; box-shadow:0 8px 20px rgba(15,23,36,0.04); border:1px solid var(--border); }
+  .grades-table th{ display:block; font-size:0.88rem; color:var(--muted); padding-bottom:.4rem; }
+  .grades-table td{ display:flex; justify-content:space-between; font-weight:700; padding:.45rem 0; color:var(--text) }
+  .grades-table tr.highlight td{ background:transparent } /* keep highlight subtle inside card */
+}
+
+/* Larger font and emphasis for desktop academic read */
+@media (min-width:981px){
+  .grades-table th{ font-size:0.95rem; color:var(--muted); }
+  .grades-table td{ font-size:1.03rem; }
+  .cgpa-row{ font-size:1.05rem; color:var(--accent-2); margin-top:1rem; }
+}
+
+/* Emphasize CGPA or summary in its own pill */
+.cgpa-row{ display:inline-flex; align-items:center; gap:.6rem; background:linear-gradient(90deg, rgba(25,118,210,0.06), transparent); padding:.55rem .9rem; border-radius:999px; border:1px solid rgba(25,118,210,0.08); color:var(--text); font-weight:800; }
+
+/* Course cards spacing & responsive font scale */
+.course-card{ transition:transform .18s ease, box-shadow .18s ease; padding:1.05rem; }
+@media (max-width:720px){
+  .course-card{ padding:.85rem; font-size:.95rem; }
+}
+.course-card:hover{ transform:translateY(-6px); box-shadow:0 14px 36px rgba(15,23,36,0.06) }
+
+/* Tiny utility: make academic tables horizontally scrollable on very narrow widths */
+@media (max-width:420px){
+  .grades-table{ display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; width:100%; }
+  .grades-table th, .grades-table td{ white-space:nowrap; }
+}
+
+
+.development-journey{ padding: .6rem 0 1rem; }
+
+/* visually stronger timeline line and step markers on wide screens */
+.dev-timeline, .timeline{ position:relative; padding-left:1.25rem; }
+.dev-timeline::before, .timeline::before{
+  content:''; position:absolute; left:10px; top:0; bottom:0; width:3px; border-radius:8px;
+  background: linear-gradient(180deg, rgba(25,118,210,0.12), rgba(66,165,245,0.06));
+  transform-origin:center;
+}
+
+/* step item styling */
+.dev-step, .timeline-item{
+  position:relative;
+  padding: .65rem 1rem .65rem 2.2rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.0), rgba(255,255,255,0));
+  border-radius:10px;
+  transition:transform .16s ease, box-shadow .16s ease;
+  display:flex; gap:.75rem; align-items:flex-start;
+}
+
+/* numbered marker */
+.dev-step::before, .timeline-item::before{
+  content:attr(data-step);
+  position:absolute;
+  left:-3px; /* sit on the center of vertical line */
+  top:0.45rem;
+  width:36px; height:36px;
+  border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:.95rem;
+  background:linear-gradient(180deg,var(--accent),var(--accent-2));
+  color:var(--card);
+  box-shadow:0 8px 20px rgba(25,118,210,0.12), 0 2px 6px rgba(15,23,36,0.04);
+  border:4px solid rgba(255,255,255,0.9);
+}
+
+/* step content */
+.dev-step .step-title, .timeline-item .timeline-title{ font-weight:800; color:var(--text); margin-bottom:.25rem; }
+.dev-step .step-sub, .timeline-item .timeline-label{ color:var(--muted); font-weight:700; font-size:.95rem; }
+
+/* hover emphasis on larger screens */
+@media (min-width:720px){
+  .dev-step:hover, .timeline-item:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(15,23,36,0.06); }
+}
+
+/* alternate layout for very small screens: stack without line, show compact markers */
+@media (max-width:720px){
+  .dev-timeline::before, .timeline::before{ left:6px; width:2px; }
+  .dev-step, .timeline-item{ padding-left:2.8rem; padding-right:.8rem; margin-bottom:.6rem; background:linear-gradient(180deg, var(--bg-900), var(--card)); border:1px solid var(--border); }
+  .dev-step::before, .timeline-item::before{ left:6px; top:0.6rem; width:30px; height:30px; font-size:.85rem; border-width:3px; }
+  .dev-step .step-title, .timeline-item .timeline-title{ font-size:1rem }
+  .dev-step .step-sub, .timeline-item .timeline-label{ font-size:0.9rem }
+}
+
+/* make timeline two-column on wide displays for visual rhythm */
+@media (min-width:1200px){
+  .dev-timeline{ display:grid; grid-template-columns:repeat(2,1fr); gap:1rem 2rem; }
+  /* place items alternately left/right visually by using nth-child */
+  .dev-timeline .dev-step:nth-child(odd){ grid-column:1; }
+  .dev-timeline .dev-step:nth-child(even){ grid-column:2; }
+  /* move the central line to sit between the two columns */
+  .dev-timeline::before{ left:calc(50% - 1px); height:100%; top:0; }
+  .dev-timeline .dev-step::before{ left:calc(-1 * (50% + 18px)); } /* keep markers near central line */
+  /* simpler: keep markers visually consistent by overriding left for wide layout */
+  .dev-timeline .dev-step::before{ left:calc(50% - 18px); }
+  .dev-timeline .dev-step{ padding-left:2.6rem; padding-right:2.6rem; }
+}
+
+/* subtle animations (respect reduced motion) */
+@media (prefers-reduced-motion: no-preference){
+  .dev-step::before, .timeline-item::before{ transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .18s ease; }
+  .dev-step:hover::before{ transform:scale(1.06); box-shadow:0 20px 40px rgba(25,118,210,0.14); }
+}
+
+/* color accent for recent / active step */
+.dev-step.active::before, .timeline-item.active::before{ background:linear-gradient(90deg,var(--accent-2),var(--accent)); box-shadow:0 18px 36px rgba(25,118,210,0.18) }
+.dev-step.active, .timeline-item.active{ border:1px solid rgba(25,118,210,0.06); background:linear-gradient(180deg, rgba(25,118,210,0.02), transparent); }
+
+/* Accessibility: ensure marker text has contrast */
+.dev-step::before, .timeline-item::before{ color:#ffffff; }
+
+/* small utility: ensure images/icons inside timeline steps scale gracefully */
+.dev-step img, .timeline-item img{ max-width:48px; height:auto; border-radius:8px; object-fit:cover; }
+
+/* End of add-on */
+
 
 
 
