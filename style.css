@@ -161,4 +161,199 @@ footer{margin-top:2.5rem;text-align:center;color:var(--muted);padding:1rem 0}
 .text-muted{color:var(--muted)}
 .row{display:flex;gap:.6rem;align-items:center}
 
-/* End of stylesheet */
+/* ---------------------------
+   Responsive & Enhanced Header Additions
+   — Append to the end of modern_portfolio_styles.css
+   (Does not change existing rules; only adds overrides)
+   --------------------------- */
+
+/* prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* bigger layout breakpoint tuning */
+@media (max-width: 1200px) {
+  .wrapper { max-width: 980px; padding-left:1rem; padding-right:1rem; }
+  .hero{grid-template-columns:1fr 360px; gap:1.75rem}
+  .hero-card{padding:1.35rem}
+}
+
+/* medium screens — make nav compact and hero stack-friendly */
+@media (max-width: 980px) {
+  header{padding:0.25rem 0}
+  .nav{padding:.7rem 0.8rem}
+  .logo{font-size:1rem}
+  /* allow nav items to scroll horizontally if too many links */
+  .nav ul{
+    display:flex;
+    gap:.6rem;
+    align-items:center;
+    overflow-x:auto;
+    padding-bottom:6px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+  }
+  .nav ul::-webkit-scrollbar{height:6px}
+  .nav ul::-webkit-scrollbar-thumb{background:rgba(15,23,36,0.06);border-radius:6px}
+  /* slightly reduce hero right column */
+  .hero{grid-template-columns:1fr 320px}
+  .avatar-img{width:130px;height:130px}
+}
+
+/* tablet / small laptop */
+@media (max-width: 720px) {
+  .wrapper{padding-left:0.9rem;padding-right:0.9rem}
+  .hero{grid-template-columns:1fr; gap:1rem; padding:2.4rem 0}
+  .hero-card{flex-direction:row; text-align:left; align-items:center; gap:1rem; padding:.9rem}
+  .hero-left{order:2}
+  .hero-card{order:1; justify-content:flex-start}
+  .avatar-img{width:110px;height:110px;border-width:4px}
+  .hero h1{font-size:clamp(1.75rem,6vw,2.6rem)}
+  .hero-subtitle,.hero-text{font-size:0.98rem}
+  .chip{font-size:.92rem;padding:.4rem .75rem}
+  .mini-stat{min-width:96px;padding:.5rem .6rem}
+  .contact-grid{grid-template-columns:1fr; gap:.9rem}
+  .part2 button{width:86%; margin-left:14%;} /* center CTA on smaller screens */
+}
+
+/* small phones */
+@media (max-width: 520px) {
+  :root{font-size:15px}
+  .hero-card{padding:.75rem; gap:.6rem}
+  .avatar-img{width:96px;height:96px}
+  .hero h1{font-size:1.5rem}
+  .badge{padding:.3rem .6rem;font-size:.92rem}
+  .btn{padding:.6rem .9rem}
+  .btn-primary{font-size:.95rem}
+  .skill-card{padding:1rem}
+  .skills-grid{gap:.7rem}
+  .chip{padding:.35rem .6rem;font-size:.88rem}
+  .mini-value{font-size:0.98rem}
+  .part2 button{width:90%; margin-left:5%;}
+}
+
+/* very small devices */
+@media (max-width:420px) {
+  .wrapper{padding-left:.6rem;padding-right:.6rem}
+  .hero h1{font-size:1.35rem}
+  .hero-subtitle{font-size:.95rem}
+  .nav ul a{padding:.45rem .5rem;font-size:.95rem}
+  .logo{font-size:0.98rem}
+  .grades-table th,.grades-table td{padding:.6rem .5rem}
+  .timeline-item{gap:.5rem}
+}
+
+/* Improved header visual polish (sticky + depth on scroll)
+   Requires no JS — just CSS. Adds stronger shadow and subtle border on smaller screens */
+header{
+  transition: box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+@media (max-width:980px){
+  header{background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92)); border-bottom-color: rgba(15,23,36,0.04)}
+  header:has(.nav ul:focus-within),
+  header:has(.nav ul:hover) { box-shadow: 0 12px 28px rgba(15,23,36,0.06) }
+}
+
+/* Make header links larger for touch */
+.nav ul a{
+  padding:.6rem .85rem;
+  border-radius:12px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Logo variants — supports an image inside .logo without changing HTML */
+.logo img{ height:44px; width:44px; object-fit:cover; border-radius:50%; vertical-align:middle; margin-right:.6rem; box-shadow:0 6px 18px rgba(15,23,36,0.04) }
+
+/* Accessibility: focus styles */
+.nav ul a:focus, .btn:focus, .part2 input:focus, .part2 textarea:focus {
+  outline:3px solid rgba(25,118,210,0.12);
+  outline-offset:3px;
+}
+
+/* Fluid grid improvements — ensure spacing doesn't break on very narrow widths */
+.skills-grid{ grid-auto-rows: 1fr; }
+.course-list{ gap: .8rem }
+
+/* Improve readability for long project lists on tiny screens */
+.project-list{ padding-left:1rem; margin-bottom:.6rem }
+@media (max-width:520px){
+  .project-list{ padding-left:.85rem }
+}
+
+/* Utility: stack small items in contact details for very narrow screens */
+@media (max-width:420px){
+  .contact-row{ display:flex; flex-direction:column; gap:6px; align-items:flex-start }
+  .social-links-list a{ display:inline-block; margin-right:.5rem }
+}
+
+/* Ensure hero left text doesn't get too wide on very large displays */
+@media (min-width:1400px){
+  .hero-left{ max-width:900px }
+}
+
+/* final small tweak: reduce large shadows on very dark/low-contrast displays */
+@media (prefers-contrast: high) {
+  :root { --shadow: 0 6px 18px rgba(15,23,36,0.08); }
+}
+
+/* ---------------------------
+   Responsive Submit Button Add-on
+   For .part2 button
+   --------------------------- */
+
+/* Default improvements */
+.part2 button {
+  width: 70%;
+  max-width: 380px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Medium screens */
+@media (max-width: 980px) {
+  .part2 button {
+    width: 80%;
+    max-width: 360px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 720px) {
+  .part2 button {
+    width: 85%;
+    max-width: 330px;
+    padding: 0.85rem 0.9rem;
+    font-size: 0.98rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 520px) {
+  .part2 button {
+    width: 90%;
+    max-width: 300px;
+    font-size: 0.95rem;
+    padding: 0.8rem 0.9rem;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 420px) {
+  .part2 button {
+    width: 94%;
+    max-width: 280px;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra tiny devices */
+@media (max-width: 360px) {
+  .part2 button {
+    width: 96%;
+    max-width: 260px;
+  }
+}
+
+
