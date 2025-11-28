@@ -411,7 +411,7 @@ header{
 }
 
 /* Phones */
-@media (max-width: 520px) {
+@media (max-width: 500px) {
   .part2 button {
     width: 90%;
     max-width: 300px;
@@ -471,105 +471,99 @@ header.shadow {
         display: flex !important; /* Ensure it shows when open */
     }
 }
-
-@media (max-width: 480px) {
-
-    /* 1. Reduce overall font size for table content to fit more text */
-    .grades-table {
-        font-size: 0.9em; /* Adjust font size relative to parent */
-    }
-
-    /* 2. Target Table Headers (th) and Data Cells (td) */
-    .grades-table th, .grades-table td {
-        /* Reduce padding further for space */
-        padding: 0.5rem 0.3rem !important; 
-        
-        /* Ensure text breaks within words if necessary, especially for "Semester" and "Duration" columns */
-        word-break: break-word; 
-    }
-
-    /* 3. Optimize Column Widths (Crucial for Layout) */
-    
-    /* Semester Column: Force to minimum width */
-/* ----------------------------------------------------
-   Responsive Table Layout for 4-Column Academic Grades
-   ---------------------------------------------------- */
+/* -------------------------------------------------------------------
+   Mobile Table - Final Aesthetic and Alignment Fixes (max-width 520px)
+   ------------------------------------------------------------------- */
 
 @media (max-width: 520px) {
-    /* 1. Overall Table Tidy-up */
+    /* 1. Overall Table Tidy-up (Re-setting base styles for mobile) */
     .grades-table {
-        /* Slightly reduce font size for better fit */
         font-size: 0.95em; 
-        /* Ensure the table doesn't get squashed below a minimum readable width */
         min-width: 100%; 
+        background: var(--card); /* Ensure table background is clean white */
     }
     
-    /* Reduce padding on all cells for tighter layout */
     .grades-table th, .grades-table td {
         padding: 0.6rem 0.4rem !important;
-        vertical-align: middle; /* Center content vertically */
+        vertical-align: middle; 
+        text-align: left; /* Default alignment */
     }
 
-    /* 2. Column Width Distribution (Total 100%) */
+    /* 2. Header Style Fixes (Semester and SPI same size) */
+    .grades-table th {
+        font-size: 0.85em; /* Ensure all headers are the same reduced size */
+        white-space: nowrap; /* Prevent headers from wrapping */
+        text-align: center; /* Center the headers for better alignment with data */
+    }
 
-    /* Semester (1st child): Short text */
+    /* 3. Column Width Distribution (Adjusted slightly for 4 columns) */
+    
+    /* Semester (1st child) */
     .grades-table th:nth-child(1),
     .grades-table td:nth-child(1) {
-        width: 20%; 
-        min-width: 55px;
+        width: 22%; 
+        min-width: 60px;
         text-align: left;
     }
 
-    /* SPI (2nd child): Score */
+    /* SPI (2nd child) - CRITICAL FIXES HERE */
     .grades-table th:nth-child(2),
     .grades-table td:nth-child(2) {
         width: 18%; 
         min-width: 50px;
-        font-weight: 800; /* Highlight the grade */
-        text-align: center; /* Center score for visual balance */
-        color: var(--accent); /* Use the accent color for the score */
+        text-align: center;
+    }
+    
+    /* FIX: SPI Content Alignment and Color Uniformity */
+    .grades-table td:nth-child(2) {
+        /* This ensures the whole SPI number, even if split, is styled uniformly */
+        font-weight: 800;
+        color: var(--accent); /* Make entire score blue */
+        /* If the score is split into multiple spans/lines, force them to align centrally */
+        line-height: 1.1; 
     }
 
-    /* Duration (3rd child): Long date range - needs the most space */
+    /* Duration (3rd child) - FIXES for the awkward wrap (Jul 2023 / Dec 2023) */
     .grades-table th:nth-child(3),
     .grades-table td:nth-child(3) {
-        width: 42%; 
-        min-width: 130px;
-        font-size: 0.9em; /* Slight reduction to ensure dates fit on one line */
-        word-break: break-word; 
+        width: 40%; 
+        min-width: 120px;
+        text-align: left;
+        /* FIX: Ensure content is forced onto one line or wraps cleanly */
+        white-space: normal;
+        font-size: 0.9em;
     }
+    
+    /* FIX: If the dates are being rendered with a <br> or multiple lines, this will compact it. */
+    /* If the date is still wrapping awkwardly, consider replacing " – " with a hyphen "-" in your HTML. */
 
-    /* Result (4th child): Link/Button - needs minimum space */
+
+    /* Result (4th child) */
     .grades-table th:nth-child(4),
     .grades-table td:nth-child(4) {
         width: 20%;
         min-width: 65px;
-        text-align: right; /* Push the button to the right edge */
+        text-align: right; 
     }
 
-    /* 3. Style the "View Result Photo" Link (cert-link) */
+    /* 4. "View Result Photo" Link appearance */
     .grades-table .cert-link {
-        /* Change link to button-like appearance */
         display: inline-block;
         padding: 4px 8px;
         margin: 2px 0;
-        border-radius: 999px; /* Pill shape */
+        border-radius: 999px;
         background: var(--accent-soft);
         color: var(--accent);
         text-decoration: none;
-        font-size: 0.75rem; /* Ensure text is small and compact */
+        font-size: 0.75rem; 
         font-weight: 700;
-        white-space: nowrap; /* Prevent button text from wrapping */
+        white-space: nowrap; 
     }
-
-    /* Make the long Semester text "Semester" in the header more compact */
-    .grades-table th:first-child {
-        font-size: 0.8em;
-    }
-
-    /* Reduce the size of the highlight background color */
+    
+    /* Highlighting row background adjustment */
     .grades-table tr.highlight td {
-        background: linear-gradient(90deg, rgba(25,118,210,0.06), transparent);
+        /* Use a subtle, unified background for the highlighted row */
+        background: var(--bg-700); 
     }
 }
 
@@ -596,6 +590,7 @@ header.shadow {
         /* Ensure it is a block element (already set by display: block) */
     }
 }
+
 
 
 
