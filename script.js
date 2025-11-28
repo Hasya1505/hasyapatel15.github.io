@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
     /* 1. Calculate and display average SPI */
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* 🔥 4. NEW Responsive Menu Toggle (your new code) */
+    /* 4. Responsive Menu Toggle */
     const menuBtn = document.getElementById("menu-btn");
     const navLinks = document.getElementById("nav-links");
 
@@ -36,56 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-});
-
-/* Close menu when a link is clicked (mobile) */
-const allLinks = document.querySelectorAll("#nav-links a");
-allLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("show");
-    });
-});
-
-/* Sticky header shadow */
-window.addEventListener("scroll", () => {
-    const header = document.querySelector("header");
-    if (window.scrollY > 50) header.classList.add("shadow");
-    else header.classList.remove("shadow");
-});
-
-/* Smooth scroll for nav links */
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", e => {
-        e.preventDefault();
-        document.querySelector(link.getAttribute("href")).scrollIntoView({
-            behavior: "smooth"
+    /* 5. Close menu when clicking a nav link */
+    const allLinks = document.querySelectorAll("#nav-links a");
+    allLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("show");
         });
     });
-});
 
-/* Reveal animations */
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll() {
-    reveals.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-            el.classList.add("active");
+    /* 6. Close menu when clicking outside */
+    document.addEventListener("click", (e) => {
+        if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove("show");
         }
     });
-}
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
 
-/* Dark mode toggle */
-const darkBtn = document.getElementById("dark-btn");
-
-darkBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
 });
-
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-}
 
