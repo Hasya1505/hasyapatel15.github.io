@@ -160,7 +160,7 @@ a {
   font-weight: 700;
   border: 1px solid var(--border);
   margin-bottom: 0.8rem;
-  margin-top:0.5rem;
+  margin-top:1.5rem;
 }
 .badge-dot {
   width: 9px;
@@ -901,6 +901,7 @@ header.shadow {
     overflow-x: hidden !important;
   }
 }
+
 
 
 
