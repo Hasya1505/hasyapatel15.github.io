@@ -451,25 +451,6 @@ header.shadow {
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
-/* ---------------------------
-   Mobile Bug Fixes (Overrides)
-   — Addressing the 4 reported issues
-   --------------------------- */
-
-/* 1. Alway Header list Showen (Navigation Menu Issue) */
-
-/* The provided CSS has a rule to hide .nav ul: 
-   @media (max-width: 768px) { .nav ul { display: none; } }
-   The issue is that the element showing in your screenshot is the actual 
-   dropdown menu that opens from the hamburger icon. It is currently styled by:
-   .nav-menu { display: none; ... }
-
-   Your menu appears to be permanently visible due to an **HTML structure issue** where the desktop and mobile menus might be overlapping, or the mobile menu
-   (.nav ul) is missing the 'show' class toggle. 
-   
-   Since the HTML structure is unknown, we override the mobile list visibility 
-   to ensure it's hidden UNLESS it has the .show class.
-   */
 
 @media (max-width: 768px) {
     /* Ensure the main navigation list is hidden by default on mobile */
@@ -491,29 +472,6 @@ header.shadow {
     }
 }
 
-
-/* 2. In academaic section View Result go out of Table (Table Overflow) */
-
-/* The table is .grades-table. We need to wrap it in a container 
-   (in your HTML) and apply overflow-x: auto, OR target the smallest 
-   possible screen sizes to make the cells smaller.
-   
-   Assuming you cannot change the HTML, we force the table to scroll 
-   within its parent container: */
-
-/* Add a new div in your HTML around the table: <div class="table-scroll-wrapper"><table class="grades-table">...</table></div>
-.table-scroll-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-} 
-   
-   If you cannot change the HTML, we apply tighter padding and 
-   force word wrap for the cells on small screens: */
-/* ---------------------------
-   Table (Grades) Readability Fixes
-   — Making the grades-table attractive on very small screens
-   --------------------------- */
-
 @media (max-width: 480px) {
 
     /* 1. Reduce overall font size for table content to fit more text */
@@ -533,71 +491,87 @@ header.shadow {
     /* 3. Optimize Column Widths (Crucial for Layout) */
     
     /* Semester Column: Force to minimum width */
-    .grades-table th:nth-child(1), 
+/* ----------------------------------------------------
+   Responsive Table Layout for 4-Column Academic Grades
+   ---------------------------------------------------- */
+
+@media (max-width: 520px) {
+    /* 1. Overall Table Tidy-up */
+    .grades-table {
+        /* Slightly reduce font size for better fit */
+        font-size: 0.95em; 
+        /* Ensure the table doesn't get squashed below a minimum readable width */
+        min-width: 100%; 
+    }
+    
+    /* Reduce padding on all cells for tighter layout */
+    .grades-table th, .grades-table td {
+        padding: 0.6rem 0.4rem !important;
+        vertical-align: middle; /* Center content vertically */
+    }
+
+    /* 2. Column Width Distribution (Total 100%) */
+
+    /* Semester (1st child): Short text */
+    .grades-table th:nth-child(1),
     .grades-table td:nth-child(1) {
-        width: 15%; /* Keep Semester concise */
-        min-width: 60px;
-        text-align: center;
-    }
-
-    /* SPI Column: Force to minimum width */
-    .grades-table th:nth-child(2), 
-    .grades-table td:nth-child(2) {
-        width: 15%; 
+        width: 20%; 
         min-width: 55px;
-        font-weight: 700; /* Highlight the SPI value */
+        text-align: left;
     }
 
-    /* Duration Column: Force to minimum width */
-    .grades-table th:nth-child(3), 
+    /* SPI (2nd child): Score */
+    .grades-table th:nth-child(2),
+    .grades-table td:nth-child(2) {
+        width: 18%; 
+        min-width: 50px;
+        font-weight: 800; /* Highlight the grade */
+        text-align: center; /* Center score for visual balance */
+        color: var(--accent); /* Use the accent color for the score */
+    }
+
+    /* Duration (3rd child): Long date range - needs the most space */
+    .grades-table th:nth-child(3),
     .grades-table td:nth-child(3) {
-        width: 22%; /* Give it just enough space for Jul 2024 - Dec 2024 */
-        min-width: 80px;
+        width: 42%; 
+        min-width: 130px;
+        font-size: 0.9em; /* Slight reduction to ensure dates fit on one line */
+        word-break: break-word; 
     }
 
-    /* Remark Column: Give it the most remaining space */
-    .grades-table th:nth-child(4), 
+    /* Result (4th child): Link/Button - needs minimum space */
+    .grades-table th:nth-child(4),
     .grades-table td:nth-child(4) {
-        width: 38%; 
+        width: 20%;
+        min-width: 65px;
+        text-align: right; /* Push the button to the right edge */
     }
 
-    /* Result Column: Force to minimum width for the link */
-    .grades-table th:nth-child(5), 
-    .grades-table td:nth-child(5) {
-        width: 10%; 
-        min-width: 40px;
-        text-align: center;
-    }
-
-    /* 4. Improve the "View Result Photo" Link appearance */
-    .grades-table td:nth-child(5) a {
-        /* Decrease link text size */
-        font-size: 0.75rem; 
-        /* Change link to button-like appearance to save vertical space */
-        display: block; 
-        padding: 4px 0px; 
-        margin: 2px auto;
-        border-radius: 6px;
+    /* 3. Style the "View Result Photo" Link (cert-link) */
+    .grades-table .cert-link {
+        /* Change link to button-like appearance */
+        display: inline-block;
+        padding: 4px 8px;
+        margin: 2px 0;
+        border-radius: 999px; /* Pill shape */
         background: var(--accent-soft);
         color: var(--accent);
         text-decoration: none;
-        max-width: 95%; 
+        font-size: 0.75rem; /* Ensure text is small and compact */
+        font-weight: 700;
+        white-space: nowrap; /* Prevent button text from wrapping */
     }
 
-    /* Make the long Semester text "1st Sem" more compact in the header */
+    /* Make the long Semester text "Semester" in the header more compact */
     .grades-table th:first-child {
         font-size: 0.8em;
     }
+
+    /* Reduce the size of the highlight background color */
+    .grades-table tr.highlight td {
+        background: linear-gradient(90deg, rgba(25,118,210,0.06), transparent);
+    }
 }
-
-
-/* 3. All Section Gone left side At right side black area empty (Horizontal Overflow) */
-
-/* The main issue here is an element wider than the viewport. 
-   You already have overflow-x:hidden on the <body>, but an element 
-   might be positioned absolutely or fixed and still causing scroll.
-   
-   We reinforce the overflow hidden on the main content wrapper: */
 
 @media (max-width: 768px) {
     /* The .wrapper holds all the page content */
@@ -613,21 +587,6 @@ header.shadow {
     }
 }
 
-
-/* 4. In Last Submit Button too big */
-
-/* You already have an excellent set of rules for this button: 
-   .part2 button { width: 70%; max-width: 380px; margin: 0 auto; display: block; }
-   and media queries for smaller screens. 
-   
-   The problem is likely the `width: 70%` is still too big within the container 
-   on very small screens, or the container itself is being pushed by issue #3.
-   
-   Your existing CSS: 
-   @media (max-width: 420px) { .part2 button { width: 94%; margin-left:5%; } }
-   Let's ensure it is *fully* centered and takes up a safe amount of width:
-*/
-
 @media (max-width: 480px) {
     .part2 button {
         /* Set width to 90% of the container */
@@ -637,6 +596,7 @@ header.shadow {
         /* Ensure it is a block element (already set by display: block) */
     }
 }
+
 
 
 
