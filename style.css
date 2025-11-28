@@ -78,11 +78,27 @@ a{color:var(--accent);text-decoration:none}
 }
 
 /* MENU BUTTON - MOBILE */
-.menu-btn {
+/* Target the mobile navigation container, assume it has a class like .nav-menu or .dropdown-menu */
+.nav-menu {
+    /* Hide the menu by default */
     display: none;
-    font-size: 30px;
-    cursor: pointer;
-    user-select: none;
+    /* Position it correctly */
+    position: absolute;
+    /* Ensure it's on top of other content */
+    z-index: 1000;
+    /* Add styling for background, padding, etc. */
+    right: 0; 
+    top: 60px; /* Adjust based on your header height */
+    background-color: white; 
+    border: 1px solid #ccc;
+    /* Make sure it's full height on mobile */
+    /* width: 100%; or adjust width */
+}
+
+/* This class should be dynamically added/removed by JavaScript 
+   when the user clicks the hamburger icon. */
+.nav-menu.open {
+    display: block; /* Show the menu when the 'open' class is present */
 }
 
 /* RESPONSIVE */
@@ -435,6 +451,120 @@ header.shadow {
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
+/* ---------------------------
+   Mobile Bug Fixes (Overrides)
+   — Addressing the 4 reported issues
+   --------------------------- */
+
+/* 1. Alway Header list Showen (Navigation Menu Issue) */
+
+/* The provided CSS has a rule to hide .nav ul: 
+   @media (max-width: 768px) { .nav ul { display: none; } }
+   The issue is that the element showing in your screenshot is the actual 
+   dropdown menu that opens from the hamburger icon. It is currently styled by:
+   .nav-menu { display: none; ... }
+
+   Your menu appears to be permanently visible due to an **HTML structure issue** where the desktop and mobile menus might be overlapping, or the mobile menu
+   (.nav ul) is missing the 'show' class toggle. 
+   
+   Since the HTML structure is unknown, we override the mobile list visibility 
+   to ensure it's hidden UNLESS it has the .show class.
+   */
+
+@media (max-width: 768px) {
+    /* Ensure the main navigation list is hidden by default on mobile */
+    .nav ul {
+        display: none !important; /* Force hidden */
+    }
+
+    /* .nav ul.show must be toggled by JS to show the menu */
+    .nav ul.show {
+        display: flex !important; /* Force visible when JS applies 'show' */
+    }
+
+    /* If the visible list is using the class .nav-menu from your initial notes: */
+    .nav-menu {
+        display: none !important; /* Ensure the fixed header list is hidden */
+    }
+    .nav-menu.open {
+        display: flex !important; /* Ensure it shows when open */
+    }
+}
+
+
+/* 2. In academaic section View Result go out of Table (Table Overflow) */
+
+/* The table is .grades-table. We need to wrap it in a container 
+   (in your HTML) and apply overflow-x: auto, OR target the smallest 
+   possible screen sizes to make the cells smaller.
+   
+   Assuming you cannot change the HTML, we force the table to scroll 
+   within its parent container: */
+
+/* Add a new div in your HTML around the table: <div class="table-scroll-wrapper"><table class="grades-table">...</table></div>
+.table-scroll-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+} 
+   
+   If you cannot change the HTML, we apply tighter padding and 
+   force word wrap for the cells on small screens: */
+@media (max-width: 520px) {
+    .grades-table td, .grades-table th {
+        /* Reduce padding significantly to save space */
+        padding: .5rem .4rem; 
+        /* Force word wrap on the content to prevent single long words from breaking layout */
+        word-break: break-word; 
+    }
+}
+
+
+/* 3. All Section Gone left side At right side black area empty (Horizontal Overflow) */
+
+/* The main issue here is an element wider than the viewport. 
+   You already have overflow-x:hidden on the <body>, but an element 
+   might be positioned absolutely or fixed and still causing scroll.
+   
+   We reinforce the overflow hidden on the main content wrapper: */
+
+@media (max-width: 768px) {
+    /* The .wrapper holds all the page content */
+    .wrapper {
+        /* Ensure the content wrapper doesn't exceed screen width */
+        width: 100%;
+        /* You already have padding set at smaller breakpoints, which is good. */
+    }
+    
+    /* Reinforce overflow-x:hidden on the body (it's already set in your base CSS, but this is a double-check) */
+    body {
+        overflow-x: hidden !important; 
+    }
+}
+
+
+/* 4. In Last Submit Button too big */
+
+/* You already have an excellent set of rules for this button: 
+   .part2 button { width: 70%; max-width: 380px; margin: 0 auto; display: block; }
+   and media queries for smaller screens. 
+   
+   The problem is likely the `width: 70%` is still too big within the container 
+   on very small screens, or the container itself is being pushed by issue #3.
+   
+   Your existing CSS: 
+   @media (max-width: 420px) { .part2 button { width: 94%; margin-left:5%; } }
+   Let's ensure it is *fully* centered and takes up a safe amount of width:
+*/
+
+@media (max-width: 480px) {
+    .part2 button {
+        /* Set width to 90% of the container */
+        width: 90%; 
+        /* Reset margins to automatically center the block */
+        margin: 0.9rem auto 0 auto !important; 
+        /* Ensure it is a block element (already set by display: block) */
+    }
+}
 
 
 
