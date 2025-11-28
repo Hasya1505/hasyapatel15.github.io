@@ -422,5 +422,19 @@ header{
   }
 } 
 
+.dark-mode {
+    background: #111;
+    color: #fff;
+}
+
+.reveal { opacity: 0; transform: translateY(40px); transition: 0.6s; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+
+header.shadow {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+
 
 
