@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
     /* 1. Calculate and display average SPI */
@@ -15,18 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const yearSpan = document.getElementById("year");
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    /* 3. Scroll-to-top button */
-    const scrollBtn = document.getElementById("scrollTopBtn");
-    if (scrollBtn) {
-        window.addEventListener("scroll", () => {
-            scrollBtn.style.display = window.scrollY > 400 ? "block" : "none";
-        });
 
-        scrollBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    }
-
+    
     /* 4. Responsive Menu Toggle */
     const menuBtn = document.getElementById("menu-btn");
     const navLinks = document.getElementById("nav-links");
@@ -53,4 +42,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
-
