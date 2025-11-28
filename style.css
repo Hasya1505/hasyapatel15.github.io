@@ -108,10 +108,14 @@ a {
 }
 
 /* MENU BUTTON - MOBILE (using .nav ul.show for consistency) */
-@media (max-width: 768px) {
-  .menu-btn {
-    display: block;
-  }
+@media (max-width: 600px) {
+    #menu-btn {
+        font-size: 32px;   /* Bigger icon */
+        padding: 10px;     /* Extra touch area */
+        cursor: pointer;
+    }
+}
+
 
   .nav ul {
     position: absolute;
@@ -895,4 +899,5 @@ header.shadow {
     overflow-x: hidden !important;
   }
 }
+
 
