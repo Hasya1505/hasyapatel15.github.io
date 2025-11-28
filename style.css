@@ -25,23 +25,24 @@
   margin: 0;
   padding: 0;
 }
-html {
-  font-family: Inter, 'Segoe UI', Roboto, system-ui, -apple-system,
-    'Helvetica Neue', Arial, sans-serif;
+/* --- Reset / Base --- */
+/* ... */
+html{
+  font-family:Inter, 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  /* ADD THIS LINE */
+  overflow-x: hidden; 
 }
-html,
-body {
-  height: 100%;
-}
-body {
-  min-height: 100vh;
-  background: var(--bg-800);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: clamp(15px, 1.6vw, 18px);
-  line-height: 1.55;
-  overflow-x: hidden;
+html,body{height:100%}
+body{
+  min-height:100vh;
+  /* Corrected variable usage here */
+  background: var(--bg-800); 
+  color:var(--text);
+  /* ... other styles ... */
+  font-size:clamp(15px,1.6vw,18px);
+  line-height:1.55;
+  /* This is the key line, ensure it is present */
+  overflow-x:hidden;
 }
 
 a {
@@ -894,3 +895,4 @@ header.shadow {
     overflow-x: hidden !important;
   }
 }
+
