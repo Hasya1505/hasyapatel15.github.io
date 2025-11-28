@@ -35,13 +35,10 @@ html{
 html,body{height:100%}
 body{
   min-height:100vh;
-  /* Corrected variable usage here */
   background: var(--bg-800); 
   color:var(--text);
-  /* ... other styles ... */
   font-size:clamp(15px,1.6vw,18px);
   line-height:1.55;
-  /* This is the key line, ensure it is present */
   overflow-x:hidden;
 }
 
@@ -51,25 +48,58 @@ a {
 }
 
 .wrapper {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 2.25rem 1.25rem 6rem;
+  max-width: 1480px;
+  margin: -52px 5px 5px 18px ;
+  padding: 4rem 1rem 4rem;
 }
 
-/* --- Header / Nav --- */
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  position: fixed;
+  /* MODIFIED: Changed to a semi-transparent background (50% opacity) */
+  /* background: rgba(250, 249, 249, 0.5);  */
+  background: rgba(250, 249, 249, 0.9);
+
+  /* MODIFIED: Removed the box-shadow for a cleaner, transparent look */
+  box-shadow: none; 
+  position: none;
   width: 100%;
   top: 0;
   z-index: 999;
+  /* The transition helps when scrolling */
   transition: box-shadow 0.18s ease, background 0.18s ease,
     border-color 0.18s ease;
+  /* OPTIONAL: Add a subtle backdrop filter for a frosted glass effect */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ... (other styles) ... */
+
+
+/* medium screens — make nav compact and hero stack-friendly */
+@media (max-width: 980px) {
+  header {
+    padding: 0.25rem 0;
+    /* MODIFIED: Changed background to match the transparent header */
+    background: linear-gradient(
+      180deg,
+      rgba(246, 244, 244, 0.5), 
+      rgba(238, 234, 234, 0.959)  
+    );
+    border-bottom-color: rgba(15, 23, 36, 0.04);
+  }
+  header:has(.nav ul:focus-within),
+  header:has(.nav ul:hover) {
+    /* MODIFIED: Removed the box-shadow */
+    box-shadow: none;
+  }
+  .nav {
+    padding: 0.7rem 0.8rem;
+  }
 }
 
 .logo {
@@ -95,8 +125,9 @@ a {
 
 .nav a {
   text-decoration: none;
-  font-size: 16px;
-  color: #333;
+  font-size: 19px;
+  font-weight: 550;
+  color: rgb(21, 20, 23);
   transition: 0.3s ease;
   padding: 0.6rem 0.85rem;
   border-radius: 12px;
@@ -105,31 +136,48 @@ a {
 
 .nav a:hover {
   color: var(--accent);
-}
 
+}
+ #menu-btn {
+  margin-left: 0px;
+ }
 @media (max-width: 768px) {
   #menu-btn {
     display: block;
-    /* Increase the font size of the '☰' character */
-    font-size: 26px; 
-    /* Add padding to create a larger, touch-friendly target area */
+    font-size: 20px; 
     padding: 8px 10px; 
-    /* Optional: Slight color change on tap */
-    -webkit-tap-highlight-color: rgba(25, 118, 210, 0.1); 
+    -webkit-tap-highlight-color: rgba(17, 108, 199, 0.1); 
+    background-color: #b6c9dc;
+    border-radius: 90px;
+    display: none;
   }
-   
+
+/* Show menu button only on screens below 768px */
+@media (max-width: 768px) {
+    #menu-btn {
+        display: block;
+        /* margin-left: 25px; */
+    }
+}
+
+ #menu-btn:hover {
+   background-color: rgb(132, 189, 217);
+   color: rgb(233, 241, 234);
+ }
+/* ... (rest of the CSS) ... */
   .nav ul {
     position: absolute;
     top: 65px;
     right: 0;
     width: 200px;
-    background: white;
-    display: none !important; /* Hidden by default on mobile */
+    height: auto;
+    background:rgb(151, 204, 227);
+    display: none !important;
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    /* box-shadow: 0 15px 52px rgba(0, 0, 0, 0.2); */
+    border-radius: 58px;
     text-align: right;
   }
 
@@ -200,6 +248,7 @@ a {
   font-weight: 800;
   cursor: pointer;
   transition: transform 0.16s ease, box-shadow 0.16s ease;
+  margin-right: 20px;
 }
 .btn-primary {
   background: linear-gradient(180deg, var(--accent), var(--accent-2));
@@ -479,7 +528,7 @@ section {
   resize: vertical;
 }
 .part2 button {
-  width: 70%;
+  width: 50%;
   max-width: 380px;
   margin: 0 auto;
   display: block;
@@ -488,8 +537,8 @@ section {
   border: none;
   background: linear-gradient(180deg, var(--accent), var(--accent-2));
   color: white;
-  font-weight: 800;
-  font-size: 1rem;
+  font-weight: 300;
+  font-size: 18px;
   margin-top: 0.9rem;
   cursor: pointer;
   transition: transform 0.14s ease;
@@ -508,7 +557,7 @@ footer {
 }
 
 /* Scroll to top button */
-#scrollTopBtn {
+/* #scrollTopBtn {
   position: fixed;
   right: 18px;
   bottom: 18px;
@@ -520,8 +569,7 @@ footer {
   box-shadow: 0 8px 20px rgba(25, 118, 210, 0.18);
   cursor: pointer;
   font-weight: 800;
-}
-
+} */
 /* Small utilities */
 .text-muted {
   color: var(--muted);
@@ -530,21 +578,6 @@ footer {
   display: flex;
   gap: 0.6rem;
   align-items: center;
-}
-
-.dark-mode {
-  background: #111;
-  color: #fff;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.6s;
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 header.shadow {
@@ -644,7 +677,7 @@ header.shadow {
     order: 2;
   }
   .part2 button {
-    width: 80%;
+    width: 60%;
     max-width: 360px;
   }
 }
@@ -697,7 +730,7 @@ header.shadow {
     gap: 0.9rem;
   }
   .part2 button {
-    width: 85%;
+    width: 80%;
     max-width: 330px;
     padding: 0.85rem 0.9rem;
     font-size: 0.98rem;
@@ -744,9 +777,10 @@ header.shadow {
     font-size: 0.98rem;
   }
   .part2 button {
-    width: 90%;
-    max-width: 300px;
+    width: 50%;
+    /* max-width: 300px; */
     font-size: 0.95rem;
+    font-weight: 550;
     padding: 0.8rem 0.9rem;
     margin: 0.9rem auto 0 auto !important;
   }
@@ -901,7 +935,3 @@ header.shadow {
     overflow-x: hidden !important;
   }
 }
-
-
-
-
