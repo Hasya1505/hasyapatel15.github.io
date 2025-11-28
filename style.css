@@ -107,16 +107,17 @@ a {
   color: var(--accent);
 }
 
-/* MENU BUTTON - MOBILE (using .nav ul.show for consistency) */
-@media (max-width: 600px) {
-    #menu-btn {
-        font-size: 32px;   /* Bigger icon */
-        padding: 10px;     /* Extra touch area */
-        cursor: pointer;
-    }
-}
-
-
+@media (max-width: 768px) {
+  #menu-btn {
+    display: block;
+    /* Increase the font size of the '☰' character */
+    font-size: 26px; 
+    /* Add padding to create a larger, touch-friendly target area */
+    padding: 8px 10px; 
+    /* Optional: Slight color change on tap */
+    -webkit-tap-highlight-color: rgba(25, 118, 210, 0.1); 
+  }
+   
   .nav ul {
     position: absolute;
     top: 65px;
