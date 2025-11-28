@@ -840,6 +840,7 @@ header.shadow {
     width: 30%;
     min-width: 65px;
     text-align: right;
+   margin-right:15px; 
   }
 
   .grades-table .cert-link {
@@ -935,6 +936,7 @@ header.shadow {
     overflow-x: hidden !important;
   }
 }
+
 
 
 
