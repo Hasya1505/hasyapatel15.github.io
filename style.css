@@ -284,7 +284,7 @@ footer{margin-top:2.5rem;text-align:center;color:var(--muted);padding:1rem 0}
 }
 
 /* small phones */
-@media (max-width: 520px) {
+@media (max-width: 480px) {
   :root{font-size:15px}
   .hero-card{padding:.75rem; gap:.6rem}
   .avatar-img{width:96px;height:96px}
@@ -434,6 +434,7 @@ header{
 header.shadow {
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
+
 
 
 
