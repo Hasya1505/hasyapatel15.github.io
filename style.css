@@ -509,12 +509,84 @@ header.shadow {
    
    If you cannot change the HTML, we apply tighter padding and 
    force word wrap for the cells on small screens: */
-@media (max-width: 520px) {
-    .grades-table td, .grades-table th {
-        /* Reduce padding significantly to save space */
-        padding: .5rem .4rem; 
-        /* Force word wrap on the content to prevent single long words from breaking layout */
+/* ---------------------------
+   Table (Grades) Readability Fixes
+   — Making the grades-table attractive on very small screens
+   --------------------------- */
+
+@media (max-width: 480px) {
+
+    /* 1. Reduce overall font size for table content to fit more text */
+    .grades-table {
+        font-size: 0.9em; /* Adjust font size relative to parent */
+    }
+
+    /* 2. Target Table Headers (th) and Data Cells (td) */
+    .grades-table th, .grades-table td {
+        /* Reduce padding further for space */
+        padding: 0.5rem 0.3rem !important; 
+        
+        /* Ensure text breaks within words if necessary, especially for "Semester" and "Duration" columns */
         word-break: break-word; 
+    }
+
+    /* 3. Optimize Column Widths (Crucial for Layout) */
+    
+    /* Semester Column: Force to minimum width */
+    .grades-table th:nth-child(1), 
+    .grades-table td:nth-child(1) {
+        width: 15%; /* Keep Semester concise */
+        min-width: 60px;
+        text-align: center;
+    }
+
+    /* SPI Column: Force to minimum width */
+    .grades-table th:nth-child(2), 
+    .grades-table td:nth-child(2) {
+        width: 15%; 
+        min-width: 55px;
+        font-weight: 700; /* Highlight the SPI value */
+    }
+
+    /* Duration Column: Force to minimum width */
+    .grades-table th:nth-child(3), 
+    .grades-table td:nth-child(3) {
+        width: 22%; /* Give it just enough space for Jul 2024 - Dec 2024 */
+        min-width: 80px;
+    }
+
+    /* Remark Column: Give it the most remaining space */
+    .grades-table th:nth-child(4), 
+    .grades-table td:nth-child(4) {
+        width: 38%; 
+    }
+
+    /* Result Column: Force to minimum width for the link */
+    .grades-table th:nth-child(5), 
+    .grades-table td:nth-child(5) {
+        width: 10%; 
+        min-width: 40px;
+        text-align: center;
+    }
+
+    /* 4. Improve the "View Result Photo" Link appearance */
+    .grades-table td:nth-child(5) a {
+        /* Decrease link text size */
+        font-size: 0.75rem; 
+        /* Change link to button-like appearance to save vertical space */
+        display: block; 
+        padding: 4px 0px; 
+        margin: 2px auto;
+        border-radius: 6px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        text-decoration: none;
+        max-width: 95%; 
+    }
+
+    /* Make the long Semester text "1st Sem" more compact in the header */
+    .grades-table th:first-child {
+        font-size: 0.8em;
     }
 }
 
@@ -565,6 +637,7 @@ header.shadow {
         /* Ensure it is a block element (already set by display: block) */
     }
 }
+
 
 
 
