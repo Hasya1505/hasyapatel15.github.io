@@ -140,6 +140,7 @@ a {
 }
  #menu-btn {
   margin-left: 0px;
+   display: none;
  }
 @media (max-width: 768px) {
   #menu-btn {
@@ -936,6 +937,7 @@ header.shadow {
     overflow-x: hidden !important;
   }
 }
+
 
 
 
