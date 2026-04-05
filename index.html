@@ -40,6 +40,33 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            transition: filter 0.5s ease;
+        }
+
+        /* --- Scroll Animation Classes --- */
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .reveal-left.active, 
+        .reveal-right.active, 
+        .reveal-up.active {
+            opacity: 1;
+            transform: translate(0);
         }
 
         /* Desktop Navigation */
@@ -72,13 +99,8 @@
             position: relative;
         }
 
-        .desktop-nav a:hover { 
-            color: var(--accent); 
-        }
-
-        .desktop-nav a.active {
-            color: var(--text-primary);
-        }
+        .desktop-nav a:hover { color: var(--accent); }
+        .desktop-nav a.active { color: var(--text-primary); }
 
         .desktop-nav a::after {
             content: '';
@@ -92,9 +114,7 @@
             transform: translateX(-50%);
         }
 
-        .desktop-nav a.active::after {
-            width: 15px;
-        }
+        .desktop-nav a.active::after { width: 15px; }
 
         /* Mobile Navigation */
         .mobile-nav {
@@ -120,10 +140,7 @@
             border-color: var(--accent);
         }
 
-        .mobile-nav i {
-            font-size: 1.2rem;
-            color: var(--text-primary);
-        }
+        .mobile-nav i { font-size: 1.2rem; color: var(--text-primary); }
 
         /* Mobile Menu Sidebar */
         .mobile-menu {
@@ -143,9 +160,7 @@
             gap: 20px;
         }
 
-        .mobile-menu.active {
-            right: 0;
-        }
+        .mobile-menu.active { right: 0; }
 
         .mobile-menu-close {
             position: absolute;
@@ -159,9 +174,7 @@
             z-index: 1003;
         }
 
-        .mobile-menu-close:hover {
-            color: var(--accent);
-        }
+        .mobile-menu-close:hover { color: var(--accent); }
 
         .mobile-menu a {
             color: var(--text-primary);
@@ -193,89 +206,112 @@
             transition: all 0.4s ease;
         }
 
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
-        .hero {
-            height: 100vh;
+        /* Hero Layout */
+      /* Update your existing .hero CSS class */
+.hero {
+    background-color: var(--bg); /* This solid color hides the 3D canvas */
+    position: relative; 
+    z-index: 10; /* Ensures it sits above the 3D canvas */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding-top: 80px;
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+        .hero-content { flex: 1; max-width: 650px; }
+
+        .hero-image-wrapper {
+            flex: 1;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
-            text-align: center;
-            padding-top: 80px;
-        }
-
-        .hero-avatar-wrapper {
-            position: relative;
-            padding: 6px;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-            margin-bottom: 30px;
-            box-shadow: var(--neon-glow);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
         }
 
         .hero-avatar {
-            width: 140px;
-            height: 140px;
+            width: clamp(280px, 35vw, 450px);
+            height: clamp(280px, 35vw, 450px);
             border-radius: 50%;
             object-fit: cover;
+            box-shadow: 0 0 50px rgba(99, 102, 241, 0.3);
+            border: 4px solid rgba(255,255,255,0.05);
+            transition: transform 0.5s ease;
         }
-
-        .badge {
-            background: rgba(99, 102, 241, 0.1);
-            padding: 6px 20px;
-            border-radius: 100px;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 2.5px;
-            margin-bottom: 20px;
+        
+        .hero-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 70px rgba(74, 222, 128, 0.4);
         }
 
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-size: clamp(2.8rem, 5vw, 5rem);
             font-weight: 800;
-            line-height: 1;
-            margin: 20px 0;
-            letter-spacing: -3px;
-        }
-
-        h1 span {
-            background: linear-gradient(to right, #818cf8, #c084fc, #f472b6);
+            line-height: 1.1;
+            margin: 15px 0;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, #fff, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-subtitle {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
         .hero-text {
-            max-width: 600px;
             color: var(--text-secondary);
             margin-bottom: 40px;
             font-size: 1.1rem;
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-start;
+        }
+
+        .btn-primary {
+            padding: 16px 35px;
+            background: #4ade80; 
+            color: #010409;
+            border-radius: 8px; 
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.4s;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(74, 222, 128, 0.5);
+            background: #22c55e;
+        }
+
+        .btn-secondary {
+            padding: 16px 35px;
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.4s;
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: #4ade80;
+            color: #4ade80;
         }
 
         .btn-glow {
@@ -295,8 +331,8 @@
         }
 
         .btn-glow:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 50px rgba(99, 102, 241, 0.5);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
         }
 
         .btn-outline {
@@ -308,13 +344,12 @@
         .btn-outline:hover {
             background: var(--accent);
             color: var(--bg);
-            box-shadow: 0 0 50px rgba(99, 102, 241, 0.5);
         }
 
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem;
-            margin: 100px 0 20px;
+            margin: 100px 0 10px;
             display: flex;
             align-items: center;
             gap: 20px;
@@ -355,77 +390,37 @@
         .academic-card { grid-column: span 8; }
         .stats-card { 
             grid-column: span 4; 
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .grades-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
+        .grades-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .grades-table th, .grades-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        .grades-table th { color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .grades-table td { font-size: 0.95rem; }
 
-        .grades-table th,
-        .grades-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
+        .cert-link { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .cert-link:hover { text-shadow: var(--neon-glow); }
 
-        .grades-table th {
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .grades-table td {
-            font-size: 0.95rem;
-        }
-
-        .cert-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .cert-link:hover {
-            text-shadow: var(--neon-glow);
-        }
-
-        .cgpa-row {
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-top: 20px;
-        }
-
-        .timeline-card {
-            grid-column: span 12;
-        }
-
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
+        .cgpa-row { text-align: center; font-size: 1.3rem; font-weight: 600; margin-top: 20px; }
+        .timeline-card { grid-column: span 12; }
+        .timeline { display: flex; flex-direction: column; gap: 25px; }
 
         .timeline-item {
             padding: 25px;
             background: rgba(255,255,255,0.02);
             border-radius: 16px;
             border-left: 3px solid var(--accent);
-            padding-left: 20px;
             transition: 0.3s;
         }
 
         .timeline-item:hover {
-            border-left-color: var(--accent-2);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+            border-left-color: #4ade80;
+            background: rgba(255,255,255,0.05);
+            transform: translateX(10px);
         }
 
         .timeline-label {
@@ -439,118 +434,45 @@
             margin-bottom: 10px;
         }
 
-        .timeline-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
+        .timeline-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-card {
-            text-align: center;
-            padding: 25px;
-        }
-
-        .skill-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .skill-sub {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-        }
-
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .skill-card { text-align: center; padding: 25px; }
+        .skill-title { font-size: 1.5rem; margin-bottom: 10px; }
+        .skill-sub { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 15px; display: block; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .skill-tag {
-            background: rgba(99, 102, 241, 0.2);
+            background: rgba(99, 102, 241, 0.1);
             color: var(--accent);
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
-            border: 1px solid var(--accent);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: 0.3s;
+        }
+        .skill-tag:hover {
+            background: var(--accent);
+            color: white;
         }
 
-        .sub-list {
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        .course-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
+        .course-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .course-card {
             padding: 25px;
             background: rgba(255,255,255,0.02);
             border-radius: 16px;
             border: 1px solid var(--border);
+            transition: 0.3s;
         }
+        .course-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .course-title { font-size: 1.2rem; margin-bottom: 8px; }
+        .course-meta { color: var(--accent); font-size: 0.85rem; margin-bottom: 12px; font-weight: 600; }
 
-        .course-title {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .course-meta {
-            color: var(--accent);
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .contact-row {
-            display: flex;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-        }
-
-        .contact-row span {
-            min-width: 100px;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .accent-link {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .accent-link:hover {
-            text-shadow: var(--neon-glow);
-        }
-
-        .social-links-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .contact-row { display: flex; margin-bottom: 12px; font-size: 0.95rem; }
+        .contact-row span { min-width: 100px; color: var(--accent); font-weight: 600; }
+        
+        .social-links-list { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
         .social-link {
             color: var(--text-primary);
             text-decoration: none;
@@ -560,15 +482,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
         }
-
         .social-link:hover {
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--accent);
             padding-left: 20px;
-        }
-
-        .part2 form p {
-            margin-bottom: 15px;
         }
 
         .part2 input, .part2 textarea {
@@ -580,600 +500,660 @@
             color: white;
             font-family: inherit;
             margin-top: 5px;
+            transition: 0.3s;
         }
-
-        .part2 textarea {
-            resize: vertical;
-            min-height: 100px;
+        .part2 input:focus, .part2 textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.05);
         }
+        .part2 textarea { resize: vertical; min-height: 120px; }
 
-        footer { 
-            padding: 40px 0; 
-            text-align: center; 
-            opacity: 0.6; 
-            font-size: 0.8rem; 
-            letter-spacing: 1px; 
-        }
+        footer { padding: 40px 0; text-align: center; opacity: 0.6; font-size: 0.8rem; letter-spacing: 1px; }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .academic-card { grid-column: span 12; }
-            .stats-card { 
-                grid-column: span 12; 
-                margin-top: 20px;
-            }
-        }
-
+        /* --- Mobile Responsive Rules --- */
         @media (max-width: 900px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-                margin: 80px 0 20px;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
             .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
                 padding-top: 120px;
-                padding-left: 1rem;
-                padding-right: 1rem;
             }
+            .hero-image-wrapper { justify-content: center; margin-bottom: 30px; }
+            .hero-text { max-width: 100%; margin: 0 auto 30px; }
+            .hero-buttons { justify-content: center; }
+            .hero-content { display: flex; flex-direction: column; align-items: center; }
+            .contact-grid { grid-template-columns: 1fr; gap: 30px; }
         }
 
         @media (max-width: 768px) {
-            .desktop-nav {
-                display: none;
+            /* On mobile, sideways animations can cause horizontal scrollbar issues. Change to slide-up */
+            .reveal-left, .reveal-right {
+                transform: translateY(50px);
             }
             
-            .mobile-nav {
-                display: flex;
-            }
-            
-            .hero-avatar {
-                width: 120px;
-                height: 120px;
-            }
-            
-            .bento-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .card {
-                padding: 25px 20px;
-            }
-            
-            .skills-grid,
-            .course-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .grades-table th,
-            .grades-table td {
-                padding: 8px 4px;
-                font-size: 0.85rem;
-            }
+            .desktop-nav { display: none; }
+            .mobile-nav { display: flex; }
+            .bento-grid { grid-template-columns: 1fr; gap: 15px; }
+            .academic-card { grid-column: span 1; }
+            .stats-card { grid-column: span 1; }
+            .card { padding: 25px 20px; }
+            h1 { font-size: 2.5rem; }
         }
+        /* Add this to your <style> section */
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .hero {
-                padding-top: 140px;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .btn-glow {
-                padding: 12px 30px;
-                font-size: 0.75rem;
-                margin: 5px;
-            }
-            
-            .card {
-                padding: 20px 15px;
-            }
-            
-            .timeline-item {
-                padding: 20px 15px;
-            }
-            
-            .part2 form p {
-                font-size: 0.9rem;
-            }
-        }
+.contact-form-wrapper {
+    background: rgba(13, 17, 23, 0.8);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
 
-        @media (max-width: 480px) {
-            .mobile-menu {
-                width: 100%;
-            }
-            
-            .hero-text {
-                font-size: 1rem;
-            }
-            
-            .section-subtitle {
-                font-size: 1rem;
-            }
-        }
+.contact-form-wrapper h3 {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.contact-form-wrapper input,
+.contact-form-wrapper textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-family: inherit;
+    margin-bottom: 15px; /* Creates space between the input boxes */
+    transition: all 0.3s ease;
+}
+
+/* Makes the boxes glow with your accent color when clicked */
+.contact-form-wrapper input:focus,
+.contact-form-wrapper textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+}
+
+.contact-form-wrapper textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form-wrapper button {
+    width: 100%;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Spaces the text from the paper plane icon */
+}
     </style>
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Desktop Navigation -->
     <nav class="desktop-nav">
         <a href="#about" class="nav-link active">About</a>
         <a href="#academics" class="nav-link">Academics</a>
         <a href="#journey" class="nav-link">Journey</a>
         <a href="#skills" class="nav-link">Skills</a>
-        <a href="#internship" class="nav-link">Internship</a>
         <a href="#projects" class="nav-link">Projects</a>
+        <a href="#internship" class="nav-link">Internship</a>
         <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
-    <!-- Mobile Navigation Toggle -->
     <div class="mobile-nav" id="mobileNav">
         <i class="fas fa-bars"></i>
     </div>
-
-    <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="menuOverlay"></div>
 
-    <!-- Mobile Menu Sidebar -->
     <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" id="menuClose">
-            <i class="fas fa-times"></i>
-        </button>
+        <button class="mobile-menu-close" id="menuClose"><i class="fas fa-times"></i></button>
         <a href="#about" class="nav-link active">About</a>
         <a href="#academics" class="nav-link">Academics</a>
         <a href="#journey" class="nav-link">Journey</a>
         <a href="#skills" class="nav-link">Skills</a>
-        <a href="#internship" class="nav-link">Internship</a>
         <a href="#projects" class="nav-link">Projects</a>
+        <a href="#internship" class="nav-link">Internship</a>
         <a href="#contact" class="nav-link">Contact</a>
     </div>
 
     <div class="container">
-        <!-- Hero Section -->
-        <section class="hero" id="about">
-            <div class="hero-avatar-wrapper">
-                <img src="WhatsApp Image 2025-12-16 at 19.08.11_9128c180.jpg" alt="Hasya Patel" class="hero-avatar">
+<section class="hero reveal-up" id="about">
+            <div class="hero-content">
+                <div class="skill-tag" style="display:inline-block; margin-bottom: 15px;">6th Sem Computer Engineering | LDRP-ITR</div>
+                
+                <style>
+                    @keyframes smoothReveal {
+                        0% { 
+                            opacity: 0; 
+                            transform: translateY(20px); 
+                            filter: blur(8px); 
+                        }
+                        100% { 
+                            opacity: 1; 
+                            transform: translateY(0); 
+                            filter: blur(0); 
+                        }
+                    }
+                    .animated-name {
+                        display: inline-block;
+                        /* Sleek gradient from your orange button color to your purple text color */
+                        background: linear-gradient(90deg, #f97316, #a855f7);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        animation: smoothReveal 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
+                        opacity: 0; /* Starts invisible before animation */
+                    }
+                </style>
+                
+                <h1>Hello, I'm <br><span class="animated-name">Hasya Patel</span></h1>
+                
+                <p class="hero-text" style="color: #a855f7; font-weight: 600; margin-bottom: 10px;">AI/ML Developer | Data Analyst | Python Developer</p>
+                <p class="hero-text">
+                    Passionate AI/ML engineer building intelligent systems with deep learning, NLP, and production ML pipelines. 
+                    6th semester Computer Engineering student at LDRP-ITR with hands-on experience in Python data science stack.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary" style="background-color: #f97316; color: #fff; border: none; box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); transition: transform 0.3s ease;">Contact Me</a>
+                    <a href="HasyaPatel.pdf" class="btn-secondary" style="background-color: transparent; color: #f97316; border: 2px solid #f97316; transition: all 0.3s ease;" onclick="alert('Hasya Patel Resume.pdf')">Download CV</a>
+                </div>
             </div>
-            <div class="badge">6th Sem Computer Engineering | LDRP-ITR</div>
-            <h1>Hello, I'm <span>Hasya</span><br>Patel</h1>
-            <p class="hero-subtitle">AI/ML Developer | Data Scientist | Python Specialist</p>
-            <p class="hero-text">
-                Passionate AI/ML engineer building intelligent systems with deep learning, NLP, and production ML pipelines. 
-                6th semester Computer Engineering student at LDRP-ITR with hands-on experience in Python data science stack.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
-                <a href="#contact" class="btn-glow">Contact Me</a>
-                <a href="HasyaPatel.pdf" class="btn-glow btn-outline" onclick="alert('Hasya Patel Resume.pdf')">Download CV</a>
+            <div class="hero-image-wrapper">
+                <img src="WhatsApp Image 2025-12-16 at 19.08.11_9128c180.jpg" alt="Hasya Patel" class="hero-avatar">
             </div>
         </section>
 
-        <!-- Academics -->
-        <h2 class="section-title" id="academics">Academic Performance</h2>
-        <p class="section-subtitle">Semester-wise SPI and chronological record</p>
-        <div class="bento-grid">
-            <div class="card academic-card">
-                <table class="grades-table">
-                    <thead>
-                        <tr><th>Semester</th><th>SPI</th><th>Duration</th><th>Result</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>1st Sem</td><td>7.48/10</td><td>07/2023 - 12/2023</td><td><a href="SEM1.jpg" class="cert-link" onclick="alert('View Result')">View</a></td></tr>
-                        <tr><td>2nd Sem</td><td>7.52/10</td><td>01/2024 - 06/2024</td><td><a href="SEM2.jpg" class="cert-link" onclick="alert('View Result')">View</a></td></tr>
-                        <tr><td>3rd Sem</td><td>7.50/10</td><td>07/2024 - 12/2024</td><td><a href="SEM3.jpg" class="cert-link" onclick="alert('View Result')">View</a></td></tr>
-                        <tr><td>4th Sem</td><td>7.88/10</td><td>01/2025 - 05/2025</td><td><a href="SEM4.jpg" class="cert-link" onclick="alert('View Result')">View</a></td></tr>
-                        <tr><td>5th Sem</td><td>7.83/10</td><td>06/2025 - 11/2025</td><td><a href="SEM5.jpg" class="cert-link" onclick="alert('View Result')">View</a></td></tr>
-                    </tbody>
-                </table>
-                <p class="cgpa-row">
-                    Overall Average SPI (1st-5th sem): <span id="cgpa-value" style="color: rgb(19, 201, 19); font-weight: 950;">7.64</span>
-                </p>
-            </div>
-            <div class="card stats-card">
-                <p style="font-size: 0.8rem; letter-spacing: 2px;">AGGREGATE SPI</p>
-                <h2 style="font-size: 5rem; font-family: 'Space Grotesk';" id="avg-display">7.64</h2>
+        <div id="academics">
+            <h2 class="section-title reveal-left">Academic Performance</h2>
+            <p class="section-subtitle reveal-left">Semester-wise SPI and chronological record</p>
+            <div class="bento-grid reveal-right">
+                <div class="card academic-card">
+                    <div style="overflow-x: auto;">
+                        <table class="grades-table">
+                            <thead>
+                                <tr><th>Semester</th><th>SPI</th><th>Duration</th><th>Result</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1st Sem</td><td>7.48/10</td><td>07/2023 - 12/2023</td><td><a href="SEM1.jpg" class="cert-link">View</a></td></tr>
+                                <tr><td>2nd Sem</td><td>7.52/10</td><td>01/2024 - 06/2024</td><td><a href="SEM2.jpg" class="cert-link">View</a></td></tr>
+                                <tr><td>3rd Sem</td><td>7.50/10</td><td>07/2024 - 12/2024</td><td><a href="SEM3.jpg" class="cert-link">View</a></td></tr>
+                                <tr><td>4th Sem</td><td>7.88/10</td><td>01/2025 - 05/2025</td><td><a href="SEM4.jpg" class="cert-link">View</a></td></tr>
+                                <tr><td>5th Sem</td><td>7.83/10</td><td>06/2025 - 11/2025</td><td><a href="SEM5.jpg" class="cert-link">View</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="cgpa-row">
+                        Overall Average SPI: <span style="color: #4ade80; font-weight: 900;">7.64</span>
+                    </p>
+                </div>
+                <div class="card stats-card">
+                    <p style="font-size: 0.8rem; letter-spacing: 2px;">AGGREGATE SPI</p>
+                    <h2 style="font-size: 4rem; font-family: 'Space Grotesk';">7.64</h2>
+                </div>
             </div>
         </div>
 
-        <!-- Rest of your sections remain exactly the same -->
-        <!-- Journey Section -->
-        <h2 class="section-title" id="journey">Development Journey</h2>
-        <p class="section-subtitle">Milestones of technical growth and skill acquisition</p>
-        <div class="bento-grid">
-            <div class="card timeline-card">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-label">Step 1</div>
-                        <div class="timeline-title"><b>C, C++</b></div>
-                        <div>Built strong programming fundamentals and problem-solving skills.</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-label">Step 2</div>
-                        <div class="timeline-title"><b>Web Development Basics</b></div>
-                        <div>Learnt HTML, CSS and JavaScript to understand web interfaces.</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-label">Step 3</div>
-                        <div class="timeline-title"><b>Java & Advanced Java</b></div>
-                        <div>Moved into object-oriented programming and backend concepts.</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-label">Step 4</div>
-                        <div class="timeline-title"><b>Python & Advanced Python</b></div>
-                        <div>Mastered clean coding, data handling and automation for AI/ML.</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-label">Step 5</div>
-                        <div class="timeline-title"><b>Data Science</b></div>
-                        <div>Pandas, NumPy, Matplotlib, Seaborn for analysis & visualization.</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-label">Step 6</div>
-                        <div class="timeline-title"><b>Machine Learning & AI</b></div>
-                        <div>Supervised/unsupervised learning, neural networks, model deployment.</div>
+        <div id="journey">
+            <h2 class="section-title reveal-right">Development Journey</h2>
+            <p class="section-subtitle reveal-right">Milestones of technical growth and skill acquisition</p>
+            <div class="bento-grid reveal-left">
+                <div class="card timeline-card">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-label">Step 1</div>
+                            <div class="timeline-title">C, C++</div>
+                            <div style="color: var(--text-secondary);">Built strong programming fundamentals and problem-solving skills.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-label">Step 2</div>
+                            <div class="timeline-title">Web Development Basics</div>
+                            <div style="color: var(--text-secondary);">Learnt HTML, CSS and JavaScript to understand web interfaces.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-label">Step 3</div>
+                            <div class="timeline-title">Java & Advanced Java</div>
+                            <div style="color: var(--text-secondary);">Moved into object-oriented programming and backend concepts.</div>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: #4ade80;">
+                            <div class="timeline-label" style="background: #4ade80; color: #000;">Step 4</div>
+                            <div class="timeline-title">Python & Advanced Python</div>
+                            <div style="color: var(--text-secondary);">Mastered clean coding, data handling and automation for AI/ML.</div>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: #a855f7;">
+                            <div class="timeline-label" style="background: #a855f7;">Step 5</div>
+                            <div class="timeline-title">Data Science</div>
+                            <div style="color: var(--text-secondary);">Pandas, NumPy, Matplotlib, Seaborn for analysis & visualization.</div>
+                        </div>
+                        <div class="timeline-item" style="border-left-color: #6366f1;">
+                            <div class="timeline-label" style="background: #6366f1;">Step 6</div>
+                            <div class="timeline-title">Machine Learning & AI</div>
+                            <div style="color: var(--text-secondary);">Supervised/unsupervised learning, neural networks, model deployment.</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title" id="skills">AI/ML & Tech Stack</h2>
-        <p class="section-subtitle">Complete Python AI/ML pipeline from data to deployment</p>
-        <div class="bento-grid">
-            <div class="card" style="grid-column: span 12;">
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-title"> Python </div>
-                        <small class="skill-sub">Core language for deep learning & data science</small>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python 3.11+</span>
-                            <span class="skill-tag">NumPy • Pandas</span>
-                            <span class="skill-tag">Jupyter • FastAPI</span>
-                            <span class="skill-tag">Data Pipelines</span>
+        <div id="skills">
+            <h2 class="section-title reveal-left">AI/ML & Tech Stack</h2>
+            <p class="section-subtitle reveal-left">Complete Python AI/ML pipeline from data to deployment</p>
+            <div class="bento-grid reveal-right">
+                <div class="card" style="grid-column: span 12;">
+                    <div class="skills-grid">
+                        <div class="skill-card" style="background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid var(--border);">
+                            <div class="skill-title">🐍 Python</div>
+                            <small class="skill-sub">Core language for deep learning & data science</small>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python 3.11+</span>
+                                <span class="skill-tag">NumPy</span>
+                                <span class="skill-tag">Pandas</span>
+                                <span class="skill-tag">Jupyter</span>
+                                <span class="skill-tag">FastAPI</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-title">🤖 Machine Learning</div>
-                        <small class="skill-sub">End-to-end ML workflows & model deployment</small>
-                        <div class="ml-tags skill-tags">
-                            <span class="skill-tag">Scikit-learn</span>
-                            <span class="skill-tag">XGBoost • LightGBM</span>
-                            <span class="skill-tag">Model Evaluation</span>
-                            <span class="skill-tag">Hyperparameter Tuning</span>
+                        <div class="skill-card" style="background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid var(--border);">
+                            <div class="skill-title">🤖 Machine Learning</div>
+                            <small class="skill-sub">End-to-end ML workflows & model deployment</small>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Scikit-learn</span>
+                                <span class="skill-tag">XGBoost</span>
+                                <span class="skill-tag">Model Evaluation</span>
+                                <span class="skill-tag">Hyperparameter Tuning</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-title">⚡ Deep Learning</div>
-                        <small class="skill-sub">Neural networks & advanced architectures</small>
-                        <div class="skill-tags">
-                            <span class="skill-tag">PyTorch • TensorFlow</span>
-                            <span class="skill-tag">CNN • RNN • Transformers</span>
-                            <span class="skill-tag">Computer Vision</span>
+                        <div class="skill-card" style="background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid var(--border);">
+                            <div class="skill-title">⚡ Deep Learning</div>
+                            <small class="skill-sub">Neural networks & advanced architectures</small>
+                            <div class="skill-tags">
+                                <span class="skill-tag">PyTorch</span>
+                                <span class="skill-tag">TensorFlow</span>
+                                <span class="skill-tag">CNN & RNN</span>
+                                <span class="skill-tag">Computer Vision</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-card">
-                        <div class="skill-title">☁️ MLOps Stack</div>
-                        <small class="skill-sub">Production deployment & monitoring</small>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Streamlit • Gradio</span>
+                         <div class="skill-card" style="background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid var(--border);">
+                            <div class="skill-title">☁️ MLOps Stack</div>
+                            <small class="skill-sub">Production deployment & monitoring</small>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Streamlit • Gradio</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<h2 class="section-title" id="projects" style="font-family: Arial, sans-serif; color: #ffffff; font-size: 2.2rem; margin-bottom: 0.5rem;">Key Projects</h2>
-<p class="section-subtitle" style="font-family: Arial, sans-serif; color: #94a3b8; font-size: 1.1rem; margin-bottom: 2rem;">Hands-on work demonstrating AI/ML competency</p>
 
-<div class="bento-grid" style="font-family: Arial, sans-serif; display: grid; gap: 20px;">
-    <div class="card project-card" style="grid-column: span 12; background: #0f172a; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3); border: 1px solid #334155;">
-        
-        <h2 style="color: #f8fafc; font-size: 1.8rem; margin-bottom: 1rem; border-bottom: 2px solid #334155; padding-bottom: 10px;">Core Programming Applications</h2>
-        <ul class="project-list" style="list-style-type: none; padding-left: 0; margin-bottom: 2rem;">
-            <li class="project-item" style="margin-bottom: 12px; color: #cbd5e1; font-size: 1.05rem;">
-                <b style="color: #ffffff;">C/C++ Projects:</b> Basic console applications (calculator, loops, arrays)
-            </li>
-            <li class="project-item" style="margin-bottom: 12px; color: #cbd5e1; font-size: 1.05rem;">
-                <b style="color: #ffffff;">Core Java Projects:</b> OOP practice (classes, inheritance, polymorphism)
-            </li>
-        </ul>
+   <div id="projects">
+            <h2 class="section-title reveal-right">Key Projects</h2>
+            <p class="section-subtitle reveal-right">Hands-on work demonstrating AI/ML competency and full-stack development</p>
+            <div class="bento-grid reveal-left">
+                <div class="card" style="grid-column: span 12;">
+                      <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Core Programming Applications</h3>
+                    <div class="course-list">
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">C/C++ Fundamentals</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Focus:</b> Logic & Basic Algorithms</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Basic console applications (calculators)</li>
+                                <li>Data structures (loops, arrays)</li>
+                            </ul>
+                        </div>
 
-        <h2 style="color: #f8fafc; font-size: 1.8rem; margin: 2.5rem 0 1.5rem 0; border-bottom: 2px solid #334155; padding-bottom: 10px;">AI/ML & Data Science Projects</h2>
-        
-        <ul class="project-category-list" style="list-style-type: none; padding-left: 0;">
-            
-            <li class="category-item" style="margin-bottom: 2.5rem;">
-                <h2 class="category-title" style="color: #60a5fa; font-size: 1.5rem; margin-bottom: 1rem;">1. Web Development</h2>
-                <ul class="sub-list" style="list-style-type: none; padding-left: 20px; border-left: 3px solid #3b82f6;">
-                    <li class="sub-project-item" style="margin-bottom: 1.5rem; padding-left: 15px;">
-                        <h3 class="project-name" style="color: #34d399; font-size: 1.25rem; margin: 0 0 8px 0;">LDRP College Website (Frontend Only)</h3>
-                        <p class="project-link" style="margin: 0;">
-                            <span style="color: #94a3b8; font-size: 0.95rem; margin-right: 8px;">Live Demo:</span> 
-                            <a href="https://ldrp-demo-webpage.vercel.app/" target="_blank" style="background-color: #8b5cf6; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; display: inline-block; transition: 0.2s;">Open Live Demo 🔗</a>
-                        </p>
-                    </li>
-                    <li class="sub-project-item" style="margin-bottom: 1.5rem; padding-left: 15px;">
-                        <h3 class="project-name" style="color: #34d399; font-size: 1.25rem; margin: 0 0 8px 0;">Basic E-commerce Website Template</h3>
-                        <p class="project-link" style="margin: 0;">
-                            <span style="color: #94a3b8; font-size: 0.95rem; margin-right: 8px;">GitHub:</span> 
-                            <a href="https://github.com/Hasya1505/ecommerce-frontend" target="_blank" style="background-color: #334155; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; display: inline-block;">View Repository 💻</a>
-                        </p>
-                    </li>
-                </ul>
-            </li>
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">Core Java Projects</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Focus:</b> Object-Oriented Programming</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Class and Object architecture</li>
+                                <li>Inheritance and Polymorphism practice</li>
+                            </ul>
+                        </div>
+                    </div>
+                      <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Frontend Web Development</h3>
+                    <div class="course-list" style="margin-bottom: 2.5rem;">
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">LDRP College Website</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> HTML, CSS, JavaScript</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Frontend UI design clone</li>
+                                <li>Responsive mobile layouts</li>
+                            </ul>
+                            <a href="https://ldrp-demo-webpage.vercel.app/" target="_blank" class="skill-tag" style="text-decoration: none; background: #8b5cf6; color: white; border: none;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
 
-            <li class="category-item" style="margin-bottom: 2.5rem;">
-                <h2 class="category-title" style="color: #60a5fa; font-size: 1.5rem; margin-bottom: 1rem;">2. Python Projects</h2>
-                <ul class="sub-list" style="list-style-type: none; padding-left: 20px; border-left: 3px solid #3b82f6;">
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">E-commerce Template</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> HTML, CSS</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Basic e-commerce structural UI</li>
+                                <li>Product grids and styling</li>
+                            </ul>
+                            <a href="https://github.com/Hasya1505/ecommerce-frontend" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
+                        </div>
+                    </div>
+                    <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Python & Full-Stack Projects</h3>
+                    <div class="course-list" style="margin-bottom: 2.5rem;">
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">MediStore Pro</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> Flask, MySQL, HTML/CSS/JS</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Full-stack pharmacy system with billing</li>
+                                <li>Real-time stock management & alerts</li>
+                                <li>Role-based authentication (Admin & Staff)</li>
+                                <li>Dashboard with sales/analytics insights</li>
+                            </ul>
+                            <a href="https://github.com/Hasya1505/SEM6-Project-" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
+                        </div>
+
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">Weather Forecast UI</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> Python, API Integration, Web</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Real-time weather data API integration</li>
+                                <li>Location-based weather forecasting</li>
+                                <li>Responsive UI with clean design</li>
+                            </ul>
+                            <a href="https://simple-weather-forecast-python.vercel.app/" target="_blank" class="skill-tag" style="text-decoration: none; background: #8b5cf6; color: white; border: none;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">SportsHub Platform</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> Flask, MySQL, HTML/CSS/JS</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Sports event management platform</li>
+                                <li>User profiles and team management</li>
+                                <li>Scalable architecture for feature expansion</li>
+                            </ul>
+                            <a href="https://github.com/Hasya1505/Sportshub-Fullstack-Project" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Data Science & Machine Learning</h3>
+                    <div class="course-list" style="margin-bottom: 2.5rem;">
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">House Price EDA</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> Pandas, NumPy, Jupyter</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Extensive data cleaning</li>
+                                <li>Statistical feature analysis</li>
+                                <li>Outlier detection</li>
+                            </ul>
+                            <a href="https://github.com/Hasya1505/house-price-exploration" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
+                        </div>
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">Youtube EDA</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> Pandas, NumPy, Jupyter</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Extensive data cleaning</li>
+                                <li>Statistical feature analysis</li>
+                                <li>Outlier detection</li>
+                            </ul>
+                            <a href="https://github.com/Hasya1505/YouTube-EDA" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
+                        </div>
+                    </div>
+                     <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;"> Machine Learning</h3>
+                    <div class="course-list" style="margin-bottom: 2.5rem;">
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">Movie Recommendation</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> Python, ML Algorithms</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Content-based filtering algorithms</li>
+                                <li>User preference modeling</li>
+                            </ul>
+                            <a href="#" onclick="alert('GitHub private. Email for access: studyfor1505@gmail.com')" class="skill-tag" style="text-decoration: none; background: rgba(225, 29, 72, 0.1); color: #f43f5e; border-color: #f43f5e;"><i class="fas fa-lock"></i> Request Access</a>
+                        </div>
+
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px;">Fraud Detection System</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> Python, ML Classifiers</p>
+                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                                <li>Credit card transaction analysis</li>
+                                <li>Anomaly detection modeling</li>
+                            </ul>
+                            <a href="#" onclick="alert('Repository is private. Please email me to get access.')" class="skill-tag" style="text-decoration: none; background: rgba(225, 29, 72, 0.1); color: #f43f5e; border-color: #f43f5e;"><i class="fas fa-lock"></i> Request Access</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div id="courses">
+            <h2 class="section-title reveal-left">Courses & Certifications</h2>
+            <p class="section-subtitle reveal-left">Structured learning and hands-on job simulation</p>
+            <div class="bento-grid reveal-right">
+                <div class="card" style="grid-column: span 12;">
                     
-                    <li class="sub-project-item" style="margin-bottom: 1.5rem; padding-left: 15px;">
-                        <div class="project-content" style="background: #1e293b; border: 1px solid #334155; padding: 20px; border-radius: 8px;">
-                            <h3 style="color: #34d399; font-size: 1.25rem; margin: 0 0 10px 0;">Weather Forecast UI (Python Backend)</h3>
-                            <p class="project-tech" style="color: #cbd5e1; font-size: 0.95rem; margin: 0 0 12px 0;">
-                                <strong style="color: #f8fafc;">Tech Stack:</strong> Python, HTML, CSS, API Integration
-                            </p>
-                            <ul class="project-features" style="list-style-type: none; padding: 0; margin: 0 0 15px 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">
-                                <li>🌦️ Real-time weather data using external API integration</li>
-                                <li>📍 Location-based weather forecasting</li>
-                                <li>📱 Responsive UI with clean design</li>
-                            </ul>
-                            <p class="project-link" style="margin: 0;">
-                                <strong style="color: #cbd5e1; font-size: 0.95rem; margin-right: 8px;">Live Demo:</strong> 
-                                <a href="https://simple-weather-forecast-python.vercel.app/" target="_blank" style="background-color: #8b5cf6; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; display: inline-block;">Open Project 🔗</a>
-                            </p>
+                    <h3 style="color: #4ade80; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                        <i class="fas fa-laptop-code" style="margin-right: 8px;"></i>Foundational Courses
+                    </h3>
+                    <div class="course-list">
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px; font-size: 1.2rem;">C & C++ Programming</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Shivam Classes</b> | Jun 2023 - Aug 2023</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px;">Intensive coaching on logic, problem-solving, and pointers.</p>
+                            <a href="Shivam.jpg" class="skill-tag" target="_blank" style="text-decoration: none; display: inline-block; transition: 0.3s;"><i class="fas fa-certificate"></i> View Certificate</a>
                         </div>
-                    </li>
-
-                    <li class="sub-project-item" style="margin-bottom: 1.5rem; padding-left: 15px;">
-                        <div class="project-content" style="background: #1e293b; border: 1px solid #334155; padding: 20px; border-radius: 8px;">
-                            <h3 style="color: #34d399; font-size: 1.25rem; margin: 0 0 10px 0;">MediStore Pro – Medical Store Management System</h3>
-                            <p class="project-tech" style="color: #cbd5e1; font-size: 0.95rem; margin: 0 0 12px 0;">
-                                <strong style="color: #f8fafc;">Tech Stack:</strong> Flask (Python), MySQL, HTML, CSS, JavaScript
-                            </p>
-                            <ul class="project-features" style="list-style-type: none; padding: 0; margin: 0 0 15px 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">
-                                <li>💊 Full-stack pharmacy system with billing and inventory tracking</li>
-                                <li>📦 Real-time stock management with alerts</li>
-                                <li>🧾 Invoice generation and purchase history tracking</li>
-                                <li>🔐 Role-based authentication (Admin & Staff)</li>
-                                <li>📊 Dashboard with sales and analytics insights</li>
-                                <li>⚡ Optimized backend using Flask and MySQL</li>
-                            </ul>
-                            <p class="project-link" style="margin: 0;">
-                                <strong style="color: #cbd5e1; font-size: 0.95rem; margin-right: 8px;">GitHub:</strong> 
-                                <a href="https://github.com/Hasya1505/SEM6-Project-" target="_blank" style="background-color: #334155; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; display: inline-block;">View Repository 💻</a>
-                            </p>
-                        </div>
-                    </li>
-
-                    <li class="sub-project-item" style="margin-bottom: 1.5rem; padding-left: 15px;">
-                        <div class="project-content" style="background: #1e293b; border: 1px solid #334155; padding: 20px; border-radius: 8px;">
-                            <h3 style="color: #34d399; font-size: 1.25rem; margin: 0 0 10px 0;">SportsHub – Full Stack Sports Platform (Under Development)</h3>
-                            <p class="project-tech" style="color: #cbd5e1; font-size: 0.95rem; margin: 0 0 12px 0;">
-                                <strong style="color: #f8fafc;">Tech Stack:</strong> Flask, MySQL, HTML, CSS, JavaScript
-                            </p>
-                            <ul class="project-features" style="list-style-type: none; padding: 0; margin: 0 0 15px 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.6;">
-                                <li>🏏 Full-stack platform for sports event management and updates</li>
-                                <li>👥 User profiles, team management, and match tracking</li>
-                                <li>📊 Live score updates and performance analytics (planned)</li>
-                                <li>🚀 Scalable architecture for future feature expansion</li>
-                            </ul>
-                            <p class="project-link" style="margin: 0;">
-                                <strong style="color: #cbd5e1; font-size: 0.95rem; margin-right: 8px;">GitHub:</strong> 
-                                <a href="https://github.com/Hasya1505/Sportshub-Fullstack-Project" target="_blank" style="background-color: #334155; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; display: inline-block;">View Repository 💻</a>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="category-item" style="margin-bottom: 2.5rem;">
-                <h2 class="category-title" style="color: #60a5fa; font-size: 1.5rem; margin-bottom: 1rem;">3. Data Science</h2>
-                <ul class="sub-list" style="list-style-type: none; padding-left: 20px; border-left: 3px solid #3b82f6;">
-                    <li class="sub-project-item" style="margin-bottom: 1.5rem; padding-left: 15px;">
-                        <h3 class="project-name" style="color: #34d399; font-size: 1.25rem; margin: 0 0 8px 0;">House Price EDA (Pandas & NumPy)</h3>
-                        <p class="project-link" style="margin: 0;">
-                            <span style="color: #94a3b8; font-size: 0.95rem; margin-right: 8px;">GitHub:</span> 
-                            <a href="https://github.com/Hasya1505/house-price-exploration" target="_blank" style="background-color: #334155; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; display: inline-block;">View Repository 💻</a>
-                        </p>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="category-item" style="margin-bottom: 1rem;">
-                <h2 class="category-title" style="color: #60a5fa; font-size: 1.5rem; margin-bottom: 1rem;">4. Machine Learning</h2>
-                <ul class="sub-list" style="list-style-type: none; padding-left: 20px; border-left: 3px solid #3b82f6;">
-                    <li class="sub-project-item" style="margin-bottom: 1.5rem; padding-left: 15px;">
-                        <h3 class="project-name" style="color: #34d399; font-size: 1.25rem; margin: 0 0 8px 0;">Movie Recommendation System</h3>
-                        <p class="project-link" style="margin: 0 0 15px 0;">
-                            <span style="color: #94a3b8; font-size: 0.95rem; margin-right: 8px;">GitHub:</span> 
-                            <a href="#" onclick="alert('GitHub private. Email for access: studyfor1505@gmail.com')" style="background-color: #e11d48; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; display: inline-block;">View Repository 🔒</a>
-                        </p>
                         
-                        <h3 class="project-name" style="color: #34d399; font-size: 1.25rem; margin: 0 0 8px 0;">Credit Card Fraud Detection System</h3>
-                        <p class="project-link" style="margin: 0;">
-                            <span style="color: #94a3b8; font-size: 0.95rem; margin-right: 8px;">GitHub:</span> 
-                            <a href="#" onclick="alert('Repository is private. Please email me to get access.')" style="background-color: #e11d48; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: bold; display: inline-block;">View Repository 🔒</a>
-                        </p>
-                    </li>
-                </ul>
-            </li>
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px; font-size: 1.2rem;">Python Advanced</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Desier Infotech</b> | Feb 2025 - Apr 2025</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px;">Mastered decorators, generators, OOP in Python for AI/ML.</p>
+                            <a href="DesierInfo.jpg" class="skill-tag" target="_blank" style="text-decoration: none; display: inline-block; transition: 0.3s;"><i class="fas fa-certificate"></i> View Certificate</a>
+                        </div>
+                    </div>
 
-        </ul>
-    </div>
-</div>
-
-        <!-- Courses Section -->
-        <h2 class="section-title" id="courses">Courses & Certifications</h2>
-        <p class="section-subtitle">Structured learning and hands-on job simulation</p>
-        <div class="bento-grid">
-            <div class="card" style="grid-column: span 12;">
-                <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Foundational Courses</h3>
-                <div class="course-list">
-                    <div class="course-card">
-                        <div class="course-title"><b>C & C++ Programming</b></div>
-                        <div class="course-meta">Shivam Classes | Jun.2023 - Aug.2023</div>
-                        <p>Intensive coaching on logic, problem-solving, pointers.</p>
-                        <a href="Shivam.jpg" class="cert-link" target="_blank">View Certificate</a>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-title"><b>Python Advanced</b></div>
-                        <div class="course-meta">Desier Infotech | Feb.2025 - Apr.2025</div>
-                        <p>Mastered decorators, generators, OOP in Python for AI/ML.</p>
-                        <a href="DesierInfo.jpg" class="cert-link" target="_blank">View Certificate</a>
-                    </div>
-                </div>
-                <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 1rem;">Data Science & AI</h3>
-                <div class="course-list">
-                    <div class="course-card">
-                        <div class="course-title"><b>Python for Data Science</b></div>
-                        <div class="course-meta">IIT Madras NPTEL | 68% | Jan-Feb 2025</div>
-                        <p>Pandas, NumPy for data manipulation and analysis.</p>
-                        <a href="NPTEL.jpg" class="cert-link" target="_blank">View Certificate</a>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-title"><b>Data Science Job Simulation</b></div>
-                        <div class="course-meta">Deloitte Forage | July 2025</div>
-                        <p>Real-world data cleaning, insights, technical reporting.</p>
-                        <a href="Deloitte.jpg" class="cert-link" target="_blank">View Certificate</a>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-title"><b>Generative AI Concepts</b></div>
-                        <div class="course-meta">OutSkill | Sep.2025</div>
-                        <p>Prompt engineering and future of AI development.</p>
-                        <a href="OutSkill.jpg" class="cert-link" target="_blank">View Certificate</a>
+                    <h3 style="color: #a855f7; margin-top: 2.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                        <i class="fas fa-brain" style="margin-right: 8px;"></i>Data Science & AI
+                    </h3>
+                    <div class="course-list">
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px; font-size: 1.2rem;">Python for Data Science</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>IIT Madras NPTEL</b> | 68% | Jan-Feb 2025</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px;">Pandas, NumPy for data manipulation and analysis.</p>
+                            <a href="NPTEL.jpg" class="skill-tag" target="_blank" style="text-decoration: none; display: inline-block; background: #8b5cf6; color: white; border: none; transition: 0.3s;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                        </div>
+                        
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px; font-size: 1.2rem;">Data Science Job Sim</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Deloitte Forage</b> | July 2025</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px;">Real-world data cleaning, insights, technical reporting.</p>
+                            <a href="Deloitte.jpg" class="skill-tag" target="_blank" style="text-decoration: none; display: inline-block; background: #8b5cf6; color: white; border: none; transition: 0.3s;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                        </div>
+                        
+                        <div class="course-card">
+                            <h3 style="color: #34d399; margin-bottom: 10px; font-size: 1.2rem;">Generative AI Concepts</h3>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>OutSkill</b> | Sep 2025</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px;">Prompt engineering and the future of AI development.</p>
+                            <a href="OutSkill.jpg" class="skill-tag" target="_blank" style="text-decoration: none; display: inline-block; background: #8b5cf6; color: white; border: none; transition: 0.3s;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <h2 class="section-title" id="internship">Professional Experience</h2>
-        <p class="section-subtitle">Industry-aligned virtual internships and real-world applications</p>
-        <div class="bento-grid">
-            <div class="card" style="grid-column: span 12; border: 1px solid var(--accent-2); background: linear-gradient(145deg, rgba(13, 17, 23, 0.8), rgba(99, 102, 241, 0.05));">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
-                    <div style="flex: 1; min-width: 300px;">
-                        <div class="badge" style="background: rgba(168, 85, 247, 0.2); border-color: var(--accent-2); color: var(--accent-2);">Featured Internship</div>
-                        <h3 style="font-size: 1.8rem; margin: 10px 0;">Artificial Intelligence & Machine Learning</h3>
-                        <p style="color: var(--accent); font-weight: 700; margin-bottom: 15px;">Edunet Foundation | In Collaboration with AICTE & IBM SkillsBuild</p>
+
+<div id="internship">
+            <h2 class="section-title reveal-left">Professional Experience</h2>
+            <p class="section-subtitle reveal-left">Industry-aligned virtual internships and real-world applications</p>
+            <div class="bento-grid reveal-right">
+                <div class="card" style="grid-column: span 12; border: 1px solid var(--accent-2); background: linear-gradient(145deg, rgba(13, 17, 23, 0.8), rgba(99, 102, 241, 0.05));">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
                         
-                        <div style="margin-bottom: 20px;">
-                            <p style="font-size: 0.95rem; color: var(--text-secondary);">
+                        <div style="flex: 1; min-width: 300px;">
+                            <div class="skill-tag" style="display: inline-block; background: rgba(168, 85, 247, 0.2); border-color: var(--accent-2); color: var(--accent-2); margin-bottom: 10px;">Featured Internship</div>
+                            <h3 style="font-size: 1.8rem; margin: 10px 0;">Artificial Intelligence & Machine Learning</h3>
+                            <p style="color: #4ade80; font-weight: 700; margin-bottom: 15px;">Edunet Foundation | In Collaboration with AICTE & IBM SkillsBuild</p>
+                            
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px;">
                                 <i class="far fa-calendar-alt" style="margin-right: 8px;"></i> Jan 15, 2026 – Feb 26, 2026 (6 Weeks)
                             </p>
-                        </div>
 
-                        <div style="background: rgba(99, 102, 241, 0.05); border: 1px dashed var(--accent); padding: 20px; border-radius: 16px; margin-bottom: 25px;">
-                            <h4 style="color: var(--text-primary); margin-bottom: 10px;">
-                                <i class="fas fa-microchip" style="color: var(--accent); margin-right: 8px;"></i> 
-                                Capstone: Ahmedabad Real Estate Price Predictor
-                            </h4>
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px;">
-                                Developed an end-to-end ML system to predict property prices using Kaggle's Ahmedabad Dataset.
-                            </p>
-                            <div class="skill-tags" style="justify-content: flex-start; margin-bottom: 15px;">
-                                <span class="skill-tag">Kaggle Dataset</span>
-                                <span class="skill-tag">Feature Engineering</span>
-                                <span class="skill-tag">ML Regression</span>
-                                <span class="skill-tag">Flask API</span>
+                            <div style="background: rgba(0,0,0,0.3); border: 1px dashed var(--accent); padding: 20px; border-radius: 16px; margin-bottom: 25px;">
+                                <h4 style="color: var(--text-primary); margin-bottom: 10px;">
+                                    <i class="fas fa-microchip" style="color: var(--accent); margin-right: 8px;"></i> Capstone: Ahmedabad Real Estate Predictor
+                                </h4>
+                                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px;">
+                                    Developed an end-to-end ML system to predict property prices using Kaggle's Ahmedabad Dataset.
+                                </p>
+                                
+                                <div class="skill-tags" style="justify-content: flex-start; margin-bottom: 15px;">
+                                    <span class="skill-tag">Kaggle Dataset</span>
+                                    <span class="skill-tag">Feature Engineering</span>
+                                    <span class="skill-tag">ML Regression</span>
+                                    <span class="skill-tag">Flask API</span>
+                                </div>
+                                
+                                <ul style="list-style-type: none; padding-left: 0; font-size: 0.85rem; color: var(--text-primary); line-height: 1.8;">
+                                    <li><span style="color: var(--accent); margin-right: 5px;">•</span> Cleaned and pre-processed 1000+ property records using Pandas.</li>
+                                    <li><span style="color: var(--accent); margin-right: 5px;">•</span> Implemented Advanced Feature Engineering (Location encoding, outlier removal).</li>
+                                    <li><span style="color: var(--accent); margin-right: 5px;">•</span> Created a <b>Flask Backend</b> to serve predictions to a custom <b>HTML/CSS/JS frontend</b>.</li>
+                                </ul>
                             </div>
-                            <ul class="sub-list" style="font-size: 0.85rem; color: var(--text-primary);">
-                                <li>• Cleaned and pre-processed 1000+ property records using Pandas.</li>
-                                <li>• Implemented Advanced Feature Engineering (Location encoding, outlier removal).</li>
-                                <li>• Created a <b>Flask Backend</b> to serve predictions to a custom <b>HTML/CSS/JS frontend</b>.</li>
-                            </ul>
-                        </div>
+                            
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                <a href="offerlater.jpeg" class="btn-glow btn-outline" style="padding: 10px 20px; font-size: 0.7rem; border-color: var(--text-secondary); color: var(--text-secondary);" target="_blank">
+                                    <i class="fas fa-file-contract" style="margin-right: 5px;"></i> Offer Letter
+                                </a>
+                                <a href="edunet.jpeg" class="btn-glow" style="padding: 10px 20px; font-size: 0.7rem; background: var(--accent); border-color: var(--accent);" target="_blank">
+                                    <i class="fas fa-certificate" style="margin-right: 5px;"></i> Completion Certificate
+                                </a>
+                                <a href="IBM.jpeg" class="btn-glow btn-outline" style="padding: 10px 20px; font-size: 0.7rem;" target="_blank">
+                                    <i class="fas fa-award" style="margin-right: 5px;"></i> IBM Badge
+                                </a>
+                            </div>
 
-                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                            <a href="offerlater.jpeg" class="btn-glow btn-outline" style="padding: 10px 20px; font-size: 0.7rem; border-color: var(--text-secondary); color: var(--text-secondary);" target="_blank">
-                                <i class="fas fa-file-contract" style="margin-right: 5px;"></i> Offer Letter
-                            </a>
-                            <a href="edunet.jpeg" class="btn-glow" style="padding: 10px 20px; font-size: 0.7rem;" target="_blank">
-                                <i class="fas fa-certificate" style="margin-right: 5px;"></i> Completion Certificate
-                            </a>
-                            <a href="IBM.jpeg" class="btn-glow btn-outline" style="padding: 10px 20px; font-size: 0.7rem;" target="_blank">
-                                <i class="fas fa-award" style="margin-right: 5px;"></i> IBM Badge
-                            </a>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--border); width: 220px; margin: 0 auto;">
+                            <img src="IBM.jpeg" alt="IBM AI Badge" style="width: 100%; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);">
+                            <p style="font-weight: 800; font-size: 0.75rem; letter-spacing: 1px;">IBM SKILLSBUILD</p>
+                            <p style="font-size: 0.65rem; color: var(--accent);">AI FUNDAMENTALS VERIFIED</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+  <div id="contact">
+            <h2 class="section-title reveal-up">Get In Touch</h2>
+            <p class="section-subtitle reveal-up">Open to internships, projects, and AI/ML collaborations</p>
+            
+            <div class="bento-grid reveal-up">
+                <div style="grid-column: span 12; padding: 0; background: transparent; border: none;">
                     
-                    <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--border); width: 220px; margin: 0 auto;">
-                        <img src="IBM.jpeg" alt="IBM AI Badge" style="width: 100%; border-radius: 10px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));">
-                        <p style="font-weight: 800; font-size: 0.7rem; letter-spacing: 1px; color: var(--text-primary);">IBM SKILLSBUILD</p>
-                        <p style="font-size: 0.6rem; color: var(--accent);">AI FUNDAMENTALS VERIFIED</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Contact Section -->
-        <h2 class="section-title" id="contact">Get In Touch</h2>
-        <p class="section-subtitle">Open to internships, projects, and AI/ML collaborations</p>
-        <div class="bento-grid">
-            <div class="card" style="grid-column: span 12;">
-                <div class="contact-grid">
-                    <div>
-                        <h3 style="margin-bottom: 20px;">Contact Information</h3>
-                        <div class="contact-row"><span>Name:</span> Hasya Patel</div>
-                        <div class="contact-row"><span>Institution:</span> LDRP-ITR, Computer Engineering</div>
-                        <div class="contact-row"><span>Status:</span> 6th Semester</div>
-                        <div class="contact-row"><span>Location:</span> Gandhinagar, Gujarat</div>
-                        <div class="contact-row"><span>Email:</span> <a href="mailto:studyfor1505@gmail.com" class="accent-link">studyfor1505@gmail.com</a></div>
-                    </div>
-                    <div>
-                        <h3 style="margin-bottom: 20px;">Connect Online</h3>
-                       <div class="social-links-list">
-    
-    <a href="https://www.linkedin.com/in/hasya-patel-667b5629b/" target="_blank" class="social-link">
-        <i class="fab fa-linkedin"></i> LinkedIn
-    </a>
-    
-    <a href="https://github.com/Hasya1505" target="_blank" class="social-link">
-        <i class="fab fa-github"></i> GitHub
-    </a>
-    
-    <a href="https://x.com/hasya1515" target="_blank" class="social-link">
-        <i class="fab fa-twitter"></i> Twitter (X)
-    </a>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); background: var(--card-bg); border-radius: 24px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4); backdrop-filter: blur(20px);">
+                        
+                        <div style="padding: 40px; background: linear-gradient(135deg, rgba(13, 17, 23, 0.9), rgba(99, 102, 241, 0.05)); border-right: 1px solid var(--border);">
+                            <h3 style="margin-bottom: 30px; color: #f0f6fc; font-size: 1.6rem; display: flex; align-items: center; gap: 12px;">
+                                <i class="fas fa-paper-plane" style="color: #4ade80;"></i> Let's Connect
+                            </h3>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 25px; margin-bottom: 45px;">
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(74, 222, 128, 0.1); display: flex; justify-content: center; align-items: center; color: #4ade80; font-size: 1.2rem; border: 1px solid rgba(74, 222, 128, 0.2);">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0; text-transform: uppercase; letter-spacing: 1px;">Name</p>
+                                        <p style="font-weight: 600; color: var(--text-primary); margin: 0; font-size: 1.05rem;">Hasya Patel</p>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(168, 85, 247, 0.1); display: flex; justify-content: center; align-items: center; color: #a855f7; font-size: 1.2rem; border: 1px solid rgba(168, 85, 247, 0.2);">
+                                        <i class="fas fa-university"></i>
+                                    </div>
+                                    <div>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0; text-transform: uppercase; letter-spacing: 1px;">Institution</p>
+                                        <p style="font-weight: 600; color: var(--text-primary); margin: 0; font-size: 1.05rem;">LDRP-ITR (6th Sem)</p>
+                                    </div>
+                                </div>
 
-</div>
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(249, 115, 22, 0.1); display: flex; justify-content: center; align-items: center; color: #f97316; font-size: 1.2rem; border: 1px solid rgba(249, 115, 22, 0.2);">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0; text-transform: uppercase; letter-spacing: 1px;">Location</p>
+                                        <p style="font-weight: 600; color: var(--text-primary); margin: 0; font-size: 1.05rem;">Gandhinagar, Gujarat</p>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(99, 102, 241, 0.1); display: flex; justify-content: center; align-items: center; color: #6366f1; font-size: 1.2rem; border: 1px solid rgba(99, 102, 241, 0.2);">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0; text-transform: uppercase; letter-spacing: 1px;">Email</p>
+                                        <a href="mailto:studyfor1505@gmail.com" style="font-weight: 600; color: var(--text-primary); margin: 0; font-size: 1.05rem; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#6366f1'" onmouseout="this.style.color='var(--text-primary)'">studyfor1505@gmail.com</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-bottom: 20px; color: #f0f6fc; font-size: 1.2rem;">Connect Online</h3>
+                            <div style="display: flex; gap: 15px;">
+                                <a href="https://www.linkedin.com/in/hasya-patel-667b5629b/" target="_blank" style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; justify-content: center; align-items: center; color: #fff; font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; border: 1px solid var(--border);" onmouseover="this.style.background='#0a66c2'; this.style.borderColor='#0a66c2'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='var(--border)'; this.style.transform='translateY(0)';">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/Hasya1505" target="_blank" style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; justify-content: center; align-items: center; color: #fff; font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; border: 1px solid var(--border);" onmouseover="this.style.background='#333'; this.style.borderColor='#333'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='var(--border)'; this.style.transform='translateY(0)';">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div style="padding: 40px; background: rgba(13, 17, 23, 0.4);">
+                            <h3 style="margin-bottom: 25px; color: #f0f6fc; font-size: 1.6rem;">Send a Message</h3>
+                            
+                            <form action="https://api.web3forms.com/submit" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                                <input type="hidden" name="access_key" value="268917ce-3ada-4e6c-b4ea-2034eee66208">
+                                
+                                <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 18px 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; color: #fff; font-family: inherit; font-size: 0.95rem; outline: none; transition: all 0.3s ease;" onfocus="this.style.borderColor='#a855f7'; this.style.background='rgba(255,255,255,0.06)'; this.style.boxShadow='0 0 15px rgba(168, 85, 247, 0.2)';" onblur="this.style.borderColor='var(--border)'; this.style.background='rgba(255,255,255,0.03)'; this.style.boxShadow='none';">
+                                
+                                <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 18px 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; color: #fff; font-family: inherit; font-size: 0.95rem; outline: none; transition: all 0.3s ease;" onfocus="this.style.borderColor='#a855f7'; this.style.background='rgba(255,255,255,0.06)'; this.style.boxShadow='0 0 15px rgba(168, 85, 247, 0.2)';" onblur="this.style.borderColor='var(--border)'; this.style.background='rgba(255,255,255,0.03)'; this.style.boxShadow='none';">
+                                
+                                <textarea name="message" placeholder="How can we collaborate?" required style="width: 100%; padding: 18px 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; color: #fff; font-family: inherit; font-size: 0.95rem; outline: none; min-height: 160px; resize: vertical; transition: all 0.3s ease;" onfocus="this.style.borderColor='#a855f7'; this.style.background='rgba(255,255,255,0.06)'; this.style.boxShadow='0 0 15px rgba(168, 85, 247, 0.2)';" onblur="this.style.borderColor='var(--border)'; this.style.background='rgba(255,255,255,0.03)'; this.style.boxShadow='none';"></textarea>
+                                
+                                <button type="submit" style="width: 100%; padding: 18px; background: linear-gradient(90deg, #6366f1, #a855f7); color: white; border: none; border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3); margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 10px;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 30px rgba(168, 85, 247, 0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(99, 102, 241, 0.3)';">
+                                    Submit Message <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </form>
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="part2" style="margin-top: 40px;">
-                    <h3>Contact With Me</h3>
-                    <form action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="268917ce-3ada-4e6c-b4ea-2034eee66208">
-                        <p>Name: <input type="text" name="name" required></p>
-                        <p>Email: <input type="email" name="email" required></p>
-                        <p>Contact Number: <input type="number" name="contact" required></p>
-                        <p>Your Message: <textarea name="message" required></textarea></p>
-                        <button type="submit" class="btn-glow" style="width:100%;">Submit</button>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
     <footer>© 2026 HASYA PATEL | ENGINEERED WITH INTELLIGENCE</footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Mobile Menu Functionality
+        // --- 1. INTERSECTION OBSERVER FOR SCROLL ANIMATIONS ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Triggers when 15% of the element is visible
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Stop observing once revealed so it doesn't animate out and in repeatedly
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        // Target all elements with reveal classes
+        document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+
+        // --- 2. MOBILE MENU ---
         const mobileNav = document.getElementById('mobileNav');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuOverlay = document.getElementById('menuOverlay');
@@ -1189,7 +1169,6 @@
         menuClose.addEventListener('click', toggleMobileMenu);
         menuOverlay.addEventListener('click', toggleMobileMenu);
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -1198,7 +1177,7 @@
             });
         });
 
-        // THREE.JS CYBER-EARTH BACKGROUND
+        // --- 3. DYNAMIC THREE.JS BACKGROUND ---
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true, antialias: true });
@@ -1207,48 +1186,97 @@
         const group = new THREE.Group();
         scene.add(group);
 
-        // Core Points (The Earth)
-        const geometry = new THREE.SphereGeometry(25, 64, 64);
-        const ptsGeom = new THREE.BufferGeometry().setFromPoints(
-            new THREE.SphereGeometry(25, 32, 32).vertices || 
-            Array.from({length: 3000}, () => new THREE.Vector3().setFromSphericalCoords(
-                25, Math.random() * Math.PI, Math.random() * Math.PI * 2
-            ))
-        );
-        const material = new THREE.PointsMaterial({ color: 0x6366f1, size: 0.2, transparent: true, opacity: 0.8 });
+        // Create Particles
+        const ptsGeom = new THREE.BufferGeometry();
+        const ptsCount = 3000;
+        const posArray = new Float32Array(ptsCount * 3);
+        
+        for(let i = 0; i < ptsCount * 3; i+=3) {
+            // Distribute points in a sphere shape
+            const r = 25;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos((Math.random() * 2) - 1);
+            posArray[i] = r * Math.sin(phi) * Math.cos(theta);
+            posArray[i+1] = r * Math.sin(phi) * Math.sin(theta);
+            posArray[i+2] = r * Math.cos(phi);
+        }
+        ptsGeom.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        
+        const material = new THREE.PointsMaterial({ 
+            color: 0x6366f1, // Starting color (Indigo)
+            size: 0.15, 
+            transparent: true, 
+            opacity: 0.8 
+        });
         const points = new THREE.Points(ptsGeom, material);
         group.add(points);
 
-        // Neural Mesh
-        const wireGeometry = new THREE.SphereGeometry(25.1, 12, 12);
-        const wireMaterial = new THREE.MeshBasicMaterial({ color: 0x6366f1, wireframe: true, transparent: true, opacity: 0.1 });
+        // Create Wireframe Mesh
+        const wireGeometry = new THREE.SphereGeometry(25.1, 15, 15);
+        const wireMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0x6366f1, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.08 
+        });
         const mesh = new THREE.Mesh(wireGeometry, wireMaterial);
         group.add(mesh);
 
-        // Atmosphere Glow
-        const atmosGeom = new THREE.SphereGeometry(28, 32, 32);
-        const atmosMat = new THREE.MeshBasicMaterial({ color: 0xa855f7, transparent: true, opacity: 0.03, side: THREE.BackSide });
-        const atmos = new THREE.Mesh(atmosGeom, atmosMat);
-        group.add(atmos);
-
         camera.position.z = 70;
 
+        // Mouse tracking for parallax
         let mouseX = 0, mouseY = 0;
         document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX - window.innerWidth / 2) / 250;
-            mouseY = (e.clientY - window.innerHeight / 2) / 250;
+            mouseX = (e.clientX - window.innerWidth / 2) / 300;
+            mouseY = (e.clientY - window.innerHeight / 2) / 300;
         });
 
-        // Navigation active state for both desktop and mobile
+        // Dynamic Scroll Logic (Changes 3D Object state based on scroll)
+        let scrollY = 0;
+        const colorPalette = [
+            new THREE.Color(0x6366f1), // About (Indigo)
+            new THREE.Color(0x4ade80), // Academics (Green)
+            new THREE.Color(0xa855f7), // Journey (Purple)
+            new THREE.Color(0xf43f5e), // Projects (Rose)
+            new THREE.Color(0x3b82f6)  // Contact (Blue)
+        ];
+
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+            const documentHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollY / documentHeight;
+            
+            // 1. Shift Colors based on scroll percentage
+            const colorIndex = Math.min(Math.floor(scrollPercent * colorPalette.length), colorPalette.length - 1);
+            const nextColorIndex = Math.min(colorIndex + 1, colorPalette.length - 1);
+            
+            // Calculate progress between two colors
+            const sectionPercent = (scrollPercent * colorPalette.length) % 1;
+            
+            let currentColor = new THREE.Color();
+            currentColor.lerpColors(colorPalette[colorIndex], colorPalette[nextColorIndex], sectionPercent);
+            
+            material.color = currentColor;
+            wireMaterial.color = currentColor;
+
+            // 2. Adjust Camera position/zoom dynamically
+            camera.position.z = 70 - (scrollPercent * 20); // Zooms in slightly as you scroll down
+            
+            // 3. Update Active Nav Links
+            updateActiveNav();
+        });
+
         const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section');
+        const sections = document.querySelectorAll('section, div[id]');
 
         function updateActiveNav() {
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
+                if (scrollY >= sectionTop - 250) {
+                    if(section.getAttribute('id')) {
+                        current = section.getAttribute('id');
+                    }
                 }
             });
 
@@ -1260,14 +1288,16 @@
             });
         }
 
-        window.addEventListener('scroll', updateActiveNav);
-
         function animate() {
             requestAnimationFrame(animate);
-            group.rotation.y += 0.003;
+            // Default continuous rotation
+            group.rotation.y += 0.002;
             group.rotation.x += 0.001;
+            
+            // Mouse parallax effect
             group.position.x += (mouseX - group.position.x) * 0.05;
             group.position.y += (-mouseY - group.position.y) * 0.05;
+            
             renderer.render(scene, camera);
         }
         animate();
@@ -1280,7 +1310,3 @@
     </script>
 </body>
 </html>
-
-
-
-
