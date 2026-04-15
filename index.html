@@ -535,12 +535,14 @@
             .desktop-nav { display: none; }
             .mobile-nav { display: flex; }
             .bento-grid { grid-template-columns: 1fr; gap: 15px; }
-            .academic-card { grid-column: span 1; }
+            .academic-card { grid-column: span 1; padding: 30px 25px; }
             .stats-card { grid-column: span 1; }
             .card { padding: 25px 20px; }
             h1 { font-size: 2.5rem; }
-            #bg-canvas { display: none; }
             .grades-table th, .grades-table td { padding: 8px; font-size: 0.8rem; }
+            .card:hover { transform: none; }
+            .timeline-item:hover { transform: none; }
+            .course-list { grid-template-columns: 1fr; }
         }
         /* Add this to your <style> section */
 
@@ -1089,7 +1091,7 @@
                                     </div>
                                     <div>
                                         <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0; text-transform: uppercase; letter-spacing: 1px;">Email</p>
-                                        <a href="mailto:studyfor1505@gmail.com" style="font-weight: 600; color: var(--text-primary); margin: 0; font-size: 1.05rem; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#6366f1'" onmouseout="this.style.color='var(--text-primary)'">studyfor1505@gmail.com</a>
+                                        <a href="mailto:studyfor1505@gmail.com" style="font-weight: 600; color: var(--text-primary); margin: 0; font-size: 0.8rem; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#6366f1'" onmouseout="this.style.color='var(--text-primary)'">studyfor1505@gmail.com</a>
                                     </div>
                                 </div>
                             </div>
@@ -1198,7 +1200,7 @@
 
         // Create Particles
         const ptsGeom = new THREE.BufferGeometry();
-        const ptsCount = 3000;
+        const ptsCount = window.innerWidth < 768 ? 1500 : 3000;
         const posArray = new Float32Array(ptsCount * 3);
         
         for(let i = 0; i < ptsCount * 3; i+=3) {
