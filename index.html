@@ -663,8 +663,14 @@
                     6th semester Computer Engineering student at LDRP-ITR with hands-on experience in Python data science stack.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn-primary" style="background-color: #f97316; color: #fff; border: none; box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); transition: transform 0.3s ease;">Contact Me</a>
-                    <a href="HasyaPatel.pdf" class="btn-secondary" style="background-color: transparent; color: #f97316; border: 2px solid #f97316; transition: all 0.3s ease;" onclick="alert('Hasya Patel Resume.pdf')">Download CV</a>
+                    <a href="#contact" class="btn-primary" style="background: linear-gradient(135deg, #f97316, #ea580c); color: #fff; border: none; box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 35px rgba(249, 115, 22, 0.7)'; this.querySelector('div').style.left='100%';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(249, 115, 22, 0.5)'; this.querySelector('div').style.left='-100%';">
+                        <span style="position: relative; z-index: 2;">Contact Me</span>
+                        <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s; z-index: 1;"></div>
+                    </a>
+                    <a href="HasyaPatel.pdf" class="btn-secondary" style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.2)); color: #f97316; border: 2px solid #f97316; transition: all 0.4s ease; position: relative; overflow: hidden;" onclick="alert('Hasya Patel Resume.pdf')" onmouseover="this.style.background='linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(249, 115, 22, 0.3))'; this.style.transform='translateY(-2px)'; this.querySelector('div').style.width='100%';" onmouseout="this.style.background='linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.2))'; this.style.transform='translateY(0)'; this.querySelector('div').style.width='0';">
+                        <i class="fas fa-download" style="margin-right: 8px;"></i>Download CV
+                        <div style="position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: #f97316; transition: width 0.4s;"></div>
+                    </a>
                 </div>
             </div>
             <div class="hero-image-wrapper">
@@ -1234,6 +1240,28 @@
         const mesh = new THREE.Mesh(wireGeometry, wireMaterial);
         group.add(mesh);
 
+        // Add floating cubes
+        const cubeCount = window.innerWidth < 768 ? 10 : 20;
+        const cubes = [];
+        for(let i = 0; i < cubeCount; i++) {
+            const cubeGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+            const cubeMaterial = new THREE.MeshBasicMaterial({ 
+                color: 0x87ceeb, 
+                transparent: true, 
+                opacity: 0.6,
+                wireframe: true
+            });
+            const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            cube.position.set(
+                (Math.random() - 0.5) * 50,
+                (Math.random() - 0.5) * 50,
+                (Math.random() - 0.5) * 50
+            );
+            cube.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+            group.add(cube);
+            cubes.push(cube);
+        }
+
         camera.position.z = 70;
 
         // Mouse tracking for parallax
@@ -1270,6 +1298,7 @@
             
             material.color = currentColor;
             wireMaterial.color = currentColor;
+            cubes.forEach(cube => cube.material.color = currentColor);
 
             // 2. Update Active Nav Links
             updateActiveNav();
@@ -1302,6 +1331,12 @@
             // Default continuous rotation
             group.rotation.y += 0.002;
             group.rotation.x += 0.001;
+            
+            // Rotate cubes individually
+            cubes.forEach(cube => {
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+            });
             
             // Mouse parallax effect
             group.position.x += (mouseX - group.position.x) * 0.05;
