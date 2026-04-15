@@ -248,7 +248,7 @@
         
         .hero-avatar:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 70px rgba(74, 222, 128, 0.4);
+            box-shadow: 0 0 70px rgba(128, 160, 211, 0.4);
         }
 
         h1 {
@@ -279,7 +279,7 @@
 
         .btn-primary {
             padding: 16px 35px;
-            background: #4ade80; 
+            background: #87ceeb; 
             color: #010409;
             border-radius: 8px; 
             text-decoration: none;
@@ -310,8 +310,8 @@
         }
 
         .btn-secondary:hover {
-            border-color: #4ade80;
-            color: #4ade80;
+            border-color: #87ceeb;
+            color: #87ceeb;
         }
 
         .btn-glow {
@@ -418,7 +418,7 @@
         }
 
         .timeline-item:hover {
-            border-left-color: #4ade80;
+            border-left-color: #87ceeb;
             background: rgba(255,255,255,0.05);
             transform: translateX(10px);
         }
@@ -539,6 +539,8 @@
             .stats-card { grid-column: span 1; }
             .card { padding: 25px 20px; }
             h1 { font-size: 2.5rem; }
+            #bg-canvas { display: none; }
+            .grades-table th, .grades-table td { padding: 8px; font-size: 0.8rem; }
         }
         /* Add this to your <style> section */
 
@@ -688,7 +690,7 @@
                         </table>
                     </div>
                     <p class="cgpa-row">
-                        Overall Average SPI: <span style="color: #4ade80; font-weight: 900;">7.64</span>
+                        Overall Average SPI: <span style="color: #87ceeb; font-weight: 900;">7.64</span>
                     </p>
                 </div>
                 <div class="card stats-card">
@@ -719,18 +721,18 @@
                             <div class="timeline-title">Java & Advanced Java</div>
                             <div style="color: var(--text-secondary);">Moved into object-oriented programming and backend concepts.</div>
                         </div>
-                        <div class="timeline-item" style="border-left-color: #4ade80;">
-                            <div class="timeline-label" style="background: #4ade80; color: #000;">Step 4</div>
+                        <div class="timeline-item">
+                            <div class="timeline-label">Step 4</div>
                             <div class="timeline-title">Python & Advanced Python</div>
                             <div style="color: var(--text-secondary);">Mastered clean coding, data handling and automation for AI/ML.</div>
                         </div>
-                        <div class="timeline-item" style="border-left-color: #a855f7;">
-                            <div class="timeline-label" style="background: #a855f7;">Step 5</div>
+                        <div class="timeline-item">
+                            <div class="timeline-label">Step 5</div>
                             <div class="timeline-title">Data Science</div>
                             <div style="color: var(--text-secondary);">Pandas, NumPy, Matplotlib, Seaborn for analysis & visualization.</div>
                         </div>
-                        <div class="timeline-item" style="border-left-color: #6366f1;">
-                            <div class="timeline-label" style="background: #6366f1;">Step 6</div>
+                        <div class="timeline-item">
+                            <div class="timeline-label">Step 6</div>
                             <div class="timeline-title">Machine Learning & AI</div>
                             <div style="color: var(--text-secondary);">Supervised/unsupervised learning, neural networks, model deployment.</div>
                         </div>
@@ -793,7 +795,7 @@
             <p class="section-subtitle reveal-right">Hands-on work demonstrating AI/ML competency and full-stack development</p>
             <div class="bento-grid reveal-left">
                 <div class="card" style="grid-column: span 12;">
-                      <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Core Programming Applications</h3>
+                      <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">🟣 Core Programming Applications</h3>
                     <div class="course-list">
                         <div class="course-card">
                             <h3 style="color: #34d399; margin-bottom: 10px;">C/C++ Fundamentals</h3>
@@ -813,7 +815,7 @@
                             </ul>
                         </div>
                     </div>
-                      <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Frontend Web Development</h3>
+                      <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">🟣 Frontend Web Development</h3>
                     <div class="course-list" style="margin-bottom: 2.5rem;">
                         <div class="course-card">
                             <h3 style="color: #34d399; margin-bottom: 10px;">LDRP College Website</h3>
@@ -835,7 +837,7 @@
                             <a href="https://github.com/Hasya1505/ecommerce-frontend" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
                         </div>
                     </div>
-                    <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Python & Full-Stack Projects</h3>
+                    <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">🟣 Python & Full-Stack Projects</h3>
                     <div class="course-list" style="margin-bottom: 2.5rem;">
                         <div class="course-card">
                             <h3 style="color: #34d399; margin-bottom: 10px;">MediStore Pro</h3>
@@ -861,7 +863,7 @@
                         </div>
 
                         <div class="course-card">
-                            <h3 style="color: #34d399; margin-bottom: 10px;">Sports Hub Platform (Under Devlopment)</h3>
+                            <h3 style="color: #34d399; margin-bottom: 10px;">SportsHub Platform</h3>
                             <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px;"><b>Tech Stack:</b> Flask, MySQL, HTML/CSS/JS</p>
                             <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
                                 <li>Sports event management platform</li>
@@ -872,7 +874,7 @@
                         </div>
                     </div>
 
-                    <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Data Science & Machine Learning</h3>
+                    <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">🟣 Data Science & Machine Learning</h3>
                     <div class="course-list" style="margin-bottom: 2.5rem;">
                         <div class="course-card">
                             <h3 style="color: #34d399; margin-bottom: 10px;">House Price EDA</h3>
@@ -895,7 +897,7 @@
                             <a href="https://github.com/Hasya1505/YouTube-EDA" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
                         </div>
                     </div>
-                     <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;"> Machine Learning</h3>
+                     <h3 style="color: #73bdea; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">🟣 Machine Learning</h3>
                     <div class="course-list" style="margin-bottom: 2.5rem;">
                         <div class="course-card">
                             <h3 style="color: #34d399; margin-bottom: 10px;">Movie Recommendation</h3>
@@ -926,7 +928,7 @@
             <div class="bento-grid reveal-right">
                 <div class="card" style="grid-column: span 12;">
                     
-                    <h3 style="color: #4ade80; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                    <h3 style="color: #87ceeb; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
                         <i class="fas fa-laptop-code" style="margin-right: 8px;"></i>Foundational Courses
                     </h3>
                     <div class="course-list">
@@ -984,7 +986,7 @@
                         <div style="flex: 1; min-width: 300px;">
                             <div class="skill-tag" style="display: inline-block; background: rgba(168, 85, 247, 0.2); border-color: var(--accent-2); color: var(--accent-2); margin-bottom: 10px;">Featured Internship</div>
                             <h3 style="font-size: 1.8rem; margin: 10px 0;">Artificial Intelligence & Machine Learning</h3>
-                            <p style="color: #4ade80; font-weight: 700; margin-bottom: 15px;">Edunet Foundation | In Collaboration with AICTE & IBM SkillsBuild</p>
+                            <p style="color: #87ceeb; font-weight: 700; margin-bottom: 15px;">Edunet Foundation | In Collaboration with AICTE & IBM SkillsBuild</p>
                             
                             <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px;">
                                 <i class="far fa-calendar-alt" style="margin-right: 8px;"></i> Jan 15, 2026 – Feb 26, 2026 (6 Weeks)
@@ -1047,12 +1049,12 @@
                         
                         <div style="padding: 40px; background: linear-gradient(135deg, rgba(13, 17, 23, 0.9), rgba(99, 102, 241, 0.05)); border-right: 1px solid var(--border);">
                             <h3 style="margin-bottom: 30px; color: #f0f6fc; font-size: 1.6rem; display: flex; align-items: center; gap: 12px;">
-                                <i class="fas fa-paper-plane" style="color: #4ade80;"></i> Let's Connect
+                                <i class="fas fa-paper-plane" style="color: #87ceeb;"></i> Let's Connect
                             </h3>
                             
                             <div style="display: flex; flex-direction: column; gap: 25px; margin-bottom: 45px;">
                                 <div style="display: flex; align-items: center; gap: 15px;">
-                                    <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(74, 222, 128, 0.1); display: flex; justify-content: center; align-items: center; color: #4ade80; font-size: 1.2rem; border: 1px solid rgba(74, 222, 128, 0.2);">
+                                    <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(135, 206, 235, 0.1); display: flex; justify-content: center; align-items: center; color: #87ceeb; font-size: 1.2rem; border: 1px solid rgba(135, 206, 235, 0.2);">
                                         <i class="fas fa-user"></i>
                                     </div>
                                     <div>
@@ -1100,6 +1102,14 @@
                                 <a href="https://github.com/Hasya1505" target="_blank" style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; justify-content: center; align-items: center; color: #fff; font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; border: 1px solid var(--border);" onmouseover="this.style.background='#333'; this.style.borderColor='#333'; this.style.transform='translateY(-3px)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='var(--border)'; this.style.transform='translateY(0)';">
                                     <i class="fab fa-github"></i>
                                 </a>
+                                <a href="https://twitter.com/hasya1505" target="_blank"
+   style="width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; justify-content: center; align-items: center; color: #fff; font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; border: 1px solid var(--border);"
+   
+   onmouseover="this.style.background='#1DA1F2'; this.style.borderColor='#1DA1F2'; this.style.transform='translateY(-3px)';"
+   onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='var(--border)'; this.style.transform='translateY(0)';">
+   
+   <i class="fab fa-twitter"></i>
+</a>
                             </div>
                         </div>
 
@@ -1235,7 +1245,7 @@
         let scrollY = 0;
         const colorPalette = [
             new THREE.Color(0x6366f1), // About (Indigo)
-            new THREE.Color(0x4ade80), // Academics (Green)
+            new THREE.Color(0x87ceeb), // Academics (LightSkyBlue)
             new THREE.Color(0xa855f7), // Journey (Purple)
             new THREE.Color(0xf43f5e), // Projects (Rose)
             new THREE.Color(0x3b82f6)  // Contact (Blue)
@@ -1259,10 +1269,7 @@
             material.color = currentColor;
             wireMaterial.color = currentColor;
 
-            // 2. Adjust Camera position/zoom dynamically
-            camera.position.z = 70 - (scrollPercent * 20); // Zooms in slightly as you scroll down
-            
-            // 3. Update Active Nav Links
+            // 2. Update Active Nav Links
             updateActiveNav();
         });
 
