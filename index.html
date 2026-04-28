@@ -1205,6 +1205,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.onload = function() {
+    window.scrollTo(0, 0);
+};
         // --- 1. INTERSECTION OBSERVER FOR SCROLL ANIMATIONS ---
         const observerOptions = {
             root: null,
