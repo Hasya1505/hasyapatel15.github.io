@@ -542,6 +542,213 @@
                 font-weight: 800;
             }
         }
+          /* Inherits styling variables from your core portfolio layout environment */
+    * {
+      box-sizing: border-box;
+    }
+
+    #skills {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 72px 0;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 1;
+      letter-spacing: 0;
+      text-align: center;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-primary);
+    }
+
+    .section-title span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      max-width: 720px;
+      margin: 18px auto 38px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      grid-column: span 12;
+      padding: clamp(18px, 3vw, 30px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      position: relative;
+      min-height: 255px;
+      padding: 24px 18px 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card-bg);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1), border-color 350ms, background-color 0.4s;
+    }
+
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(125deg, transparent 0%, rgba(255, 255, 255, 0.08) 46%, transparent 62%);
+      opacity: 0;
+      transform: translateX(-45%);
+      transition: opacity 220ms ease, transform 420ms ease;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      background: var(--surface);
+      transform: translateY(-6px) rotateX(4deg) rotateY(-2deg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .skill-card:hover::before {
+      opacity: 1;
+      transform: translateX(45%);
+    }
+
+    .icon-stage {
+      width: 72px;
+      height: 72px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--bg);
+      box-shadow: var(--shadow-sm);
+      transform: translateZ(24px);
+      transition: transform 0.3s ease, background-color 0.4s;
+      flex-shrink: 0;
+    }
+
+    .skill-card:hover .icon-stage {
+      transform: translateZ(32px) scale(1.04) rotate(3deg);
+    }
+
+    .icon-stage img, .icon-stage svg {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .skill-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .skill-title {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .skill-sub {
+      display: block;
+      min-height: 44px;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-secondary);
+      background: var(--bg);
+      font-size: 0.76rem;
+      font-weight: 600;
+      line-height: 1;
+      transition: all 0.2s ease;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* --- Responsive Breakpoints --- */
+    @media (max-width: 1024px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      #skills {
+        width: min(100% - 22px, 1180px);
+        padding: 46px 0;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .skill-card {
+        min-height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 20px 16px;
+      }
+
+      .icon-stage {
+        margin-bottom: 12px;
+      }
+
+      .skill-sub {
+        min-height: auto;
+        margin-bottom: 4px;
+      }
+    }
     </style>
 </head>
 <body data-theme="light">
@@ -698,54 +905,139 @@
             </div>
         </div>
 
-        <div id="skills" class="reveal-element">
-            <h2 class="section-title">AI/ML & Tech Stack</h2>
-            <p class="section-subtitle">Complete Python AI/ML pipeline from data to deployment</p>
-            <div class="bento-grid">
-                <div class="card" style="grid-column: span 12;">
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-title">🐍 Python</div>
-                            <small class="skill-sub">Core language for deep learning & data science</small>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Python 3.11+</span>
-                                <span class="skill-tag">NumPy</span>
-                                <span class="skill-tag">Pandas</span>
-                                <span class="skill-tag">Jupyter</span>
-                                <span class="skill-tag">FastAPI</span>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-title">🤖 Machine Learning</div>
-                            <small class="skill-sub">End-to-end ML workflows & model deployment</small>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Scikit-learn</span>
-                                <span class="skill-tag">XGBoost</span>
-                                <span class="skill-tag">Model Evaluation</span>
-                                <span class="skill-tag">Hyperparameter Tuning</span>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-title">⚡ Deep Learning</div>
-                            <small class="skill-sub">Neural networks & advanced architectures</small>
-                            <div class="skill-tags">
-                                <span class="skill-tag">PyTorch</span>
-                                <span class="skill-tag">TensorFlow</span>
-                                <span class="skill-tag">CNN & RNN</span>
-                                <span class="skill-tag">Computer Vision</span>
-                            </div>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-title">☁️ MLOps Stack</div>
-                            <small class="skill-sub">Production deployment & monitoring</small>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Streamlit • Gradio</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <section id="skills" class="reveal-element">
+    <h2 class="section-title">AI/ML & Tech Stack</h2>
+    <p class="section-subtitle">Complete Python AI/ML pipeline from data engineering to model deployment.</p>
+
+    <div class="bento-grid">
+      <div class="card">
+        <div class="skills-grid">
+          
+          <article class="skill-card" tabindex="0">
+            <div class="icon-stage">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++ icon" />
             </div>
+            <div class="skill-info">
+              <h3 class="skill-title">C++</h3>
+              <small class="skill-sub">Performance-focused programming, DSA, and compute-heavy systems.</small>
+              <div class="skill-tags">
+                <span class="skill-tag">DSA</span>
+                <span class="skill-tag">OOPC</span>
+                <span class="skill-tag">Algorithms</span>
+                <span class="skill-tag">Optimization</span>
+              </div>
+            </div>
+          </article>
+          
+ <article class="skill-card" tabindex="0">
+            <div class="icon-stage">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java icon" />
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-title">Java</h3>
+              <small class="skill-sub">Backend services, OOP foundations, and scalable application development.</small>
+              <div class="skill-tags">
+                <span class="skill-tag">OOP</span>
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">REST</span>
+                <span class="skill-tag">Microservices</span>
+              </div>
+            </div>
+          </article>
+           <article class="skill-card" tabindex="0">
+            <div class="icon-stage">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python icon" />
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-title">Python</h3>
+              <small class="skill-sub">Core language for deep learning, automation, data science, and APIs.</small>
+              <div class="skill-tags">
+                <span class="skill-tag">Python 3.11+</span>
+                <span class="skill-tag">NumPy</span>
+                <span class="skill-tag">Pandas</span>
+                <span class="skill-tag">Jupyter</span>
+                <span class="skill-tag">FastAPI</span>
+              </div>
+            </div>
+          </article>
+          
+          <article class="skill-card" tabindex="0">
+            <div class="icon-stage">
+              <svg viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60.4,14.7c-0.8-0.1-1.6-0.2-2.4-0.2C41.2,14.5,27.1,26.5,24.3,42.4c-0.4-0.1-0.9-0.2-1.3-0.2c-7.9,0-14.3,6.2-14.8,14c-4.1,2.4-6.7,6.7-7.2,11.6c-0.6,6.2,2.3,12.1,7.2,15.6c-1,3.1-1.1,6.5-0.2,9.6c1.6,5.6,5.8,10.1,11.2,12.2c0,0.5,0.1,1,0.2,1.5c1.4,7.7,8.1,13.4,15.9,13.4c2.8,0,5.6-0.8,8-2.3c3.5,4.9,9.2,7.9,15.3,8c0.7,0,1.4,0,2.1-0.1V14.7z" fill="#facc15"/>
+                <path d="M67.6,14.7v98.5c0.7,0.1,1.4,0.1,2.1,0.1c6.1-0.1,11.8-3.1,15.3-8c2.4,1.5,5.2,2.3,8,2.3c7.8,0,14.5-5.7,15.9-13.4c0.1-0.5,0.2-1,0.2-1.5c5.4-2.1,9.6-6.6,11.2-12.2c0.9-3.1,0.8-6.5-0.2-9.6c4.9-3.5,7.8-9.4,7.2-15.6c-0.5-4.9-3.1-9.2-7.2-11.6c-0.5-7.8-6.9-14-14.8-14c-0.4,0-0.9,0.1-1.3,0.2C100.9,26.5,86.8,14.5,70,14.5C69.2,14.5,68.4,14.6,67.6,14.7z" fill="#0891b2" opacity="0.3"/>
+                <path d="M67.6,22.5h18.2l9.6,9.6 M67.6,44.5h10.4l11.2-11.2 M67.6,65.5h10.4l11.2,11.2 M67.6,87.5h18.2l9.6-9.6 M67.6,33.5h31.2 M67.6,55.5h22.4 M67.6,76.5h31.2" fill="none" stroke="#0891b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="95.4" cy="32.1" r="5" fill="#0891b2"/>
+                <circle cx="89.2" cy="33.3" r="5" fill="#0891b2"/>
+                <circle cx="89.2" cy="76.7" r="5" fill="#0891b2"/>
+                <circle cx="95.4" cy="77.9" r="5" fill="#0891b2"/>
+                <circle cx="98.8" cy="33.5" r="5" fill="#0891b2"/>
+                <circle cx="90.0" cy="55.5" r="5" fill="#0891b2"/>
+                <circle cx="98.8" cy="76.5" r="5" fill="#0891b2"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-title">Machine Learning</h3>
+              <small class="skill-sub">End-to-end workflows from training to validation and deployment.</small>
+              <div class="skill-tags">
+                <span class="skill-tag">Scikit-learn</span>
+                <span class="skill-tag">XGBoost</span>
+                <span class="skill-tag">Evaluation</span>
+                <span class="skill-tag">Tuning</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="skill-card" tabindex="0">
+            <div class="icon-stage">
+              <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                <path d="M64,38v-20 M64,90v20 M38,64h-20 M90,64h20 M45.6,45.6L31.4,31.4 M82.4,82.4l14.2,14.2 M45.6,82.4L31.4,96.6 M82.4,45.6l14.2-14.2 M40,53h14 M40,75h14 M53,40v14 M75,40v14 M74,53h14 M74,75h14 M53,74v14 M75,74v14" fill="none" stroke="#1e3a8a" stroke-width="4.5" stroke-linecap="round"/>
+                <rect x="42" y="42" width="44" height="44" rx="10" fill="#38bdf8" stroke="#1e3a8a" stroke-width="4.5"/>
+                <path d="M49,58h22 M49,70h16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="71" cy="58" r="3.5" fill="#fff"/>
+                <circle cx="65" cy="70" r="3.5" fill="#fff"/>
+                <circle cx="64" cy="14" r="6" fill="#f87171" stroke="#1e3a8a" stroke-width="2.5"/>
+                <circle cx="64" cy="114" r="6" fill="#f87171" stroke="#1e3a8a" stroke-width="2.5"/>
+                <circle cx="14" cy="64" r="6" fill="#fbbf24" stroke="#1e3a8a" stroke-width="2.5"/>
+                <circle cx="114" cy="64" r="6" fill="#f87171" stroke="#1e3a8a" stroke-width="2.5"/>
+                <circle cx="28" cy="28" r="6" fill="#fbbf24" stroke="#1e3a8a" stroke-width="2.5"/>
+                <circle cx="100" cy="100" r="6" fill="#fbbf24" stroke="#1e3a8a" stroke-width="2.5"/>
+                <circle cx="28" cy="100" r="6" fill="#fbbf24" stroke="#1e3a8a" stroke-width="2.5"/>
+                <circle cx="100" cy="28" r="6" fill="#fbbf24" stroke="#1e3a8a" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-title">Deep Learning</h3>
+              <small class="skill-sub">Neural networks, computer vision, and advanced model architectures.</small>
+              <div class="skill-tags">
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">CNN</span>
+                <span class="skill-tag">RNN</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="skill-card" tabindex="0">
+            <div class="icon-stage">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker icon" />
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-title">MLOps Stack</h3>
+              <small class="skill-sub">Production-ready demos, containers, monitoring, and deployment workflows.</small>
+              <div class="skill-tags">
+                <span class="skill-tag">Streamlit</span>
+                <span class="skill-tag">Gradio</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">GitHub</span>
+              </div>
+            </div>
+          </article>
+
         </div>
+      </div>
+    </div>
+  </section>
 
         <div id="projects" class="reveal-element">
             <h2 class="section-title">Key Projects</h2>
