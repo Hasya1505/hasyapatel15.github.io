@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hasyapatel15githubio.vercel.app/sitemap.xml
