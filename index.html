@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hasya Patel | AI/ML Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -12,7 +12,6 @@
             --bg: #f8fafc;
             --surface: #ffffff;
             --card-bg: rgba(255, 255, 255, 0.75);
-            /* Upgraded for strong contrast readability in Light Theme */
             --accent: #4f46e5;
             --accent-2: #7c3aed;
             --accent-gradient: linear-gradient(105deg, #9895de, #85a3a8);
@@ -24,7 +23,6 @@
             --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
             --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.12);
             --spotlight: rgba(79, 70, 229, 0.04);
-            /* Separate explicit utility variables for soft surface block backdrops */
             --bento-surface-bg: #f1f5f9;
         }
 
@@ -339,55 +337,7 @@
         }
         .card:hover { border-color: rgba(79, 70, 229, 0.3); background: var(--surface); transform: translateY(-5px); box-shadow: var(--shadow-lg); }
 
-        .academic-card { grid-column: span 8; }
-
-        /* Conic Gauge Frame Metrics */
-        .stats-card { 
-            grid-column: span 4; 
-            position: relative;
-            background: var(--surface);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        .gauge-wrapper {
-            position: relative;
-            width: 170px;
-            height: 170px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 15px 0;
-        }
-        .gauge-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--accent) 0%, var(--accent-2) 77.5%, var(--border) 77.5%, var(--border) 100%);
-            mask: radial-gradient(transparent 58%, #000 59%);
-            -webkit-mask: radial-gradient(transparent 58%, #000 59%);
-            animation: rotationalPulse 8s linear infinite;
-        }
-        .gauge-core {
-            position: absolute;
-            width: 80%;
-            height: 80%;
-            background: var(--surface);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: inset var(--shadow-sm);
-            z-index: 2;
-        }
-        @keyframes rotationalPulse {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        .academic-card { grid-column: span 16; }
 
         .grades-table { width: 100%; border-collapse: collapse; }
         .grades-table th, .grades-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid var(--border); }
@@ -397,65 +347,256 @@
         .cert-link { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
         .cert-link:hover { text-decoration: underline; }
         .cgpa-row { text-align: center; font-size: 1.15rem; font-weight: 700; margin-top: 25px; color: var(--text-primary); }
-        
-        .timeline-card { grid-column: span 12; }
-        .timeline { display: flex; flex-direction: column; gap: 20px; }
-        .timeline-item { padding: 20px; background: rgba(15, 23, 42, 0.01); border-radius: 14px; border-left: 4px solid var(--accent); transition: all 0.3s ease; }
-        .timeline-item:hover { border-left-color: var(--accent-2); background: var(--surface); transform: translateX(5px); box-shadow: var(--shadow-sm); }
-        .timeline-label { background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(147, 51, 234, 0.1)); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; display: inline-block; margin-bottom: 8px; }
-        .timeline-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 5px; color: var(--text-primary); }
 
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
-        .skill-card { text-align: center; padding: 20px; }
-        .skill-title { font-size: 1.25rem; margin-bottom: 5px; font-weight: 700; }
-        .skill-sub { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 12px; display: block; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
-        
-        .skill-tag {
-            background: var(--surface);
-            color: var(--text-secondary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid var(--border);
-            transition: 0.2s;
-        }
-        .skill-tag:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+       /* 1. Fix grid min-width so it scales properly on small screens */
+.skills-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(1100px, 1fr)); 
+    gap: 15px; 
+}
 
-        /* Dynamic Keyword Category Filter Layout */
-        .filter-wrapper { display: flex; justify-content: center; gap: 10px; margin-bottom: 35px; flex-wrap: wrap; }
-        .filter-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            padding: 10px 24px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-sm);
-        }
-        .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-        .filter-btn.active { background: var(--accent-gradient); color: white; border-color: transparent; box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25); }
+.skill-card {
+    position: relative;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card-bg);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+.icon-stage {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    flex-shrink: 0;
+}
+
+.icon-stage img, .icon-stage svg { width: 32px; height: 32px; }
+
+.skill-info { flex: 1; min-width: 0; /* Prevents text overflow in flex items */ }
+
+.skill-title { font-size: 1.1rem; margin-bottom: 4px; font-weight: 700; }
+
+.skill-sub { color: var(--text-muted); font-size: 0.82rem; margin-bottom: 10px; display: block; }
+
+/* 2. Enable row wrapping for skill tags */
+.skill-tags { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 6px; 
+}
+
+.skill-tag {
+    background: var(--surface);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    transition: 0.2s;
+    white-space: nowrap; /* Prevents awkward mid-word breaks in tags */
+}
+
+.skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+/* 3. Mobile View Optimization (Screens under 600px) */
+@media (max-width: 600px) {
+    .skills-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 12px;
+    }
+
+    .skill-card {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .icon-stage {
+        width: 44px;
+        height: 44px;
+    }
+
+    .icon-stage img, .icon-stage svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .skill-title {
+        font-size: 1rem;
+    }
+
+    .skill-sub {
+        font-size: 0.78rem;
+    }
+
+    .skill-tag {
+        font-size: 0.68rem;
+        padding: 3px 8px;
+    }
+}
 
         .course-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         .course-card { padding: 20px; background: rgba(15, 23, 42, 0.01); border-radius: 14px; border: 1px solid var(--border); transition: all 0.3s ease; }
         .course-card:hover { border-color: var(--accent); background: var(--surface); transform: translateY(-3px); }
-        .course-card.hidden-card { display: none !important; }
         .course-title { font-size: 1.1rem; margin-bottom: 6px; font-weight: 700; }
         .course-meta { color: var(--accent-2); font-size: 0.8rem; margin-bottom: 10px; font-weight: 600; }
 
-        .project-section-head { color: var(--accent); margin: 35px 0 15px; border-bottom: 1px solid var(--border); padding-bottom: 8px; font-size: 1.3rem; font-family: 'Space Grotesk', sans-serif; }
+        /* ================= DEV CONSOLE PROJECT SECTION ================= */
+        .dev-projects { width: 100%; margin: 0 auto; }
+        .dev-tabbar {
+            display: flex; align-items: flex-end; gap: 4px;
+            overflow-x: auto; margin: 24px 0 0;
+            border-bottom: 1px solid var(--border);
+            scrollbar-width: none;
+        }
+        .dev-tabbar::-webkit-scrollbar { display: none; }
+        .dev-tab {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem; font-weight: 500;
+            color: var(--text-muted); background: transparent;
+            border: 1px solid transparent; border-bottom: none;
+            padding: 10px 18px; display: flex; align-items: center; gap: 8px;
+            cursor: pointer; white-space: nowrap; border-radius: 8px 8px 0 0;
+            transition: all .2s ease;
+        }
+        .dev-tab .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .55; }
+        .dev-tab:hover { color: var(--text-primary); background: var(--card-bg); }
+        .dev-tab.active {
+            color: var(--text-primary); background: var(--surface);
+            border-color: var(--border);
+            box-shadow: 0 -2px 0 var(--accent) inset;
+        }
+        .dev-tab.active .dot { opacity: 1; background: var(--accent); }
 
-        /* MediStore Pro Spotlight Architecture Layout */
+        .dev-pane {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-top: none; border-radius: 0 0 16px 16px;
+            padding: 30px clamp(16px, 3vw, 30px) 40px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .dev-folder { position: relative; padding-left: 20px; margin-bottom: 36px; }
+        .dev-folder:last-child { margin-bottom: 0; }
+        .dev-folder.is-hidden { display: none !important; }
+        .dev-folder::before {
+            content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 3px;
+            background: var(--folder-color, var(--accent));
+            border-radius: 4px; opacity: .85;
+        }
+        .dev-folder-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+        .dev-folder-head i { color: var(--folder-color, var(--accent)); font-size: .9rem; }
+        .dev-folder-head h3 {
+            font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700;
+            margin: 0; color: var(--text-primary);
+        }
+        .dev-folder-count {
+            font-family: 'JetBrains Mono', monospace; font-size: .7rem;
+            color: var(--text-muted); background: var(--card-bg);
+            border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px;
+        }
+
+        .dev-file-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;
+        }
+
+        .dev-file {
+            position: relative; background: var(--card-bg);
+            border: 1px solid var(--border); border-radius: 12px;
+            padding: 16px; cursor: pointer; display: flex; flex-direction: column;
+            transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+        .dev-file:hover {
+            transform: translateY(-3px);
+            border-color: var(--folder-color, var(--accent));
+            box-shadow: var(--shadow-md);
+        }
+        .dev-file.is-hidden { display: none !important; }
+
+        .dev-file-top { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        .dev-file-top .ext {
+            font-family: 'JetBrains Mono', monospace; font-size: .65rem; font-weight: 600;
+            color: #fff; background: var(--folder-color, var(--accent));
+            border-radius: 4px; padding: 2px 6px;
+        }
+        .dev-file-top .name {
+            font-family: 'JetBrains Mono', monospace; font-size: .85rem; font-weight: 600;
+            color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .dev-file-top .status { margin-left: auto; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .status.live { background: #22c55e; box-shadow: 0 0 0 3px rgba(34, 197, 94, .18); }
+        .status.archived { background: var(--text-muted); }
+        .status.locked { background: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, .18); }
+
+        .dev-file-focus { font-size: .78rem; color: var(--accent-2); font-weight: 600; margin: 0 0 10px; }
+        .dev-file-focus b { color: var(--text-muted); }
+
+        .dev-file ul { list-style: none; margin: 0 0 14px; padding: 0; }
+        .dev-file li {
+            font-size: .8rem; color: var(--text-secondary); line-height: 1.45; margin-bottom: 5px;
+            padding-left: 14px; position: relative;
+        }
+        .dev-file li::before {
+            content: "›"; position: absolute; left: 0; color: var(--folder-color, var(--accent)); font-weight: 700;
+        }
+
+        .dev-file-actions { display: flex; gap: 8px; margin-top: auto; }
+        .dev-cta {
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            font-family: 'JetBrains Mono', monospace; font-size: .73rem; font-weight: 500;
+            text-decoration: none; cursor: pointer; flex: 1; padding: 7px 10px; border-radius: 6px;
+            border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
+            transition: all .2s ease;
+        }
+        .dev-cta::before { content: "$"; color: var(--folder-color, var(--accent)); font-weight: 700; }
+        .dev-cta:hover {
+            border-color: var(--folder-color, var(--accent)); color: var(--text-primary); background: var(--card-bg);
+        }
+        .dev-cta.restricted { color: #f59e0b; border-color: rgba(245, 158, 11, 0.3); }
+        .dev-cta.restricted::before { color: #f59e0b; }
+        .dev-cta.restricted:hover { border-color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+
+        /* Modal View System */
+        .dev-modal-backdrop {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; opacity: 0; pointer-events: none; transition: opacity .25s ease;
+        }
+        .dev-modal-backdrop.active { opacity: 1; pointer-events: auto; }
+        .dev-modal {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; max-width: 550px; width: 90%; padding: 24px;
+            box-shadow: var(--shadow-lg); position: relative;
+            transform: translateY(15px); transition: transform .25s ease;
+        }
+        .dev-modal-backdrop.active .dev-modal { transform: translateY(0); }
+        .dev-modal-close {
+            position: absolute; top: 16px; right: 16px; background: none; border: none;
+            color: var(--text-muted); font-size: 1.2rem; cursor: pointer;
+        }
+        .dev-modal-close:hover { color: var(--text-primary); }
+        .dev-modal-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; margin: 0 0 6px; color: var(--text-primary); }
+        .dev-modal-tech { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--accent-2); margin-bottom: 16px; }
+        .dev-modal-body { font-size: .88rem; color: var(--text-secondary); line-height: 1.6; }
+        .dev-modal-body ul { padding-left: 18px; margin: 12px 0 20px; }
+
+        /* MediStore Spotlight Styling */
         .medistore-spotlight-box {
             grid-column: span 12;
             background: linear-gradient(145deg, var(--surface), var(--spotlight));
-            border: 2px solid transparent;
-            border-image: var(--accent-gradient) 1;
-            border-radius: 0.1px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow-md);
@@ -464,13 +605,11 @@
         }
         .spotlight-tag-badge { position: absolute; top: 0; right: 0; background: var(--accent-gradient); color: white; padding: 6px 20px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-bottom-left-radius: 12px; }
         .medistore-features-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 20px 0; }
-        .medistore-feature-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); padding: 12px 16px; border-radius: 8px; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; }
+        .medistore-feature-item { background: var(--card-bg); border: 1px solid var(--border); padding: 12px 16px; border-radius: 8px; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; }
         .medistore-feature-item i { color: #10b981; }
 
-        /* GitHub Bento Card Custom Base Styling */
         .github-bento-span { grid-column: span 12; background: var(--card-bg); margin-top: 25px; }
 
-        .lock-btn { background: rgba(239, 68, 68, 0.05) !important; color: #ef4444 !important; border: 1px solid rgba(239, 68, 68, 0.2) !important; cursor: pointer; }
         .featured-box { background: linear-gradient(145deg, var(--surface), rgba(79, 70, 229, 0.02)); border-color: rgba(79, 70, 229, 0.2); }
         .capstone-box { background: var(--surface); border: 1px dashed rgba(79, 70, 229, 0.3); padding: 20px; border-radius: 14px; margin-bottom: 20px; }
 
@@ -507,248 +646,11 @@
             .desktop-nav-container { display: none; }
             .mobile-nav { display: flex; }
             .bento-grid { grid-template-columns: 1fr; gap: 15px; }
-            .academic-card, .stats-card { grid-column: span 1; }
+            .academic-card { grid-column: span 1; }
             .card { padding: 20px; }
             .contact-info-panel, .contact-form-panel { padding: 25px; }
             .grades-table th, .grades-table td { padding: 10px 6px; font-size: 0.8rem; }
-            
-            /* --- Advanced Mobile Visibility Contrast Correction Overrides --- */
-            .project-section-head {
-                color: var(--text-primary) !important;
-                border-bottom: 2px solid var(--accent);
-                padding-bottom: 4px;
-            }
-            .course-meta {
-                color: var(--accent) !important;
-                font-weight: 700;
-            }
-            .skill-tag {
-                background: var(--bento-surface-bg) !important;
-                color: var(--text-primary) !important;
-                border: 1px solid rgba(15, 23, 42, 0.12) !important;
-            }
-            [data-theme="dark"] .skill-tag {
-                background: rgba(255, 255, 255, 0.05) !important;
-                color: var(--text-primary) !important;
-                border: 1px solid var(--border) !important;
-            }
-            .timeline-item {
-                background: var(--surface) !important;
-                box-shadow: var(--shadow-sm);
-            }
-            .timeline-label {
-                background: var(--accent-gradient) !important;
-                color: white !important;
-                font-weight: 800;
-            }
         }
-          /* Inherits styling variables from your core portfolio layout environment */
-    * {
-      box-sizing: border-box;
-    }
-
-    #skills {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 72px 0;
-    }
-
-    .section-title {
-      margin: 0;
-      font-size: clamp(2rem, 5vw, 4.2rem);
-      line-height: 1;
-      letter-spacing: 0;
-      text-align: center;
-      font-family: 'Space Grotesk', sans-serif;
-      color: var(--text-primary);
-    }
-
-    .section-title span {
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .section-subtitle {
-      max-width: 720px;
-      margin: 18px auto 38px;
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      line-height: 1.7;
-      text-align: center;
-    }
-
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      grid-column: span 12;
-      padding: clamp(18px, 3vw, 30px);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: var(--card-bg);
-      box-shadow: var(--shadow-sm);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .skill-card {
-      position: relative;
-      min-height: 255px;
-      padding: 24px 18px 18px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: var(--card-bg);
-      transform-style: preserve-3d;
-      perspective: 1000px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1), border-color 350ms, background-color 0.4s;
-    }
-
-    .skill-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(125deg, transparent 0%, rgba(255, 255, 255, 0.08) 46%, transparent 62%);
-      opacity: 0;
-      transform: translateX(-45%);
-      transition: opacity 220ms ease, transform 420ms ease;
-    }
-
-    .skill-card:hover {
-      border-color: var(--accent);
-      background: var(--surface);
-      transform: translateY(-6px) rotateX(4deg) rotateY(-2deg);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .skill-card:hover::before {
-      opacity: 1;
-      transform: translateX(45%);
-    }
-
-    .icon-stage {
-      width: 72px;
-      height: 72px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 20px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--bg);
-      box-shadow: var(--shadow-sm);
-      transform: translateZ(24px);
-      transition: transform 0.3s ease, background-color 0.4s;
-      flex-shrink: 0;
-    }
-
-    .skill-card:hover .icon-stage {
-      transform: translateZ(32px) scale(1.04) rotate(3deg);
-    }
-
-    .icon-stage img, .icon-stage svg {
-      width: 44px;
-      height: 44px;
-      object-fit: contain;
-    }
-
-    .skill-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .skill-title {
-      margin: 0 0 8px;
-      font-size: 1.2rem;
-      line-height: 1.25;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .skill-sub {
-      display: block;
-      min-height: 44px;
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      line-height: 1.45;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 14px;
-    }
-
-    .skill-tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--text-secondary);
-      background: var(--bg);
-      font-size: 0.76rem;
-      font-weight: 600;
-      line-height: 1;
-      transition: all 0.2s ease;
-    }
-
-    .skill-tag:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* --- Responsive Breakpoints --- */
-    @media (max-width: 1024px) {
-      .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 620px) {
-      #skills {
-        width: min(100% - 22px, 1180px);
-        padding: 46px 0;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .skill-card {
-        min-height: auto;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 20px 16px;
-      }
-
-      .icon-stage {
-        margin-bottom: 12px;
-      }
-
-      .skill-sub {
-        min-height: auto;
-        margin-bottom: 4px;
-      }
-    }
     </style>
 </head>
 <body data-theme="light">
@@ -833,7 +735,7 @@
                                 <tr><td>3rd Sem</td><td>7.50/10</td><td>07/2024 - 12/2024</td><td><a href="SEM3.jpg" class="cert-link"><i class="far fa-image"></i> View</a></td></tr>
                                 <tr><td>4th Sem</td><td>7.88/10</td><td>01/2025 - 05/2025</td><td><a href="SEM4.jpg" class="cert-link"><i class="far fa-image"></i> View</a></td></tr>
                                 <tr><td>5th Sem</td><td>7.83/10</td><td>06/2025 - 11/2025</td><td><a href="SEM5.jpg" class="cert-link"><i class="far fa-image"></i> View</a></td></tr>
-                                 <tr><td>6th Sem</td><td>8.33/10</td><td>12/2025 - 05/2025</td><td><a href="sem6.jpeg" class="cert-link"><i class="far fa-image"></i> View</a></td></tr>
+                                <tr><td>6th Sem</td><td>8.33/10</td><td>12/2025 - 05/2025</td><td><a href="sem6.jpeg" class="cert-link"><i class="far fa-image"></i> View</a></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -844,7 +746,7 @@
             </div>
         </div>
 
-    <section id="skills" class="reveal-element">
+         <section id="skills" class="reveal-element">
     <h2 class="section-title">AI/ML & Tech Stack</h2>
     <p class="section-subtitle">Complete Python AI/ML pipeline from data engineering to model deployment.</p>
 
@@ -1041,12 +943,15 @@
     </div>
   </section>
 
+        <!-- Upgraded IDE Dev Console Projects Section -->
         <div id="projects" class="reveal-element">
             <h2 class="section-title">Key Projects</h2>
-            <p class="section-subtitle">Hands-on work demonstrating AI/ML competency and full-stack development</p>
+            <p class="section-subtitle">Browsing by stack — like flipping through the repo folders themselves</p>
+            
             <div class="bento-grid">
                 
-                <div class="medistore-spotlight-box mix-target" data-cat="fullstack">
+                <!-- MediStore Pro Highlight Card -->
+                <div class="medistore-spotlight-box">
                     <span class="spotlight-tag-badge"><i class="fas fa-star"></i> Featured Highlight</span>
                     <h3 style="font-family: 'Space Grotesk'; font-size: 1.8rem; margin-bottom: 8px; font-weight: 700;">
                         <i class="fas fa-prescription-bottle-alt" style="color: var(--accent); margin-right:8px;"></i> MediStore Pro
@@ -1072,140 +977,254 @@
                     </div>
                 </div>
 
-                <div class="card mix-target" style="grid-column: span 12;" data-cat="all">
-                    
-                    <h3 class="project-section-head">🟣 Core Programming Applications</h3>
-                    <div class="course-list">
-                        <div class="course-card">
-                            <h3 class="course-title">C/C++ Fundamentals</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;"><b>Focus:</b> Logic & Basic Algorithms</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                <!-- IDE Dev Console Container -->
+                <div class="card" style="grid-column: span 12; padding: 0; background: transparent; border: none; box-shadow: none;">
+                    <div class="dev-projects">
+                      
+                      <!-- Tab Filter Navigation -->
+                      <div class="dev-tabbar">
+                        <button class="dev-tab active" data-filter="all"><span class="dot"></span>all</button>
+                        <button class="dev-tab" data-filter="fullstack"><span class="dot"></span>full-stack</button>
+                        <button class="dev-tab" data-filter="datascience"><span class="dot"></span>data-science</button>
+                        <button class="dev-tab" data-filter="machinelearning"><span class="dot"></span>machine-learning</button>
+                      </div>
+
+                      <div class="dev-pane">
+
+                        <!-- Core Programming Folder -->
+                        <div class="dev-folder" style="--folder-color:#10b981;" data-cat="core">
+                          <div class="dev-folder-head">
+                            <i class="fas fa-folder-open"></i>
+                            <h3>core-programming</h3>
+                            <span class="dev-folder-count">2 files</span>
+                          </div>
+                          <div class="dev-file-grid">
+                            <div class="dev-file mix-target" data-cat="core" data-desc="Built fundamental software logic using standard C and C++ procedures, focusing on standard library methods, algorithms, and modular structure.">
+                              <div class="dev-file-top">
+                                <span class="ext">C++</span>
+                                <span class="name">cpp_fundamentals</span>
+                                <span class="status archived"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Focus:</b> Logic &amp; basic algorithms</p>
+                              <ul>
                                 <li>Basic console applications (calculators)</li>
                                 <li>Data structures (loops, arrays)</li>
-                            </ul>
+                              </ul>
+                            </div>
+                            <div class="dev-file mix-target" data-cat="core" data-desc="Implemented object-oriented architecture patterns in Java focusing on modular inheritance tree design, data encapsulation, and memory efficiency.">
+                              <div class="dev-file-top">
+                                <span class="ext">JAVA</span>
+                                <span class="name">core_java_projects</span>
+                                <span class="status archived"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Focus:</b> Object-oriented programming</p>
+                              <ul>
+                                <li>Class and object architecture</li>
+                                <li>Inheritance and polymorphism practice</li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
-                        <div class="course-card">
-                            <h3 class="course-title">Core Java Projects</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;"><b>Focus:</b> Object-Oriented Programming</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
-                                <li>Class and Object architecture</li>
-                                <li>Inheritance and Polymorphism practice</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <h3 class="project-section-head">🟣 Frontend Web Development</h3>
-                    <div class="course-list">
-                        <div class="course-card">
-                            <h3 class="course-title">LDRP College Website</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;"><b>Tech Stack:</b> HTML, CSS, JavaScript</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                        <!-- Frontend Web Folder -->
+                        <div class="dev-folder" style="--folder-color:#38bdf8;" data-cat="frontend">
+                          <div class="dev-folder-head">
+                            <i class="fas fa-folder-open"></i>
+                            <h3>frontend-web</h3>
+                            <span class="dev-folder-count">2 files</span>
+                          </div>
+                          <div class="dev-file-grid">
+                            <div class="dev-file mix-target" data-cat="frontend" data-desc="Designed and styled a fully functional web frontend interface mirroring institutional modern UI standards using HTML5 semantics, flex layout, and DOM manipulations.">
+                              <div class="dev-file-top">
+                                <span class="ext">WEB</span>
+                                <span class="name">ldrp_college_site</span>
+                                <span class="status live"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> HTML, CSS, JavaScript</p>
+                              <ul>
                                 <li>Frontend UI design clone</li>
                                 <li>Responsive mobile layouts</li>
-                            </ul>
-                            <a href="https://ldrp-demo-webpage.vercel.app/" target="_blank" class="skill-tag" style="text-decoration: none; background: var(--accent); color: white; border: none;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        </div>
-                        <div class="course-card">
-                            <h3 class="course-title">E-commerce Template</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;"><b>Tech Stack:</b> HTML, CSS</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                              </ul>
+                              <div class="dev-file-actions">
+                                <a href="https://ldrp-demo-webpage.vercel.app/" target="_blank" class="dev-cta">open --live</a>
+                              </div>
+                            </div>
+                            <div class="dev-file mix-target" data-cat="frontend" data-desc="Developed an e-commerce interface grid system focusing on layout responsive breakpoints, product presentation cards, and pure CSS interaction states.">
+                              <div class="dev-file-top">
+                                <span class="ext">WEB</span>
+                                <span class="name">ecommerce_template</span>
+                                <span class="status archived"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> HTML, CSS</p>
+                              <ul>
                                 <li>Basic e-commerce structural UI</li>
                                 <li>Product grids and styling</li>
-                            </ul>
-                            <a href="https://github.com/Hasya1505/ecommerce-frontend" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
+                              </ul>
+                              <div class="dev-file-actions">
+                                <a href="https://github.com/Hasya1505/ecommerce-frontend" target="_blank" class="dev-cta">git clone</a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                    </div>
 
-                    <h3 class="project-section-head">🟣 Python & Full-Stack Projects</h3>
-                    <div class="course-list">
-                        <div class="course-card mix-target" data-cat="fullstack">
-                            <h3 class="course-title">Weather Forecast UI</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;"><b>Tech Stack:</b> Python, API Integration</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                        <!-- Python / Full-Stack Folder -->
+                        <div class="dev-folder" style="--folder-color:#818cf8;" data-cat="fullstack">
+                          <div class="dev-folder-head">
+                            <i class="fas fa-folder-open"></i>
+                            <h3>python-fullstack</h3>
+                            <span class="dev-folder-count">1 file</span>
+                          </div>
+                          <div class="dev-file-grid">
+                            <div class="dev-file mix-target" data-cat="fullstack" data-desc="Integrated real-time external REST API endpoints into a Python web application frontend, visualizing geographical weather metrics dynamically.">
+                              <div class="dev-file-top">
+                                <span class="ext">PY</span>
+                                <span class="name">weather_forecast_ui</span>
+                                <span class="status live"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> Python, API integration</p>
+                              <ul>
                                 <li>Real-time weather data API integration</li>
                                 <li>Location-based forecasting architecture</li>
-                            </ul>
-                            <a href="https://simple-weather-forecast-python.vercel.app/" target="_blank" class="skill-tag" style="text-decoration: none; background: var(--accent); color: white; border: none;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                              </ul>
+                              <div class="dev-file-actions">
+                                <a href="https://simple-weather-forecast-python.vercel.app/" target="_blank" class="dev-cta">open --live</a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                    </div>
 
-                    <h3 class="project-section-head">🟣 Data Science & Analytics</h3>
-                    <div class="course-list">
-                        <div class="course-card mix-target" data-cat="datascience">
-                            <h3 class="course-title">House Price EDA</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;"><b>Tech Stack:</b> Pandas, NumPy, Seaborn</p>
-                            <p style="font-size: 0.85rem; color: var(--accent-2); margin-bottom: 10px;"><b>Dataset:</b> From Kaggle</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
-                                <li>Extensive data normalization & sorting</li>
+                        <!-- Data Science Folder -->
+                        <div class="dev-folder" style="--folder-color:#fbbf24;" data-cat="datascience">
+                          <div class="dev-folder-head">
+                            <i class="fas fa-folder-open"></i>
+                            <h3>data-science</h3>
+                            <span class="dev-folder-count">4 files</span>
+                          </div>
+                          <div class="dev-file-grid">
+                            <div class="dev-file mix-target" data-cat="datascience" data-desc="Executed exploratory data analysis on property valuation variables using statistical techniques, feature correlations, and data distribution visualizations.">
+                              <div class="dev-file-top">
+                                <span class="ext">.PY</span>
+                                <span class="name">house_price_eda</span>
+                                <span class="status archived"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> Pandas, NumPy, Seaborn · Kaggle dataset</p>
+                              <ul>
+                                <li>Extensive data normalization &amp; sorting</li>
                                 <li>Statistical feature correlations</li>
-                            </ul>
-                            <a href="https://github.com/Hasya1505/house-price-exploration" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
-                        </div>
-                        <div class="course-card mix-target" data-cat="datascience">
-                            <h3 class="course-title">Youtube EDA</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;"><b>Tech Stack:</b> Pandas, NumPy, Matplotlib</p>
-                            <p style="font-size: 0.85rem; color: var(--accent-2); margin-bottom: 10px;"><b>Dataset:</b> YouTubeDataset_withChannelElapsed.csv</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
-                                <li>Advanced view/engagement tracking analysis</li>
+                              </ul>
+                              <div class="dev-file-actions">
+                                <a href="https://github.com/Hasya1505/house-price-exploration" target="_blank" class="dev-cta">git clone</a>
+                              </div>
+                            </div>
+                            <div class="dev-file mix-target" data-cat="datascience" data-desc="Analyzed video interaction dynamics, engagement variance across channels, and engagement outliers using Pandas statistical routines.">
+                              <div class="dev-file-top">
+                                <span class="ext">.PY</span>
+                                <span class="name">youtube_eda</span>
+                                <span class="status archived"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> Pandas, NumPy, Matplotlib</p>
+                              <ul>
+                                <li>Advanced view / engagement tracking analysis</li>
                                 <li>Outlier structural filtering analytics</li>
-                            </ul>
-                            <a href="https://github.com/Hasya1505/YouTube-EDA" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
-                        </div>
-                        <div class="course-card mix-target" data-cat="datascience">
-                            <h3 class="course-title">Netflix Content EDA</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;"><b>Tech Stack:</b> Pandas, Matplotlib, Seaborn</p>
-                            <p style="font-size: 0.85rem; color: var(--accent-2); margin-bottom: 10px;"><b>Dataset:</b> netflix_movies_detailed_up_to_2025.csv</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                              </ul>
+                              <div class="dev-file-actions">
+                                <a href="https://github.com/Hasya1505/YouTube-EDA" target="_blank" class="dev-cta">git clone</a>
+                              </div>
+                            </div>
+                            <div class="dev-file mix-target" data-cat="datascience" data-desc="Investigated content distribution across release timeline, genres, and regional catalogs using visual heatmaps and analytical chart generation.">
+                              <div class="dev-file-top">
+                                <span class="ext">.PY</span>
+                                <span class="name">netflix_content_eda</span>
+                                <span class="status archived"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> Pandas, Matplotlib, Seaborn</p>
+                              <ul>
                                 <li>Content trend and genre distribution analysis</li>
                                 <li>Data cleaning and visualization insights</li>
-                            </ul>
-                            <a href="https://github.com/Hasya1505/synent-task-3-Exploratory-Data-Analysis-EDA--hasyapatel" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
-                        </div>
-                        <div class="course-card mix-target" data-cat="datascience">
-                            <h3 class="course-title">Stock Price Analysis</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;"><b>Tech Stack:</b> Pandas, NumPy, Matplotlib</p>
-                            <p style="font-size: 0.85rem; color: var(--accent-2); margin-bottom: 10px;"><b>Dataset:</b> NIFTY50_all.csv</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                              </ul>
+                              <div class="dev-file-actions">
+                                <a href="https://github.com/Hasya1505/synent-task-3-Exploratory-Data-Analysis-EDA--hasyapatel" target="_blank" class="dev-cta">git clone</a>
+                              </div>
+                            </div>
+                            <div class="dev-file mix-target" data-cat="datascience" data-desc="Constructed financial time-series visualization charts tracking price variations, moving averages, and volatility indices across NIFTY50 equities.">
+                              <div class="dev-file-top">
+                                <span class="ext">.PY</span>
+                                <span class="name">stock_price_analysis</span>
+                                <span class="status archived"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> Pandas, NumPy, Matplotlib · NIFTY50</p>
+                              <ul>
                                 <li>Stock trend and price movement analysis</li>
                                 <li>Time-series visualization and comparisons</li>
-                            </ul>
-                            <a href="https://github.com/Hasya1505/synent-task-7--Time-Series-Analysis-hasyapatel" target="_blank" class="skill-tag" style="text-decoration: none;"><i class="fab fa-github"></i> View Repo</a>
+                              </ul>
+                              <div class="dev-file-actions">
+                                <a href="https://github.com/Hasya1505/synent-task-7--Time-Series-Analysis-hasyapatel" target="_blank" class="dev-cta">git clone</a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                    </div>
 
-                    <h3 class="project-section-head">🟣 Machine Learning Frameworks</h3>
-                    <div class="course-list">
-                        <div class="course-card mix-target" data-cat="machinelearning">
-                            <h3 class="course-title">Movie Recommendation</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;"><b>Tech Stack:</b> Python, ML Algorithms</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                        <!-- Machine Learning Folder -->
+                        <div class="dev-folder" style="--folder-color:#f43f5e;" data-cat="machinelearning">
+                          <div class="dev-folder-head">
+                            <i class="fas fa-folder-open"></i>
+                            <h3>machine-learning</h3>
+                            <span class="dev-folder-count">3 files · restricted</span>
+                          </div>
+                          <div class="dev-file-grid">
+                            <div class="dev-file mix-target" data-cat="machinelearning" data-desc="Developed vector-space recommendation engines implementing cosine similarity models to formulate content-based film matching based on user activity vectors.">
+                              <div class="dev-file-top">
+                                <span class="ext">.PY</span>
+                                <span class="name">movie_recommender</span>
+                                <span class="status locked"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> Python, ML algorithms</p>
+                              <ul>
                                 <li>Content-based multi-filtering algorithms</li>
                                 <li>User vectorized preference modeling</li>
-                            </ul>
-                            <button class="skill-tag lock-btn request-access-trigger" data-project="Movie Recommendation System"><i class="fas fa-lock"></i> Request Access</button>
-                        </div>
-                        <div class="course-card mix-target" data-cat="machinelearning">
-                            <h3 class="course-title">Fraud Detection System</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;"><b>Tech Stack:</b> Python, ML Classifiers</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
+                              </ul>
+                              <div class="dev-file-actions">
+                                <button class="dev-cta restricted request-access-trigger" data-project="Movie Recommendation System">access --request</button>
+                              </div>
+                            </div>
+                            <div class="dev-file mix-target" data-cat="machinelearning" data-desc="Built classification models tailored for highly imbalanced transactional datasets to identify anomalous transaction patterns accurately.">
+                              <div class="dev-file-top">
+                                <span class="ext">.PY</span>
+                                <span class="name">fraud_detection</span>
+                                <span class="status locked"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> Python, ML classifiers</p>
+                              <ul>
                                 <li>Credit transaction anomalous evaluation</li>
                                 <li>High precision imbalance modeling</li>
-                            </ul>
-                            <button class="skill-tag lock-btn request-access-trigger" data-project="Fraud Detection System"><i class="fas fa-lock"></i> Request Access</button>
+                              </ul>
+                              <div class="dev-file-actions">
+                                <button class="dev-cta restricted request-access-trigger" data-project="Fraud Detection System">access --request</button>
+                              </div>
+                            </div>
+                            <div class="dev-file mix-target" data-cat="machinelearning" data-desc="Trained predictive supervised machine learning classifiers to evaluate credit risk factors, applicant profiles, and automatically score loan approval odds.">
+                              <div class="dev-file-top">
+                                <span class="ext">.PY</span>
+                                <span class="name">loan_approval_model</span>
+                                <span class="status locked"></span>
+                              </div>
+                              <p class="dev-file-focus"><b>Stack:</b> Python, ML algorithms</p>
+                              <ul>
+                                <li>Predictive risk evaluation modeling</li>
+                                <li>Feature-based approval classification</li>
+                              </ul>
+                              <div class="dev-file-actions">
+                                <button class="dev-cta restricted request-access-trigger" data-project="Loan Approval Prediction Model">access --request</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div class="course-card mix-target" data-cat="machinelearning">
-                            <h3 class="course-title">Loan Approval Prediction</h3>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;"><b>Tech Stack:</b> Python, ML Algorithms</p>
-                            <ul style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; padding-left: 15px;">
-                                <li>Content-based multi-filtering algorithms</li>
-                                <li>User vectorized preference modeling</li>
-                            </ul>
-                            <button class="skill-tag lock-btn request-access-trigger" data-project="Loan Approval Prediction Model"><i class="fas fa-lock"></i> Request Access</button>
-                        </div>
-                    </div>
 
+                      </div>
+                    </div>
                 </div>
 
+                <!-- GitHub Contribution Analytics -->
                 <div class="card github-bento-span">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom: 20px;">
                         <div>
@@ -1309,6 +1328,55 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card featured-box" style="grid-column: span 12;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+        <div style="flex: 1; min-width: 300px;">
+            <div class="skill-tag" style="display: inline-block; background: rgba(147, 51, 234, 0.08); border-color: var(--accent-2); color: var(--accent-2); margin-bottom: 10px;">Featured Internship</div>
+            <h3 style="font-size: 1.6rem; margin: 10px 0; font-family: 'Space Grotesk', sans-serif;">Emerging Technologies (Agentic AI, Cyber Security & Quantum Computing)</h3>
+            <p style="color: var(--accent); font-weight: 700; margin-bottom: 15px;">Edunet Foundation | Collaboration with AICTE & IBM SkillsBuild</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+                <i class="far fa-calendar-alt" style="margin-right: 8px;"></i> Jun 12, 2026 – Jul 10, 2026 (4 Weeks)
+            </p>
+
+            <div class="capstone-box">
+                <h4 style="color: var(--text-primary); margin-bottom: 10px; font-weight: 700;">
+                    <i class="fas fa-leaf" style="color: var(--accent); margin-right: 8px;"></i> Capstone Project: AgriSmart
+                </h4>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px;">
+                    Designed and built an end-to-end intelligent agricultural assistance system leveraging AI, cloud computing, and real-time data analysis.
+                </p>
+                <div class="skill-tags" style="justify-content: flex-start; margin-bottom: 15px;">
+                   <span class="skill-tag">React 19</span>
+<span class="skill-tag">Node.js</span>
+<span class="skill-tag">Python FastAPI</span>
+<span class="skill-tag">Scikit-Learn & XGBoost</span>
+                </div>
+                <ul style="list-style-type: none; padding-left: 0; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8;">
+                    <li><span style="color: var(--accent); margin-right: 5px;">•</span> Developed custom workflows and AI-driven solutions leveraging IBM SkillsBuild and IBM Cloud infrastructure.</li>
+                    <li><span style="color: var(--accent); margin-right: 5px;">•</span> Earned verified industry credentials in AI and Cybersecurity while solving real-world domain challenges.</li>
+                </ul>
+            </div>
+            
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="DOC-20260625-WA0001.pdf" class="btn-secondary" style="font-size: 0.75rem; padding: 10px 18px;" target="_blank"><i class="fas fa-file-contract"></i> Offer Letter</a>
+                <a href="compltion.jpeg" class="btn-primary" style="font-size: 0.75rem; padding: 10px 18px;" target="_blank"><i class="fas fa-certificate"></i> Completion Certificate</a>
+            </div>
+        </div>
+        <div style="background: var(--bg); padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--border); width: 200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
+            <div style="border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                <img src="Screenshot 2026-07-01 162359.png" alt="IBM AI Badge" style="width: 100%; border-radius: 10px; margin-bottom: 8px; box-shadow: var(--shadow-sm);">
+                <p style="font-weight: 800; font-size: 0.7rem; color: var(--text-primary);">IBM SKILLSBUILD</p>
+                <p style="font-size: 0.6rem; color: var(--accent); font-weight: 700;">AI FUNDAMENTALS VERIFIED</p>
+            </div>
+            <div>
+                <img src="Screenshot 2026-07-01 162421.png" alt="IBM Cybersecurity Badge" style="width: 100%; border-radius: 10px; margin-bottom: 8px; box-shadow: var(--shadow-sm);">
+                <p style="font-weight: 800; font-size: 0.7rem; color: var(--text-primary);">IBM SKILLSBUILD</p>
+                <p style="font-size: 0.6rem; color: var(--accent); font-weight: 700;">CYBERSECURITY VERIFIED</p>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
 
         <div id="contact" class="reveal-element" style="padding-bottom: 40px;">
@@ -1379,6 +1447,18 @@
         </div>
     </div>
 
+    <!-- Interactive Modal -->
+    <div class="dev-modal-backdrop" id="devModalBackdrop">
+      <div class="dev-modal">
+        <button class="dev-modal-close" id="devModalClose"><i class="fas fa-times"></i></button>
+        <h3 class="dev-modal-title" id="devModalTitle">Project Details</h3>
+        <div class="dev-modal-tech" id="devModalTech">Stack Overview</div>
+        <div class="dev-modal-body" id="devModalBody">
+          Detailed technical description will render here...
+        </div>
+      </div>
+    </div>
+
     <footer>© 2026 HASYA PATEL | ENGINEERED WITH INTELLIGENCE</footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -1386,9 +1466,9 @@
         if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
         window.onload = function() { window.scrollTo(0, 0); };
 
-        let githubChartInstance = null; // Global vector reference holder
+        let githubChartInstance = null;
 
-        // --- 1. PREMIUM MULTI-THEME CSS VARIABLE CONTROLLER ---
+        // Theme Toggle Controller
         const themeGlobalToggler = document.getElementById('themeGlobalToggler');
         const mobileThemeToggler = document.getElementById('mobileThemeToggler');
         const rootElement = document.body;
@@ -1402,22 +1482,18 @@
             themeGlobalToggler.innerHTML = updatedIcon;
             mobileThemeToggler.innerHTML = updatedIcon;
 
-            // Live-recalibrate 3D Render Shaders based on state changes
             if(targetSetting === 'dark') {
                 nodeMaterial.color.setHex(0x9333ea);
-                pathMaterial.color.setHex(0x4f46e5);
             } else {
                 nodeMaterial.color.setHex(0x4f46e5);
-                pathMaterial.color.setHex(0x9333ea);
             }
 
-            // Live refresh line chart vector style layers seamlessly
             buildGitHubLineChartTrend();
         }
         themeGlobalToggler.addEventListener('click', switchThemeContext);
         mobileThemeToggler.addEventListener('click', switchThemeContext);
 
-        // --- 2. DESKTOP NAVBAR PILL INDICATOR & ENGINE ---
+        // Desktop Navigation Pill
         const desktopNavbarLinks = document.querySelectorAll('.desktop-nav a');
         const navBackPill = document.getElementById('navBackPill');
 
@@ -1466,31 +1542,69 @@
             });
         });
 
-        // --- 3. ANIMATED PROJECT FILTER KEYWORD MATRIX ---
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const mixCards = document.querySelectorAll('.mix-target');
+        // Developer Console Tab Filter System
+        const tabs = document.querySelectorAll('.dev-tab');
+        const folders = document.querySelectorAll('.dev-folder');
 
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filterCriteria = btn.getAttribute('data-filter');
-                
-                mixCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-cat');
-                    if (filterCriteria === 'all' || cardCategory === filterCriteria || cardCategory === 'all') {
-                        card.classList.remove('hidden-card');
-                        card.style.opacity = '0';
-                        setTimeout(() => { card.style.opacity = '1'; }, 50);
-                    } else {
-                        card.classList.add('hidden-card');
-                    }
-                });
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const filter = tab.getAttribute('data-filter');
+
+            folders.forEach(folder => {
+              const files = folder.querySelectorAll('.dev-file');
+              let visibleCount = 0;
+
+              files.forEach(file => {
+                const fileCat = file.getAttribute('data-cat');
+                if (filter === 'all' || filter === fileCat) {
+                  file.classList.remove('is-hidden');
+                  visibleCount++;
+                } else {
+                  file.classList.add('is-hidden');
+                }
+              });
+
+              if (visibleCount > 0) {
+                folder.classList.remove('is-hidden');
+              } else {
+                folder.classList.add('is-hidden');
+              }
             });
+          });
         });
 
-        // --- 4. ASYNC GITHUB 30-DAY LINE CHART TREND ENGINE ---
+        // Developer Console Modal Handler
+        const backdrop = document.getElementById('devModalBackdrop');
+        const modalCloseBtn = document.getElementById('devModalClose');
+        const modalTitle = document.getElementById('devModalTitle');
+        const modalTech = document.getElementById('devModalTech');
+        const modalBody = document.getElementById('devModalBody');
+
+        document.querySelectorAll('.dev-file').forEach(file => {
+          file.addEventListener('click', (e) => {
+            if(e.target.closest('.dev-cta')) return;
+            
+            const fileName = file.querySelector('.name').innerText;
+            const stack = file.querySelector('.dev-file-focus').innerText;
+            const bullets = file.querySelector('ul').outerHTML;
+            const desc = file.getAttribute('data-desc') || 'No additional architectural breakdown provided.';
+
+            modalTitle.innerText = fileName;
+            modalTech.innerText = stack;
+            modalBody.innerHTML = `<p>${desc}</p><strong style="display:block; margin-top:12px;">Key Objectives:</strong>${bullets}`;
+            backdrop.classList.add('active');
+          });
+        });
+
+        modalCloseBtn.addEventListener('click', () => backdrop.classList.remove('active'));
+        backdrop.addEventListener('click', (e) => {
+          if (e.target === backdrop) backdrop.classList.remove('active');
+        });
+
+        // Async GitHub Line Chart
         async function buildGitHubLineChartTrend() {
             const ctx = document.getElementById('githubContributionLineChart');
             if (!ctx) return;
@@ -1500,14 +1614,12 @@
                 const daysArray = [];
                 const labelsArray = [];
                 
-                // Track chronology backwards from present day
                 for (let i = 29; i >= 0; i--) {
                     const d = new Date();
                     d.setDate(d.getDate() - i);
                     const dateString = d.toISOString().split('T')[0];
                     daysArray.push(dateString);
                     datesMap[dateString] = 0;
-                    
                     labelsArray.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
                 }
 
@@ -1528,7 +1640,6 @@
                 });
 
                 const dataPoints = daysArray.map(dateKey => datesMap[dateKey]);
-                
                 const isDark = rootElement.getAttribute('data-theme') === 'dark';
                 const textColor = isDark ? '#cbd5e1' : '#475569';
                 const gridColor = isDark ? 'rgba(248, 250, 252, 0.08)' : 'rgba(15, 23, 42, 0.08)';
@@ -1585,12 +1696,12 @@
                 ctx.parentNode.innerHTML = `<div style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding-top: 80px;"><i class="fas fa-exclamation-circle"></i> Live API profile metrics available online.</div>`;
             }
         }
-        // Fire Graph Loop
         buildGitHubLineChartTrend();
 
-        // --- 5. PRIVATE RESOURCE REDIRECTION ROUTING ENGINE ---
+        // Private Resource Access Request System
         document.querySelectorAll('.request-access-trigger').forEach(triggerButton => {
-            triggerButton.addEventListener('click', function() {
+            triggerButton.addEventListener('click', function(e) {
+                e.stopPropagation();
                 const targetProjectTitle = this.getAttribute('data-project');
                 alert(`Security Protocol Notice:\n\nThe project repository for "${targetProjectTitle}" is encrypted under strict terms.\n\nClicking OK will securely redirect you down to the Communications Matrix Section to submit an automated access request parameter.`);
                 
@@ -1607,7 +1718,7 @@
             });
         });
 
-        // --- 6. SCROLL OBSERVATION ELEMENT REVEALS ---
+        // Intersection Observer for Reveal Elements
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1618,7 +1729,7 @@
 
         document.querySelectorAll('.reveal-element').forEach(el => revealObserver.observe(el));
 
-        // --- 7. DYNAMIC SKILL TYPEWRITER TICKER ---
+        // Skill Typewriter Ticker
         const trackingStrings = ["AI/ML Developer", "Data Analyst", "Python Developer"];
         let currentStringIndex = 0;
         let letterCount = 0;
@@ -1649,7 +1760,7 @@
         }
         setTimeout(processTickerCycle, 600);
 
-       // --- 8. ULTIMATE CYBERNETIC CONSTELLATION & QUANTUM VORTEX ENGINE ---
+        // Three.js Background Particle Engine
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true, antialias: true });
@@ -1659,24 +1770,19 @@
 
         const networkGroup = new THREE.Group();
         scene.add(networkGroup);
-
         camera.position.z = 32;
 
-        // Configuration Parameters
         const totalNodes = window.innerWidth < 768 ? 50 : 110;
         const nodeGeometry = new THREE.SphereGeometry(0.16, 8, 8);
         
-        // System Layout Palette Constants for Smooth Blending
-        let primaryThemeColor = new THREE.Color(0x4f46e5);   // Indigo Accent
-        let secondaryThemeColor = new THREE.Color(0x9333ea); // Purple Accent
+        let primaryThemeColor = new THREE.Color(0x4f46e5);
+        let secondaryThemeColor = new THREE.Color(0x9333ea);
         let activeRuntimeColor = new THREE.Color(0x4f46e5);
 
         const nodeMaterial = new THREE.MeshBasicMaterial({ color: activeRuntimeColor });
         const nodesArray = [];
         const originalPositions = [];
-        const nodeVelocities = [];
 
-        // Build Particle Network Node Field
         for (let idx = 0; idx < totalNodes; idx++) {
             const meshNode = new THREE.Mesh(nodeGeometry, nodeMaterial);
             const xCoord = (Math.random() - 0.5) * 50;
@@ -1690,186 +1796,47 @@
             originalPositions.push({
                 x: xCoord, y: yCoord, z: zCoord,
                 stepOffset: Math.random() * Math.PI * 2,
-                stepSpeed: 0.003 + Math.random() * 0.008,
-                massSensitivity: 0.4 + Math.random() * 0.6
+                stepSpeed: 0.003 + Math.random() * 0.008
             });
-
-            nodeVelocities.push(new THREE.Vector3(0, 0, 0));
         }
 
         const pathsGeometry = new THREE.BufferGeometry();
-        // Custom vertex colors enabled to handle distance-based line glowing
-        const pathMaterial = new THREE.LineBasicMaterial({ 
-            vertexColors: true, 
-            transparent: true, 
-            opacity: 0.35,
-            blending: THREE.AdditiveBlending 
-        });
+        const pathMaterial = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.35 });
         const lineSystem = new THREE.LineSegments(pathsGeometry, pathMaterial);
         networkGroup.add(lineSystem);
 
-        // --- Extra Multi-Shape Geometric Anomaly Clusters ---
-        const extraShapesArray = [];
-        const anomalyGeometries = [
-            new THREE.TetrahedronGeometry(0.65),
-            new THREE.OctahedronGeometry(0.55),
-            new THREE.TorusGeometry(0.4, 0.08, 6, 16)
-        ];
-
-        function generateStructuralAnomaly() {
-            if (extraShapesArray.length > 16) return; // Constraint memory safety threshold
-
-            const targetGeo = anomalyGeometries[Math.floor(Math.random() * anomalyGeometries.length)];
-            const shapeMaterial = new THREE.MeshBasicMaterial({
-                color: activeRuntimeColor,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.0
-            });
-
-            const anomalyMesh = new THREE.Mesh(targetGeo, shapeMaterial);
-            anomalyMesh.position.set(
-                (Math.random() - 0.5) * 55,
-                (Math.random() - 0.5) * 50,
-                (Math.random() - 0.5) * 35
-            );
-
-            networkGroup.add(anomalyMesh);
-
-            extraShapesArray.push({
-                mesh: anomalyMesh,
-                material: shapeMaterial,
-                spinAxisX: (Math.random() - 0.5) * 0.04,
-                spinAxisY: (Math.random() - 0.5) * 0.04,
-                kineticDriftX: (Math.random() - 0.5) * 0.02,
-                kineticDriftY: (Math.random() - 0.5) * 0.02,
-                lifecycleStage: 0, 
-                currentOpacity: 0.0,
-                agingSpeed: 0.001 + Math.random() * 0.003
-            });
-        }
-
-        // Continually cycle and inject structural anomalies dynamically
-        setInterval(generateStructuralAnomaly, 2000);
-
-        // Hardware-Accelerated Mouse Intersection Vectors
-        let projectionMouseVector = new THREE.Vector3(0, 0, 0);
-        let trackingX = 0, trackingY = 0;
-        let internalMouseVelocity = 0;
-        let previousTrackingX = 0, previousTrackingY = 0;
-
-        document.addEventListener('mousemove', (event) => {
-            trackingX = (event.clientX - window.innerWidth / 2) / 16;
-            trackingY = -(event.clientY - window.innerHeight / 2) / 16;
-            
-            // Derive current physical velocity vectors from mouse trajectory
-            const movementDeltaX = trackingX - previousTrackingX;
-            const movementDeltaY = trackingY - previousTrackingY;
-            internalMouseVelocity = Math.min(Math.sqrt(movementDeltaX * movementDeltaX + movementDeltaY * movementDeltaY), 5.0);
-            
-            previousTrackingX = trackingX;
-            previousTrackingY = trackingY;
-        });
-
-        let observedScroll = 0;
-        window.addEventListener('scroll', () => {
-            observedScroll = window.scrollY;
-            trackActiveMenuElements();
-        });
-
-        const anchorLinks = document.querySelectorAll('.nav-link');
-        const sectionsList = document.querySelectorAll('section, div[id]');
-
-        function trackActiveMenuElements() {
-            let isolatedId = '';
-            sectionsList.forEach(sec => {
-                if (observedScroll >= (sec.offsetTop - 280)) {
-                    if(sec.getAttribute('id')) { isolatedId = sec.getAttribute('id'); }
-                }
-            });
-            anchorLinks.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === `#${isolatedId}`) { 
-                    item.classList.add('active'); 
-                    if(window.innerWidth > 768) { positionNavSliderPill(item); }
-                }
-            });
-        }
-
-        // --- Core Animation Frame Rendering Engine Loop ---
         let internalClockTimer = 0;
         function renderExecutionLoop() {
             requestAnimationFrame(renderExecutionLoop);
-            
             internalClockTimer += 0.003;
-            internalMouseVelocity *= 0.95; // Natural kinetic energy attenuation decay
 
-            // 1. Core Theme Style Transition Interpolation (Lerp)
             const rootThemeIsDark = rootElement.getAttribute('data-theme') === 'dark';
-            const perfectTargetColor = rootThemeIsDark ? secondaryThemeColor : primaryThemeColor;
-            activeRuntimeColor.lerp(perfectTargetColor, 0.04);
-            
+            activeRuntimeColor.lerp(rootThemeIsDark ? secondaryThemeColor : primaryThemeColor, 0.04);
             nodeMaterial.color.copy(activeRuntimeColor);
-
-            // 2. Coordinate Tracking and Parallax Updates
-            projectionMouseVector.x += (trackingX - projectionMouseVector.x) * 0.05;
-            projectionMouseVector.y += (trackingY - projectionMouseVector.y) * 0.05;
 
             networkGroup.rotation.y = internalClockTimer * 0.05;
 
-            // 3. Process Constellation Flow-Field Physics
             for(let i = 0; i < totalNodes; i++) {
                 const nodeObj = nodesArray[i];
                 const base = originalPositions[i];
-                const currentVelocity = nodeVelocities[i];
-
                 base.stepOffset += base.stepSpeed;
 
-                // Calculate baseline noise positions
-                const baselineTargetX = base.x + Math.sin(base.stepOffset + base.y) * 1.5;
-                const baselineTargetY = base.y + Math.cos(base.stepOffset * 0.8) * 1.5;
-                const baselineTargetZ = base.z + Math.sin(base.stepOffset * 1.2) * 1.2;
-
-                // Map mouse gravitational field interactions
-                const separationDistanceX = nodeObj.position.x - projectionMouseVector.x;
-                const separationDistanceY = nodeObj.position.y - projectionMouseVector.y;
-                const absoluteDistanceToMouse = Math.sqrt(separationDistanceX * separationDistanceX + separationDistanceY * separationDistanceY) || 0.001;
-
-                if (absoluteDistanceToMouse < 12.0) {
-                    const repulsionStrength = (12.0 - absoluteDistanceToMouse) * 0.03 * base.massSensitivity;
-                    
-                    // Cross product mapping to generate elegant rotational vortex spins around the cursor
-                    const tangentialSwirlX = -separationDistanceY / absoluteDistanceToMouse;
-                    const tangentialSwirlY = separationDistanceX / absoluteDistanceToMouse;
-
-                    currentVelocity.x += (tangentialSwirlX * internalMouseVelocity * 0.12) + (separationDistanceX / absoluteDistanceToMouse) * repulsionStrength;
-                    currentVelocity.y += (tangentialSwirlY * internalMouseVelocity * 0.12) + (separationDistanceY / absoluteDistanceToMouse) * repulsionStrength;
-                }
-
-                // Apply drag attenuation constants
-                currentVelocity.multiplyScalar(0.93);
-
-                // Integrate velocity vectors and return smoothly toward baseline target coordinates
-                nodeObj.position.x += currentVelocity.x + (baselineTargetX - nodeObj.position.x) * 0.02;
-                nodeObj.position.y += currentVelocity.y + (baselineTargetY - nodeObj.position.y) * 0.02;
-                nodeObj.position.z += currentVelocity.z + (baselineTargetZ - nodeObj.position.z) * 0.02;
+                nodeObj.position.x = base.x + Math.sin(base.stepOffset) * 1.5;
+                nodeObj.position.y = base.y + Math.cos(base.stepOffset * 0.8) * 1.5;
             }
 
-            // 4. Compute Distance Vectors and Dynamic Line Luminance Brightness Maps
             const linePositionsArray = [];
             const lineColorsArray = [];
             
             for (let outer = 0; outer < totalNodes; outer++) {
                 for (let inner = outer + 1; inner < totalNodes; inner++) {
                     const clearanceDistance = nodesArray[outer].position.distanceTo(nodesArray[inner].position);
-                    
                     if (clearanceDistance < 9.5) {
                         linePositionsArray.push(
                             nodesArray[outer].position.x, nodesArray[outer].position.y, nodesArray[outer].position.z,
                             nodesArray[inner].position.x, nodesArray[inner].position.y, nodesArray[inner].position.z
                         );
 
-                        // Scale opacity color maps inversely proportional to proximity vectors
                         const normalizationIntensity = 1.0 - (clearanceDistance / 9.5);
                         const calculatedGlowColor = activeRuntimeColor.clone().multiplyScalar(normalizationIntensity);
 
@@ -1883,40 +1850,6 @@
             
             pathsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositionsArray, 3));
             pathsGeometry.setAttribute('color', new THREE.Float32BufferAttribute(lineColorsArray, 3));
-            pathsGeometry.computeBoundingSphere();
-
-            // 5. Update Structural Extra Shape Lifecycles
-            for (let idx = extraShapesArray.length - 1; idx >= 0; idx--) {
-                const item = extraShapesArray[idx];
-                item.material.color.copy(activeRuntimeColor);
-
-                // Rotation and kinetic drift execution updates
-                item.mesh.rotation.x += item.spinAxisX;
-                item.mesh.rotation.y += item.spinAxisY;
-                item.mesh.position.x += item.kineticDriftX;
-                item.mesh.position.y += item.kineticDriftY;
-
-                if (item.lifecycleStage === 0) { // Entry Phase Fade-In
-                    item.currentOpacity += 0.012;
-                    if (item.currentOpacity >= 0.28) {
-                        item.currentOpacity = 0.28;
-                        item.lifecycleStage = 1;
-                    }
-                } else if (item.lifecycleStage === 1) { // Running Structural Aging Loop
-                    item.currentOpacity -= item.agingSpeed;
-                    if (item.currentOpacity <= 0.04) item.lifecycleStage = 2;
-                } else { // Exit Phase Fade-Out Execution
-                    item.currentOpacity -= 0.015;
-                    if (item.currentOpacity <= 0) {
-                        networkGroup.remove(item.mesh);
-                        item.material.dispose();
-                        item.mesh.geometry.dispose();
-                        extraShapesArray.splice(idx, 1);
-                        continue;
-                    }
-                }
-                item.material.opacity = item.currentOpacity;
-            }
 
             renderer.render(scene, camera);
         }
@@ -1926,11 +1859,9 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            const activeLink = document.querySelector('.desktop-nav a.active');
-            if(activeLink) positionNavSliderPill(activeLink);
         });
 
-        // --- 9. AUTOMATED INPUT CONTENT VALIDATION ENGINE ---
+        // Form Validation System
         document.getElementById('portfolioContactForm').addEventListener('submit', function(e) {
             let passStatus = true;
             const targetName = document.getElementById('form-name');
