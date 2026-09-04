@@ -1032,377 +1032,6 @@
             }
         }
 
-        /* ================= DEV CONSOLE PROJECT SECTION ================= */
-        .dev-projects {
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        .dev-tabbar {
-            display: flex;
-            align-items: flex-end;
-            gap: 4px;
-            overflow-x: auto;
-            margin: 24px 0 0;
-            border-bottom: 1px solid var(--border);
-            scrollbar-width: none;
-        }
-
-        .dev-tabbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .dev-tab {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            background: transparent;
-            border: 1px solid transparent;
-            border-bottom: none;
-            padding: 10px 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            white-space: nowrap;
-            border-radius: 8px 8px 0 0;
-            transition: all .2s ease;
-        }
-
-        .dev-tab .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: currentColor;
-            opacity: .55;
-        }
-
-        .dev-tab:hover {
-            color: var(--text-primary);
-            background: var(--card-bg);
-        }
-
-        .dev-tab.active {
-            color: var(--text-primary);
-            background: var(--surface);
-            border-color: var(--border);
-            box-shadow: 0 -2px 0 var(--accent) inset;
-        }
-
-        .dev-tab.active .dot {
-            opacity: 1;
-            background: var(--accent);
-        }
-
-        .dev-pane {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-top: none;
-            border-radius: 0 0 16px 16px;
-            padding: 30px clamp(16px, 3vw, 30px) 40px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .dev-folder {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 36px;
-        }
-
-        .dev-folder:last-child {
-            margin-bottom: 0;
-        }
-
-        .dev-folder.is-hidden {
-            display: none !important;
-        }
-
-        .dev-folder::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 6px;
-            bottom: 6px;
-            width: 3px;
-            background: var(--folder-color, var(--accent));
-            border-radius: 4px;
-            opacity: .85;
-        }
-
-        .dev-folder-head {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-
-        .dev-folder-head i {
-            color: var(--folder-color, var(--accent));
-            font-size: .9rem;
-        }
-
-        .dev-folder-head h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0;
-            color: var(--text-primary);
-        }
-
-        .dev-folder-count {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: .7rem;
-            color: var(--text-muted);
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 2px 10px;
-        }
-
-        .dev-file-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
-        .dev-file {
-            position: relative;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
-        }
-
-        .dev-file:hover {
-            transform: translateY(-3px);
-            border-color: var(--folder-color, var(--accent));
-            box-shadow: var(--shadow-md);
-        }
-
-        .dev-file.is-hidden {
-            display: none !important;
-        }
-
-        .dev-file-top {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .dev-file-top .ext {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: .65rem;
-            font-weight: 600;
-            color: #fff;
-            background: var(--folder-color, var(--accent));
-            border-radius: 4px;
-            padding: 2px 6px;
-        }
-
-        .dev-file-top .name {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: .85rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .dev-file-top .status {
-            margin-left: auto;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .status.live {
-            background: #22c55e;
-            box-shadow: 0 0 0 3px rgba(34, 197, 94, .18);
-        }
-
-        .status.archived {
-            background: var(--text-muted);
-        }
-
-        .status.locked {
-            background: #f59e0b;
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, .18);
-        }
-
-        .dev-file-focus {
-            font-size: .78rem;
-            color: var(--accent-2);
-            font-weight: 600;
-            margin: 0 0 10px;
-        }
-
-        .dev-file-focus b {
-            color: var(--text-muted);
-        }
-
-        .dev-file ul {
-            list-style: none;
-            margin: 0 0 14px;
-            padding: 0;
-        }
-
-        .dev-file li {
-            font-size: .8rem;
-            color: var(--text-secondary);
-            line-height: 1.45;
-            margin-bottom: 5px;
-            padding-left: 14px;
-            position: relative;
-        }
-
-        .dev-file li::before {
-            content: "›";
-            position: absolute;
-            left: 0;
-            color: var(--folder-color, var(--accent));
-            font-weight: 700;
-        }
-
-        .dev-file-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: auto;
-        }
-
-        .dev-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: .73rem;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            flex: 1;
-            padding: 7px 10px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            color: var(--text-secondary);
-            transition: all .2s ease;
-        }
-
-        .dev-cta::before {
-            content: "$";
-            color: var(--folder-color, var(--accent));
-            font-weight: 700;
-        }
-
-        .dev-cta:hover {
-            border-color: var(--folder-color, var(--accent));
-            color: var(--text-primary);
-            background: var(--card-bg);
-        }
-
-        .dev-cta.restricted {
-            color: #f59e0b;
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .dev-cta.restricted::before {
-            color: #f59e0b;
-        }
-
-        .dev-cta.restricted:hover {
-            border-color: #f59e0b;
-            background: rgba(245, 158, 11, 0.1);
-        }
-
-        /* Modal View System */
-        .dev-modal-backdrop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(6px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .25s ease;
-        }
-
-        .dev-modal-backdrop.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .dev-modal {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            max-width: 550px;
-            width: 90%;
-            padding: 24px;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            transform: translateY(15px);
-            transition: transform .25s ease;
-        }
-
-        .dev-modal-backdrop.active .dev-modal {
-            transform: translateY(0);
-        }
-
-        .dev-modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .dev-modal-close:hover {
-            color: var(--text-primary);
-        }
-
-        .dev-modal-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
-            margin: 0 0 6px;
-            color: var(--text-primary);
-        }
-
-        .dev-modal-tech {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: .8rem;
-            color: var(--accent-2);
-            margin-bottom: 16px;
-        }
-
-        .dev-modal-body {
-            font-size: .88rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .dev-modal-body ul {
-            padding-left: 18px;
-            margin: 12px 0 20px;
-        }
-
         /* ================= MEDISTORE PRO FULL SCREENSHOT SLIDER ================= */
         .medistore-spotlight-box {
             grid-column: span 12;
@@ -2056,13 +1685,6 @@
         font-size: 0.8rem;
     }
 
-    .dev-pane {
-        padding: 20px 14px;
-    }
-
-    .dev-file-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* --- Small Mobile Phones (max-width: 480px) --- */
@@ -2225,241 +1847,326 @@
             </div>
         </div>
 
+        <!-- ================= AREAS OF EXPERTISE (PINNED CARDS) ================= -->
+        <style>
+            .expertise-grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 26px 22px;
+                padding: 10px 4px 30px;
+            }
+
+            .expertise-card {
+                grid-column: span 4;
+                position: relative;
+                border-radius: 22px;
+                padding: 30px 24px 26px;
+                box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            }
+
+            .expertise-card:hover {
+                transform: translateY(-8px) rotate(0deg) scale(1.015) !important;
+                box-shadow: 0 26px 55px rgba(15, 23, 42, 0.22);
+            }
+
+            .expertise-card:nth-child(6n+1) { transform: rotate(-1.5deg); }
+            .expertise-card:nth-child(6n+2) { transform: rotate(1.2deg); }
+            .expertise-card:nth-child(6n+3) { transform: rotate(-1deg); }
+            .expertise-card:nth-child(6n+4) { transform: rotate(1.5deg); }
+            .expertise-card:nth-child(6n+5) { transform: rotate(-1.2deg); }
+            .expertise-card:nth-child(6n+6) { transform: rotate(1deg); }
+
+            .expertise-pin {
+                position: absolute;
+                top: 14px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: radial-gradient(circle at 35% 35%, #ffffff, #94a3b8 70%, #475569);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            }
+
+            .expertise-top {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 16px;
+            }
+
+            .expertise-index {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 0.8rem;
+                font-weight: 800;
+                letter-spacing: 1px;
+                opacity: 0.75;
+            }
+
+            .expertise-icon-stage {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+                display: grid;
+                place-items: center;
+                flex-shrink: 0;
+            }
+
+            .expertise-icon-stage img,
+            .expertise-icon-stage svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .expertise-title {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 1.3rem;
+                font-weight: 800;
+                line-height: 1.25;
+                margin: 0 0 12px;
+            }
+
+            .expertise-desc {
+                font-size: 0.85rem;
+                line-height: 1.6;
+                margin-bottom: 18px;
+            }
+
+            .expertise-chips {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            .expertise-chip {
+                font-size: 0.7rem;
+                font-weight: 700;
+                padding: 4px 10px;
+                border-radius: 20px;
+                letter-spacing: 0.3px;
+                white-space: nowrap;
+            }
+
+          /* Color variants */
+            .exp-red {
+                background: linear-gradient(145deg, #ef4444, #b91c1c);
+                color: #ffffff;
+            }
+            .exp-red .expertise-title, .exp-red .expertise-index { color: #ffffff; }
+            .exp-red .expertise-desc { color: rgba(255, 255, 255, 0.95); }
+            .exp-red .expertise-icon-stage { background: rgba(255, 255, 255, 0.2); }
+            .exp-red .expertise-chip { background: rgba(255, 255, 255, 0.22); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35); }
+
+            .exp-surface {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                color: var(--text-primary);
+            }
+            .exp-surface .expertise-title { color: var(--text-primary); }
+            .exp-surface .expertise-index { color: var(--accent); }
+            .exp-surface .expertise-desc { color: var(--text-secondary); }
+            .exp-surface .expertise-icon-stage { background: var(--bg); border: 1px solid var(--border); }
+            .exp-surface .expertise-chip { background: var(--bg); color: var(--text-secondary); border: 1px solid var(--border); }
+
+            .exp-brand {
+                background: linear-gradient(145deg, #4f46e5, #3730a3);
+                color: #ffffff;
+            }
+            .exp-brand .expertise-title, .exp-brand .expertise-index { color: #ffffff; }
+            .exp-brand .expertise-desc { color: rgba(255, 255, 255, 0.95); }
+            .exp-brand .expertise-icon-stage { background: rgba(255, 255, 255, 0.2); }
+            .exp-brand .expertise-chip { background: rgba(255, 255, 255, 0.22); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35); }
+
+            @media (max-width: 968px) {
+                .expertise-card { grid-column: span 6; transform: none !important; }
+                .expertise-card:hover { transform: translateY(-6px) !important; }
+            }
+
+            @media (max-width: 600px) {
+                .expertise-card { grid-column: span 12; }
+            }
+        </style>
+
         <section id="skills" class="reveal-element">
-            <h2 class="section-title">AI/ML & Tech Stack</h2>
+            <h2 class="section-title">Areas of Expertise</h2>
             <p class="section-subtitle">Complete Python AI/ML pipeline from data engineering to model deployment.</p>
 
-            <div class="bento-grid">
-                <div class="card">
-                    <div class="skills-grid">
+            <div class="expertise-grid">
 
-                        <article class="skill-card" tabindex="0">
-                            <div class="icon-stage">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-                                    alt="C++ icon" />
-                            </div>
-                            <div class="skill-info">
-                                <h3 class="skill-title">C++</h3>
-                                <small class="skill-sub">Performance-focused programming, DSA, and compute-heavy
-                                    systems.</small>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">DSA</span>
-                                    <span class="skill-tag">OOPC</span>
-                                    <span class="skill-tag">Algorithms</span>
-                                    <span class="skill-tag">Optimization</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="skill-card" tabindex="0">
-                            <div class="icon-stage">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-                                    alt="Java icon" />
-                            </div>
-                            <div class="skill-info">
-                                <h3 class="skill-title">Java</h3>
-                                <small class="skill-sub">Backend services, OOP foundations, and scalable application
-                                    development.</small>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">OOP</span>
-                                    <span class="skill-tag">Spring Boot</span>
-                                    <span class="skill-tag">REST</span>
-                                    <span class="skill-tag">Microservices</span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="skill-card" tabindex="0">
-                            <div class="icon-stage">
-                                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="64" cy="64" r="56" fill="#38bdf8" />
-                                    <path d="M44 46L24 64L44 82" fill="none" stroke="#ffffff" stroke-width="9"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <line x1="72" y1="28" x2="52" y2="100" stroke="#ffffff" stroke-width="9"
-                                        stroke-linecap="round" />
-                                    <path d="M84 46L104 64L84 82" fill="none" stroke="#ffffff" stroke-width="9"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="skill-info">
-                                <h3 class="skill-title">Web Development</h3>
-                                <small class="skill-sub">Building responsive full-stack web applications and robust
-                                    database architectures.</small>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">HTML5 / CSS3</span>
-                                    <span class="skill-tag">Flask</span>
-                                    <span class="skill-tag">MySQL</span>
-                                    <span class="skill-tag">Vanilla JS</span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="skill-card" tabindex="0">
-                            <div class="icon-stage">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                                    alt="Python icon" />
-                            </div>
-                            <div class="skill-info">
-                                <h3 class="skill-title">Python</h3>
-                                <small class="skill-sub">Core language for deep learning, automation, data science, and
-                                    APIs.</small>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Python 3.11+</span>
-                                    <span class="skill-tag">NumPy</span>
-                                    <span class="skill-tag">Pandas</span>
-                                    <span class="skill-tag">Jupyter</span>
-                                    <span class="skill-tag">FastAPI</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="skill-card" tabindex="0">
-                            <div class="icon-stage">
-                                <svg viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M60.4,14.7c-0.8-0.1-1.6-0.2-2.4-0.2C41.2,14.5,27.1,26.5,24.3,42.4c-0.4-0.1-0.9-0.2-1.3-0.2c-7.9,0-14.3,6.2-14.8,14c-4.1,2.4-6.7,6.7-7.2,11.6c-0.6,6.2,2.3,12.1,7.2,15.6c-1,3.1-1.1,6.5-0.2,9.6c1.6,5.6,5.8,10.1,11.2,12.2c0,0.5,0.1,1,0.2,1.5c1.4,7.7,8.1,13.4,15.9,13.4c2.8,0,5.6-0.8,8-2.3c3.5,4.9,9.2,7.9,15.3,8c0.7,0,1.4,0,2.1-0.1V14.7z"
-                                        fill="#facc15" />
-                                    <path
-                                        d="M67.6,14.7v98.5c0.7,0.1,1.4,0.1,2.1,0.1c6.1-0.1,11.8-3.1,15.3-8c2.4,1.5,5.2,2.3,8,2.3c7.8,0,14.5-5.7,15.9-13.4c0.1-0.5,0.2-1,0.2-1.5c5.4-2.1,9.6-6.6,11.2-12.2c0.9-3.1,0.8-6.5-0.2-9.6c4.9-3.5,7.8-9.4,7.2-15.6c-0.5-4.9-3.1-9.2-7.2-11.6c-0.5-7.8-6.9-14-14.8-14c-0.4,0-0.9,0.1-1.3,0.2C100.9,26.5,86.8,14.5,70,14.5C69.2,14.5,68.4,14.6,67.6,14.7z"
-                                        fill="#0891b2" opacity="0.3" />
-                                    <path
-                                        d="M67.6,22.5h18.2l9.6,9.6 M67.6,44.5h10.4l11.2-11.2 M67.6,65.5h10.4l11.2,11.2 M67.6,87.5h18.2l9.6-9.6 M67.6,33.5h31.2 M67.6,55.5h22.4 M67.6,76.5h31.2"
-                                        fill="none" stroke="#0891b2" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <circle cx="95.4" cy="32.1" r="5" fill="#0891b2" />
-                                    <circle cx="89.2" cy="33.3" r="5" fill="#0891b2" />
-                                    <circle cx="89.2" cy="76.7" r="5" fill="#0891b2" />
-                                    <circle cx="95.4" cy="77.9" r="5" fill="#0891b2" />
-                                    <circle cx="98.8" cy="33.5" r="5" fill="#0891b2" />
-                                    <circle cx="90.0" cy="55.5" r="5" fill="#0891b2" />
-                                    <circle cx="98.8" cy="76.5" r="5" fill="#0891b2" />
-                                </svg>
-                            </div>
-                            <div class="skill-info">
-                                <h3 class="skill-title">Machine Learning</h3>
-                                <small class="skill-sub">End-to-end workflows from training to validation and
-                                    deployment.</small>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Scikit-learn</span>
-                                    <span class="skill-tag">XGBoost</span>
-                                    <span class="skill-tag">Evaluation</span>
-                                    <span class="skill-tag">Tuning</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="skill-card" tabindex="0">
-                            <div class="icon-stage">
-                                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M64,38v-20 M64,90v20 M38,64h-20 M90,64h20 M45.6,45.6L31.4,31.4 M82.4,82.4l14.2,14.2 M45.6,82.4L31.4,96.6 M82.4,45.6l14.2-14.2 M40,53h14 M40,75h14 M53,40v14 M75,40v14 M74,53h14 M74,75h14 M53,74v14 M75,74v14"
-                                        fill="none" stroke="#1e3a8a" stroke-width="4.5" stroke-linecap="round" />
-                                    <rect x="42" y="42" width="44" height="44" rx="10" fill="#38bdf8" stroke="#1e3a8a"
-                                        stroke-width="4.5" />
-                                    <path d="M49,58h22 M49,70h16" fill="none" stroke="#fff" stroke-width="4"
-                                        stroke-linecap="round" />
-                                    <circle cx="71" cy="58" r="3.5" fill="#fff" />
-                                    <circle cx="65" cy="70" r="3.5" fill="#fff" />
-                                    <circle cx="64" cy="14" r="6" fill="#f87171" stroke="#1e3a8a" stroke-width="2.5" />
-                                    <circle cx="64" cy="114" r="6" fill="#f87171" stroke="#1e3a8a" stroke-width="2.5" />
-                                    <circle cx="14" cy="64" r="6" fill="#fbbf24" stroke="#1e3a8a" stroke-width="2.5" />
-                                    <circle cx="114" cy="64" r="6" fill="#f87171" stroke="#1e3a8a" stroke-width="2.5" />
-                                    <circle cx="28" cy="28" r="6" fill="#fbbf24" stroke="#1e3a8a" stroke-width="2.5" />
-                                    <circle cx="100" cy="100" r="6" fill="#fbbf24" stroke="#1e3a8a"
-                                        stroke-width="2.5" />
-                                    <circle cx="28" cy="100" r="6" fill="#fbbf24" stroke="#1e3a8a" stroke-width="2.5" />
-                                    <circle cx="100" cy="28" r="6" fill="#fbbf24" stroke="#1e3a8a" stroke-width="2.5" />
-                                </svg>
-                            </div>
-                            <div class="skill-info">
-                                <h3 class="skill-title">Deep Learning</h3>
-                                <small class="skill-sub">Neural networks, computer vision, and advanced model
-                                    architectures.</small>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">PyTorch</span>
-                                    <span class="skill-tag">TensorFlow</span>
-                                    <span class="skill-tag">CNN</span>
-                                    <span class="skill-tag">RNN</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="skill-card" tabindex="0">
-                            <div class="icon-stage">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                                    alt="Docker icon" />
-                            </div>
-                            <div class="skill-info">
-                                <h3 class="skill-title">MLOps Stack</h3>
-                                <small class="skill-sub">Production-ready demos, containers, monitoring, and deployment
-                                    workflows.</small>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Streamlit</span>
-                                    <span class="skill-tag">Gradio</span>
-                                    <span class="skill-tag">Docker</span>
-                                    <span class="skill-tag">GitHub</span>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="skill-card" tabindex="0">
-                            <div class="icon-stage">
-                                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <linearGradient id="aiCircleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" stop-color="#d946ef" />
-                                            <stop offset="50%" stop-color="#4f46e5" />
-                                            <stop offset="100%" stop-color="#06b6d4" />
-                                        </linearGradient>
-
-                                        <mask id="aiTextMask">
-                                            <rect x="0" y="0" width="128" height="128" fill="#ffffff" />
-                                            <g fill="#000000">
-                                                <path
-                                                    d="M 28,94 L 46,34 H 58 L 76,94 H 64 L 60,78 H 44 L 40,94 Z M 46,67 H 58 L 52,46 Z" />
-                                                <path d="M 86,34 H 98 V 94 H 86 Z" />
-                                            </g>
-                                        </mask>
-                                    </defs>
-
-                                    <circle cx="64" cy="64" r="54" fill="none" stroke="url(#aiCircleGrad)"
-                                        stroke-width="2.5" />
-                                    <circle cx="64" cy="64" r="50" fill="none" stroke="url(#aiCircleGrad)"
-                                        stroke-width="1" opacity="0.6" />
-
-                                    <g fill="url(#aiCircleGrad)">
-                                        <path
-                                            d="M 32,94 L 47,38 H 59 L 74,94 H 63.5 L 60.5,80 H 45.5 L 42.5,94 Z M 48,69.5 H 58 L 53,49.5 Z" />
-                                        <path d="M 83,38 H 94.5 V 94 H 83 Z" />
-                                    </g>
-
-                                    <g stroke="url(#aiCircleGrad)" stroke-width="1" opacity="0.85">
-                                        <line x1="64" y1="64" x2="50" y2="52" stroke-dasharray="1 3" />
-                                        <line x1="64" y1="64" x2="42" y2="68" stroke-dasharray="2 2" />
-                                        <line x1="64" y1="64" x2="58" y2="82" stroke-dasharray="1 2" />
-                                        <line x1="64" y1="64" x2="86" y2="48" stroke-dasharray="2 3" />
-                                        <line x1="64" y1="64" x2="90" y2="72" stroke-dasharray="1 2" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="skill-info">
-                                <h3 class="skill-title">Artificial Intelligence</h3>
-                                <small class="skill-sub">Developing generative models, specialized agent workflows, and
-                                    intelligent computational systems.</small>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">LLMs & Prompting</span>
-                                    <span class="skill-tag">Neural Networks</span>
-                                    <span class="skill-tag">NLP</span>
-                                    <span class="skill-tag">Model Fine-Tuning</span>
-                                </div>
-                            </div>
-                        </article>
+                <article class="expertise-card exp-surface">
+                    <span class="expertise-pin"></span>
+                    <div class="expertise-top">
+                        <span class="expertise-index">01</span>
+                        <div class="expertise-icon-stage">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++ icon" />
+                        </div>
                     </div>
-                </div>
+                    <h3 class="expertise-title">C++</h3>
+                    <p class="expertise-desc">Performance-focused programming, DSA, and compute-heavy systems.</p>
+                    <div class="expertise-chips">
+                        <span class="expertise-chip">DSA</span>
+                        <span class="expertise-chip">OOPC</span>
+                        <span class="expertise-chip">Algorithms</span>
+                        <span class="expertise-chip">Optimization</span>
+                    </div>
+                </article>
+
+                <article class="expertise-card exp-red">
+                    <span class="expertise-pin"></span>
+                    <div class="expertise-top">
+                        <span class="expertise-index">02</span>
+                        <div class="expertise-icon-stage">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java icon" />
+                        </div>
+                    </div>
+                    <h3 class="expertise-title">Java</h3>
+                    <p class="expertise-desc">Backend services, OOP foundations, and scalable application development.</p>
+                    <div class="expertise-chips">
+                        <span class="expertise-chip">OOP</span>
+                        <span class="expertise-chip">Spring Boot</span>
+                        <span class="expertise-chip">REST</span>
+                        <span class="expertise-chip">Microservices</span>
+                    </div>
+                </article>
+
+                <article class="expertise-card exp-brand">
+                    <span class="expertise-pin"></span>
+                    <div class="expertise-top">
+                        <span class="expertise-index">03</span>
+                        <div class="expertise-icon-stage">
+                            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="64" cy="64" r="56" fill="#ffffff" opacity="0.9" />
+                                <path d="M44 46L24 64L44 82" fill="none" stroke="#4f46e5" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+                                <line x1="72" y1="28" x2="52" y2="100" stroke="#4f46e5" stroke-width="9" stroke-linecap="round" />
+                                <path d="M84 46L104 64L84 82" fill="none" stroke="#4f46e5" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="expertise-title">Web Development</h3>
+                    <p class="expertise-desc">Building responsive full-stack web applications and robust database architectures.</p>
+                    <div class="expertise-chips">
+                        <span class="expertise-chip">HTML5 / CSS3</span>
+                        <span class="expertise-chip">Flask</span>
+                        <span class="expertise-chip">MySQL</span>
+                        <span class="expertise-chip">Vanilla JS</span>
+                    </div>
+                </article>
+
+                <article class="expertise-card exp-surface">
+                    <span class="expertise-pin"></span>
+                    <div class="expertise-top">
+                        <span class="expertise-index">04</span>
+                        <div class="expertise-icon-stage">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python icon" />
+                        </div>
+                    </div>
+                    <h3 class="expertise-title">Python</h3>
+                    <p class="expertise-desc">Core language for deep learning, automation, data science, and APIs.</p>
+                    <div class="expertise-chips">
+                        <span class="expertise-chip">Python 3.11+</span>
+                        <span class="expertise-chip">NumPy</span>
+                        <span class="expertise-chip">Pandas</span>
+                        <span class="expertise-chip">Jupyter</span>
+                        <span class="expertise-chip">FastAPI</span>
+                    </div>
+                </article>
+
+                <article class="expertise-card exp-red">
+                    <span class="expertise-pin"></span>
+                    <div class="expertise-top">
+                        <span class="expertise-index">05</span>
+                        <div class="expertise-icon-stage">
+                            <svg viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M60.4,14.7c-0.8-0.1-1.6-0.2-2.4-0.2C41.2,14.5,27.1,26.5,24.3,42.4c-0.4-0.1-0.9-0.2-1.3-0.2c-7.9,0-14.3,6.2-14.8,14c-4.1,2.4-6.7,6.7-7.2,11.6c-0.6,6.2,2.3,12.1,7.2,15.6c-1,3.1-1.1,6.5-0.2,9.6c1.6,5.6,5.8,10.1,11.2,12.2c0,0.5,0.1,1,0.2,1.5c1.4,7.7,8.1,13.4,15.9,13.4c2.8,0,5.6-0.8,8-2.3c3.5,4.9,9.2,7.9,15.3,8c0.7,0,1.4,0,2.1-0.1V14.7z" fill="#ffffff" />
+                                <path d="M67.6,14.7v98.5c0.7,0.1,1.4,0.1,2.1,0.1c6.1-0.1,11.8-3.1,15.3-8c2.4,1.5,5.2,2.3,8,2.3c7.8,0,14.5-5.7,15.9-13.4c0.1-0.5,0.2-1,0.2-1.5c5.4-2.1,9.6-6.6,11.2-12.2c0.9-3.1,0.8-6.5-0.2-9.6c4.9-3.5,7.8-9.4,7.2-15.6c-0.5-4.9-3.1-9.2-7.2-11.6c-0.5-7.8-6.9-14-14.8-14c-0.4,0-0.9,0.1-1.3,0.2C100.9,26.5,86.8,14.5,70,14.5C69.2,14.5,68.4,14.6,67.6,14.7z" fill="#ffffff" opacity="0.6" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="expertise-title">Machine Learning</h3>
+                    <p class="expertise-desc">End-to-end workflows from training to validation and deployment.</p>
+                    <div class="expertise-chips">
+                        <span class="expertise-chip">Scikit-learn</span>
+                        <span class="expertise-chip">XGBoost</span>
+                        <span class="expertise-chip">Evaluation</span>
+                        <span class="expertise-chip">Tuning</span>
+                    </div>
+                </article>
+
+                <article class="expertise-card exp-brand">
+                    <span class="expertise-pin"></span>
+                    <div class="expertise-top">
+                        <span class="expertise-index">06</span>
+                        <div class="expertise-icon-stage">
+                            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M64,38v-20 M64,90v20 M38,64h-20 M90,64h20 M45.6,45.6L31.4,31.4 M82.4,82.4l14.2,14.2 M45.6,82.4L31.4,96.6 M82.4,45.6l14.2-14.2 M40,53h14 M40,75h14 M53,40v14 M75,40v14 M74,53h14 M74,75h14 M53,74v14 M75,74v14" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" opacity="0.85" />
+                                <rect x="42" y="42" width="44" height="44" rx="10" fill="#ffffff" opacity="0.9" />
+                                <path d="M49,58h22 M49,70h16" fill="none" stroke="#4f46e5" stroke-width="4" stroke-linecap="round" />
+                                <circle cx="71" cy="58" r="3.5" fill="#4f46e5" />
+                                <circle cx="65" cy="70" r="3.5" fill="#4f46e5" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="expertise-title">Deep Learning</h3>
+                    <p class="expertise-desc">Neural networks, computer vision, and advanced model architectures.</p>
+                    <div class="expertise-chips">
+                        <span class="expertise-chip">PyTorch</span>
+                        <span class="expertise-chip">TensorFlow</span>
+                        <span class="expertise-chip">CNN</span>
+                        <span class="expertise-chip">RNN</span>
+                    </div>
+                </article>
+
+                <article class="expertise-card exp-surface">
+                    <span class="expertise-pin"></span>
+                    <div class="expertise-top">
+                        <span class="expertise-index">07</span>
+                        <div class="expertise-icon-stage">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker icon" />
+                        </div>
+                    </div>
+                    <h3 class="expertise-title">MLOps Stack</h3>
+                    <p class="expertise-desc">Production-ready demos, containers, monitoring, and deployment workflows.</p>
+                    <div class="expertise-chips">
+                        <span class="expertise-chip">Streamlit</span>
+                        <span class="expertise-chip">Gradio</span>
+                        <span class="expertise-chip">Docker</span>
+                        <span class="expertise-chip">GitHub</span>
+                    </div>
+                </article>
+
+                <article class="expertise-card exp-red">
+                    <span class="expertise-pin"></span>
+                    <div class="expertise-top">
+                        <span class="expertise-index">08</span>
+                        <div class="expertise-icon-stage">
+                            <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="64" cy="64" r="54" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.85" />
+                                <circle cx="64" cy="64" r="50" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5" />
+                                <g fill="#ffffff">
+                                    <path d="M 32,94 L 47,38 H 59 L 74,94 H 63.5 L 60.5,80 H 45.5 L 42.5,94 Z M 48,69.5 H 58 L 53,49.5 Z" />
+                                    <path d="M 83,38 H 94.5 V 94 H 83 Z" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="expertise-title">Artificial Intelligence</h3>
+                    <p class="expertise-desc">Generative models, agent workflows, and intelligent computational systems.</p>
+                    <div class="expertise-chips">
+                        <span class="expertise-chip">LLMs & Prompting</span>
+                        <span class="expertise-chip">Neural Networks</span>
+                        <span class="expertise-chip">NLP</span>
+                        <span class="expertise-chip">Model Fine-Tuning</span>
+                    </div>
+                </article>
+
             </div>
         </section>
 
-        <!-- Upgraded IDE Dev Console Projects Section -->
+        <!-- Projects Section: Featured Spotlight + Gallery Grid -->
         <div id="projects" class="reveal-element">
             <h2 class="section-title">Key Projects</h2>
-            <p class="section-subtitle">Browsing by stack — like flipping through the repo folders themselves</p>
+            <p class="section-subtitle">Full-stack systems, machine learning models, and data analytics work</p>
 
             <!-- MediStore Pro Full 10-Image Showcase Slider -->
             <div class="medistore-spotlight-box">
@@ -2647,278 +2354,389 @@
                 </div>
             </div>
 
-            <!-- IDE Dev Console Container -->
-            <div class="card"
-                style="grid-column: span 12; padding: 0; background: transparent; border: none; box-shadow: none;">
-                <div class="dev-projects">
+            <!-- ================= PROJECTS SECTION (IMAGE-BASED CARDS) ================= -->
+<style>
+    /* Projects Grid Layout */
+    .project-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 26px;
+        margin-top: 30px;
+    }
 
-                    <!-- Tab Filter Navigation -->
-                    <div class="dev-tabbar">
-                        <button class="dev-tab active" data-filter="all"><span class="dot"></span>all</button>
-                        <button class="dev-tab" data-filter="fullstack"><span class="dot"></span>full-stack</button>
-                        <button class="dev-tab" data-filter="datascience"><span class="dot"></span>data-science</button>
-                        <button class="dev-tab" data-filter="machinelearning"><span
-                                class="dot"></span>machine-learning</button>
-                    </div>
+    .project-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                    border-color 0.35s ease, 
+                    box-shadow 0.35s ease;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+    }
 
-                    <div class="dev-pane">
+    .project-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--accent);
+        box-shadow: var(--shadow-lg);
+    }
 
-                        <!-- Core Programming Folder -->
-                        <div class="dev-folder" style="--folder-color:#10b981;" data-cat="core">
-                            <div class="dev-folder-head">
-                                <i class="fas fa-folder-open"></i>
-                                <h3>core-programming</h3>
-                                <span class="dev-folder-count">2 files</span>
-                            </div>
-                            <div class="dev-file-grid">
-                                <div class="dev-file mix-target" data-cat="core"
-                                    data-desc="Built fundamental software logic using standard C and C++ procedures, focusing on standard library methods, algorithms, and modular structure.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">C++</span>
-                                        <span class="name">cpp_fundamentals</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Focus:</b> Logic &amp; basic algorithms</p>
-                                    <ul>
-                                        <li>Basic console applications (calculators)</li>
-                                        <li>Data structures (loops, arrays)</li>
-                                    </ul>
-                                </div>
-                                <div class="dev-file mix-target" data-cat="core"
-                                    data-desc="Implemented object-oriented architecture patterns in Java focusing on modular inheritance tree design, data encapsulation, and memory efficiency.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">JAVA</span>
-                                        <span class="name">core_java_projects</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Focus:</b> Object-oriented programming</p>
-                                    <ul>
-                                        <li>Class and object architecture</li>
-                                        <li>Inheritance and polymorphism practice</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+    /* Thumbnail Box & Overlay */
+    .project-thumb-box {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+        background: #0f172a;
+    }
 
-                        <!-- Frontend Web Folder -->
-                        <div class="dev-folder" style="--folder-color:#38bdf8;" data-cat="frontend">
-                            <div class="dev-folder-head">
-                                <i class="fas fa-folder-open"></i>
-                                <h3>frontend-web</h3>
-                                <span class="dev-folder-count">2 files</span>
-                            </div>
-                            <div class="dev-file-grid">
-                                <div class="dev-file mix-target" data-cat="frontend"
-                                    data-desc="Designed and styled a fully functional web frontend interface mirroring institutional modern UI standards using HTML5 semantics, flex layout, and DOM manipulations.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">WEB</span>
-                                        <span class="name">ldrp_college_site</span>
-                                        <span class="status live"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> HTML, CSS, JavaScript</p>
-                                    <ul>
-                                        <li>Frontend UI design clone</li>
-                                        <li>Responsive mobile layouts</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://github.com/Hasya1505/ldrp-demo-webpage" target="_blank"
-                                            class="dev-cta">git clone</a>
-                                    </div>
-                                </div>
-                                <div class="dev-file mix-target" data-cat="frontend"
-                                    data-desc="Developed an e-commerce interface grid system focusing on layout responsive breakpoints, product presentation cards, and pure CSS interaction states.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">WEB</span>
-                                        <span class="name">ecommerce_template</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> HTML, CSS</p>
-                                    <ul>
-                                        <li>Basic e-commerce structural UI</li>
-                                        <li>Product grids and styling</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://github.com/Hasya1505/ecommerce-frontend" target="_blank"
-                                            class="dev-cta">git clone</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    .project-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        display: block;
+    }
 
-                        <!-- Python / Full-Stack Folder -->
-                        <div class="dev-folder" style="--folder-color:#818cf8;" data-cat="fullstack">
-                            <div class="dev-folder-head">
-                                <i class="fas fa-folder-open"></i>
-                                <h3>python-fullstack</h3>
-                                <span class="dev-folder-count">1 file</span>
-                            </div>
-                            <div class="dev-file-grid">
-                                <div class="dev-file mix-target" data-cat="fullstack"
-                                    data-desc="Integrated real-time external REST API endpoints into a Python web application frontend, visualizing geographical weather metrics dynamically.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">PY</span>
-                                        <span class="name">weather_forecast_ui</span>
-                                        <span class="status live"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> Python, API integration</p>
-                                    <ul>
-                                        <li>Real-time weather data API integration</li>
-                                        <li>Location-based forecasting architecture</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://simple-weather-forecast-python.vercel.app/" target="_blank"
-                                            class="dev-cta">open --live</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    .project-card:hover .project-thumb {
+        transform: scale(1.05);
+    }
 
-                        <!-- Data Science Folder -->
-                        <div class="dev-folder" style="--folder-color:#fbbf24;" data-cat="datascience">
-                            <div class="dev-folder-head">
-                                <i class="fas fa-folder-open"></i>
-                                <h3>data-science</h3>
-                                <span class="dev-folder-count">4 files</span>
-                            </div>
-                            <div class="dev-file-grid">
-                                <div class="dev-file mix-target" data-cat="datascience"
-                                    data-desc="Executed exploratory data analysis on property valuation variables using statistical techniques, feature correlations, and data distribution visualizations.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">.PY</span>
-                                        <span class="name">house_price_eda</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> Pandas, NumPy, Seaborn · Kaggle dataset</p>
-                                    <ul>
-                                        <li>Extensive data normalization &amp; sorting</li>
-                                        <li>Statistical feature correlations</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://github.com/Hasya1505/house-price-exploration" target="_blank"
-                                            class="dev-cta">git clone</a>
-                                    </div>
-                                </div>
-                                <div class="dev-file mix-target" data-cat="datascience"
-                                    data-desc="Analyzed video interaction dynamics, engagement variance across channels, and engagement outliers using Pandas statistical routines.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">.PY</span>
-                                        <span class="name">youtube_eda</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> Pandas, NumPy, Matplotlib</p>
-                                    <ul>
-                                        <li>Advanced view / engagement tracking analysis</li>
-                                        <li>Outlier structural filtering analytics</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://github.com/Hasya1505/YouTube-EDA" target="_blank"
-                                            class="dev-cta">git clone</a>
-                                    </div>
-                                </div>
-                                <div class="dev-file mix-target" data-cat="datascience"
-                                    data-desc="Investigated content distribution across release timeline, genres, and regional catalogs using visual heatmaps and analytical chart generation.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">.PY</span>
-                                        <span class="name">netflix_content_eda</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> Pandas, Matplotlib, Seaborn</p>
-                                    <ul>
-                                        <li>Content trend and genre distribution analysis</li>
-                                        <li>Data cleaning and visualization insights</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://github.com/Hasya1505/synent-task-3-Exploratory-Data-Analysis-EDA--hasyapatel"
-                                            target="_blank" class="dev-cta">git clone</a>
-                                    </div>
-                                </div>
-                                <div class="dev-file mix-target" data-cat="datascience"
-                                    data-desc="Constructed financial time-series visualization charts tracking price variations, moving averages, and volatility indices across NIFTY50 equities.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">.PY</span>
-                                        <span class="name">stock_price_analysis</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> Pandas, NumPy, Matplotlib · NIFTY50</p>
-                                    <ul>
-                                        <li>Stock trend and price movement analysis</li>
-                                        <li>Time-series visualization and comparisons</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://github.com/Hasya1505/synent-task-7--Time-Series-Analysis-hasyapatel"
-                                            target="_blank" class="dev-cta">git clone</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    .project-badge-overlay {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
 
-                        <!-- Machine Learning Folder -->
-                        <div class="dev-folder" style="--folder-color:#3131ae;" data-cat="machinelearning">
-                            <div class="dev-folder-head">
-                                <i class="fas fa-folder-open"></i>
-                                <h3>machine-learning</h3>
-                                <span class="dev-folder-count">3 files</span>
-                            </div>
-                            <div class="dev-file-grid">
-                                <div class="dev-file mix-target" data-cat="machinelearning"
-                                    data-desc="Developed vector-space recommendation engines implementing cosine similarity models to formulate content-based film matching based on user activity vectors.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">.PY</span>
-                                        <span class="name">movie_recommender</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> Python, ML algorithms</p>
-                                    <ul>
-                                        <li>Content-based multi-filtering algorithms</li>
-                                        <li>User vectorized preference modeling</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://github.com/Hasya1505" target="_blank" class="dev-cta">git
-                                            clone</a>
-                                    </div>
-                                </div>
-                                <div class="dev-file mix-target" data-cat="machinelearning"
-                                    data-desc="Built classification models tailored for highly imbalanced transactional datasets to identify anomalous transaction patterns accurately.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">.PY</span>
-                                        <span class="name">fraud_detection</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> Python, ML classifiers</p>
-                                    <ul>
-                                        <li>Credit transaction anomalous evaluation</li>
-                                        <li>High precision imbalance modeling</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://github.com/Hasya1505" target="_blank" class="dev-cta">git
-                                            clone</a>
-                                    </div>
-                                </div>
-                                <div class="dev-file mix-target" data-cat="machinelearning"
-                                    data-desc="Trained predictive supervised machine learning classifiers to evaluate credit risk factors, applicant profiles, and automatically score loan approval odds.">
-                                    <div class="dev-file-top">
-                                        <span class="ext">.PY</span>
-                                        <span class="name">loan_approval_model</span>
-                                        <span class="status archived"></span>
-                                    </div>
-                                    <p class="dev-file-focus"><b>Stack:</b> Python, ML algorithms</p>
-                                    <ul>
-                                        <li>Predictive risk evaluation modeling</li>
-                                        <li>Feature-based approval classification</li>
-                                    </ul>
-                                    <div class="dev-file-actions">
-                                        <a href="https://github.com/Hasya1505" target="_blank" class="dev-cta">git
-                                            clone</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    /* Card Details */
+    .project-info {
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
 
+    .project-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+    }
+
+    .project-desc {
+        color: var(--text-secondary);
+        font-size: 0.88rem;
+        line-height: 1.55;
+        margin-bottom: 16px;
+        flex: 1;
+    }
+
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+
+    .project-tag {
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 6px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+    }
+
+    .project-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .project-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 8px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: all 0.25s ease;
+    }
+
+    @media (max-width: 600px) {
+        .project-gallery-grid {
+            grid-template-columns: 1fr;
+        }
+        .project-thumb-box {
+            height: 190px;
+        }
+    }
+</style>
+
+    <div style="margin: 55px 0 5px;">
+        <h3 style="font-family:'Space Grotesk', sans-serif; font-size:1.3rem; font-weight:700; color:var(--text-primary);">More Projects</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Additional builds spanning core programming, frontend, data analysis, and machine learning.</p>
+    </div>
+
+    <div class="project-gallery-grid">
+        <!-- Project 9: C++ Fundamentals -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1509966756634-9c23dd6e6815?auto=format&fit=crop&w=700&q=80" alt="C++ Fundamentals" class="project-thumb">
+                <span class="project-badge-overlay">Core Programming</span>
             </div>
-        </div>
+            <div class="project-info">
+                <h3 class="project-title">C++ Fundamentals</h3>
+                <p class="project-desc">
+                    Console applications covering core algorithmic logic, data structures, loops, and arrays built with standard C++ libraries.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">C++</span>
+                    <span class="project-tag">DSA</span>
+                    <span class="project-tag">Algorithms</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Hasya1505" target="_blank" class="btn-secondary project-btn">
+                        <i class="fab fa-github"></i> Repository
+                    </a>
+                </div>
+            </div>
+        </article>
 
+        <!-- Project 10: Core Java Projects -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=700&q=80" alt="Core Java Projects" class="project-thumb">
+                <span class="project-badge-overlay">Core Programming</span>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">Core Java Projects</h3>
+                <p class="project-desc">
+                    Object-oriented architecture practice covering class design, inheritance trees, encapsulation, and polymorphism.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Java</span>
+                    <span class="project-tag">OOP</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Hasya1505" target="_blank" class="btn-secondary project-btn">
+                        <i class="fab fa-github"></i> Repository
+                    </a>
+                </div>
+            </div>
+        </article>
+    <!-- Project 7: LDRP College Site Clone -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=700&q=80" alt="LDRP College Site Clone" class="project-thumb">
+                <span class="project-badge-overlay">Live App</span>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">LDRP College Site Clone</h3>
+                <p class="project-desc">
+                    Frontend UI clone of the institutional college website, built with semantic HTML5, flex layouts, and responsive mobile breakpoints.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">HTML5</span>
+                    <span class="project-tag">CSS3</span>
+                    <span class="project-tag">JavaScript</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Hasya1505/ldrp-demo-webpage" target="_blank" class="btn-secondary project-btn">
+                        <i class="fab fa-github"></i> Repository
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 8: E-commerce UI Template -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=700&q=80" alt="E-commerce UI Template" class="project-thumb">
+                <span class="project-badge-overlay">Frontend</span>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">E-commerce Interface Template</h3>
+                <p class="project-desc">
+                    Structural e-commerce UI grid focused on responsive product cards, layout breakpoints, and pure CSS interaction states.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">HTML5</span>
+                    <span class="project-tag">CSS3</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Hasya1505/ecommerce-frontend" target="_blank" class="btn-secondary project-btn">
+                        <i class="fab fa-github"></i> Repository
+                    </a>
+                </div>
+            </div>
+        </article>
+        
+        <!-- Project 1: Weather Forecast Web App -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=700&q=80" alt="Weather Forecast UI" class="project-thumb">
+                <span class="project-badge-overlay">Live App</span>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">Dynamic Weather Forecast UI</h3>
+                <p class="project-desc">
+                    Geographical real-time climate tracking platform with asynchronous third-party REST API integration and predictive meteorological visual cards.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">REST API</span>
+                    <span class="project-tag">JavaScript</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://simple-weather-forecast-python.vercel.app/" target="_blank" class="btn-primary project-btn">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+        </article>
+
+ 
+
+        <!-- Project 4: Financial Stock Time-Series Analysis -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=700&q=80" alt="Stock Market Analysis" class="project-thumb">
+                <span class="project-badge-overlay">Time Series</span>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">NIFTY50 Time-Series Analysis</h3>
+                <p class="project-desc">
+                    Quantitative financial evaluation calculating rolling volatility, dynamic moving averages, and cyclical trajectory correlations.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">NumPy</span>
+                    <span class="project-tag">Seaborn</span>
+                    <span class="project-tag">Finance ML</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Hasya1505/synent-task-7--Time-Series-Analysis-hasyapatel" target="_blank" class="btn-secondary project-btn">
+                        <i class="fab fa-github"></i> Repository
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 5: Movie Recommendation Engine -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=700&q=80" alt="Movie Recommender System" class="project-thumb">
+                <span class="project-badge-overlay">Machine Learning</span>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">Content Vector Recommender</h3>
+                <p class="project-desc">
+                    Vector-space recommendation pipeline utilizing cosine similarity models to rank and recommend relevant media titles from user preference vectors.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Scikit-Learn</span>
+                    <span class="project-tag">NLP</span>
+                    <span class="project-tag">Cosine Similarity</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Hasya1505" target="_blank" class="btn-secondary project-btn">
+                        <i class="fab fa-github"></i> Repository
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 6: Loan Approval Classification Model -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=700&q=80" alt="Loan Credit Analysis" class="project-thumb">
+                <span class="project-badge-overlay">Classification</span>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">Credit Risk & Loan Classifier</h3>
+                <p class="project-desc">
+                    Supervised predictive classification system evaluating underwriting risk factors to automatically score loan acceptance probabilities.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">XGBoost</span>
+                    <span class="project-tag">Classification</span>
+                    <span class="project-tag">Scikit-Learn</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Hasya1505" target="_blank" class="btn-secondary project-btn">
+                        <i class="fab fa-github"></i> Repository
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 11: House Price Prediction EDA -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=700&q=80" alt="House Price Prediction EDA" class="project-thumb">
+                <span class="project-badge-overlay">Data Analytics</span>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">House Price Exploration</h3>
+                <p class="project-desc">
+                    Exploratory analysis of property valuation variables using statistical techniques, feature correlations, and distribution visualizations.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Pandas</span>
+                    <span class="project-tag">NumPy</span>
+                    <span class="project-tag">Seaborn</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Hasya1505/house-price-exploration" target="_blank" class="btn-secondary project-btn">
+                        <i class="fab fa-github"></i> Repository
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 12: Netflix Content EDA -->
+        <article class="project-card">
+            <div class="project-thumb-box">
+                <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=700&q=80" alt="Netflix Content EDA" class="project-thumb">
+                <span class="project-badge-overlay">Data Analytics</span>
+            </div>
+            <div class="project-info">
+                <h3 class="project-title">Netflix Content Distribution EDA</h3>
+                <p class="project-desc">
+                    Investigated content distribution across release timelines, genres, and regional catalogs using visual heatmaps and trend charts.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Pandas</span>
+                    <span class="project-tag">Matplotlib</span>
+                    <span class="project-tag">EDA</span>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/Hasya1505/synent-task-3-Exploratory-Data-Analysis-EDA--hasyapatel" target="_blank" class="btn-secondary project-btn">
+                        <i class="fab fa-github"></i> Repository
+                    </a>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</div>
+<!-- ================= END PROJECTS SECTION ================= -->
     <!-- GitHub Contribution Analytics -->
     <div class="card github-bento-span">
         <div
@@ -3288,19 +3106,6 @@
             </div>
         </div>
     </div>
-    </div>
-
-    <!-- Interactive Modal -->
-    <div class="dev-modal-backdrop" id="devModalBackdrop">
-        <div class="dev-modal">
-            <button class="dev-modal-close" id="devModalClose"><i class="fas fa-times"></i></button>
-            <h3 class="dev-modal-title" id="devModalTitle">Project Details</h3>
-            <div class="dev-modal-tech" id="devModalTech">Stack Overview</div>
-            <div class="dev-modal-body" id="devModalBody">
-                Detailed technical description will render here...
-            </div>
-        </div>
-    </div>
 
     <!-- Full-Size Image Lightbox Modal -->
     <div class="img-lightbox-backdrop" id="imgLightboxBackdrop">
@@ -3413,67 +3218,7 @@
             });
         });
 
-        // Developer Console Tab Filter System
-        const tabs = document.querySelectorAll('.dev-tab');
-        const folders = document.querySelectorAll('.dev-folder');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                const filter = tab.getAttribute('data-filter');
-
-                folders.forEach(folder => {
-                    const files = folder.querySelectorAll('.dev-file');
-                    let visibleCount = 0;
-
-                    files.forEach(file => {
-                        const fileCat = file.getAttribute('data-cat');
-                        if (filter === 'all' || filter === fileCat) {
-                            file.classList.remove('is-hidden');
-                            visibleCount++;
-                        } else {
-                            file.classList.add('is-hidden');
-                        }
-                    });
-
-                    if (visibleCount > 0) {
-                        folder.classList.remove('is-hidden');
-                    } else {
-                        folder.classList.add('is-hidden');
-                    }
-                });
-            });
-        });
-
-        // Developer Console Modal Handler
-        const backdrop = document.getElementById('devModalBackdrop');
-        const modalCloseBtn = document.getElementById('devModalClose');
-        const modalTitle = document.getElementById('devModalTitle');
-        const modalTech = document.getElementById('devModalTech');
-        const modalBody = document.getElementById('devModalBody');
-
-        document.querySelectorAll('.dev-file').forEach(file => {
-            file.addEventListener('click', (e) => {
-                if (e.target.closest('.dev-cta')) return;
-
-                const fileName = file.querySelector('.name').innerText;
-                const stack = file.querySelector('.dev-file-focus').innerText;
-                const bullets = file.querySelector('ul').outerHTML;
-                const desc = file.getAttribute('data-desc') || 'No additional architectural breakdown provided.';
-
-                modalTitle.innerText = fileName;
-                modalTech.innerText = stack;
-                modalBody.innerHTML = `<p>${desc}</p><strong style="display:block; margin-top:12px;">Key Objectives:</strong>${bullets}`;
-                backdrop.classList.add('active');
-            });
-        });
-
-        modalCloseBtn.addEventListener('click', () => backdrop.classList.remove('active'));
-        backdrop.addEventListener('click', (e) => {
-            if (e.target === backdrop) backdrop.classList.remove('active');
-        });
 
         // Async GitHub Line Chart
         async function buildGitHubLineChartTrend() {
