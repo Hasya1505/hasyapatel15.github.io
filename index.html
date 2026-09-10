@@ -1948,15 +1948,15 @@
                 white-space: nowrap;
             }
 
-          /* Color variants */
+            /* Color variants */
             .exp-red {
-                background: linear-gradient(145deg, #ef4444, #b91c1c);
+                background: linear-gradient(145deg, #ef4444, #dc2626);
                 color: #ffffff;
             }
             .exp-red .expertise-title, .exp-red .expertise-index { color: #ffffff; }
-            .exp-red .expertise-desc { color: rgba(255, 255, 255, 0.95); }
-            .exp-red .expertise-icon-stage { background: rgba(255, 255, 255, 0.2); }
-            .exp-red .expertise-chip { background: rgba(255, 255, 255, 0.22); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35); }
+            .exp-red .expertise-desc { color: rgba(255, 255, 255, 0.92); }
+            .exp-red .expertise-icon-stage { background: rgba(255, 255, 255, 0.15); }
+            .exp-red .expertise-chip { background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); }
 
             .exp-surface {
                 background: var(--surface);
@@ -1970,13 +1970,13 @@
             .exp-surface .expertise-chip { background: var(--bg); color: var(--text-secondary); border: 1px solid var(--border); }
 
             .exp-brand {
-                background: linear-gradient(145deg, #4f46e5, #3730a3);
+                background: linear-gradient(145deg, #6366f1, #4f46e5);
                 color: #ffffff;
             }
             .exp-brand .expertise-title, .exp-brand .expertise-index { color: #ffffff; }
-            .exp-brand .expertise-desc { color: rgba(255, 255, 255, 0.95); }
-            .exp-brand .expertise-icon-stage { background: rgba(255, 255, 255, 0.2); }
-            .exp-brand .expertise-chip { background: rgba(255, 255, 255, 0.22); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35); }
+            .exp-brand .expertise-desc { color: rgba(255, 255, 255, 0.92); }
+            .exp-brand .expertise-icon-stage { background: rgba(255, 255, 255, 0.15); }
+            .exp-brand .expertise-chip { background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); }
 
             @media (max-width: 968px) {
                 .expertise-card { grid-column: span 6; transform: none !important; }
@@ -2371,17 +2371,24 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                    border-color 0.35s ease, 
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.35s ease,
                     box-shadow 0.35s ease;
         box-shadow: var(--shadow-sm);
         position: relative;
+        cursor: pointer;
     }
 
-    .project-card:hover {
+    .project-card:hover,
+    .project-card:focus-visible {
         transform: translateY(-6px);
         border-color: var(--accent);
         box-shadow: var(--shadow-lg);
+    }
+
+    .project-card:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
     }
 
     /* Thumbnail Box & Overlay */
@@ -2401,7 +2408,8 @@
         display: block;
     }
 
-    .project-card:hover .project-thumb {
+    .project-card:hover .project-thumb,
+    .project-card:focus-visible .project-thumb {
         transform: scale(1.05);
     }
 
@@ -2418,6 +2426,61 @@
         font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.5px;
+    }
+
+    .project-number-overlay {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.68rem;
+        font-weight: 700;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .project-explore-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, rgba(15,23,42,0) 40%, rgba(15,23,42,0.55) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .project-card:hover .project-explore-overlay,
+    .project-card:focus-visible .project-explore-overlay {
+        opacity: 1;
+    }
+
+    .project-explore-pill {
+        background: rgba(255,255,255,0.95);
+        color: #0f172a;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 8px 16px;
+        border-radius: 30px;
+        transform: translateY(10px);
+        transition: transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .project-card:hover .project-explore-pill,
+    .project-card:focus-visible .project-explore-pill {
+        transform: translateY(0);
     }
 
     /* Card Details */
@@ -2463,6 +2526,7 @@
 
     .project-actions {
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
         align-items: center;
     }
@@ -2479,12 +2543,376 @@
         transition: all 0.25s ease;
     }
 
+    .project-btn-explore {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .project-btn-explore:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
     @media (max-width: 600px) {
         .project-gallery-grid {
             grid-template-columns: 1fr;
         }
         .project-thumb-box {
             height: 190px;
+        }
+        .project-explore-overlay {
+            display: none;
+        }
+    }
+
+    /* ============ PROJECT DETAIL OVERLAY (CASE STUDY MODAL) ============ */
+    .project-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        background: rgba(9, 13, 22, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.4s;
+    }
+
+    .project-modal-backdrop.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .project-modal {
+        position: relative;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        width: 100%;
+        max-width: 880px;
+        max-height: 88vh;
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        transform: scale(0.97) translateY(20px);
+        transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        overflow: hidden;
+    }
+
+    .project-modal-backdrop.active .project-modal {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    .project-modal-scroll {
+        max-height: 88vh;
+        overflow-y: auto;
+        padding-bottom: 10px;
+    }
+
+    .project-modal-close,
+    .project-modal-nav-btn {
+        position: absolute;
+        z-index: 5;
+        background: rgba(15, 23, 42, 0.65);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.15);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.25s ease, transform 0.25s ease;
+        backdrop-filter: blur(6px);
+    }
+
+    .project-modal-close:hover,
+    .project-modal-nav-btn:hover {
+        background: var(--accent);
+        transform: scale(1.06);
+    }
+
+    .project-modal-close {
+        top: 16px;
+        right: 16px;
+    }
+
+    .project-modal-nav-btn.prev {
+        top: 16px;
+        right: 106px;
+    }
+
+    .project-modal-nav-btn.next {
+        top: 16px;
+        right: 62px;
+    }
+
+    .project-modal-header {
+        padding: 34px 34px 0;
+    }
+
+    .project-modal-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    .project-modal-number {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 3px 8px;
+    }
+
+    .project-modal-category {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        background: rgba(79, 70, 229, 0.08);
+        color: var(--accent);
+        border: 1px solid rgba(79, 70, 229, 0.2);
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+
+    .project-modal-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .project-modal-summary {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        max-width: 640px;
+        margin-bottom: 18px;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.5s ease 0.05s, transform 0.5s ease 0.05s;
+    }
+
+    .project-modal-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .project-modal-badges .project-tag {
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .project-modal-backdrop.active .project-modal-title,
+    .project-modal-backdrop.active .project-modal-summary,
+    .project-modal-backdrop.active .project-modal-badges .project-tag {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .project-modal-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 26px;
+    }
+
+    .project-modal-image-wrap {
+        width: 100%;
+        max-height: 340px;
+        overflow: hidden;
+        background: #0f172a;
+        opacity: 0;
+        transform: scale(0.96);
+        transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+    }
+
+    .project-modal-backdrop.active .project-modal-image-wrap {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .project-modal-image {
+        width: 100%;
+        height: 100%;
+        max-height: 340px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .project-modal-body {
+        padding: 8px 34px 12px;
+    }
+
+    .project-modal-section {
+        padding: 22px 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .project-modal-section h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 12px;
+    }
+
+    .project-modal-section h3 i {
+        color: var(--accent);
+        font-size: 0.95rem;
+    }
+
+    .project-modal-section p {
+        color: var(--text-secondary);
+        font-size: 0.92rem;
+        line-height: 1.7;
+    }
+
+    .project-modal-feature-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 10px;
+    }
+
+    .project-modal-feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 9px;
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        background: var(--bento-surface-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 10px 12px;
+    }
+
+    .project-modal-feature-list li i {
+        color: var(--accent);
+        margin-top: 3px;
+        flex-shrink: 0;
+    }
+
+    .project-modal-tech-groups {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    .project-modal-tech-group h4 {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+    }
+
+    .project-modal-tech-group .project-tags {
+        margin-bottom: 0;
+    }
+
+    .project-modal-arch {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .project-modal-arch-step {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: var(--text-primary);
+        background: var(--bento-surface-bg);
+        border: 1px solid var(--border);
+        padding: 8px 16px;
+        border-radius: 8px;
+    }
+
+    .project-modal-arch-arrow {
+        color: var(--text-muted);
+        padding: 4px 0 4px 22px;
+        font-size: 0.9rem;
+    }
+
+    .project-modal-footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 24px 34px 34px;
+        border-top: 1px solid var(--border);
+    }
+
+    /* Mobile: full-screen case-study experience */
+    @media (max-width: 720px) {
+        .project-modal-backdrop {
+            padding: 0;
+        }
+        .project-modal {
+            max-width: 100%;
+            max-height: 100vh;
+            height: 100%;
+            border-radius: 0;
+        }
+        .project-modal-scroll {
+            max-height: 100vh;
+        }
+        .project-modal-header,
+        .project-modal-body,
+        .project-modal-footer {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .project-modal-nav-btn.prev {
+            right: 96px;
+        }
+        .project-modal-nav-btn.next {
+            right: 52px;
+        }
+        .project-modal-close,
+        .project-modal-nav-btn {
+            width: 44px;
+            height: 44px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .project-card,
+        .project-thumb,
+        .project-explore-overlay,
+        .project-explore-pill,
+        .project-modal-backdrop,
+        .project-modal,
+        .project-modal-title,
+        .project-modal-summary,
+        .project-modal-badges .project-tag,
+        .project-modal-image-wrap {
+            transition: none !important;
+            transform: none !important;
         }
     }
 </style>
@@ -2494,247 +2922,96 @@
         <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Additional builds spanning core programming, frontend, data analysis, and machine learning.</p>
     </div>
 
-    <div class="project-gallery-grid">
-        <!-- Project 9: C++ Fundamentals -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1509966756634-9c23dd6e6815?auto=format&fit=crop&w=700&q=80" alt="C++ Fundamentals" class="project-thumb">
-                <span class="project-badge-overlay">Core Programming</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">C++ Fundamentals</h3>
-                <p class="project-desc">
-                    Console applications covering core algorithmic logic, data structures, loops, and arrays built with standard C++ libraries.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">C++</span>
-                    <span class="project-tag">DSA</span>
-                    <span class="project-tag">Algorithms</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/Hasya1505" target="_blank" class="btn-secondary project-btn">
-                        <i class="fab fa-github"></i> Repository
-                    </a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Project 10: Core Java Projects -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=700&q=80" alt="Core Java Projects" class="project-thumb">
-                <span class="project-badge-overlay">Core Programming</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">Core Java Projects</h3>
-                <p class="project-desc">
-                    Object-oriented architecture practice covering class design, inheritance trees, encapsulation, and polymorphism.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">Java</span>
-                    <span class="project-tag">OOP</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/Hasya1505" target="_blank" class="btn-secondary project-btn">
-                        <i class="fab fa-github"></i> Repository
-                    </a>
-                </div>
-            </div>
-        </article>
-    <!-- Project 7: LDRP College Site Clone -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=700&q=80" alt="LDRP College Site Clone" class="project-thumb">
-                <span class="project-badge-overlay">Live App</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">LDRP College Site Clone</h3>
-                <p class="project-desc">
-                    Frontend UI clone of the institutional college website, built with semantic HTML5, flex layouts, and responsive mobile breakpoints.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">HTML5</span>
-                    <span class="project-tag">CSS3</span>
-                    <span class="project-tag">JavaScript</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/Hasya1505/ldrp-demo-webpage" target="_blank" class="btn-secondary project-btn">
-                        <i class="fab fa-github"></i> Repository
-                    </a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Project 8: E-commerce UI Template -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=700&q=80" alt="E-commerce UI Template" class="project-thumb">
-                <span class="project-badge-overlay">Frontend</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">E-commerce Interface Template</h3>
-                <p class="project-desc">
-                    Structural e-commerce UI grid focused on responsive product cards, layout breakpoints, and pure CSS interaction states.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">HTML5</span>
-                    <span class="project-tag">CSS3</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/Hasya1505/ecommerce-frontend" target="_blank" class="btn-secondary project-btn">
-                        <i class="fab fa-github"></i> Repository
-                    </a>
-                </div>
-            </div>
-        </article>
-        
-        <!-- Project 1: Weather Forecast Web App -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=700&q=80" alt="Weather Forecast UI" class="project-thumb">
-                <span class="project-badge-overlay">Live App</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">Dynamic Weather Forecast UI</h3>
-                <p class="project-desc">
-                    Geographical real-time climate tracking platform with asynchronous third-party REST API integration and predictive meteorological visual cards.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">Python</span>
-                    <span class="project-tag">REST API</span>
-                    <span class="project-tag">JavaScript</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://simple-weather-forecast-python.vercel.app/" target="_blank" class="btn-primary project-btn">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                </div>
-            </div>
-        </article>
-
- 
-
-        <!-- Project 4: Financial Stock Time-Series Analysis -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=700&q=80" alt="Stock Market Analysis" class="project-thumb">
-                <span class="project-badge-overlay">Time Series</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">NIFTY50 Time-Series Analysis</h3>
-                <p class="project-desc">
-                    Quantitative financial evaluation calculating rolling volatility, dynamic moving averages, and cyclical trajectory correlations.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">NumPy</span>
-                    <span class="project-tag">Seaborn</span>
-                    <span class="project-tag">Finance ML</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/Hasya1505/synent-task-7--Time-Series-Analysis-hasyapatel" target="_blank" class="btn-secondary project-btn">
-                        <i class="fab fa-github"></i> Repository
-                    </a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Project 5: Movie Recommendation Engine -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=700&q=80" alt="Movie Recommender System" class="project-thumb">
-                <span class="project-badge-overlay">Machine Learning</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">Content Vector Recommender</h3>
-                <p class="project-desc">
-                    Vector-space recommendation pipeline utilizing cosine similarity models to rank and recommend relevant media titles from user preference vectors.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">Scikit-Learn</span>
-                    <span class="project-tag">NLP</span>
-                    <span class="project-tag">Cosine Similarity</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/Hasya1505" target="_blank" class="btn-secondary project-btn">
-                        <i class="fab fa-github"></i> Repository
-                    </a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Project 6: Loan Approval Classification Model -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=700&q=80" alt="Loan Credit Analysis" class="project-thumb">
-                <span class="project-badge-overlay">Classification</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">Credit Risk & Loan Classifier</h3>
-                <p class="project-desc">
-                    Supervised predictive classification system evaluating underwriting risk factors to automatically score loan acceptance probabilities.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">XGBoost</span>
-                    <span class="project-tag">Classification</span>
-                    <span class="project-tag">Scikit-Learn</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/Hasya1505" target="_blank" class="btn-secondary project-btn">
-                        <i class="fab fa-github"></i> Repository
-                    </a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Project 11: House Price Prediction EDA -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=700&q=80" alt="House Price Prediction EDA" class="project-thumb">
-                <span class="project-badge-overlay">Data Analytics</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">House Price Exploration</h3>
-                <p class="project-desc">
-                    Exploratory analysis of property valuation variables using statistical techniques, feature correlations, and distribution visualizations.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">Pandas</span>
-                    <span class="project-tag">NumPy</span>
-                    <span class="project-tag">Seaborn</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/Hasya1505/house-price-exploration" target="_blank" class="btn-secondary project-btn">
-                        <i class="fab fa-github"></i> Repository
-                    </a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Project 12: Netflix Content EDA -->
-        <article class="project-card">
-            <div class="project-thumb-box">
-                <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=700&q=80" alt="Netflix Content EDA" class="project-thumb">
-                <span class="project-badge-overlay">Data Analytics</span>
-            </div>
-            <div class="project-info">
-                <h3 class="project-title">Netflix Content Distribution EDA</h3>
-                <p class="project-desc">
-                    Investigated content distribution across release timelines, genres, and regional catalogs using visual heatmaps and trend charts.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">Pandas</span>
-                    <span class="project-tag">Matplotlib</span>
-                    <span class="project-tag">EDA</span>
-                </div>
-                <div class="project-actions">
-                    <a href="https://github.com/Hasya1505/synent-task-3-Exploratory-Data-Analysis-EDA--hasyapatel" target="_blank" class="btn-secondary project-btn">
-                        <i class="fab fa-github"></i> Repository
-                    </a>
-                </div>
-            </div>
-        </article>
-
+    <div class="project-gallery-grid" id="projectGalleryGrid">
+        <!-- Project cards are rendered dynamically from the projectsData array in JavaScript -->
     </div>
+
+    <!-- ============ PROJECT DETAIL OVERLAY (CASE STUDY MODAL) ============ -->
+    <div class="project-modal-backdrop" id="projectModalBackdrop" aria-hidden="true">
+        <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle" tabindex="-1">
+            <button class="project-modal-close" id="projectModalClose" type="button" aria-label="Close project details">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="project-modal-nav-btn prev" id="projectModalPrev" type="button" aria-label="Previous project">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="project-modal-nav-btn next" id="projectModalNext" type="button" aria-label="Next project">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div class="project-modal-scroll">
+                <div class="project-modal-header">
+                    <div class="project-modal-meta">
+                        <span class="project-modal-number" id="pmNumber">01</span>
+                        <span class="project-modal-category" id="pmCategory">Category</span>
+                    </div>
+                    <h2 class="project-modal-title" id="pmTitle">Project Title</h2>
+                    <p class="project-modal-summary" id="pmSummary"></p>
+                    <div class="project-modal-badges" id="pmBadges"></div>
+                    <div class="project-modal-links" id="pmLinksTop"></div>
+                </div>
+
+                <div class="project-modal-image-wrap" id="pmImageWrap">
+                    <img class="project-modal-image" id="pmImage" src="" alt="">
+                </div>
+
+                <div class="project-modal-body">
+                    <section class="project-modal-section" id="pmOverviewSection">
+                        <h3><i class="fas fa-circle-info"></i> Overview</h3>
+                        <p id="pmOverview"></p>
+                    </section>
+
+                    <section class="project-modal-section" id="pmProblemSection" hidden>
+                        <h3><i class="fas fa-circle-question"></i> Problem / Motivation</h3>
+                        <p id="pmProblem"></p>
+                    </section>
+
+                    <section class="project-modal-section" id="pmSolutionSection" hidden>
+                        <h3><i class="fas fa-lightbulb"></i> Solution</h3>
+                        <p id="pmSolution"></p>
+                    </section>
+
+                    <section class="project-modal-section" id="pmFeaturesSection" hidden>
+                        <h3><i class="fas fa-list-check"></i> Key Features</h3>
+                        <ul class="project-modal-feature-list" id="pmFeatures"></ul>
+                    </section>
+
+                    <section class="project-modal-section" id="pmTechSection" hidden>
+                        <h3><i class="fas fa-layer-group"></i> Technology Stack</h3>
+                        <div class="project-modal-tech-groups" id="pmTechGroups"></div>
+                    </section>
+
+                    <section class="project-modal-section" id="pmArchSection" hidden>
+                        <h3><i class="fas fa-diagram-project"></i> Architecture / Workflow</h3>
+                        <div class="project-modal-arch" id="pmArch"></div>
+                    </section>
+
+                    <section class="project-modal-section" id="pmRoleSection" hidden>
+                        <h3><i class="fas fa-user-gear"></i> My Role / Contribution</h3>
+                        <p id="pmRole"></p>
+                    </section>
+
+                    <section class="project-modal-section" id="pmResultsSection" hidden>
+                        <h3><i class="fas fa-chart-line"></i> Results / Outcome</h3>
+                        <p id="pmResults"></p>
+                    </section>
+
+                    <section class="project-modal-section" id="pmChallengesSection" hidden>
+                        <h3><i class="fas fa-triangle-exclamation"></i> Challenges</h3>
+                        <p id="pmChallenges"></p>
+                    </section>
+
+                    <section class="project-modal-section" id="pmFutureSection" hidden>
+                        <h3><i class="fas fa-rocket"></i> Future Improvements</h3>
+                        <p id="pmFuture"></p>
+                    </section>
+                </div>
+
+                <div class="project-modal-footer" id="pmLinksBottom"></div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <!-- ================= END PROJECTS SECTION ================= -->
     <!-- GitHub Contribution Analytics -->
@@ -3725,6 +4002,530 @@
             }
         });
     </script>
+    <!-- ================= PROJECTS CASE-STUDY SYSTEM (DATA + CARDS + MODAL) ================= -->
+    <script>
+    (function () {
+        'use strict';
+
+        /* ---------------------------------------------------------------
+           1. PROJECT DATA
+           Single source of truth built from the existing project content.
+           No fabricated technologies, links, features, or results.
+           Missing fields are simply left out (undefined / omitted).
+        --------------------------------------------------------------- */
+        var projectsData = [
+            {
+                id: 'weather-forecast-ui',
+                number: '01',
+                title: 'Dynamic Weather Forecast UI',
+                category: 'Live App',
+                summary: 'Geographical real-time climate tracking platform with asynchronous third-party REST API integration and predictive meteorological visual cards.',
+                technologies: ['Python', 'REST API', 'JavaScript'],
+                image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=1200&q=80',
+                demo: 'https://simple-weather-forecast-python.vercel.app/',
+                overview: 'Dynamic Weather Forecast UI is a geographical real-time climate tracking platform. It integrates with a third-party weather REST API asynchronously and presents the results through predictive meteorological visual cards.',
+                features: [
+                    'Real-time geographical climate tracking',
+                    'Asynchronous integration with a third-party REST API',
+                    'Predictive meteorological visual cards'
+                ]
+            },
+            {
+                id: 'youtube-eda',
+                number: '02',
+                title: 'YouTube Interaction & Trend EDA',
+                category: 'Data Analytics',
+                summary: 'In-depth exploratory data analysis tracking content interaction metrics, view-velocity variances, and cross-channel distribution trends.',
+                technologies: ['Pandas', 'Matplotlib', 'EDA'],
+                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505/YouTube-EDA',
+                overview: 'This project is an in-depth exploratory data analysis (EDA) of YouTube content performance, examining how videos and channels behave over time.',
+                features: [
+                    'Tracks content interaction metrics',
+                    'Analyzes view-velocity variances',
+                    'Evaluates cross-channel distribution trends'
+                ]
+            },
+            {
+                id: 'nifty50-time-series',
+                number: '03',
+                title: 'NIFTY50 Time-Series Analysis',
+                category: 'Time Series',
+                summary: 'Quantitative financial evaluation calculating rolling volatility, dynamic moving averages, and cyclical trajectory correlations.',
+                technologies: ['NumPy', 'Seaborn', 'Finance ML'],
+                image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505/synent-task-7--Time-Series-Analysis-hasyapatel',
+                overview: 'A quantitative financial evaluation of the NIFTY50 index, applying time-series techniques to study market behavior over time.',
+                features: [
+                    'Calculates rolling volatility',
+                    'Computes dynamic moving averages',
+                    'Identifies cyclical trajectory correlations'
+                ]
+            },
+            {
+                id: 'content-vector-recommender',
+                number: '04',
+                title: 'Content Vector Recommender',
+                category: 'Machine Learning',
+                summary: 'Vector-space recommendation pipeline utilizing cosine similarity models to rank and recommend relevant media titles from user preference vectors.',
+                technologies: ['Scikit-Learn', 'NLP', 'Cosine Similarity'],
+                image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505',
+                overview: 'A vector-space recommendation pipeline that ranks and recommends relevant media titles based on user preference vectors.',
+                features: [
+                    'Vector-space recommendation pipeline',
+                    'Cosine similarity-based ranking',
+                    'Recommendations derived from user preference vectors'
+                ]
+            },
+            {
+                id: 'credit-risk-loan-classifier',
+                number: '05',
+                title: 'Credit Risk & Loan Classifier',
+                category: 'Classification',
+                summary: 'Supervised predictive classification system evaluating underwriting risk factors to automatically score loan acceptance probabilities.',
+                technologies: ['XGBoost', 'Classification', 'Scikit-Learn'],
+                image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505',
+                overview: 'A supervised predictive classification system built to evaluate underwriting risk factors and automatically score loan acceptance probabilities.',
+                features: [
+                    'Supervised predictive classification system',
+                    'Evaluates underwriting risk factors',
+                    'Automatically scores loan acceptance probability'
+                ]
+            },
+            {
+                id: 'ldrp-college-site-clone',
+                number: '06',
+                title: 'LDRP College Site Clone',
+                category: 'Live App',
+                summary: 'Frontend UI clone of the institutional college website, built with semantic HTML5, flex layouts, and responsive mobile breakpoints.',
+                technologies: ['HTML5', 'CSS3', 'JavaScript'],
+                image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505/ldrp-demo-webpage',
+                overview: 'A frontend clone of the institutional college website, focused on faithfully rebuilding the interface with semantic markup and responsive layouts.',
+                features: [
+                    'Frontend clone of the institutional college website',
+                    'Built with semantic HTML5 markup',
+                    'Responsive flex layouts with mobile breakpoints'
+                ]
+            },
+            {
+                id: 'ecommerce-interface-template',
+                number: '07',
+                title: 'E-commerce Interface Template',
+                category: 'Frontend',
+                summary: 'Structural e-commerce UI grid focused on responsive product cards, layout breakpoints, and pure CSS interaction states.',
+                technologies: ['HTML5', 'CSS3'],
+                image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505/ecommerce-frontend',
+                overview: 'A structural e-commerce interface template centered on a responsive product grid, built entirely with HTML and CSS.',
+                features: [
+                    'Responsive product card grid',
+                    'Adaptive layout breakpoints',
+                    'Pure CSS interaction states'
+                ]
+            },
+            {
+                id: 'cpp-fundamentals',
+                number: '08',
+                title: 'C++ Fundamentals',
+                category: 'Core Programming',
+                summary: 'Console applications covering core algorithmic logic, data structures, loops, and arrays built with standard C++ libraries.',
+                technologies: ['C++', 'DSA', 'Algorithms'],
+                image: 'https://images.unsplash.com/photo-1509966756634-9c23dd6e6815?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505',
+                overview: 'A set of console applications covering core algorithmic logic, data structures, loops, and arrays, built with standard C++ libraries.',
+                features: [
+                    'Core algorithmic logic exercises',
+                    'Data structure implementations',
+                    'Loop and array-based console programs'
+                ]
+            },
+            {
+                id: 'core-java-projects',
+                number: '09',
+                title: 'Core Java Projects',
+                category: 'Core Programming',
+                summary: 'Object-oriented architecture practice covering class design, inheritance trees, encapsulation, and polymorphism.',
+                technologies: ['Java', 'OOP'],
+                image: 'https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505',
+                overview: 'A collection of object-oriented architecture exercises in Java, practicing class design and object-oriented principles.',
+                features: [
+                    'Class design practice',
+                    'Inheritance hierarchies',
+                    'Encapsulation and polymorphism examples'
+                ]
+            },
+            {
+                id: 'house-price-exploration',
+                number: '10',
+                title: 'House Price Exploration',
+                category: 'Data Analytics',
+                summary: 'Exploratory analysis of property valuation variables using statistical techniques, feature correlations, and distribution visualizations.',
+                technologies: ['Pandas', 'NumPy', 'Seaborn'],
+                image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505/house-price-exploration',
+                overview: 'An exploratory analysis of property valuation variables, using statistical techniques to understand what drives house prices.',
+                features: [
+                    'Statistical exploration of property valuation variables',
+                    'Feature correlation analysis',
+                    'Distribution visualizations'
+                ]
+            },
+            {
+                id: 'netflix-content-eda',
+                number: '11',
+                title: 'Netflix Content Distribution EDA',
+                category: 'Data Analytics',
+                summary: 'Investigated content distribution across release timelines, genres, and regional catalogs using visual heatmaps and trend charts.',
+                technologies: ['Pandas', 'Matplotlib', 'EDA'],
+                image: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505/synent-task-3-Exploratory-Data-Analysis-EDA--hasyapatel',
+                overview: 'An exploratory data analysis of Netflix content, investigating how titles are distributed across release timelines, genres, and regional catalogs.',
+                features: [
+                    'Content distribution across release timelines',
+                    'Genre and regional catalog breakdown',
+                    'Visual heatmaps and trend charts'
+                ]
+            },
+            {
+                id: 'credit-card-fraud-detection',
+                number: '12',
+                title: 'Credit Card Fraud Detection',
+                category: 'Machine Learning',
+                summary: 'Classification model tailored for highly imbalanced transactional data to identify anomalous spending patterns with high precision.',
+                technologies: ['Scikit-Learn', 'Imbalanced Data', 'Classification'],
+                image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80',
+                github: 'https://github.com/Hasya1505',
+                overview: 'A classification model tailored for highly imbalanced transactional data, aimed at identifying anomalous spending patterns with high precision.',
+                features: [
+                    'Tailored for highly imbalanced transactional data',
+                    'Identifies anomalous spending patterns',
+                    'Built for high-precision classification'
+                ]
+            }
+        ];
+
+        /* Simple, honest grouping of the tags that already exist on each
+           project — this only reorganizes existing labels, it never adds
+           new technology facts. Anything unrecognized falls back to a
+           generic "Technologies" bucket. */
+        var TECH_GROUPS = {
+            'Frontend': ['HTML5', 'CSS3', 'JavaScript'],
+            'Languages': ['Python', 'Java', 'C++'],
+            'Data & ML': ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'EDA', 'Scikit-Learn', 'XGBoost', 'NLP', 'Cosine Similarity', 'Classification', 'Imbalanced Data', 'Finance ML'],
+            'Concepts & Tools': ['REST API', 'DSA', 'Algorithms', 'OOP']
+        };
+
+        function groupTechnologies(technologies) {
+            var groups = {};
+            (technologies || []).forEach(function (tech) {
+                var placed = false;
+                Object.keys(TECH_GROUPS).forEach(function (groupName) {
+                    if (TECH_GROUPS[groupName].indexOf(tech) !== -1) {
+                        groups[groupName] = groups[groupName] || [];
+                        groups[groupName].push(tech);
+                        placed = true;
+                    }
+                });
+                if (!placed) {
+                    groups['Technologies'] = groups['Technologies'] || [];
+                    groups['Technologies'].push(tech);
+                }
+            });
+            return groups;
+        }
+
+        /* ---------------------------------------------------------------
+           2. DOM CACHE
+        --------------------------------------------------------------- */
+        var grid = document.getElementById('projectGalleryGrid');
+        var backdrop = document.getElementById('projectModalBackdrop');
+        var modal = document.getElementById('projectModal');
+        var closeBtn = document.getElementById('projectModalClose');
+        var prevBtn = document.getElementById('projectModalPrev');
+        var nextBtn = document.getElementById('projectModalNext');
+
+        var pmNumber = document.getElementById('pmNumber');
+        var pmCategory = document.getElementById('pmCategory');
+        var pmTitle = document.getElementById('pmTitle');
+        var pmSummary = document.getElementById('pmSummary');
+        var pmBadges = document.getElementById('pmBadges');
+        var pmLinksTop = document.getElementById('pmLinksTop');
+        var pmLinksBottom = document.getElementById('pmLinksBottom');
+        var pmImageWrap = document.getElementById('pmImageWrap');
+        var pmImage = document.getElementById('pmImage');
+
+        var sectionMap = {
+            overview: { section: document.getElementById('pmOverviewSection'), field: document.getElementById('pmOverview') },
+            problem: { section: document.getElementById('pmProblemSection'), field: document.getElementById('pmProblem') },
+            solution: { section: document.getElementById('pmSolutionSection'), field: document.getElementById('pmSolution') },
+            role: { section: document.getElementById('pmRoleSection'), field: document.getElementById('pmRole') },
+            results: { section: document.getElementById('pmResultsSection'), field: document.getElementById('pmResults') },
+            challenges: { section: document.getElementById('pmChallengesSection'), field: document.getElementById('pmChallenges') },
+            future: { section: document.getElementById('pmFutureSection'), field: document.getElementById('pmFuture') }
+        };
+
+        var pmFeaturesSection = document.getElementById('pmFeaturesSection');
+        var pmFeatures = document.getElementById('pmFeatures');
+        var pmTechSection = document.getElementById('pmTechSection');
+        var pmTechGroups = document.getElementById('pmTechGroups');
+        var pmArchSection = document.getElementById('pmArchSection');
+        var pmArch = document.getElementById('pmArch');
+
+        var currentIndex = -1;
+        var lastFocusedTrigger = null;
+
+        if (!grid || !backdrop || !modal) { return; }
+
+        /* ---------------------------------------------------------------
+           3. RENDER PROJECT CARDS
+        --------------------------------------------------------------- */
+        function linkButton(url, label, iconClass, variant) {
+            if (!url) { return ''; }
+            return '<a href="' + url + '" target="_blank" rel="noopener" class="' + variant + ' project-btn" onclick="event.stopPropagation()">' +
+                '<i class="' + iconClass + '"></i> ' + label + '</a>';
+        }
+
+        function renderCards() {
+            var html = projectsData.map(function (project) {
+                var tags = (project.technologies || []).map(function (t) {
+                    return '<span class="project-tag">' + t + '</span>';
+                }).join('');
+
+                var actions = '';
+                actions += '<button type="button" class="project-btn project-btn-explore" onclick="event.stopPropagation(); window.__openProjectModal(\'' + project.id + '\', this);">' +
+                    '<i class="fas fa-arrow-right"></i> Explore Project</button>';
+                if (project.github) { actions += linkButton(project.github, 'GitHub', 'fab fa-github', 'btn-secondary'); }
+                if (project.demo) { actions += linkButton(project.demo, 'Live Demo', 'fas fa-external-link-alt', 'btn-primary'); }
+
+                return (
+                    '<article class="project-card" data-project-id="' + project.id + '" tabindex="0" role="button" ' +
+                    'aria-label="View case study for ' + project.title + '">' +
+                        '<div class="project-thumb-box">' +
+                            '<img src="' + project.image + '" alt="' + project.title + '" class="project-thumb" loading="lazy">' +
+                            '<span class="project-badge-overlay">' + project.category + '</span>' +
+                            '<span class="project-number-overlay">' + project.number + '</span>' +
+                            '<div class="project-explore-overlay">' +
+                                '<span class="project-explore-pill"><i class="fas fa-eye"></i> View Case Study</span>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="project-info">' +
+                            '<h3 class="project-title">' + project.title + '</h3>' +
+                            '<p class="project-desc">' + project.summary + '</p>' +
+                            '<div class="project-tags">' + tags + '</div>' +
+                            '<div class="project-actions">' + actions + '</div>' +
+                        '</div>' +
+                    '</article>'
+                );
+            }).join('');
+
+            grid.innerHTML = html;
+        }
+
+        /* ---------------------------------------------------------------
+           4. MODAL POPULATION
+        --------------------------------------------------------------- */
+        function fillTextSection(key, value) {
+            var entry = sectionMap[key];
+            if (!entry) { return; }
+            if (value) {
+                entry.field.textContent = value;
+                entry.section.hidden = false;
+            } else {
+                entry.section.hidden = true;
+                entry.field.textContent = '';
+            }
+        }
+
+        function fillFeatures(features) {
+            if (features && features.length) {
+                pmFeatures.innerHTML = features.map(function (f) {
+                    return '<li><i class="fas fa-check"></i> ' + f + '</li>';
+                }).join('');
+                pmFeaturesSection.hidden = false;
+            } else {
+                pmFeatures.innerHTML = '';
+                pmFeaturesSection.hidden = true;
+            }
+        }
+
+        function fillTechStack(technologies) {
+            var groups = groupTechnologies(technologies);
+            var groupNames = Object.keys(groups);
+            if (groupNames.length) {
+                pmTechGroups.innerHTML = groupNames.map(function (name) {
+                    var pills = groups[name].map(function (t) {
+                        return '<span class="project-tag">' + t + '</span>';
+                    }).join('');
+                    return '<div class="project-modal-tech-group"><h4>' + name + '</h4><div class="project-tags">' + pills + '</div></div>';
+                }).join('');
+                pmTechSection.hidden = false;
+            } else {
+                pmTechGroups.innerHTML = '';
+                pmTechSection.hidden = true;
+            }
+        }
+
+        function fillArchitecture(architecture) {
+            if (architecture && architecture.length) {
+                pmArch.innerHTML = architecture.map(function (step, idx) {
+                    var arrow = idx < architecture.length - 1 ? '<div class="project-modal-arch-arrow"><i class="fas fa-arrow-down"></i></div>' : '';
+                    return '<div class="project-modal-arch-step">' + step + '</div>' + arrow;
+                }).join('');
+                pmArchSection.hidden = false;
+            } else {
+                pmArch.innerHTML = '';
+                pmArchSection.hidden = true;
+            }
+        }
+
+        function fillLinks(project) {
+            var links = '';
+            if (project.github) { links += linkButton(project.github, 'GitHub', 'fab fa-github', 'btn-secondary'); }
+            if (project.demo) { links += linkButton(project.demo, 'Live Demo', 'fas fa-external-link-alt', 'btn-primary'); }
+            pmLinksTop.innerHTML = links;
+            pmLinksBottom.innerHTML = links;
+        }
+
+        function populateModal(project) {
+            pmNumber.textContent = project.number;
+            pmCategory.textContent = project.category;
+            pmTitle.textContent = project.title;
+            pmSummary.textContent = project.summary;
+
+            pmBadges.innerHTML = (project.technologies || []).map(function (t, i) {
+                return '<span class="project-tag" style="transition-delay:' + (i * 0.04) + 's">' + t + '</span>';
+            }).join('');
+
+            if (project.image) {
+                pmImage.src = project.image;
+                pmImage.alt = project.title;
+                pmImageWrap.style.display = '';
+            } else {
+                pmImageWrap.style.display = 'none';
+            }
+
+            fillLinks(project);
+            fillTextSection('overview', project.overview);
+            fillTextSection('problem', project.problem);
+            fillTextSection('solution', project.solution);
+            fillFeatures(project.features);
+            fillTechStack(project.technologies);
+            fillArchitecture(project.architecture);
+            fillTextSection('role', project.role);
+            fillTextSection('results', project.results);
+            fillTextSection('challenges', project.challenges);
+            fillTextSection('future', project.future);
+
+            // Re-trigger the staggered badge animation.
+            void pmBadges.offsetWidth;
+        }
+
+        /* ---------------------------------------------------------------
+           5. OPEN / CLOSE / NAVIGATE
+        --------------------------------------------------------------- */
+        function openModalByIndex(index, triggerEl) {
+            if (index < 0 || index >= projectsData.length) { return; }
+            currentIndex = index;
+            lastFocusedTrigger = triggerEl || document.activeElement;
+
+            populateModal(projectsData[currentIndex]);
+
+            backdrop.classList.add('active');
+            backdrop.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+
+            if (history.replaceState) {
+                history.replaceState(null, '', '#' + projectsData[currentIndex].id);
+            }
+
+            setTimeout(function () { modal.focus(); }, 50);
+        }
+
+        function openModalById(id, triggerEl) {
+            var index = projectsData.findIndex(function (p) { return p.id === id; });
+            openModalByIndex(index, triggerEl);
+        }
+        window.__openProjectModal = openModalById;
+
+        function closeModal() {
+            if (!backdrop.classList.contains('active')) { return; }
+            backdrop.classList.remove('active');
+            backdrop.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+
+            if (history.replaceState) {
+                var cleanUrl = window.location.pathname + window.location.search;
+                history.replaceState(null, '', cleanUrl);
+            }
+
+            if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+                lastFocusedTrigger.focus();
+            }
+            currentIndex = -1;
+        }
+
+        function goToOffset(offset) {
+            if (currentIndex === -1) { return; }
+            var nextIndex = (currentIndex + offset + projectsData.length) % projectsData.length;
+            var trigger = lastFocusedTrigger;
+            openModalByIndex(nextIndex, trigger);
+        }
+
+        /* ---------------------------------------------------------------
+           6. EVENT WIRING
+        --------------------------------------------------------------- */
+        renderCards();
+
+        grid.addEventListener('click', function (e) {
+            if (e.target.closest('a')) { return; }
+            if (e.target.closest('.project-btn-explore')) { return; }
+            var card = e.target.closest('.project-card');
+            if (card) { openModalById(card.getAttribute('data-project-id'), card); }
+        });
+
+        grid.addEventListener('keydown', function (e) {
+            if (e.key !== 'Enter' && e.key !== ' ') { return; }
+            var card = e.target.closest('.project-card');
+            if (!card) { return; }
+            if (e.target.closest('a') || e.target.closest('button')) { return; }
+            e.preventDefault();
+            openModalById(card.getAttribute('data-project-id'), card);
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        prevBtn.addEventListener('click', function () { goToOffset(-1); });
+        nextBtn.addEventListener('click', function () { goToOffset(1); });
+
+        backdrop.addEventListener('click', function (e) {
+            if (e.target === backdrop) { closeModal(); }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            var typing = e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable);
+            if (typing) { return; }
+            if (!backdrop.classList.contains('active')) { return; }
+
+            if (e.key === 'Escape') { closeModal(); }
+            else if (e.key === 'ArrowLeft') { goToOffset(-1); }
+            else if (e.key === 'ArrowRight') { goToOffset(1); }
+        });
+
+        // Deep link support: open a project if the URL hash matches on load.
+        function tryOpenFromHash() {
+            var hash = window.location.hash.replace('#', '');
+            if (!hash) { return; }
+            var index = projectsData.findIndex(function (p) { return p.id === hash; });
+            if (index !== -1) { openModalByIndex(index, null); }
+        }
+        tryOpenFromHash();
+        window.addEventListener('hashchange', tryOpenFromHash);
+    })();
+    </script>
+
 </body>
 
 </html>
