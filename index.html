@@ -4013,200 +4013,168 @@
            No fabricated technologies, links, features, or results.
            Missing fields are simply left out (undefined / omitted).
         --------------------------------------------------------------- */
-        var projectsData = [
-            {
-                id: 'weather-forecast-ui',
-                number: '01',
-                title: 'Dynamic Weather Forecast UI',
-                category: 'Live App',
-                summary: 'Geographical real-time climate tracking platform with asynchronous third-party REST API integration and predictive meteorological visual cards.',
-                technologies: ['Python', 'REST API', 'JavaScript'],
-                image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=1200&q=80',
-                demo: 'https://simple-weather-forecast-python.vercel.app/',
-                overview: 'Dynamic Weather Forecast UI is a geographical real-time climate tracking platform. It integrates with a third-party weather REST API asynchronously and presents the results through predictive meteorological visual cards.',
-                features: [
-                    'Real-time geographical climate tracking',
-                    'Asynchronous integration with a third-party REST API',
-                    'Predictive meteorological visual cards'
-                ]
-            },
-            {
-                id: 'youtube-eda',
-                number: '02',
-                title: 'YouTube Interaction & Trend EDA',
-                category: 'Data Analytics',
-                summary: 'In-depth exploratory data analysis tracking content interaction metrics, view-velocity variances, and cross-channel distribution trends.',
-                technologies: ['Pandas', 'Matplotlib', 'EDA'],
-                image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505/YouTube-EDA',
-                overview: 'This project is an in-depth exploratory data analysis (EDA) of YouTube content performance, examining how videos and channels behave over time.',
-                features: [
-                    'Tracks content interaction metrics',
-                    'Analyzes view-velocity variances',
-                    'Evaluates cross-channel distribution trends'
-                ]
-            },
-            {
-                id: 'nifty50-time-series',
-                number: '03',
-                title: 'NIFTY50 Time-Series Analysis',
-                category: 'Time Series',
-                summary: 'Quantitative financial evaluation calculating rolling volatility, dynamic moving averages, and cyclical trajectory correlations.',
-                technologies: ['NumPy', 'Seaborn', 'Finance ML'],
-                image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505/synent-task-7--Time-Series-Analysis-hasyapatel',
-                overview: 'A quantitative financial evaluation of the NIFTY50 index, applying time-series techniques to study market behavior over time.',
-                features: [
-                    'Calculates rolling volatility',
-                    'Computes dynamic moving averages',
-                    'Identifies cyclical trajectory correlations'
-                ]
-            },
-            {
-                id: 'content-vector-recommender',
-                number: '04',
-                title: 'Content Vector Recommender',
-                category: 'Machine Learning',
-                summary: 'Vector-space recommendation pipeline utilizing cosine similarity models to rank and recommend relevant media titles from user preference vectors.',
-                technologies: ['Scikit-Learn', 'NLP', 'Cosine Similarity'],
-                image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505',
-                overview: 'A vector-space recommendation pipeline that ranks and recommends relevant media titles based on user preference vectors.',
-                features: [
-                    'Vector-space recommendation pipeline',
-                    'Cosine similarity-based ranking',
-                    'Recommendations derived from user preference vectors'
-                ]
-            },
-            {
-                id: 'credit-risk-loan-classifier',
-                number: '05',
-                title: 'Credit Risk & Loan Classifier',
-                category: 'Classification',
-                summary: 'Supervised predictive classification system evaluating underwriting risk factors to automatically score loan acceptance probabilities.',
-                technologies: ['XGBoost', 'Classification', 'Scikit-Learn'],
-                image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505',
-                overview: 'A supervised predictive classification system built to evaluate underwriting risk factors and automatically score loan acceptance probabilities.',
-                features: [
-                    'Supervised predictive classification system',
-                    'Evaluates underwriting risk factors',
-                    'Automatically scores loan acceptance probability'
-                ]
-            },
-            {
-                id: 'ldrp-college-site-clone',
-                number: '06',
-                title: 'LDRP College Site Clone',
-                category: 'Live App',
-                summary: 'Frontend UI clone of the institutional college website, built with semantic HTML5, flex layouts, and responsive mobile breakpoints.',
-                technologies: ['HTML5', 'CSS3', 'JavaScript'],
-                image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505/ldrp-demo-webpage',
-                overview: 'A frontend clone of the institutional college website, focused on faithfully rebuilding the interface with semantic markup and responsive layouts.',
-                features: [
-                    'Frontend clone of the institutional college website',
-                    'Built with semantic HTML5 markup',
-                    'Responsive flex layouts with mobile breakpoints'
-                ]
-            },
-            {
-                id: 'ecommerce-interface-template',
-                number: '07',
-                title: 'E-commerce Interface Template',
-                category: 'Frontend',
-                summary: 'Structural e-commerce UI grid focused on responsive product cards, layout breakpoints, and pure CSS interaction states.',
-                technologies: ['HTML5', 'CSS3'],
-                image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505/ecommerce-frontend',
-                overview: 'A structural e-commerce interface template centered on a responsive product grid, built entirely with HTML and CSS.',
-                features: [
-                    'Responsive product card grid',
-                    'Adaptive layout breakpoints',
-                    'Pure CSS interaction states'
-                ]
-            },
-            {
-                id: 'cpp-fundamentals',
-                number: '08',
-                title: 'C++ Fundamentals',
-                category: 'Core Programming',
-                summary: 'Console applications covering core algorithmic logic, data structures, loops, and arrays built with standard C++ libraries.',
-                technologies: ['C++', 'DSA', 'Algorithms'],
-                image: 'https://images.unsplash.com/photo-1509966756634-9c23dd6e6815?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505',
-                overview: 'A set of console applications covering core algorithmic logic, data structures, loops, and arrays, built with standard C++ libraries.',
-                features: [
-                    'Core algorithmic logic exercises',
-                    'Data structure implementations',
-                    'Loop and array-based console programs'
-                ]
-            },
-            {
-                id: 'core-java-projects',
-                number: '09',
-                title: 'Core Java Projects',
-                category: 'Core Programming',
-                summary: 'Object-oriented architecture practice covering class design, inheritance trees, encapsulation, and polymorphism.',
-                technologies: ['Java', 'OOP'],
-                image: 'https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505',
-                overview: 'A collection of object-oriented architecture exercises in Java, practicing class design and object-oriented principles.',
-                features: [
-                    'Class design practice',
-                    'Inheritance hierarchies',
-                    'Encapsulation and polymorphism examples'
-                ]
-            },
-            {
-                id: 'house-price-exploration',
-                number: '10',
-                title: 'House Price Exploration',
-                category: 'Data Analytics',
-                summary: 'Exploratory analysis of property valuation variables using statistical techniques, feature correlations, and distribution visualizations.',
-                technologies: ['Pandas', 'NumPy', 'Seaborn'],
-                image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505/house-price-exploration',
-                overview: 'An exploratory analysis of property valuation variables, using statistical techniques to understand what drives house prices.',
-                features: [
-                    'Statistical exploration of property valuation variables',
-                    'Feature correlation analysis',
-                    'Distribution visualizations'
-                ]
-            },
-            {
-                id: 'netflix-content-eda',
-                number: '11',
-                title: 'Netflix Content Distribution EDA',
-                category: 'Data Analytics',
-                summary: 'Investigated content distribution across release timelines, genres, and regional catalogs using visual heatmaps and trend charts.',
-                technologies: ['Pandas', 'Matplotlib', 'EDA'],
-                image: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505/synent-task-3-Exploratory-Data-Analysis-EDA--hasyapatel',
-                overview: 'An exploratory data analysis of Netflix content, investigating how titles are distributed across release timelines, genres, and regional catalogs.',
-                features: [
-                    'Content distribution across release timelines',
-                    'Genre and regional catalog breakdown',
-                    'Visual heatmaps and trend charts'
-                ]
-            },
-            {
-                id: 'credit-card-fraud-detection',
-                number: '12',
-                title: 'Credit Card Fraud Detection',
-                category: 'Machine Learning',
-                summary: 'Classification model tailored for highly imbalanced transactional data to identify anomalous spending patterns with high precision.',
-                technologies: ['Scikit-Learn', 'Imbalanced Data', 'Classification'],
-                image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80',
-                github: 'https://github.com/Hasya1505',
-                overview: 'A classification model tailored for highly imbalanced transactional data, aimed at identifying anomalous spending patterns with high precision.',
-                features: [
-                    'Tailored for highly imbalanced transactional data',
-                    'Identifies anomalous spending patterns',
-                    'Built for high-precision classification'
-                ]
-            }
-        ];
+       var projectsData = [
+    {
+        id: 'cpp-fundamentals',
+        number: '01',
+        title: 'C++ Fundamentals',
+        category: 'Core Programming',
+        summary: 'Console applications covering core algorithmic logic, data structures, loops, and arrays built with standard C++ libraries.',
+        technologies: ['C++', 'DSA', 'Algorithms'],
+        image: 'https://images.unsplash.com/photo-1509966756634-9c23dd6e6815?auto=format&fit=crop&w=1200&q=80',
+        github: 'https://github.com/Hasya1505',
+        overview: 'A set of console applications covering core algorithmic logic, data structures, loops, and arrays, built with standard C++ libraries.',
+        features: [
+            'Core algorithmic logic exercises',
+            'Data structure implementations',
+            'Loop and array-based console programs'
+        ]
+    },
+    {
+        id: 'core-java-projects',
+        number: '02',
+        title: 'Core Java Projects',
+        category: 'Core Programming',
+        summary: 'Object-oriented architecture practice covering class design, inheritance trees, encapsulation, and polymorphism.',
+        technologies: ['Java', 'OOP'],
+        image: 'https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1200&q=80',
+        github: 'https://github.com/Hasya1505',
+        overview: 'A collection of object-oriented architecture exercises in Java, practicing class design and object-oriented principles.',
+        features: [
+            'Class design practice',
+            'Inheritance hierarchies',
+            'Encapsulation and polymorphism examples'
+        ]
+    },
+    {
+        id: 'ecommerce-interface-template',
+        number: '03',
+        title: 'E-commerce Interface Template',
+        category: 'Frontend',
+        summary: 'Structural e-commerce UI grid focused on responsive product cards, layout breakpoints, and pure CSS interaction states.',
+        technologies: ['HTML5', 'CSS3'],
+        image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80',
+        github: 'https://github.com/Hasya1505/ecommerce-frontend',
+        overview: 'A structural e-commerce interface template centered on a responsive product grid, built entirely with HTML and CSS.',
+        features: [
+            'Responsive product card grid',
+            'Adaptive layout breakpoints',
+            'Pure CSS interaction states'
+        ]
+    },
+    {
+        id: 'youtube-eda',
+        number: '04',
+        title: 'YouTube Interaction & Trend EDA',
+        category: 'Data Analytics',
+        summary: 'In-depth exploratory data analysis tracking content interaction metrics, view-velocity variances, and cross-channel distribution trends.',
+        technologies: ['Pandas', 'Matplotlib', 'EDA'],
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+        github: 'https://github.com/Hasya1505/YouTube-EDA',
+        overview: 'This project is an in-depth exploratory data analysis (EDA) of YouTube content performance, examining how videos and channels behave over time.',
+        features: [
+            'Tracks content interaction metrics',
+            'Analyzes view-velocity variances',
+            'Evaluates cross-channel distribution trends'
+        ]
+    },
+    {
+        id: 'nifty50-time-series',
+        number: '05',
+        title: 'NIFTY50 Time-Series Analysis',
+        category: 'Time Series',
+        summary: 'Quantitative financial evaluation calculating rolling volatility, dynamic moving averages, and cyclical trajectory correlations.',
+        technologies: ['NumPy', 'Seaborn', 'Finance ML'],
+        image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
+        github: 'https://github.com/Hasya1505/synent-task-7--Time-Series-Analysis-hasyapatel',
+        overview: 'A quantitative financial evaluation of the NIFTY50 index, applying time-series techniques to study market behavior over time.',
+        features: [
+            'Calculates rolling volatility',
+            'Computes dynamic moving averages',
+            'Identifies cyclical trajectory correlations'
+        ]
+    },
+    {
+        id: 'house-price-exploration',
+        number: '06',
+        title: 'House Price Exploration',
+        category: 'Data Analytics',
+        summary: 'Exploratory analysis of property valuation variables using statistical techniques, feature correlations, and distribution visualizations.',
+        technologies: ['Pandas', 'NumPy', 'Seaborn'],
+        image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=80',
+        github: 'https://github.com/Hasya1505/house-price-exploration',
+        overview: 'An exploratory analysis of property valuation variables, using statistical techniques to understand what drives house prices.',
+        features: [
+            'Statistical exploration of property valuation variables',
+            'Feature correlation analysis',
+            'Distribution visualizations'
+        ]
+    },
+    {
+        id: 'netflix-content-eda',
+        number: '07',
+        title: 'Netflix Content Distribution EDA',
+        category: 'Data Analytics',
+        summary: 'Investigated content distribution across release timelines, genres, and regional catalogs using visual heatmaps and trend charts.',
+        technologies: ['Pandas', 'Matplotlib', 'EDA'],
+        image: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=1200&q=80',
+        github: 'https://github.com/Hasya1505/synent-task-3-Exploratory-Data-Analysis-EDA--hasyapatel',
+        overview: 'An exploratory data analysis of Netflix content, investigating how titles are distributed across release timelines, genres, and regional catalogs.',
+        features: [
+            'Content distribution across release timelines',
+            'Genre and regional catalog breakdown',
+            'Visual heatmaps and trend charts'
+        ]
+    },
+    {
+        id: 'movie-recommender',
+        number: '08',
+        title: 'Movie Recommender',
+        category: 'Machine Learning',
+        summary: 'Vector-space recommendation pipeline utilizing cosine similarity models to rank and recommend relevant media titles from user preference vectors.',
+        technologies: ['Scikit-Learn', 'NLP', 'Cosine Similarity'],
+        image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80',
+        github: 'https://github.com/Hasya1505',
+        overview: 'A vector-space recommendation pipeline that ranks and recommends relevant media titles based on user preference vectors.',
+        features: [
+            'Vector-space recommendation pipeline',
+            'Cosine similarity-based ranking',
+            'Recommendations derived from user preference vectors'
+        ]
+    },
+    {
+        id: 'credit-risk-loan-classifier',
+        number: '09',
+        title: 'Credit Risk & Loan Classifier',
+        category: 'Classification',
+        summary: 'Supervised predictive classification system evaluating underwriting risk factors to automatically score loan acceptance probabilities.',
+        technologies: ['XGBoost', 'Classification', 'Scikit-Learn'],
+        image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
+        github: 'https://github.com/Hasya1505',
+        overview: 'A supervised predictive classification system built to evaluate underwriting risk factors and automatically score loan acceptance probabilities.',
+        features: [
+            'Supervised predictive classification system',
+            'Evaluates underwriting risk factors',
+            'Automatically scores loan acceptance probability'
+        ]
+    },
+    {
+        id: 'weather-forecast-ui',
+        number: '10',
+        title: 'Dynamic Weather Forecast UI',
+        category: 'Live App',
+        summary: 'Geographical real-time climate tracking platform with asynchronous third-party REST API integration and predictive meteorological visual cards.',
+        technologies: ['Python', 'REST API', 'JavaScript'],
+        image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=1200&q=80',
+        demo: 'https://simple-weather-forecast-python.vercel.app/',
+        overview: 'Dynamic Weather Forecast UI is a geographical real-time climate tracking platform. It integrates with a third-party weather REST API asynchronously and presents the results through predictive meteorological visual cards.',
+        features: [
+            'Real-time geographical climate tracking',
+            'Asynchronous integration with a third-party REST API',
+            'Predictive meteorological visual cards'
+        ]
+    }
+];
 
         /* Simple, honest grouping of the tags that already exist on each
            project — this only reorganizes existing labels, it never adds
