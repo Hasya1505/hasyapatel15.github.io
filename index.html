@@ -2555,7 +2555,29 @@
         border-color: var(--accent);
         color: var(--accent);
     }
+/* Ensure button styles display clearly on project cards */
+.project-btn.btn-primary {
+    background: var(--accent-gradient) !important;
+    color: #ffffff !important;
+    border: none;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
 
+.project-btn.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+}
+
+.project-btn.btn-secondary {
+    background: var(--surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border);
+}
+
+.project-btn.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent) !important;
+}
     @media (max-width: 600px) {
         .project-gallery-grid {
             grid-template-columns: 1fr;
@@ -4046,7 +4068,7 @@
             'Encapsulation and polymorphism examples'
         ]
     },
-    {
+{
         id: 'ecommerce-interface-template',
         number: '03',
         title: 'E-commerce Interface Template',
@@ -4055,7 +4077,7 @@
         technologies: ['HTML5', 'CSS3'],
         image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80',
         github: 'https://github.com/Hasya1505/ecommerce-fronten',
-        demo: 'https://ecommerce-frontend-ecru-iota.vercel.app',
+        demo: 'https://ecommerce-frontend-ecru-iota.vercel.app/',
         overview: 'A structural e-commerce interface template centered on a responsive product grid, built entirely with HTML and CSS.',
         features: [
             'Responsive product card grid',
@@ -4268,7 +4290,10 @@
                 actions += '<button type="button" class="project-btn project-btn-explore" onclick="event.stopPropagation(); window.__openProjectModal(\'' + project.id + '\', this);">' +
                     '<i class="fas fa-arrow-right"></i> Explore Project</button>';
                 if (project.github) { actions += linkButton(project.github, 'GitHub', 'fab fa-github', 'btn-secondary'); }
-                if (project.demo) { actions += linkButton(project.demo, 'Live Demo', 'fas fa-external-link-alt', 'btn-primary'); }
+               if (project.demo) { 
+    actions += '<a href="' + project.demo + '" target="_blank" rel="noopener noreferrer" class="btn-primary project-btn" onclick="event.stopPropagation()">' +
+               '<i class="fas fa-external-link-alt"></i> Live Demo</a>';
+}
 
                 return (
                     '<article class="project-card" data-project-id="' + project.id + '" tabindex="0" role="button" ' +
