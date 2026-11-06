@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>Hasya Patel | AI/ML &amp; Software Engineer</title>
+    <meta name="description" content="Hasya Patel — Full-Stack Developer and AI/ML Engineer building intelligent digital products.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- HASYA Portfolio Favicon -->
@@ -13,7 +14,7 @@
 <link rel="apple-touch-icon" href="/Glossy%20Orange%20H-A%20Monogram%20Badge.png">
 <meta name="theme-color" content="#ffffff">
     <link
-        href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -1402,465 +1403,345 @@
                 transform: none !important;
             }
         }
-    </style>
+    
+/* =========================================================
+   HASYA PREMIUM HERO — sage geometry + layered portrait stage
+========================================================= */
+.hasya-hero { position:relative; min-height: min(850px, 100vh); padding:clamp(118px,13vh,150px) 0 82px; background:var(--bg-pure); overflow:hidden; }
+.hasya-hero::before { content:""; position:absolute; width:520px; height:520px; top:-330px; left:-240px; border-radius:50%; background:radial-gradient(circle,rgba(149,162,147,.12),transparent 70%); pointer-events:none; }
+.hasya-hero-grid { grid-template-columns:minmax(0,1.02fr) minmax(390px,.98fr); gap:clamp(30px,5vw,78px); align-items:center; }
+.hasya-hero-copy { position:relative; z-index:4; }
+.hero-hello { margin:0 0 7px; color:var(--text-secondary); font-size:clamp(1rem,1.5vw,1.2rem); font-weight:500; }
+.hasya-name { margin:0 0 8px!important; font-family:'Space Grotesk',var(--font-main)!important; font-size:clamp(3.3rem,6.1vw,5.8rem)!important; line-height:.98!important; letter-spacing:-.075em!important; font-weight:700!important; white-space:nowrap; }
+.hasya-name span { color:#2563EB; }
+.hero-role { margin:17px 0 20px; color:var(--text-primary); font:600 clamp(.7rem,1.1vw,.84rem)/1.4 var(--font-mono); letter-spacing:.12em; }
+.hasya-hero .hero-kicker { color:#64748b; font:500 .72rem/1.4 var(--font-mono); letter-spacing:.17em; margin-bottom:24px; }
+.hasya-hero .hero-bio { max-width:510px; margin-bottom:28px; font-size:clamp(.95rem,1.2vw,1.08rem); line-height:1.8; }
+.hasya-hero-actions { gap:12px; }
+.hasya-hero-actions .btn-dynamic-primary { background:#2563eb!important; border-color:#2563eb!important; }
+.hasya-hero-actions .btn-dynamic-primary:hover { background:#1749bd!important; border-color:#1749bd!important; }
+.hero-meta-row { display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin-top:30px; }
+.hero-availability { display:inline-flex; align-items:center; gap:9px; color:var(--text-secondary); font:600 .68rem var(--font-mono); letter-spacing:.07em; white-space:nowrap; }
+.hero-availability i,.hud-live-dot { width:7px; height:7px; display:inline-block; border-radius:50%; background:#22c55e; box-shadow:0 0 0 4px rgba(34,197,94,.12); }
+.hero-meta-divider { width:1px; height:26px; background:var(--border); }
+.hasya-hero .hero-social-strip { margin:0; gap:8px; }
+.hasya-hero .brand-social-link { width:34px; height:34px; font-size:.9rem; background:transparent; }
+.hasya-portrait-stage { position:relative; width:100%; max-width:570px; height:570px; margin:0 auto; display:flex; align-items:flex-end; justify-content:center; isolation:isolate; overflow:visible; }
+.portrait-sage-disc { position:absolute; width:min(76%,410px); aspect-ratio:1; left:50%; top:50%; transform:translate(-50%,-46%); border-radius:50%; background:linear-gradient(145deg,#a9b5a5,#899987); box-shadow:inset -18px -22px 50px rgba(42,57,43,.10),0 28px 70px rgba(31,41,35,.10); z-index:-2; }
+.portrait-orbit { position:absolute; left:50%; top:50%; border:1px solid rgba(100,116,139,.22); border-radius:50%; transform:translate(-50%,-48%); pointer-events:none; z-index:-1; }
+.portrait-orbit-one { width:92%; aspect-ratio:1; border-style:dashed; animation:heroOrbit 42s linear infinite; }
+.portrait-orbit-two { width:82%; aspect-ratio:1; border-color:rgba(149,162,147,.45); animation:heroOrbit 55s linear infinite reverse; }
+.portrait-tech-mark { position:absolute; left:5%; bottom:18%; width:82px; height:82px; border:1px solid rgba(37,99,235,.18); border-radius:22px; display:grid; place-items:center; color:rgba(37,99,235,.45); font:700 1.1rem var(--font-mono); transform:rotate(-12deg); z-index:0; background:rgba(255,255,255,.34); }
+.portrait-tech-mark i { position:absolute; width:5px; height:5px; border-radius:50%; background:#2563eb; opacity:.5; }
+.portrait-tech-mark i:nth-of-type(1){top:12px;right:15px}.portrait-tech-mark i:nth-of-type(2){bottom:14px;left:15px}.portrait-tech-mark i:nth-of-type(3){top:50%;right:7px}
+.hasya-portrait-frame { position:relative; z-index:2; width:min(88%,470px); max-width:none; height:auto; aspect-ratio:1/1; margin:0 auto; overflow:hidden; border:7px solid rgba(255,255,255,.72); border-radius:30px; background:#d6d6d1; box-shadow:0 30px 75px rgba(15,23,42,.20); }
+.hasya-portrait-frame img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 28%; }
+.portrait-hud { position:absolute; z-index:5; min-width:158px; padding:13px 16px; border:1px solid rgba(255,255,255,.82); border-radius:14px; background:rgba(255,255,255,.78); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); box-shadow:0 12px 34px rgba(15,23,42,.10); display:flex; flex-direction:column; gap:4px; }
+.portrait-hud small { color:#64748b; font:600 .58rem var(--font-mono); letter-spacing:.12em; }
+.portrait-hud strong { color:#0f172a; font-size:.88rem; font-weight:700; }
+.portrait-hud span:not(.hud-live-dot) { color:#64748b; font-size:.7rem; }
+.portrait-hud-location { top:17%; right:0; padding-right:30px; }
+.portrait-hud-location .hud-live-dot { position:absolute; top:18px; right:14px; width:6px; height:6px; }
+.portrait-hud-availability { bottom:12%; left:0; }
+.portrait-side-note { position:absolute; right:-2%; top:48%; writing-mode:vertical-rl; color:var(--text-muted); font:500 .57rem var(--font-mono); letter-spacing:.2em; }
+@keyframes heroOrbit { to { transform:translate(-50%,-48%) rotate(360deg); } }
+@media(max-width:1100px) {
+ .hasya-hero { padding-top:116px; }
+ .hasya-hero-grid { grid-template-columns:minmax(0,1fr) minmax(340px,.9fr); gap:24px; }
+ .hasya-portrait-stage { height:490px; }
+ .hasya-portrait-frame { width:88%; }
+ .portrait-hud-location { right:-1%; }
+ .portrait-hud-availability { left:-1%; }
+}
+@media(max-width:850px) {
+ .hasya-hero { min-height:auto; padding:105px 0 65px; }
+ .hasya-hero-grid { grid-template-columns:1fr; gap:34px; }
+ .hasya-hero-copy { text-align:center; }
+ .hasya-hero .hero-bio { margin-left:auto; margin-right:auto; }
+ .hasya-hero-actions,.hero-meta-row { justify-content:center; }
+ .hasya-portrait-stage { width:min(100%,500px); height:490px; order:2; }
+ .portrait-sage-disc { width:68%; }
+ .hasya-portrait-frame { width:min(78%,390px); }
+ .portrait-hud-location { right:2%; top:15%; }
+ .portrait-hud-availability { left:2%; bottom:12%; }
+ .portrait-side-note { right:0; }
+}
+@media(max-width:600px) {
+ .hasya-hero { padding:96px 0 54px; }
+ .hasya-hero-grid { gap:20px; }
+ .hasya-name { font-size:clamp(2.65rem,11vw,3.7rem)!important; white-space:normal; }
+ .hasya-hero .hero-kicker { margin-bottom:16px; font-size:.62rem; }
+ .hero-role { font-size:.66rem; letter-spacing:.08em; margin:12px 0 15px; }
+ .hasya-hero .hero-bio { font-size:.91rem; line-height:1.7; margin-bottom:22px; }
+ .hasya-portrait-stage { height:390px; width:100%; }
+ .portrait-sage-disc { width:70%; top:47%; }
+ .portrait-orbit-one { width:98%; }.portrait-orbit-two { width:86%; }
+ .hasya-portrait-frame { width:min(78%,310px); border-width:5px; border-radius:24px; }
+ .portrait-hud { min-width:0; padding:10px 12px; border-radius:12px; }
+ .portrait-hud small { font-size:.52rem; }.portrait-hud strong { font-size:.76rem; }
+ .portrait-hud-location { top:10%; right:0; }.portrait-hud-availability { bottom:7%; left:0; }
+ .portrait-tech-mark { width:58px; height:58px; left:1%; bottom:19%; }
+ .portrait-side-note { display:none; }
+ .hero-meta-row { gap:10px; margin-top:22px; }
+ .hero-availability { font-size:.58rem; }
+ .hero-meta-divider { height:22px; }
+}
+@media(max-width:380px) {
+ .hasya-portrait-stage { height:340px; }
+ .portrait-hud-location { right:-4px; }.portrait-hud-availability { left:-4px; }
+ .portrait-hud { padding:8px 9px; }
+ .hasya-hero-actions { flex-direction:column; width:100%; }
+ .hasya-hero-actions a { width:100%; min-height:48px; }
+}
+@media(prefers-reduced-motion:reduce) { .portrait-orbit,.portrait-orbit-one,.portrait-orbit-two { animation:none!important; } }
+
+</style>
+
+<style id="portrait-composition-fix">
+/* HERO PORTRAIT COMPOSITION PATCH — layered geometry around the real photo */
+.hasya-portrait-stage {
+  align-items: center;
+  justify-content: center;
+  min-height: 570px;
+  isolation: isolate;
+  overflow: visible;
+}
+/* Keep the animated geometry in a clear layer between the stage and portrait. */
+.portrait-orbit { z-index: 0; }
+.portrait-orbit-one { width: 96%; border-color: rgba(119,133,120,.22); }
+.portrait-orbit-two { width: 86%; border-color: rgba(149,162,147,.52); }
+.portrait-sage-disc {
+  z-index: 1;
+  width: min(82%, 455px);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 35% 28%, #b8c2b4 0%, #a3b09f 48%, #899987 100%);
+  box-shadow: inset -14px -20px 42px rgba(42,57,43,.10), 0 22px 58px rgba(31,41,35,.10);
+}
+.hasya-portrait-frame {
+  z-index: 2;
+  position: relative;
+  align-self: center;
+  width: min(76%, 420px);
+  aspect-ratio: 4 / 4.35;
+  margin: 22px auto 0;
+  border: 6px solid rgba(255,255,255,.88);
+  border-radius: 26px;
+  background: #d7d8d3;
+  box-shadow: 0 26px 68px rgba(22,31,25,.19), 0 4px 14px rgba(22,31,25,.08);
+}
+.hasya-portrait-frame img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 25%;
+  filter: saturate(.96) contrast(1.015);
+}
+.portrait-tech-mark { z-index: 3; left: 2%; bottom: 21%; }
+.portrait-hud { z-index: 4; }
+.portrait-hud-location { top: 14%; right: -1%; }
+.portrait-hud-availability { bottom: 10%; left: -1%; }
+.portrait-side-note { z-index: 3; right: 0; }
+@media (max-width: 1100px) {
+  .hasya-portrait-stage { min-height: 490px; height: 490px; }
+  .portrait-sage-disc { width: 82%; }
+  .hasya-portrait-frame { width: min(76%, 390px); }
+}
+@media (max-width: 850px) {
+  .hasya-portrait-stage { min-height: 470px; height: 470px; width: min(100%, 500px); margin-inline: auto; }
+  .portrait-sage-disc { width: 76%; }
+  .portrait-orbit-one { width: 98%; }
+  .portrait-orbit-two { width: 88%; }
+  .hasya-portrait-frame { width: min(74%, 370px); }
+  .portrait-hud-location { top: 12%; right: 1%; }
+  .portrait-hud-availability { bottom: 8%; left: 1%; }
+}
+@media (max-width: 600px) {
+  .hasya-portrait-stage { min-height: 390px; height: 390px; }
+  .portrait-sage-disc { width: 76%; top: 49%; }
+  .portrait-orbit-one { width: 100%; }
+  .portrait-orbit-two { width: 88%; }
+  .hasya-portrait-frame { width: min(73%, 300px); margin-top: 14px; border-width: 5px; border-radius: 22px; }
+  .portrait-tech-mark { width: 54px; height: 54px; left: 0; bottom: 18%; }
+  .portrait-hud-location { top: 8%; right: 0; }
+  .portrait-hud-availability { bottom: 5%; left: 0; }
+}
+@media (max-width: 380px) {
+  .hasya-portrait-stage { min-height: 350px; height: 350px; }
+  .hasya-portrait-frame { width: 72%; }
+  .portrait-hud { padding: 8px 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait-orbit-one, .portrait-orbit-two { animation: none !important; }
+}
+</style>
+
 </head>
 
 <body>
 
-<!-- HASYA LIQUID WAVE LOADER -->
-<div class="text-liquid-loader" id="textLiquidLoader"
-     aria-label="Loading portfolio" role="status">
-
-    <div class="loader-glow"></div>
-
-    <div class="loader-wordmark" id="loaderWordmark">
-        <svg viewBox="0 0 1000 200" role="img" aria-label="Hasya">
-            <defs>
-                <linearGradient id="loaderTextGradient"
-                                x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff"/>
-                    <stop offset="100%" stop-color="#f1e7df"/>
-                </linearGradient>
-
-                <linearGradient id="loaderLiquidGradient"
-                                x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#ffd0a3"/>
-                    <stop offset="42%" stop-color="#ff9b45"/>
-                    <stop offset="100%" stop-color="#f46a16"/>
-                </linearGradient>
-
-                <clipPath id="wave-clip">
-                    <path id="wave-path"
-                          d="M 0 205 Q 250 190, 500 205 T 1000 205 L 1000 200 L 0 200 Z">
-                    </path>
-                </clipPath>
-            </defs>
-
-            <text class="loader-base"
-                  x="500" y="158" text-anchor="middle">HASYA</text>
-
-            <text class="loader-liquid"
-                  x="500" y="158" text-anchor="middle">HASYA</text>
-        </svg>
+<!-- HASYA FUTURISTIC LIQUID PRELOADER -->
+<div class="text-liquid-loader" id="textLiquidLoader" role="status" aria-live="polite" aria-label="Initializing portfolio">
+    <div class="loader-topbar">
+        <span class="loader-system"><span class="loader-beacon"></span>SYSTEM INITIALIZATION</span>
+        <span class="loader-core">CORE <i>//</i> ONLINE</span>
     </div>
 
-    <div class="loader-caption">
-        <span class="loader-caption-line"></span>
-        <span>CREATIVE MIND · DEVELOPER</span>
-        <span class="loader-caption-line"></span>
+    <div class="loader-radar" aria-hidden="true">
+        <span class="radar-ring radar-ring-outer"></span>
+        <span class="radar-ring radar-ring-middle"></span>
+        <span class="radar-ring radar-ring-inner"></span>
+        <span class="radar-orbit-dot"></span>
+        <span class="radar-crosshair radar-crosshair-horizontal"></span>
+        <span class="radar-crosshair radar-crosshair-vertical"></span>
+        <div class="loader-wordmark" id="loaderWordmark">
+            <svg viewBox="0 0 1000 230" role="img" aria-label="HASYA">
+                <defs>
+                    <linearGradient id="loaderLiquidGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#FBBF24"/>
+                        <stop offset="48%" stop-color="#F97316"/>
+                        <stop offset="100%" stop-color="#C2410C"/>
+                    </linearGradient>
+                    <clipPath id="loaderLiquidClip">
+                        <path id="loaderWavePath" d="M0 230 L1000 230 L1000 230 L0 230 Z"/>
+                    </clipPath>
+                </defs>
+                <text class="loader-base" x="500" y="174" text-anchor="middle">HASYA</text>
+                <g clip-path="url(#loaderLiquidClip)">
+                    <text class="loader-liquid" x="500" y="174" text-anchor="middle">HASYA</text>
+                </g>
+            </svg>
+        </div>
     </div>
 
-    <div class="loader-counter">
-        <span id="loaderStatus">INITIALIZING EXPERIENCE</span>
-        <span id="loaderProgress">[00%]</span>
-    </div>
+    <div class="loader-caption"><span></span><b>CREATIVE MIND · DEVELOPER</b><span></span></div>
 
-    <div class="loader-bottom-line">
-        <span></span>
+    <div class="loader-footer">
+        <span id="loaderStatus">PREPARING YOUR EXPERIENCE</span>
+        <strong id="loaderProgress">[ 00% ]</strong>
     </div>
+    <div class="loader-progress-track" aria-hidden="true"><span id="loaderProgressBar"></span></div>
 </div>
 
 <style>
-    /* ===== LOADER BACKGROUND ===== */
-    .text-liquid-loader {
-        --loader-blue: #08090b;
-        --loader-yellow: #ff9b45;
-
-        position: fixed;
-        inset: 0;
-        z-index: 999999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        overflow: hidden;
-        background: radial-gradient(ellipse at 50% 44%, #19130f 0%, #0b0b0d 42%, #050506 100%);
-        color: #ffffff;
-        font-family: Arial, Helvetica, sans-serif;
-        isolation: isolate;
-        opacity: 1;
-        visibility: visible;
-        transition:
-            opacity 0.9s ease,
-            visibility 0.9s ease;
-    }
-
-    .text-liquid-loader * {
-        box-sizing: border-box;
-    }
-
-    .text-liquid-loader::before,
-    .text-liquid-loader::after {
-        content: "";
-        position: absolute;
-        width: min(75vw, 720px);
-        aspect-ratio: 1;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: -1;
-    }
-
-    .text-liquid-loader::before {
-        animation: loaderOrbit 12s linear infinite;
-    }
-
-    .text-liquid-loader::after {
-        width: min(95vw, 950px);
-        border-style: dashed;
-        border-color: rgba(255, 155, 69, 0.18);
-        animation: loaderOrbit 24s linear infinite reverse;
-    }
-
-    .loader-glow {
-        position: absolute;
-        width: min(60vw, 650px);
-        aspect-ratio: 1;
-        border-radius: 50%;
-        background: rgba(255, 139, 48, 0.16);
-        filter: blur(90px);
-        animation: loaderGlow 4s ease-in-out infinite alternate;
-        pointer-events: none;
-        z-index: -1;
-    }
-
-    /* ===== HASYA WORDMARK ===== */
-    .loader-wordmark {
-        position: relative;
-        z-index: 1;
-        width: min(88vw, 900px);
-        transform: scale(0.25);
-        opacity: 0;
-        filter: blur(12px);
-        animation: hasyaZoomIn 1.3s cubic-bezier(.16, 1, .3, 1) forwards;
-        will-change: transform, opacity, filter;
-    }
-
-    .loader-wordmark svg {
-        display: block;
-        width: 100%;
-        height: auto;
-        overflow: visible;
-    }
-
-    .loader-base,
-    .loader-liquid {
-        font-family: Impact, "Arial Black", Arial, sans-serif;
-        font-size: 165px;
-        font-weight: 900;
-        letter-spacing: 13px;
-    }
-
-    .loader-base {
-        fill: url(#loaderTextGradient);
-        opacity: 0.25;
-    }
-
-    .loader-liquid {
-        fill: url(#loaderLiquidGradient);
-        clip-path: url(#wave-clip);
-        filter: drop-shadow(0 0 18px rgba(255, 139, 48, 0.24));
-    }
-
-    /* ===== CAPTION ===== */
-    .loader-caption {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 18px;
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 10px;
-        letter-spacing: 4px;
-        font-weight: 600;
-        opacity: 0;
-        animation: captionReveal 0.8s ease 0.65s forwards;
-    }
-
-    .loader-caption-line {
-        display: block;
-        width: 28px;
-        height: 1px;
-        background: var(--loader-yellow);
-    }
-
-    /* ===== PROGRESS ===== */
-    .loader-counter {
-        position: absolute;
-        left: 7%;
-        right: 7%;
-        bottom: 42px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 10px;
-        letter-spacing: 2px;
-        font-weight: 600;
-    }
-
-    #loaderProgress {
-        color: var(--loader-yellow);
-        font-size: 13px;
-        font-weight: 800;
-        font-variant-numeric: tabular-nums;
-    }
-
-    .loader-bottom-line {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: rgba(255, 255, 255, 0.12);
-    }
-
-    .loader-bottom-line span {
-        display: block;
-        width: 0%;
-        height: 100%;
-        background: var(--loader-yellow);
-        box-shadow: 0 0 18px rgba(255, 155, 69, 0.85);
-        transition: width 0.1s linear;
-    }
-
-    /* ===== ZOOM-OUT EXIT ===== */
-    .text-liquid-loader.loader-exit .loader-wordmark {
-        animation: hasyaZoomOut 0.95s cubic-bezier(.7, 0, .84, 0) forwards;
-    }
-
-    .text-liquid-loader.loader-exit .loader-caption {
-        animation: captionDisappear 0.35s ease forwards;
-    }
-
-    .text-liquid-loader.loader-hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-    /* ===== KEYFRAMES ===== */
-    @keyframes hasyaZoomIn {
-        0% {
-            transform: scale(0.25);
-            opacity: 0;
-            filter: blur(12px);
-        }
-        65% {
-            opacity: 1;
-            filter: blur(0);
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-            filter: blur(0);
-        }
-    }
-
-    @keyframes hasyaZoomOut {
-        0% {
-            transform: scale(1);
-            opacity: 1;
-            filter: blur(0);
-        }
-        100% {
-            transform: scale(4.4);
-            opacity: 0;
-            filter: blur(9px);
-        }
-    }
-
-    @keyframes captionReveal {
-        from {
-            transform: translateY(12px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes captionDisappear {
-        to {
-            transform: translateY(-10px);
-            opacity: 0;
-        }
-    }
-
-    @keyframes loaderOrbit {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-
-    @keyframes loaderGlow {
-        from { transform: scale(0.85); opacity: 0.55; }
-        to { transform: scale(1.15); opacity: 1; }
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 600px) {
-        .loader-wordmark {
-            width: 94vw;
-        }
-
-        .loader-base,
-        .loader-liquid {
-            font-size: 165px;
-            letter-spacing: 8px;
-        }
-
-        .loader-caption {
-            gap: 8px;
-            font-size: 8px;
-            letter-spacing: 2px;
-        }
-
-        .loader-caption-line {
-            width: 16px;
-        }
-
-        .loader-counter {
-            bottom: 28px;
-            font-size: 8px;
-            letter-spacing: 1px;
-        }
-    }
-
-    @media (max-width: 380px) {
-        .loader-wordmark { width: 98vw; }
-        .loader-base, .loader-liquid { letter-spacing: 4px; }
-        .loader-caption { letter-spacing: 1.4px; }
-        .loader-counter { left: 5%; right: 5%; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .text-liquid-loader *,
-        .text-liquid-loader::before,
-        .text-liquid-loader::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            scroll-behavior: auto !important;
-        }
-    }
+/* =========================================================
+   HASYA PRELOADER — black/orange identity, independent of hero
+========================================================= */
+.text-liquid-loader {
+    --loader-orange: #F97316;
+    position: fixed; inset: 0; z-index: 999999;
+    width: 100%; min-height: 100vh; min-height: 100dvh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    overflow: hidden; isolation: isolate; padding: max(24px, env(safe-area-inset-top)) 6vw max(30px, env(safe-area-inset-bottom));
+    color: #f8fafc; background: radial-gradient(ellipse at 50% 48%, #19130f 0%, #0b0b0c 46%, #070708 100%);
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 1; visibility: visible; transform: translateY(0);
+    transition: opacity .65s ease, transform .85s cubic-bezier(.85,0,.15,1), visibility .65s ease;
+}
+.text-liquid-loader * { box-sizing: border-box; }
+.loader-topbar { position:absolute; top:max(26px,env(safe-area-inset-top)); left:6vw; right:6vw; display:flex; justify-content:space-between; align-items:center; gap:16px; z-index:5; color:rgba(226,232,240,.65); font-size:clamp(8px,1vw,10px); letter-spacing:.22em; }
+.loader-system { display:flex; align-items:center; gap:12px; }
+.loader-beacon { width:7px; height:7px; flex:none; border-radius:50%; background:#F97316; box-shadow:0 0 14px #F97316; animation:beaconPulse 1.7s ease-in-out infinite; }
+.loader-core i { color:#F97316; font-style:normal; padding:0 4px; }
+.loader-radar { position:relative; width:min(76vw, min(68vh, 650px)); width:min(76vw, 650px); aspect-ratio:1; display:grid; place-items:center; isolation:isolate; }
+.radar-ring { position:absolute; border-radius:50%; pointer-events:none; }
+.radar-ring-outer { inset:0; border:1px solid rgba(203,213,225,.18); box-shadow:inset 0 0 45px rgba(255,255,255,.012); }
+.radar-ring-middle { inset:7.5%; border:1px dashed rgba(249,115,22,.36); animation:radarSpin 22s linear infinite; }
+.radar-ring-inner { inset:18%; border:1px solid rgba(203,213,225,.16); animation:radarSpin 30s linear infinite reverse; }
+.radar-orbit-dot { position:absolute; top:7.1%; left:50%; width:8px; height:8px; border-radius:50%; background:#F97316; box-shadow:0 0 8px #F97316,0 0 22px rgba(249,115,22,.8); transform:translateX(-50%); z-index:3; }
+.radar-crosshair { position:absolute; background:rgba(255,255,255,.055); pointer-events:none; }
+.radar-crosshair-horizontal { width:100%; height:1px; }
+.radar-crosshair-vertical { height:100%; width:1px; }
+.loader-wordmark { position:relative; z-index:2; width:86%; transform:translateY(-2%); }
+.loader-wordmark svg { display:block; width:100%; height:auto; overflow:visible; }
+.loader-base,.loader-liquid { font-family:'Space Grotesk','Arial Black',sans-serif; font-size:178px; font-weight:700; letter-spacing:3px; }
+.loader-base { fill:transparent; stroke:rgba(248,250,252,.62); stroke-width:2.1px; paint-order:stroke; }
+.loader-liquid { fill:url(#loaderLiquidGradient); filter:drop-shadow(0 0 12px rgba(249,115,22,.35)); }
+.loader-caption { position:relative; z-index:4; display:flex; align-items:center; justify-content:center; gap:14px; margin-top:clamp(14px,2.5vh,26px); color:rgba(226,232,240,.72); font-size:clamp(8px,1vw,10px); font-weight:500; letter-spacing:.22em; text-align:center; }
+.loader-caption span { width:clamp(16px,3vw,30px); height:1px; background:#F97316; }
+.loader-footer { position:absolute; left:6vw; right:6vw; bottom:max(28px,env(safe-area-inset-bottom)); display:flex; justify-content:space-between; align-items:center; gap:12px; color:rgba(226,232,240,.62); font-size:clamp(8px,1vw,10px); letter-spacing:.16em; }
+.loader-footer strong { color:#F97316; font-size:12px; font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.loader-progress-track { position:absolute; left:0; right:0; bottom:0; height:2px; background:rgba(255,255,255,.09); }
+.loader-progress-track span { display:block; width:0; height:100%; background:linear-gradient(90deg,#C2410C,#F97316,#FBBF24); box-shadow:0 0 14px rgba(249,115,22,.7); }
+.text-liquid-loader.loader-exit { opacity:0; transform:translateY(-100%); visibility:hidden; pointer-events:none; }
+@keyframes radarSpin { to { transform:rotate(360deg); } }
+@keyframes beaconPulse { 0%,100% { opacity:1; box-shadow:0 0 7px #F97316; } 50% { opacity:.45; box-shadow:0 0 18px #F97316; } }
+@media(max-width:700px) {
+    .loader-topbar { left:6vw; right:6vw; top:max(18px,env(safe-area-inset-top)); letter-spacing:.13em; }
+    .loader-radar { width:min(88vw, 58vh, 480px); }
+    .radar-ring-middle { inset:8%; } .radar-ring-inner { inset:19%; }
+    .loader-wordmark { width:90%; }
+    .loader-base,.loader-liquid { font-size:178px; letter-spacing:0; }
+    .loader-caption { gap:8px; letter-spacing:.12em; }
+    .loader-footer { left:6vw; right:6vw; bottom:max(22px,env(safe-area-inset-bottom)); letter-spacing:.08em; }
+}
+@media(max-width:380px) {
+    .loader-core { display:none; }
+    .loader-radar { width:min(92vw, 52vh); }
+    .loader-caption { font-size:7px; letter-spacing:.08em; }
+}
+@media(prefers-reduced-motion:reduce) {
+    .text-liquid-loader *, .text-liquid-loader::before, .text-liquid-loader::after { animation:none!important; transition:none!important; }
+}
 </style>
 
 <script>
 (() => {
-    const loader = document.getElementById("textLiquidLoader");
+    const loader = document.getElementById('textLiquidLoader');
     if (!loader) return;
-
-    const wordmark = document.getElementById("loaderWordmark");
-    const wavePath = document.getElementById("wave-path");
-    const progressText = document.getElementById("loaderProgress");
-    const statusText = document.getElementById("loaderStatus");
-    const progressBar = loader.querySelector(".loader-bottom-line span");
-
-    const reducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    let progress = 0;
-    let startTime = null;
-    let exitStarted = false;
-    let animationFrame = null;
-
-    const loadingDuration = 2400;
-    const waveAmplitude = 12;
-    const waveSpeed = 0.0035;
-
-    function animateLoader(timestamp) {
-        if (startTime === null) startTime = timestamp;
-
-        const elapsed = timestamp - startTime;
-        const ratio = Math.min(elapsed / loadingDuration, 1);
-
-        // Smooth loading progress from 0 to 100.
-        progress = Math.round(
-            (1 - Math.pow(1 - ratio, 2.6)) * 100
-        );
-
-        progressText.textContent =
-            "[" + String(progress).padStart(2, "0") + "%]";
-
-        progressBar.style.width = progress + "%";
-
-        if (progress < 35) {
-            statusText.textContent = "INITIALIZING EXPERIENCE";
-        } else if (progress < 70) {
-            statusText.textContent = "LOADING PORTFOLIO";
-        } else {
-            statusText.textContent = "PREPARING YOUR EXPERIENCE";
+    const wave = document.getElementById('loaderWavePath');
+    const progressText = document.getElementById('loaderProgress');
+    const statusText = document.getElementById('loaderStatus');
+    const progressBar = document.getElementById('loaderProgressBar');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let raf = 0, start = 0, progress = 0, pageReady = document.readyState === 'complete', finishStarted = false;
+    let loadReadyAt = pageReady ? performance.now() : 0;
+    const minDuration = reducedMotion ? 0 : 2100;
+    const maxDuration = 5200;
+    const setProgress = value => {
+        progress = Math.max(progress, Math.min(100, Math.round(value)));
+        progressText.textContent = `[ ${String(progress).padStart(2,'0')}% ]`;
+        progressBar.style.width = `${progress}%`;
+        statusText.textContent = progress < 35 ? 'SYSTEM INITIALIZATION' : progress < 78 ? 'LOADING PORTFOLIO MODULES' : 'PREPARING YOUR EXPERIENCE';
+        if (wave) {
+            const y = 230 - progress * 2.3;
+            const t = performance.now() * .018;
+            const a = reducedMotion ? 0 : 5 * Math.sin(t);
+            wave.setAttribute('d', `M0 ${y} Q125 ${y-a} 250 ${y} T500 ${y} T750 ${y} T1000 ${y} L1000 230 L0 230 Z`);
         }
-
-        // Animate the liquid surface using an SVG wave.
-        if (wavePath && !reducedMotion) {
-            const width = 1000;
-            const baseY = 205 - (progress / 100) * 220;
-            const wave = Math.sin(timestamp * waveSpeed) * waveAmplitude;
-
-            wavePath.setAttribute(
-                "d",
-                `M 0 ${baseY}
-                 Q 125 ${baseY - wave}, 250 ${baseY}
-                 T 500 ${baseY}
-                 T 750 ${baseY}
-                 T 1000 ${baseY}
-                 L ${width} 200
-                 L 0 200 Z`
-            );
+    };
+    const close = () => {
+        if (finishStarted) return;
+        finishStarted = true;
+        setProgress(100);
+        statusText.textContent = 'WELCOME TO MY PORTFOLIO';
+        window.setTimeout(() => {
+            loader.classList.add('loader-exit');
+            window.setTimeout(() => {
+                loader.setAttribute('aria-hidden','true');
+                loader.remove();
+                document.body.style.overflow = '';
+            }, reducedMotion ? 0 : 850);
+        }, reducedMotion ? 0 : 420);
+    };
+    const tick = now => {
+        if (!start) start = now;
+        const elapsed = now - start;
+        const minRatio = Math.min(1, elapsed / minDuration);
+        // Visual progress intentionally caps at 78% until the document load event fires.
+        const eased = 1 - Math.pow(1 - minRatio, 2.25);
+        if (!pageReady) setProgress(Math.min(78, eased * 78));
+        else {
+            const readyWait = now - loadReadyAt;
+            if (elapsed < minDuration) setProgress(Math.min(78, eased * 78));
+            else setProgress(78 + Math.min(22, Math.max(0, (readyWait / 480) * 22)));
+            if (elapsed >= minDuration && readyWait >= 480) { close(); return; }
         }
-
-        if (ratio < 1) {
-            animationFrame = requestAnimationFrame(animateLoader);
-        } else {
-            statusText.textContent = "WELCOME TO MY PORTFOLIO";
-            progressText.textContent = "[100%]";
-            progressBar.style.width = "100%";
-
-            // Briefly hold the completed loader, then zoom HASYA out.
-            setTimeout(closeLoader, 450);
-        }
-    }
-
-    function closeLoader() {
-        if (exitStarted) return;
-        exitStarted = true;
-
-        loader.classList.add("loader-exit");
-
-        setTimeout(() => {
-            loader.classList.add("loader-hidden");
-            document.body.style.overflow = "";
-
-            // Remove the loader from keyboard and screen-reader flow.
-            loader.setAttribute("aria-hidden", "true");
-        }, reducedMotion ? 50 : 950);
-    }
-
-    // Prevent background scrolling while the loader is visible.
-    document.body.style.overflow = "hidden";
-
-    if (reducedMotion) {
-        progress = 100;
-        progressText.textContent = "[100%]";
-        progressBar.style.width = "100%";
-        statusText.textContent = "WELCOME TO MY PORTFOLIO";
-        setTimeout(closeLoader, 700);
-    } else {
-        animationFrame = requestAnimationFrame(animateLoader);
-    }
-
-    // Safety fallback in case the animation is interrupted.
-    window.addEventListener("load", () => {
-        if (progress >= 100) return;
-
-        // Let the current animation finish, with a maximum wait.
-        setTimeout(() => {
-            if (!exitStarted && progress >= 100) closeLoader();
-        }, 500);
-    }, { once: true });
+        if (elapsed >= maxDuration && !pageReady) { pageReady = true; loadReadyAt = now; }
+        raf = requestAnimationFrame(tick);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('load', () => { pageReady = true; loadReadyAt = performance.now(); }, { once:true });
+    if (reducedMotion) { setProgress(100); close(); }
+    else raf = requestAnimationFrame(tick);
+    window.addEventListener('pagehide', () => { if (raf) cancelAnimationFrame(raf); }, { once:true });
 })();
 </script>
 
@@ -1906,43 +1787,41 @@
     <!-- ====================================================
          1. HOME PAGE
     ==================================================== -->
-    <section class="section-hero" id="home">
+    <section class="section-hero hasya-hero" id="home">
         <div class="container">
-            <div class="hero-grid">
-                <div class="hero-left-content anim-scroll-left">
-                    <span class="hero-kicker">DEVELOPMENT | DESIGN | STRATEGY</span>
-                    <h1 class="hero-headline">Hi, I'm Hasya<br>Patel.</h1>
-                    
-                    <!-- Authentic Brand Social Logos -->
-                    <div class="hero-social-strip">
-                        <a href="https://www.linkedin.com/in/hasya-patel-667b5629b/" target="_blank" rel="noopener noreferrer" class="brand-social-link linkedin" aria-label="LinkedIn Profile">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/Hasya1505" target="_blank" rel="noopener noreferrer" class="brand-social-link github" aria-label="GitHub Profile">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:studyfor1505@gmail.com" class="brand-social-link mail" aria-label="Send Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+            <div class="hero-grid hasya-hero-grid">
+                <div class="hero-left-content hasya-hero-copy anim-scroll-left">
+                    <span class="hero-kicker">DEVELOPMENT / DESIGN / STRATEGY</span>
+                    <p class="hero-hello">Hello, I'm</p>
+                    <h1 class="hero-headline hasya-name">HASYA <span>PATEL</span></h1>
+                    <p class="hero-role">FULL-STACK &amp; AI/ML ENGINEER</p>
+                    <p class="hero-bio">A full-stack developer and AI/ML engineer passionate about building fast, accessible, and intelligent digital products. Welcome to my portfolio.</p>
+                    <div class="hero-actions hasya-hero-actions">
+                        <a href="hasyaresume.pdf" target="_blank" rel="noopener noreferrer" class="btn-dynamic-primary">VIEW RESUME <span aria-hidden="true">↗</span></a>
+                        <a href="#contact" class="btn-dynamic-ghost">LET'S TALK <span aria-hidden="true">↗</span></a>
                     </div>
-
-                    <p class="hero-bio">
-                        A full-stack developer and AI/ML engineer passionate about building fast, accessible, and intelligent digital products. Welcome to my portfolio.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="hasyaresume.pdf" target="_blank" class="btn-dynamic-primary">
-                            View Resume <i class="fas fa-arrow-right" style="margin-left: 4px;"></i>
-                        </a>
-                        <a href="#contact" class="btn-dynamic-ghost">
-                            Let's Talk
-                        </a>
+                    <div class="hero-meta-row">
+                        <span class="hero-availability"><i></i> AVAILABLE FOR PROJECTS</span>
+                        <span class="hero-meta-divider"></span>
+                        <div class="hero-social-strip" aria-label="Social profiles">
+                            <a href="https://www.linkedin.com/in/hasya-patel-667b5629b/" target="_blank" rel="noopener noreferrer" class="brand-social-link linkedin" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/Hasya1505" target="_blank" rel="noopener noreferrer" class="brand-social-link github" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                            <a href="mailto:studyfor1505@gmail.com" class="brand-social-link mail" aria-label="Send Email"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="hero-right-media anim-scroll-right">
-                    <div class="hero-avatar-frame">
-                        <img src="personal.jpeg" alt="Hasya Patel" loading="eager">
+                <div class="hero-right-media hasya-portrait-stage anim-scroll-right">
+                    <!-- <div class="portrait-orbit portrait-orbit-one" aria-hidden="true"></div>
+                    <div class="portrait-orbit portrait-orbit-two" aria-hidden="true"></div>
+                    <div class="portrait-sage-disc" aria-hidden="true"></div> -->
+                    <!-- <div class="portrait-tech-mark" aria-hidden="true"><span>AI</span><i></i><i></i><i></i></div> -->
+                    <div class="hero-avatar-frame hasya-portrait-frame">
+                        <img src="hasya-protrait.png" loading="eager">
                     </div>
+                    <!-- <div class="portrait-hud portrait-hud-location"><small>BASED IN</small><strong>Gujarat, India</strong><span class="hud-live-dot"></span></div>
+                    <div class="portrait-hud portrait-hud-availability"><small>AVAILABILITY</small><strong>Worldwide</strong><span>Remote &amp; Hybrid</span></div> -->
+                    <!-- <span class="portrait-side-note">DESIGNING TOMORROW. TODAY.</span> -->
                 </div>
             </div>
         </div>
