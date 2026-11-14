@@ -961,17 +961,60 @@ document.addEventListener('keydown', e => {
 });
 
 /* ===== skills (grouped) ===== */
+/* ===== custom SVG badge helper for GenAI / LLM / Vector DB icons ===== */
+const AI_ICON = (label, bg1, bg2) => 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">` +
+  `<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${bg1}"/><stop offset="100%" stop-color="${bg2}"/></linearGradient></defs>` +
+  `<rect width="64" height="64" rx="14" fill="url(#g)"/>` +
+  `<text x="32" y="39" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="${label.length > 3 ? '15' : '19'}" font-weight="700">${label}</text>` +
+  `</svg>`
+);
+
+/* ===== skills (grouped) ===== */
 const skillGroups = [
-  ['Languages', [['Python',D('python')],['C++',D('cplusplus')],['Java',D('java')],['JavaScript',D('javascript')],['HTML5',D('html5')],['CSS3',D('css3')]]],
-  ['Machine learning & data', [['NumPy',D('numpy')],['Pandas',D('pandas')],['Scikit-learn',SK],['TensorFlow',D('tensorflow')],['PyTorch',D('pytorch')],['Power BI',PBI]]],
-  ['Backend & web', [['Flask',D('flask')],['FastAPI',D('fastapi')],['React',D('react')],['MySQL',D('mysql')],['MongoDB',D('mongodb')]]],
-  ['Tools', [['Git',D('git')],['GitHub',D('github')]]]
+  ['Languages', [
+    ['Python', D('python')],
+    ['C++', D('cplusplus')],
+    ['Java', D('java')],
+    ['JavaScript', D('javascript')],
+    ['HTML5', D('html5')],
+    ['CSS3', D('css3')]
+  ]],
+  ['Generative AI & RAG', [
+    ['LLMs', AI_ICON('LLM', '#0891B2', '#0A0F1A')],
+    ['RAG Pipelines', AI_ICON('RAG', '#0D9488', '#0F172A')],
+    ['LangChain', AI_ICON('LC', '#10B981', '#064E3B')],
+    ['Vector DBs', AI_ICON('VDB', '#6366F1', '#1E1B4B')],
+    ['Groq API', AI_ICON('GROQ', '#F97316', '#7C2D12')],
+    ['Mistral AI', AI_ICON('M-AI', '#FFB20E', '#B45309')]
+  ]],
+  ['Machine learning & data', [
+    ['NumPy', D('numpy')],
+    ['Pandas', D('pandas')],
+    ['Scikit-learn', SK],
+    ['TensorFlow', D('tensorflow')],
+    ['PyTorch', D('pytorch')],
+    ['Power BI', PBI]
+  ]],
+  ['Backend & web', [
+    ['Flask', D('flask')],
+    ['FastAPI', D('fastapi')],
+    ['React', D('react')],
+    ['MySQL', D('mysql')],
+    ['MongoDB', D('mongodb')]
+  ]],
+  ['Tools', [
+    ['Git', D('git')],
+    ['GitHub', D('github')],
+    ['VS Code', D('vscode')],
+    ['uv', AI_ICON('uv', '#8B5CF6', '#2E1065')]
+  ]]
 ];
+
 document.getElementById('skillGroups').innerHTML = skillGroups.map(([t, items]) => `
   <div class="skill-group"><h3>${t}</h3><div class="skill-grid">
     ${items.map(([n, src]) => `<div class="skill-node reveal"><div class="skill-icon"><img src="${src}" alt="${n} logo" loading="lazy" width="32" height="32" ${n === 'Power BI' ? `onerror="this.onerror=null;this.src='${PBI_FALLBACK}'"` : ''}></div><span>${n}</span></div>`).join('')}
   </div></div>`).join('');
-
 /* ===== academics ===== */
 const sems = [['01','1st Semester',7.48,'Jul 2023 – Dec 2023'],['02','2nd Semester',7.52,'Jan 2024 – Jun 2024'],['03','3rd Semester',7.50,'Jul 2024 – Dec 2024'],['04','4th Semester',7.88,'Jan 2025 – May 2025'],['05','5th Semester',7.83,'Jun 2025 – Nov 2025'],['06','6th Semester',8.33,'Dec 2025 – May 2026']];
 const best = Math.max(...sems.map(s => s[2]));
