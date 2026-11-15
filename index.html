@@ -279,25 +279,6 @@ header {
   min-height: 650px;
 }
 
-/* Layer 1: Sharp Circular Terracotta Gradient Behind Portrait */
-.hero-orb {
-  position: absolute;
-  right: 4%;
-  top: 2%;
-  width: clamp(380px, 40vw, 520px);
-  height: clamp(380px, 40vw, 520px);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 26% 24%,
-    #F26A3D 0%,
-    #C74A24 38%,
-    #4E2216 70%,
-    #1B1B1B 95%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
 /* Layer 2: Left Editorial Copy */
 .hero-left-copy {
   position: relative;
@@ -373,34 +354,6 @@ header {
   object-position: center 12%;
   border-radius: 0;
   filter: contrast(1.04) saturate(1.03);
-}
-
-/* Layer 4: Floating Circular "HIRE ME NOW" Badge */
-.hire-circle-badge {
-  position: absolute;
-  left: -18px;
-  bottom: 108px;
-  z-index: 5;
-  width: 106px;
-  height: 106px;
-  border-radius: 50%;
-  background: var(--accent-primary);
-  color: #FFFFFF;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 12px;
-  font: 700 .7rem var(--font-sans);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  box-shadow: 0 16px 36px rgba(224, 90, 54, 0.45);
-  transition: transform .3s var(--ease), background .25s;
-}
-.hire-circle-badge:hover {
-  transform: scale(1.07);
-  background: var(--accent-primary-hover);
 }
 
 /* Layer 5: Full-Bleed Bottom Baseline Name Watermark (Overlaps Lower Shirt) */
