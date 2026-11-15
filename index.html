@@ -280,123 +280,139 @@ header {
   min-height: 620px;
 }
 
-/* Layer 1: Circular Radial Terracotta Glow Behind Portrait */
-.hero-orb {
-  position: absolute;
-  right: 8%;
-  top: 6%;
-  width: clamp(320px, 38vw, 490px);
-  height: clamp(320px, 38vw, 490px);
-  border-radius: 50%;
-  background: radial-gradient(circle at 38% 38%, #E05A36 0%, #8C331C 48%, rgba(28, 28, 28, 0) 74%);
-  pointer-events: none;
-  z-index: 1;
+/* =========================================================
+   RESPONSIVE BREAKPOINTS (TABLET & MOBILE HERO + SECTIONS)
+========================================================= */
+@media (max-width: 1024px) {
+  /* Hero Tablet Adjustments */
+  .hero-editorial {
+    min-height: 680px;
+    padding-top: 116px;
+  }
+  .hero-stage {
+    grid-template-columns: 1fr 1fr;
+    min-height: 540px;
+  }
+  .hero-orb {
+    right: 2%;
+    top: 8%;
+    width: clamp(280px, 42vw, 400px);
+    height: clamp(280px, 42vw, 400px);
+  }
+  .hero-left-copy {
+    padding-bottom: 110px;
+  }
+  .hero-portrait-img {
+    width: min(100%, 420px);
+    height: 500px;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+  .hire-circle-badge {
+    width: 96px;
+    height: 96px;
+    font-size: .68rem;
+    left: 0;
+    bottom: 92px;
+  }
+  .hero-name-watermark {
+    font-size: clamp(4.2rem, 13vw, 9.5rem);
+    bottom: -10px;
+  }
+
+  /* Other Sections Tablet */
+  .split-project-grid { grid-template-columns: 1fr; }
+  .discuss-project-card { grid-template-columns: 1fr; gap: 36px; padding: 36px; }
+  .about-card { grid-template-columns: 1fr; gap: 28px; }
+  .cred-grid { grid-template-columns: repeat(2, 1fr); }
+  .cred-card, .cred-card:nth-child(n+4) { grid-column: span 1; }
+  .cred-card:last-child { grid-column: span 2; }
 }
 
-/* Layer 2: Left Editorial Copy */
-.hero-left-copy {
-  position: relative;
-  z-index: 4;
-  padding-bottom: 130px;
-}
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font: 600 .72rem var(--font-sans);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #D4D4D4;
-  margin-bottom: 16px;
-}
-.hero-eyebrow::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--accent-primary);
-  display: inline-block;
-}
-.hero-display-headline {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.2vw, 4.7rem);
-  font-weight: 400;
-  line-height: 0.96;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  margin-bottom: 22px;
-}
-.hero-display-headline .bright { color: #FFFFFF; }
-.hero-display-headline .muted { color: #6E6E6E; }
+@media (max-width: 768px) {
+  .nav-links, .split-cta { display: none; }
+  .hamburger { display: inline-flex; }
 
-.hero-sub-bio {
-  color: #A3A3A3;
-  font-size: .95rem;
-  max-width: 430px;
-  line-height: 1.65;
-  margin-bottom: 24px;
-}
-.hero-quick-links {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.hero-status-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  font: 600 .68rem var(--font-mono); letter-spacing: .08em; color: #CCCCCC;
-  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-  padding: 7px 14px; border-radius: var(--radius-pill);
-}
-.hero-status-pill i { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
+  /* Hero Mobile Adjustments */
+  .hero-editorial {
+    padding-top: 102px;
+    min-height: auto;
+  }
+  .hero-stage {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    text-align: left;
+    gap: 12px;
+  }
+  .hero-left-copy {
+    padding-bottom: 16px;
+    z-index: 4;
+  }
+  .hero-orb {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: 60px;
+    transform: translateX(-50%);
+    width: min(86vw, 360px);
+    height: min(86vw, 360px);
+  }
+  .hero-portrait-wrap {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .hero-portrait-img {
+    height: 410px;
+    width: min(92vw, 380px);
+    object-fit: contain;
+    object-position: center bottom;
+  }
+  .hire-circle-badge {
+    width: 84px;
+    height: 84px;
+    font-size: .62rem;
+    left: 8%;
+    bottom: 68px;
+  }
+  .hero-name-watermark {
+    font-size: clamp(3.3rem, 14.5vw, 5.6rem);
+    bottom: -6px;
+  }
 
-/* Layer 3: Foreground Portrait, Circular Badge & Full-Bleed Name Watermark */
-.hero-portrait-wrap {
-  position: relative;
-  z-index: 3;
-  align-self: end;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-}
-.hero-portrait-img {
-  width: min(100%, 440px);
-  height: 560px;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 24px 24px 0 0;
-  filter: contrast(1.04);
-  mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+  /* Other Sections Mobile */
+  .split-project-card { grid-template-columns: 1fr; }
+  .layered-mockup-stage { order: -1; }
+  .form-split-row { grid-template-columns: 1fr; gap: 18px; }
+  .exp-row { grid-template-columns: 1fr; gap: 10px; padding: 24px 0; }
+  .exp-date { text-align: left; order: -1; }
+  .acad-row { grid-template-columns: 1fr 70px; gap: 10px 14px; }
+  .acad-row .bar { grid-column: 1 / -1; order: 3; }
+  .acad-stats, .about-metrics { grid-template-columns: 1fr; }
+  .cred-grid { grid-template-columns: 1fr; }
+  .cred-card:last-child { grid-column: span 1; }
+  .footer-content, .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-nav { justify-content: center; }
 }
 
-/* Floating Circular "HIRE ME NOW" Badge */
-.hire-circle-badge {
-  position: absolute;
-  left: -36px;
-  bottom: 122px;
-  z-index: 6;
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
-  background: var(--accent-primary);
-  color: #FFFFFF;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 12px;
-  font: 700 .72rem var(--font-sans);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  box-shadow: 0 16px 36px rgba(224, 90, 54, 0.45);
-  transition: transform .3s var(--ease), background .25s;
+@media (max-width: 480px) {
+  .hero-portrait-img {
+    height: 340px;
+    width: 94vw;
+  }
+  .hire-circle-badge {
+    width: 74px;
+    height: 74px;
+    font-size: .56rem;
+    left: 4%;
+    bottom: 52px;
+    padding: 8px;
+  }
+  .hero-name-watermark {
+    font-size: 13.8vw;
+    bottom: -4px;
+  }
 }
-.hire-circle-badge:hover {
-  transform: scale(1.07);
-  background: var(--accent-primary-hover);
-}
-
 /* Full-Bleed Bottom Baseline Name Watermark */
 .hero-name-watermark {
   position: absolute;
