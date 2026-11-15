@@ -253,154 +253,217 @@ header {
 }
 .backdrop.active { opacity: 1; visibility: visible; }
 /* =========================================================
-   SECTION A: DARK EDITORIAL HERO (REFERENCE SPEC)
+   SECTION A: DARK EDITORIAL HERO (PORTIX-STYLE)
+   layer order: orb (1) < name (2) < portrait (3) < chips/badge (4+)
 ========================================================= */
 .hero-editorial {
   position: relative;
   background: #1B1B1B;
   color: #FFFFFF;
-  padding: 110px 0 0;
-  min-height: 760px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  padding: 74px 0 0;
+  min-height: 780px;
   overflow: hidden;
+  isolation: isolate;
+}
+.hero-editorial::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(900px 500px at 78% 40%, rgba(224, 90, 54, 0.14), transparent 70%),
+    radial-gradient(600px 400px at 10% 90%, rgba(24, 141, 251, 0.07), transparent 70%);
 }
 .hero-stage {
   position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1220px;
+  height: 706px;
   margin: 0 auto;
   padding: 0 24px;
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: end;
-  min-height: 650px;
 }
 
-/* Layer 2: Left Editorial Copy */
+/* ---------- Left copy ---------- */
 .hero-left-copy {
-  position: relative;
-  z-index: 4;
-  align-self: center;
-  padding-bottom: 155px;
+  position: absolute;
+  left: 24px;
+  top: 96px;
+  max-width: 560px;
+  z-index: 6;
 }
 .hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-flex; align-items: center; gap: 8px;
   font: 600 .72rem var(--font-sans);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #D4D4D4;
-  margin-bottom: 16px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: #D4D4D4; margin-bottom: 16px;
 }
 .hero-eyebrow::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--accent-primary);
-  display: inline-block;
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent-primary); display: inline-block;
 }
 .hero-display-headline {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 5.2vw, 4.7rem);
-  font-weight: 400;
-  line-height: 0.96;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  margin-bottom: 22px;
+  font-weight: 400; line-height: 0.96; letter-spacing: 0.01em;
+  text-transform: uppercase; margin-bottom: 22px;
 }
 .hero-display-headline .bright { color: #FFFFFF; }
-.hero-display-headline .muted { color: #6E6E6E; }
-
+.hero-display-headline .muted  { color: #6E6E6E; }
 .hero-sub-bio {
-  color: #A3A3A3;
-  font-size: .95rem;
-  max-width: 430px;
-  line-height: 1.65;
-  margin-bottom: 24px;
+  color: #A3A3A3; font-size: .95rem; max-width: 430px;
+  line-height: 1.65; margin-bottom: 24px;
 }
-.hero-quick-links {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
+.hero-quick-links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .hero-status-pill {
   display: inline-flex; align-items: center; gap: 8px;
   font: 600 .68rem var(--font-mono); letter-spacing: .08em; color: #CCCCCC;
   background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
   padding: 7px 14px; border-radius: var(--radius-pill);
 }
-.hero-status-pill i { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
+.hero-status-pill i {
+  width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
+  animation: statusPulse 2s infinite;
+}
+@keyframes statusPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
 
-/* Layer 3: Transparent Cutout Portrait (Sits cleanly in front of the Circle) */
-.hero-portrait-wrap {
-  position: relative;
-  z-index: 2;
-  align-self: end;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 100%;
+/* ---------- Visual stack: orb + portrait + badge ---------- */
+.hero-visual {
+  position: absolute;
+  right: 40px;
+  bottom: 0;
+  width: 560px;
   height: 100%;
+  z-index: 3;
+  animation: heroRise .9s var(--ease) both;
 }
-.hero-portrait-img {
-  width: min(100%, 510px);
-  height: 620px;
-  object-fit: cover;
-  object-position: center 12%;
-  border-radius: 0;
-  filter: contrast(1.04) saturate(1.03);
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: none; }
 }
 
-/* Layer 5: Full-Bleed Bottom Baseline Name Watermark (Overlaps Lower Shirt) */
+/* Terracotta gradient circle */
+.hero-orb {
+  position: absolute;
+  top: 70px; left: 50%;
+  width: 450px; height: 450px;
+  margin-left: -225px;
+  border-radius: 50%;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 45%, rgba(224, 90, 54, 0.28) 0%, rgba(224, 90, 54, 0.08) 55%, transparent 75%);
+  box-shadow: none;
+  animation: orbFloat 7s ease-in-out infinite;
+}
+
+/* Keep your portrait 100% solid, natural, and sharp */
+.hero-portrait-img {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  height: 610px; width: auto; max-width: none;
+  z-index: 4; /* Above both the orb (1) and the name watermark (2) */
+  object-fit: contain;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.55));
+}
+.hero-orb::after {
+  content: ''; position: absolute; inset: -22px; border-radius: 50%;
+  border: 1px dashed rgba(224, 90, 54, 0.4);
+  animation: ringSpin 40s linear infinite;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes ringSpin { to { transform: rotate(360deg); } }
+
+/* Floating glass chips */
+.hero-chip {
+  position: absolute; z-index: 5;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 14px; border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  font: 600 .68rem var(--font-mono); letter-spacing: .08em; color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  animation: chipFloat 5s ease-in-out infinite;
+}
+.hero-chip b { color: #FF8E6E; font-weight: 600; }
+.hero-chip.c1 { top: 120px; right: -10px; }
+.hero-chip.c2 { top: 300px; left: -26px; animation-delay: -2.5s; }
+@keyframes chipFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+
+/* "HIRE ME NOW" circle badge */
+.hire-circle-badge {
+  position: absolute; z-index: 6;
+  left: -30px; bottom: 74px;
+  width: 112px; height: 112px; border-radius: 50%;
+  background: var(--accent-primary); color: #FFFFFF;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  font: 800 .72rem var(--font-sans); letter-spacing: .06em; line-height: 1.25;
+  text-decoration: none; text-transform: uppercase;
+  box-shadow: 0 14px 34px rgba(224, 90, 54, 0.45);
+  transition: transform .3s var(--ease), background .25s;
+}
+.hire-circle-badge::before {
+  content: ''; position: absolute; inset: -9px; border-radius: 50%;
+  border: 1.5px solid rgba(224, 90, 54, 0.55);
+  animation: badgePulse 2.2s ease-out infinite;
+}
+.hire-circle-badge:hover { background: var(--accent-primary-hover); transform: scale(1.08) rotate(-6deg); }
+@keyframes badgePulse {
+  0%   { transform: scale(.9); opacity: 1; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+/* Giant name: BEHIND the portrait, like the reference */
 .hero-name-watermark {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -14px;
-  z-index: 3;
+  left: 0; right: 0; bottom: -14px;
+  z-index: 2;
   text-align: center;
   font-family: var(--font-display);
   font-size: clamp(4.5rem, 13.8vw, 12.6rem);
-  font-weight: 400;
-  line-height: 0.84;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
+  font-weight: 400; line-height: 0.84; letter-spacing: 0.02em;
+  text-transform: uppercase; color: #FFFFFF;
+  white-space: nowrap; pointer-events: none; user-select: none;
+}
+
+/* ---------- Hero responsive (#home prefix beats older rules lower in the file) ---------- */
+@media (max-width: 1100px) {
+  #home .hero-visual { right: 0; width: 500px; }
+  #home .hero-orb { width: 400px; height: 400px; margin-left: -200px; }
+  #home .hero-portrait-img { height: 560px; }
+}
+@media (max-width: 900px) {
+  #home .hero-chip { display: none; }
+  #home .hero-left-copy { max-width: 420px; }
 }
 @media (max-width: 768px) {
   .nav-links, .split-cta { display: none; }
   .hamburger { display: inline-flex; }
-  .hero-editorial { padding-top: 96px; min-height: auto; }
-  .hero-stage { grid-template-columns: 1fr; min-height: auto; text-align: left; }
-
-  /* Disable background circle & any animation in mobile mode */
-  .hero-orb {
-    display: none !important;
-    animation: none !important;
-    transition: none !important;
+  #home.hero-editorial { padding-top: 96px; min-height: auto; }
+  #home .hero-stage { height: auto; display: flex; flex-direction: column; }
+  #home .hero-left-copy { position: relative; left: auto; top: auto; max-width: none; padding-bottom: 12px; }
+  #home .hero-visual {
+    position: relative; right: auto; bottom: auto;
+    width: 100%; height: 440px; animation: none;
   }
+  /* circle + all hero animation off on mobile */
+  #home .hero-orb { display: none !important; animation: none !important; }
+  #home .hero-chip { display: none !important; }
+  #home .hero-portrait-img { height: 430px; }
+  #home .hire-circle-badge { width: 84px; height: 84px; font-size: .6rem; left: 8px; bottom: 56px; }
+  #home .hire-circle-badge::before { animation: none; }
+  #home .hero-name-watermark { font-size: clamp(3.3rem, 14.5vw, 5.4rem); bottom: -4px; }
+}
 
-  .hero-left-copy { padding-bottom: 20px; }
-  .hero-portrait-wrap { justify-content: center; }
-  .hero-portrait-img {
-    height: 430px;
-    width: 100%;
-    max-width: 390px;
-    object-fit: cover;
-    object-position: center 12%;
-  }
-  .hire-circle-badge { width: 86px; height: 86px; font-size: .62rem; left: 16px; bottom: 54px; }
-  .hero-name-watermark { font-size: clamp(3.3rem, 14.5vw, 5.4rem); bottom: -4px; }
-}  
-  
   /* =========================================================
    ABOUT OVERLAP CARD (PICTO HARMONIZATION)
 ========================================================= */
@@ -1078,10 +1141,8 @@ footer.dark-footer {
 ========================================================= -->
 <section class="hero-editorial" id="home">
   <div class="hero-stage">
-    <!-- Layer 1: Terracotta Radial Glow -->
-    <div class="hero-orb" aria-hidden="true"></div>
 
-    <!-- Layer 2: Left Editorial Copy -->
+    <!-- Left editorial copy -->
     <div class="hero-left-copy reveal">
       <span class="hero-eyebrow">AI/ML &amp; FULL-STACK ENGINEER</span>
       <h1 class="hero-display-headline">
@@ -1097,22 +1158,28 @@ footer.dark-footer {
       </div>
     </div>
 
-    <!-- Layer 3: Portrait + Floating Circular Badge -->
-    <div class="hero-portrait-wrap reveal">
+    <!-- Orb + portrait + chips + badge -->
+    <div class="hero-visual">
+      <div class="hero-orb" aria-hidden="true"></div>
+
       <img
+        id="heroPortraitImg"
         class="hero-portrait-img"
         src="hasya-portrait.webp"
-        onerror="this.onerror=null;this.src='hasya-protrait.png'"
+        onerror="this.onerror=function(){this.onerror=null;this.src='hasya-protrait.png'};this.src='hasya-portrait.png'"
         alt="Portrait of Hasya Patel"
         width="440"
-        height="560"
+        height="570"
         fetchpriority="high"
       >
+      <!-- <span class="hero-chip c1" aria-hidden="true"><b>●</b> RAG · LANGCHAIN</span>
+      <span class="hero-chip c2" aria-hidden="true"><b>●</b> PYTHON · FASTAPI</span> -->
+
       <!-- <a href="#contact" class="hire-circle-badge">HIRE ME<br>NOW</a> -->
     </div>
   </div>
 
-  <!-- Full-Bleed Giant Name Watermark -->
+  <!-- Giant name, behind the portrait -->
   <div class="hero-name-watermark" aria-hidden="true">HASYA PATEL</div>
 </section>
 
@@ -1826,25 +1893,39 @@ form.addEventListener('submit', async e => {
     statusEl.textContent = 'Something went wrong. Please email me directly at studyfor1505@gmail.com.';
   } finally { submitBtn.disabled = false; submitBtn.innerHTML = label; }
 });
-  /* Remove flat dark studio background from portrait so terracotta orb shows behind cleanly */
+/* ===== Hero portrait: remove flat dark studio background ===== */
 (() => {
   const img = document.getElementById('heroPortraitImg');
   if (!img) return;
 
+  const THRESHOLD = 16;   // raise (e.g. 22) if dark edges remain, lower (e.g. 11) if hair gets eaten
+  const MAX_H = 1300;     // downscale for speed
+
   const makeCutout = () => {
     if (!img.naturalWidth || img.dataset.cutoutDone) return;
+    img.dataset.cutoutDone = '1';
+
+    const scale = Math.min(1, MAX_H / img.naturalHeight);
+    const w = Math.round(img.naturalWidth * scale);
+    const h = Math.round(img.naturalHeight * scale);
     const canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    const w = canvas.width = img.naturalWidth;
-    const h = canvas.height = img.naturalHeight;
 
     try {
-      ctx.drawImage(img, 0, 0);
+      ctx.drawImage(img, 0, 0, w, h);
       const frame = ctx.getImageData(0, 0, w, h);
       const d = frame.data;
 
-      // Sample top-left corner background RGB
-      const bgR = d[0], bgG = d[1], bgB = d[2];
+      // Already transparent? Nothing to do.
+      if (d[3] < 250 && d[(w - 1) * 4 + 3] < 250) return;
+
+      // Average the 4 corners as the background colour
+      const corners = [0, (w - 1), (h - 1) * w, (h - 1) * w + (w - 1)];
+      let bgR = 0, bgG = 0, bgB = 0;
+      corners.forEach(i => { bgR += d[i * 4]; bgG += d[i * 4 + 1]; bgB += d[i * 4 + 2]; });
+      bgR /= 4; bgG /= 4; bgB /= 4;
+
       const visited = new Uint8Array(w * h);
       const queue = new Int32Array(w * h);
       let head = 0, tail = 0;
@@ -1853,55 +1934,43 @@ form.addEventListener('submit', async e => {
         const idx = y * w + x;
         if (visited[idx]) return;
         const p = idx * 4;
-        const dist = Math.hypot(d[p] - bgR, d[p + 1] - bgG, d[p + 2] - bgB);
-        if (dist < 26) {
-          visited[idx] = 1;
-          queue[tail++] = idx;
+        if (Math.hypot(d[p] - bgR, d[p + 1] - bgG, d[p + 2] - bgB) < THRESHOLD) {
+          visited[idx] = 1; queue[tail++] = idx;
         }
       };
 
-      // Seed flood-fill from outer border pixels (protects dark hair/eyes inside)
+      // Flood-fill from the outer border only (protects dark hair/eyes inside)
       for (let x = 0; x < w; x++) { push(x, 0); push(x, h - 1); }
       for (let y = 0; y < h; y++) { push(0, y); push(w - 1, y); }
-
       while (head < tail) {
         const idx = queue[head++];
-        const x = idx % w;
-        const y = (idx - x) / w;
+        const x = idx % w, y = (idx - x) / w;
         if (x > 0) push(x - 1, y);
         if (x < w - 1) push(x + 1, y);
         if (y > 0) push(x, y - 1);
         if (y < h - 1) push(x, y + 1);
       }
 
-      // Apply transparent alpha with soft 1px edge feathering
+      // Transparent background + soft feathered edge
       for (let i = 0; i < w * h; i++) {
-        if (visited[i]) {
-          d[i * 4 + 3] = 0;
-        } else {
-          const x = i % w, y = (i - x) / w;
-          if (
-            (x > 0 && visited[i - 1]) ||
-            (x < w - 1 && visited[i + 1]) ||
-            (y > 0 && visited[i - w]) ||
-            (y < h - 1 && visited[i + w])
-          ) {
-            d[i * 4 + 3] = 150;
-          }
+        if (visited[i]) { d[i * 4 + 3] = 0; continue; }
+        const x = i % w, y = (i - x) / w;
+        if ((x > 0 && visited[i - 1]) || (x < w - 1 && visited[i + 1]) ||
+            (y > 0 && visited[i - w]) || (y < h - 1 && visited[i + w])) {
+          d[i * 4 + 3] = 140;
         }
       }
 
       ctx.putImageData(frame, 0, 0);
-      img.dataset.cutoutDone = '1';
-      img.src = canvas.toDataURL('image/png');
+      canvas.toBlob(blob => { if (blob) img.src = URL.createObjectURL(blob); }, 'image/png');
     } catch (err) {
-      // Fallback if opened via local file:// without a local server
+      // file:// blocks canvas: dark bg blends with hero, circle stays visible behind
       img.style.mixBlendMode = 'lighten';
     }
   };
 
+  img.addEventListener('load', makeCutout);
   if (img.complete) makeCutout();
-  else img.addEventListener('load', makeCutout, { once: true });
 })();
 </script>
 </body>
