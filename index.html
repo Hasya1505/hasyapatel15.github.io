@@ -352,24 +352,27 @@ header {
 }
 .hero-status-pill i { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
 
-/* Layer 3: Foreground Portrait Cutout (Above Orb, Below Name Watermark) */
+/* Layer 3: Foreground Portrait (Blended over Orb, Below Name Watermark) */
 .hero-portrait-wrap {
   position: relative;
   z-index: 2;
   align-self: end;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   height: 100%;
 }
 .hero-portrait-img {
   width: min(100%, 490px);
-  height: 590px;
-  object-fit: contain;
-  object-position: center bottom;
+  height: 580px;
+  object-fit: cover;
+  object-position: center 14%;
   border-radius: 0;
-  filter: contrast(1.04);
-  mask-image: none;
-  -webkit-mask-image: none;
+  /* Blends the #1C1C1C image background into the hero so the terracotta orb shows through */
+  mix-blend-mode: lighten;
+  filter: contrast(1.05);
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
 }
 
 /* Layer 4: Floating Circular "HIRE ME NOW" Badge (Overlaps Torso & Watermark) */
@@ -405,7 +408,7 @@ header {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -14px;
+  bottom: -12px;
   z-index: 3;
   text-align: center;
   font-family: var(--font-display);
@@ -418,28 +421,33 @@ header {
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
-}
+}  
+  @media (max-width: 768px) {
+  .nav-links, .split-cta { display: none; }
+  .hamburger { display: inline-flex; }
+  .hero-editorial { padding-top: 96px; min-height: auto; }
+  .hero-stage { grid-template-columns: 1fr; min-height: auto; text-align: left; }
   
-/* Full-Bleed Bottom Baseline Name Watermark */
-.hero-name-watermark {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -10px;
-  z-index: 2;
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: clamp(4.5rem, 13.5vw, 12.2rem);
-  font-weight: 400;
-  line-height: 0.84;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-}
+  /* Disable background circle & any animation on mobile */
+  .hero-orb {
+    display: none !important;
+    animation: none !important;
+  }
 
+  .hero-left-copy { padding-bottom: 16px; }
+  .hero-portrait-wrap { margin-top: 8px; }
+  .hero-portrait-img {
+    height: 410px;
+    width: 100%;
+    max-width: 380px;
+    object-fit: cover;
+    object-position: center 12%;
+  }
+  .hire-circle-badge { width: 88px; height: 88px; font-size: .64rem; left: 16px; bottom: 56px; }
+  .hero-name-watermark { font-size: clamp(3.4rem, 15vw, 5.5rem); bottom: -4px; }
+  
+  /* ...keep the rest of your existing 768px rules unchanged... */
+}
 /* =========================================================
    ABOUT OVERLAP CARD (PICTO HARMONIZATION)
 ========================================================= */
