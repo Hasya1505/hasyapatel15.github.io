@@ -252,46 +252,48 @@ header {
   z-index: 1004; opacity: 0; visibility: hidden; transition: .3s;
 }
 .backdrop.active { opacity: 1; visibility: visible; }
-
 /* =========================================================
-   SECTION A: DARK EDITORIAL HERO (IMAGE 1 SPEC)
+   SECTION A: DARK EDITORIAL HERO (REFERENCE SPEC)
 ========================================================= */
 .hero-editorial {
   position: relative;
-  background: var(--bg-dark-hero);
+  background: #1B1B1B;
   color: #FFFFFF;
-  padding: 132px 0 0;
+  padding: 110px 0 0;
   min-height: 760px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   overflow: hidden;
 }
 .hero-stage {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1220px;
   margin: 0 auto;
   padding: 0 24px;
   flex: 1;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  align-items: center;
-  min-height: 620px;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  min-height: 650px;
 }
 
-/* =========================================================
-   RESPONSIVE BREAKPOINTS (TABLET & MOBILE HERO + SECTIONS)
-========================================================= */
-/* Layer 1: Circular Radial Terracotta Glow Behind Portrait */
+/* Layer 1: Sharp Circular Terracotta Gradient Behind Portrait */
 .hero-orb {
   position: absolute;
-  right: 6%;
-  top: 4%;
-  width: clamp(340px, 36vw, 480px);
-  height: clamp(340px, 36vw, 480px);
+  right: 4%;
+  top: 2%;
+  width: clamp(380px, 40vw, 520px);
+  height: clamp(380px, 40vw, 520px);
   border-radius: 50%;
-  background: radial-gradient(circle at 32% 32%, #E86440 0%, #8C331C 52%, rgba(28, 28, 28, 0) 78%);
+  background: radial-gradient(
+    circle at 26% 24%,
+    #F26A3D 0%,
+    #C74A24 38%,
+    #4E2216 70%,
+    #1B1B1B 95%
+  );
   pointer-events: none;
   z-index: 1;
 }
@@ -300,7 +302,8 @@ header {
 .hero-left-copy {
   position: relative;
   z-index: 4;
-  padding-bottom: 140px;
+  align-self: center;
+  padding-bottom: 155px;
 }
 .hero-eyebrow {
   display: inline-flex;
@@ -352,7 +355,7 @@ header {
 }
 .hero-status-pill i { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
 
-/* Layer 3: Foreground Portrait (Blended over Orb, Below Name Watermark) */
+/* Layer 3: Transparent Cutout Portrait (Sits cleanly in front of the Circle) */
 .hero-portrait-wrap {
   position: relative;
   z-index: 2;
@@ -360,29 +363,26 @@ header {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  width: 100%;
   height: 100%;
 }
 .hero-portrait-img {
-  width: min(100%, 490px);
-  height: 580px;
+  width: min(100%, 510px);
+  height: 620px;
   object-fit: cover;
-  object-position: center 14%;
+  object-position: center 12%;
   border-radius: 0;
-  /* Blends the #1C1C1C image background into the hero so the terracotta orb shows through */
-  mix-blend-mode: lighten;
-  filter: contrast(1.05);
-  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+  filter: contrast(1.04) saturate(1.03);
 }
 
-/* Layer 4: Floating Circular "HIRE ME NOW" Badge (Overlaps Torso & Watermark) */
+/* Layer 4: Floating Circular "HIRE ME NOW" Badge */
 .hire-circle-badge {
   position: absolute;
-  left: 12px;
-  bottom: 112px;
+  left: -18px;
+  bottom: 108px;
   z-index: 5;
-  width: 110px;
-  height: 110px;
+  width: 106px;
+  height: 106px;
   border-radius: 50%;
   background: var(--accent-primary);
   color: #FFFFFF;
@@ -392,7 +392,7 @@ header {
   justify-content: center;
   text-align: center;
   padding: 12px;
-  font: 700 .72rem var(--font-sans);
+  font: 700 .7rem var(--font-sans);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   box-shadow: 0 16px 36px rgba(224, 90, 54, 0.45);
@@ -403,12 +403,12 @@ header {
   background: var(--accent-primary-hover);
 }
 
-/* Layer 5: Full-Bleed Bottom Baseline Name Watermark (Overlaps Lower Torso) */
+/* Layer 5: Full-Bleed Bottom Baseline Name Watermark (Overlaps Lower Shirt) */
 .hero-name-watermark {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -12px;
+  bottom: -14px;
   z-index: 3;
   text-align: center;
   font-family: var(--font-display);
@@ -421,34 +421,34 @@ header {
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
-}  
-  @media (max-width: 768px) {
+}
+@media (max-width: 768px) {
   .nav-links, .split-cta { display: none; }
   .hamburger { display: inline-flex; }
   .hero-editorial { padding-top: 96px; min-height: auto; }
   .hero-stage { grid-template-columns: 1fr; min-height: auto; text-align: left; }
-  
-  /* Disable background circle & any animation on mobile */
+
+  /* Disable background circle & any animation in mobile mode */
   .hero-orb {
     display: none !important;
     animation: none !important;
+    transition: none !important;
   }
 
-  .hero-left-copy { padding-bottom: 16px; }
-  .hero-portrait-wrap { margin-top: 8px; }
+  .hero-left-copy { padding-bottom: 20px; }
+  .hero-portrait-wrap { justify-content: center; }
   .hero-portrait-img {
-    height: 410px;
+    height: 430px;
     width: 100%;
-    max-width: 380px;
+    max-width: 390px;
     object-fit: cover;
     object-position: center 12%;
   }
-  .hire-circle-badge { width: 88px; height: 88px; font-size: .64rem; left: 16px; bottom: 56px; }
-  .hero-name-watermark { font-size: clamp(3.4rem, 15vw, 5.5rem); bottom: -4px; }
+  .hire-circle-badge { width: 86px; height: 86px; font-size: .62rem; left: 16px; bottom: 54px; }
+  .hero-name-watermark { font-size: clamp(3.3rem, 14.5vw, 5.4rem); bottom: -4px; }
+}  
   
-  /* ...keep the rest of your existing 768px rules unchanged... */
-}
-/* =========================================================
+  /* =========================================================
    ABOUT OVERLAP CARD (PICTO HARMONIZATION)
 ========================================================= */
 .about-overlap-wrap {
@@ -1873,6 +1873,83 @@ form.addEventListener('submit', async e => {
     statusEl.textContent = 'Something went wrong. Please email me directly at studyfor1505@gmail.com.';
   } finally { submitBtn.disabled = false; submitBtn.innerHTML = label; }
 });
+  /* Remove flat dark studio background from portrait so terracotta orb shows behind cleanly */
+(() => {
+  const img = document.getElementById('heroPortraitImg');
+  if (!img) return;
+
+  const makeCutout = () => {
+    if (!img.naturalWidth || img.dataset.cutoutDone) return;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const w = canvas.width = img.naturalWidth;
+    const h = canvas.height = img.naturalHeight;
+
+    try {
+      ctx.drawImage(img, 0, 0);
+      const frame = ctx.getImageData(0, 0, w, h);
+      const d = frame.data;
+
+      // Sample top-left corner background RGB
+      const bgR = d[0], bgG = d[1], bgB = d[2];
+      const visited = new Uint8Array(w * h);
+      const queue = new Int32Array(w * h);
+      let head = 0, tail = 0;
+
+      const push = (x, y) => {
+        const idx = y * w + x;
+        if (visited[idx]) return;
+        const p = idx * 4;
+        const dist = Math.hypot(d[p] - bgR, d[p + 1] - bgG, d[p + 2] - bgB);
+        if (dist < 26) {
+          visited[idx] = 1;
+          queue[tail++] = idx;
+        }
+      };
+
+      // Seed flood-fill from outer border pixels (protects dark hair/eyes inside)
+      for (let x = 0; x < w; x++) { push(x, 0); push(x, h - 1); }
+      for (let y = 0; y < h; y++) { push(0, y); push(w - 1, y); }
+
+      while (head < tail) {
+        const idx = queue[head++];
+        const x = idx % w;
+        const y = (idx - x) / w;
+        if (x > 0) push(x - 1, y);
+        if (x < w - 1) push(x + 1, y);
+        if (y > 0) push(x, y - 1);
+        if (y < h - 1) push(x, y + 1);
+      }
+
+      // Apply transparent alpha with soft 1px edge feathering
+      for (let i = 0; i < w * h; i++) {
+        if (visited[i]) {
+          d[i * 4 + 3] = 0;
+        } else {
+          const x = i % w, y = (i - x) / w;
+          if (
+            (x > 0 && visited[i - 1]) ||
+            (x < w - 1 && visited[i + 1]) ||
+            (y > 0 && visited[i - w]) ||
+            (y < h - 1 && visited[i + w])
+          ) {
+            d[i * 4 + 3] = 150;
+          }
+        }
+      }
+
+      ctx.putImageData(frame, 0, 0);
+      img.dataset.cutoutDone = '1';
+      img.src = canvas.toDataURL('image/png');
+    } catch (err) {
+      // Fallback if opened via local file:// without a local server
+      img.style.mixBlendMode = 'lighten';
+    }
+  };
+
+  if (img.complete) makeCutout();
+  else img.addEventListener('load', makeCutout, { once: true });
+})();
 </script>
 </body>
 </html>
