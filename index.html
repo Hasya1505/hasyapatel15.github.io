@@ -1517,6 +1517,7 @@ function projectArtwork(id, variant = 'front') {
   const p = projects.find(item => item.id === id);
   if (!p) return '';
   const palettes = {
+    genai: ['#1A162B', '#7C3AED', '#C084FC', '#F5F3FF'],
     fullstack: ['#1C1C1C', '#E05A36', '#FF8E6E', '#FAF8F5'],
     analytics: ['#141B29', '#188DFB', '#67E8F9', '#F0F7FF'],
     ml: ['#1F1726', '#E05A36', '#FBBF24', '#FFF5F2'],
@@ -1548,6 +1549,16 @@ function projectArtwork(id, variant = 'front') {
 
 /* ===== PROJECT DATA ===== */
 const projects = [
+  { id:'youtube-ai-studio', domain:'genai', featured:true, title:'YouTube AI Studio', category:'Generative AI & RAG', tag:'Flask · FAISS · Gemini & Gemma RAG',
+    summary:'Video summarization and RAG Q&A web application with persisted JSON transcript caching, FAISS vector indexes, and multi-model LLM fallback.',
+    overview:'End-to-end YouTube knowledge studio utilizing persisted JSON transcript caching, FAISS vector indexes, and automatic multi-model fallback across Google Gemini and Gemma models for structured summarization and grounded video Q&A.',
+    image:'https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=1200&q=80', repo:'https://github.com/Hasya1505/youtube-ai-studio', live:'',
+    icons:[D('python'),D('flask')] },
+  { id:'tone-forge-ai', domain:'genai', featured:true, title:'ToneForge AI', category:'Generative AI & LLMs', tag:'Flask · Groq & Gemini APIs · Prompting',
+    summary:'Multi-platform AI content generator for Emails, LinkedIn posts, and Twitter/X threads with customizable tone, word count, and boilerplate templates.',
+    overview:'Full-stack generative writing studio built on Flask and Groq & Gemini LLM APIs featuring dedicated workflows for emails, LinkedIn posts, and Twitter/X threads with tone controls, word-count targets, and scenario boilerplates.',
+    image:'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80', repo:'https://github.com/Hasya1505/Tone-forge-AI', live:'',
+    icons:[D('python'),D('flask')] },
   { id:'medistore-pro', domain:'fullstack', featured:true, title:'MediStore Pro', category:'Backend System', tag:'Flask · MySQL · GST Billing',
     summary:'Enterprise-grade pharmacy billing, inventory and medicine management ERP with dynamic GST invoicing and batch tracking.',
     overview:'Complete pharmacy ERP featuring inventory automation, supplier tracking, batch-expiry logs, role-based security and Chart.js reporting dashboards.',
@@ -1632,7 +1643,14 @@ const observeReveals = (root = document) => root.querySelectorAll('.reveal:not(.
 
 /* ===== projects: horizontal split-cards + Browse All ===== */
 const PAGE = 6;
-const filters = [['all','All Projects'],['fullstack','Full-Stack'],['ml','AI & Machine Learning'],['analytics','Data Analytics'],['web','Web Apps']];
+const filters = [
+  ['all','All Projects'],
+  ['genai','Generative AI'],
+  ['ml','AI & Machine Learning'],
+  ['fullstack','Full-Stack'],
+  ['analytics','Data Analytics'],
+  ['web','Web Apps']
+];
 let state = { filter:'all', expanded:false };
 const grid = document.getElementById('projectGrid'), browseAllBtn = document.getElementById('browseAllBtn');
 
