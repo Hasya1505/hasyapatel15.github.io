@@ -673,6 +673,52 @@ header {
   font: 600 .78rem var(--font-mono); letter-spacing: .08em;
   text-transform: uppercase; text-align: right; color: var(--accent-primary);
 }
+/* Experience Document Buttons */
+.exp-docs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.exp-doc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card-surface);
+  color: var(--text-primary-dark);
+  font: 600 .78rem var(--font-sans);
+  cursor: pointer;
+  transition: border-color .2s, background .2s, color .2s, transform .2s var(--ease);
+}
+.exp-doc-btn:hover {
+  border-color: var(--accent-primary);
+  background: var(--accent-primary-soft);
+  color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+.exp-doc-btn svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent-primary);
+}
+
+/* Letter Lightbox Modal */
+.doc-modal-box {
+  max-width: 720px;
+  text-align: center;
+}
+.doc-modal-img {
+  width: 100%;
+  max-height: 72dvh;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-light-canvas);
+  margin: 12px 0 18px;
+}
 
 /* =========================================================
    SKILLS
@@ -1248,18 +1294,7 @@ footer.dark-footer {
       <p>Technical training, applied machine learning and software development through industry-aligned programs.</p>
     </div>
     <div class="exp-stack">
-      <article class="exp-row reveal">
-        <div class="exp-role">Emerging Technologies Intern</div>
-        <div>
-          <h3 class="exp-org">Edunet Foundation · AICTE &amp; IBM SkillsBuild</h3>
-          <ul class="exp-list">
-            <li>Built Krishimitra (AgroSmart), an agricultural decision platform using React 19, Python FastAPI and ML pipelines.</li>
-            <li>Implemented crop-recommendation pipelines with XGBoost and Scikit-learn to guide regional crop decisions.</li>
-            <li>Explored modern agent systems, security boundaries and enterprise cloud REST endpoints.</li>
-          </ul>
-        </div>
-        <div class="exp-date">Jun 2026 — Jul 2026</div>
-      </article>
+
       <article class="exp-row reveal">
         <div class="exp-role">AI &amp; Machine Learning Intern</div>
         <div>
@@ -1269,12 +1304,59 @@ footer.dark-footer {
             <li>Developed an Ahmedabad real-estate price predictor using Pandas and Scikit-learn regression models.</li>
             <li>Integrated model inference into a Flask web application for live predictions.</li>
           </ul>
+          <div class="exp-docs">
+            <button type="button" class="exp-doc-btn" data-doc-src="offerlater.jpeg" data-doc-title="Offer Letter — AI &amp; Machine Learning Intern" data-doc-sub="Edunet Foundation · AICTE &amp; IBM SkillsBuild (Jan 2026)">
+              <svg class="ic" aria-hidden="true"><use href="#i-file"/></svg> Offer Letter
+            </button>
+            <button type="button" class="exp-doc-btn" data-doc-src="edunet.jpeg" data-doc-title="Completion Letter — AI &amp; Machine Learning Intern" data-doc-sub="Edunet Foundation · AICTE &amp; IBM SkillsBuild (Feb 2026)">
+              <svg class="ic" aria-hidden="true"><use href="#i-file"/></svg> Completion Letter
+            </button>
+          </div>
         </div>
         <div class="exp-date">Jan 2026 — Feb 2026</div>
+      </article>
+
+      <article class="exp-row reveal">
+        <div class="exp-role">Emerging Technologies Intern</div>
+        <div>
+          <h3 class="exp-org">Edunet Foundation · AICTE &amp; IBM SkillsBuild</h3>
+          <ul class="exp-list">
+            <li>Built Krishimitra (AgroSmart), an agricultural decision platform using React 19, Python FastAPI and ML pipelines.</li>
+            <li>Implemented crop-recommendation pipelines with XGBoost and Scikit-learn to guide regional crop decisions.</li>
+            <li>Explored modern agent systems, security boundaries and enterprise cloud REST endpoints.</li>
+          </ul>
+          <div class="exp-docs">
+            <button type="button" class="exp-doc-btn" data-doc-src="Screenshot 2026-11-25 143606.png" data-doc-title="Offer Letter — Emerging Technologies Intern" data-doc-sub="Edunet Foundation · AICTE &amp; IBM SkillsBuild (Jun 2026)">
+              <svg class="ic" aria-hidden="true"><use href="#i-file"/></svg> Offer Letter
+            </button>
+            <button type="button" class="exp-doc-btn" data-doc-src="compltion.jpeg" data-doc-title="Completion Letter — Emerging Technologies Intern" data-doc-sub="Edunet Foundation · AICTE &amp; IBM SkillsBuild (Jul 2026)">
+              <svg class="ic" aria-hidden="true"><use href="#i-file"/></svg> Completion Letter
+            </button>
+          </div>
+        </div>
+        <div class="exp-date">Jun 2026 — Jul 2026</div>
       </article>
     </div>
   </div>
 </section>
+
+
+<!-- EXPERIENCE LETTER MODAL -->
+<div class="modal-backdrop" id="docModalBackdrop">
+  <div class="modal doc-modal-box" role="dialog" aria-modal="true" aria-labelledby="docModalTitle">
+    <button class="icon-btn modal-close" id="docModalClose" aria-label="Close letter preview">
+      <svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>
+    </button>
+    <span class="modal-cat" id="docModalSub"></span>
+    <h2 id="docModalTitle"></h2>
+    <img class="doc-modal-img" id="docModalImg" src="" alt="Internship Document Preview">
+    <div class="modal-links" style="justify-content:center;">
+      <a class="btn btn-primary" id="docModalOpenFull" href="#" target="_blank" rel="noopener noreferrer">
+        Open Full Image <svg class="ic" aria-hidden="true"><use href="#i-external"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- =========================================================
      SKILLS
@@ -1312,13 +1394,27 @@ footer.dark-footer {
       <p>Selected certifications, technical training and applied data-science qualifications.</p>
     </div>
     <div class="cred-grid">
-      <article class="cred-card reveal">
-        <div><div class="cred-tag">01 / Programming</div><h3 class="cred-title">C &amp; C++ Programming</h3><p class="cred-issuer">Shivam Classes · Foundational CS &amp; OOP principles (Jun 2023 – Aug 2023)</p></div>
-        <a class="cred-link" href="Shivam.jpg" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+     <article class="cred-card reveal">
+        <div>
+          <div class="cred-tag">01 / Artificial Intelligence</div>
+          <h3 class="cred-title">Getting Started with Artificial Intelligence</h3>
+          <p class="cred-issuer">IBM SkillsBuild · Core AI concepts, generative AI workflows and ethical practices (Issued Jun 16, 2026)</p>
+        </div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a class="cred-link" href="Screenshot 2026-07-01 162421.png" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+          <a class="cred-link" href="https://www.credly.com/badges/e9c68af2-68f0-4899-9e7d-3a414acf9618" target="_blank" rel="noopener noreferrer">Verify badge ↗</a>
+        </div>
       </article>
       <article class="cred-card reveal">
-        <div><div class="cred-tag">02 / Programming</div><h3 class="cred-title">Python Advanced Development</h3><p class="cred-issuer">Desire Infotech · Script architecture, data structures and backends (Feb 2025 – Apr 2025)</p></div>
-        <a class="cred-link" href="DesierInfo.jpg" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+        <div>
+          <div class="cred-tag">02 / Artificial Intelligence</div>
+          <h3 class="cred-title">Artificial Intelligence Fundamentals</h3>
+          <p class="cred-issuer">IBM SkillsBuild · Machine learning foundations, neural networks and NLP models (Issued Jan 25, 2026)</p>
+        </div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a class="cred-link" href="Screenshot 2026-11-25 145219.png" target="_blank" rel="noopener noreferrer">View certificate ↗</a>
+          <a class="cred-link" href="https://www.credly.com/badges/014ca7c2-bd3b-4326-9698-59501c73191c" target="_blank" rel="noopener noreferrer">Verify badge ↗</a>
+        </div>
       </article>
       <article class="cred-card reveal">
         <div><div class="cred-tag">03 / Data Science</div><h3 class="cred-title">Python for Data Science</h3><p class="cred-issuer">IIT Madras (NPTEL) · Computational and statistical methods <span class="score">Score: 68%</span></p></div>
@@ -1990,6 +2086,48 @@ form.addEventListener('submit', async e => {
   img.addEventListener('load', makeCutout);
   if (img.complete) makeCutout();
 })();
+
+/* ===== Experience Offer & Completion Letter Lightbox ===== */
+(() => {
+  const docBackdrop = document.getElementById('docModalBackdrop');
+  const docClose = document.getElementById('docModalClose');
+  const docImg = document.getElementById('docModalImg');
+  const docTitle = document.getElementById('docModalTitle');
+  const docSub = document.getElementById('docModalSub');
+  const docFullLink = document.getElementById('docModalOpenFull');
+  let lastDocTrigger = null;
+
+  function openDocModal(btn) {
+    lastDocTrigger = btn;
+    const src = btn.dataset.docSrc;
+    docTitle.textContent = btn.dataset.docTitle || 'Internship Document';
+    docSub.textContent = btn.dataset.docSub || '';
+    docImg.src = src;
+    docImg.alt = docTitle.textContent;
+    docFullLink.href = src;
+    docBackdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    docClose.focus();
+  }
+
+  function closeDocModal() {
+    docBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+    if (lastDocTrigger) lastDocTrigger.focus();
+  }
+
+  document.getElementById('experience')?.addEventListener('click', e => {
+    const btn = e.target.closest('.exp-doc-btn');
+    if (btn) openDocModal(btn);
+  });
+
+  docClose?.addEventListener('click', closeDocModal);
+  docBackdrop?.addEventListener('click', e => { if (e.target === docBackdrop) closeDocModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && docBackdrop?.classList.contains('active')) closeDocModal();
+  });
+})();
+
 </script>
 </body>
 </html>
